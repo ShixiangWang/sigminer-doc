@@ -1,0 +1,8 @@
+# Copy Number Signature Identification {#cnsig}
+
+## Read Data {-}
+
+## Tally Records {-}
+
+## Signature Extraction {-}
+
