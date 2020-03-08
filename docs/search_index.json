@@ -1,15 +1,15 @@
 [
-["index.html", "sigminer: Genomic Alteration Signature Analysis in R Chapter 1 Introduction", " sigminer: Genomic Alteration Signature Analysis in R Shixiang Wang, ShanghaiTech University Xue-Song Liu, ShanghaiTech University last revised on 2020-03-08 Chapter 1 Introduction Genomic alterations including single nucleotide substitution (SBS), copy number variations (CNV), etc. are the major force for cancer initialization and development. Due to the specificity of molecular lesions caused by genomic alterations, we can generate characteristic variation spectra, called ‘signature’. This package helps users to extract (identify), analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study. The sigminer package can be installed from CRAN or Github: install.packages(&quot;sigminer&quot;) # or the development version # devtools::install_github(&quot;ShixiangWang/sigminer&quot;) "],
+["index.html", "sigminer: Genomic Alteration Signature Analysis in R Introduction", " sigminer: Genomic Alteration Signature Analysis in R Shixiang Wang, ShanghaiTech University Xue-Song Liu, ShanghaiTech University last revised on 2020-03-09 Introduction Genomic alterations including single nucleotide substitution (SBS), copy number variations (CNV), etc. are the major force for cancer initialization and development. Due to the specificity of molecular lesions caused by genomic alterations, we can generate characteristic variation spectra, called ‘signature’. This package helps users to extract (identify), analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study. The sigminer package can be installed from CRAN or Github: install.packages(&quot;sigminer&quot;) # or the development version # devtools::install_github(&quot;ShixiangWang/sigminer&quot;) "],
 ["part-signature-identification.html", "(PART) Signature Identification", " (PART) Signature Identification "],
-["sbssig.html", "Chapter 2 SBS Signature Identification Read Data Tally Records Signature Extraction", " Chapter 2 SBS Signature Identification plot(1:10) Read Data Tally Records Signature Extraction "],
-["cnsig.html", "Chapter 3 Copy Number Signature Identification Read Data Tally Records Signature Extraction", " Chapter 3 Copy Number Signature Identification Read Data Tally Records Signature Extraction "],
+["sbssig.html", "Chapter 1 SBS Signature Identification Read Data Tally Records Signature Extraction", " Chapter 1 SBS Signature Identification plot(1:10) Read Data Tally Records Signature Extraction "],
+["cnsig.html", "Chapter 2 Copy Number Signature Identification Read Data Tally Records Signature Extraction", " Chapter 2 Copy Number Signature Identification Read Data Tally Records Signature Extraction "],
 ["part-object-visualization.html", "(PART) Object Visualization", " (PART) Object Visualization "],
-["cnobject.html", "Chapter 4 CopyNumber Object Profile Distribution", " Chapter 4 CopyNumber Object Profile Distribution "],
-["sigobject.html", "Chapter 5 Signature Object Signature Profile Exposure Profile", " Chapter 5 Signature Object Signature Profile Exposure Profile "],
+["cnobject.html", "Chapter 3 CopyNumber Object Profile Distribution", " Chapter 3 CopyNumber Object Profile Distribution "],
+["sigobject.html", "Chapter 4 Signature Object Signature Profile Exposure Profile", " Chapter 4 Signature Object Signature Profile Exposure Profile "],
 ["part-signature-analysis-and-visualization.html", "(PART) Signature Analysis and Visualization", " (PART) Signature Analysis and Visualization "],
-["association-analysis.html", "Chapter 6 Association Analysis and Visualization", " Chapter 6 Association Analysis and Visualization "],
-["group-analysis.html", "Chapter 7 Group Analysis and Visualization Group Generation Group Comparison Analysis Group Visualization", " Chapter 7 Group Analysis and Visualization Group Generation Group Comparison Analysis Group Visualization "],
+["association-analysis.html", "Chapter 5 Association Analysis and Visualization", " Chapter 5 Association Analysis and Visualization "],
+["group-analysis.html", "Chapter 6 Group Analysis and Visualization Group Generation Group Comparison Analysis Group Visualization", " Chapter 6 Group Analysis and Visualization Group Generation Group Comparison Analysis Group Visualization "],
 ["part-others.html", "(PART) Others", " (PART) Others "],
-["datasets.html", "Chapter 8 Datasets 8.1 Chromosome Size", " Chapter 8 Datasets 8.1 Chromosome Size "],
+["datasets.html", "Chapter 7 Datasets 7.1 Chromosome Size", " Chapter 7 Datasets 7.1 Chromosome Size "],
 ["references.html", "References", " References "]
 ]

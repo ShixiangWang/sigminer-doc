@@ -14,7 +14,7 @@ description: "This package helps users to extract, analyze and visualize signatu
 github-repo: ShixiangWang/sigminer-doc
 ---
 
-# Introduction {#intro}
+# Introduction {-}
 
 Genomic alterations including single nucleotide substitution (SBS),
 copy number variations (CNV), etc. are the major force for cancer
