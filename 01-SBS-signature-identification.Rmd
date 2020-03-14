@@ -9,7 +9,7 @@ plot(1:10)
 
 ## Read Data {-}
 
-## Tally Records {-}
+## Tally Components {-}
 
 ## Signature Extraction {-}
 

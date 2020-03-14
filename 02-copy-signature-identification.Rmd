@@ -2,7 +2,7 @@
 
 ## Read Data {-}
 
-## Tally Records {-}
+## Tally Components {-}
 
 ## Signature Extraction {-}
 
