@@ -132,7 +132,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">sigminer: Signature Miner</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-or-suggestions"><i class="fa fa-check"></i>Issues or Suggestions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#preparation"><i class="fa fa-check"></i>Preparation</a></li>
+</ul></li>
 <li class="part"><span><b>I Signature Identification</b></span></li>
 <li class="chapter" data-level="1" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>1</b> SBS Signature Identification</a>
 <ul>
@@ -195,22 +200,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">sigminer: Genomic Alteration Signature Analysis in R</h1>
 <p class="author"><em>Shixiang Wang, ShanghaiTech University</em></p>
 <p class="author"><em>Xue-Song Liu, ShanghaiTech University</em></p>
-<p class="date"><em>last revised on 2020-03-14</em></p>
+<p class="date"><em>last revised on 2020-03-16</em></p>
 </div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Genomic alterations including single nucleotide substitution (SBS),
-copy number variations (CNV), etc. are the major force for cancer
+copy number alteration (CNA), etc. are the major force for cancer
 initialization and development. Due to the specificity of molecular
 lesions caused by genomic alterations, we can generate characteristic
-variation spectra, called ‘signature’. This package helps users to
-extract (identify), analyze and visualize signatures from genomic variation records,
+alteration spectra, called ‘signature’.</p>
+<p>To illustrate the biological significance of genome alteration signatures, we show some
+well organized figures here.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="fig/sbs_signature_overview_nat_review.png" alt="The illustration of SBS signature (2), fig source: https://www.nature.com/articles/nrg3729"  />
+<p class="caption">
+Figure 0.1: The illustration of SBS signature (2), fig source: <a href="https://www.nature.com/articles/nrg3729" class="uri">https://www.nature.com/articles/nrg3729</a>
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="fig/sbs_signature_overview.png" alt="The illustration of SBS signature, fig source: https://www.nature.com/articles/s41467-018-05228-y"  />
+<p class="caption">
+Figure 0.2: The illustration of SBS signature, fig source: <a href="https://www.nature.com/articles/s41467-018-05228-y" class="uri">https://www.nature.com/articles/s41467-018-05228-y</a>
+</p>
+</div>
+<p>SBS signature is also known as mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
+Common etiologies contain aging, defective DNA mismatch repair, smoking, ultraviolet light exposure and APOBOE.</p>
+<p>Currently, all SBS signatures are summarized in COSMIC database, including two versions: <a href="https://cancer.sanger.ac.uk/cosmic/signatures_v2">v2</a> and <a href="https://cancer.sanger.ac.uk/cosmic/signatures/SBS/">v3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<img src="fig/cn_signature_overview.png" alt="The illustration of copy number signatures, fig source: https://www.nature.com/articles/s41588-018-0212-y"  />
+<p class="caption">
+Figure 0.3: The illustration of copy number signatures, fig source: <a href="https://www.nature.com/articles/s41588-018-0212-y" class="uri">https://www.nature.com/articles/s41588-018-0212-y</a>
+</p>
+</div>
+<p>Copy number signatures are less studied and many works are still to be done.</p>
+<p>To study signatures, we created an easy-to-use and scalable toolkit for genomic alteration signature analysis and visualization in R. We named it <strong>sigminer</strong> (<code>signature</code> + <code>miner</code>).
+This tool can help users to extract, analyze and visualize signatures from genomic alteration records,
 thus providing new insight into cancer study.</p>
-<p>The <strong>sigminer</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;sigminer&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;ShixiangWang/sigminer&quot;)</span></span></code></pre></div>
+<p>Currently, <strong>sigminer</strong> supports two types of signature:</p>
+<ul>
+<li>SBS signature in the form of 96 components</li>
+<li>Copy number signature by the method either from <span class="citation">Macintyre et al. (<a href="#ref-macintyre2018copy" role="doc-biblioref">2018</a>)</span> or from our group work.</li>
+</ul>
+<hr />
+<p>If you use <strong>sigminer</strong> in academic field, please cite our work:</p>
+<p><strong><em>Copy number signature analyses in prostate cancer reveal distinct etiologies and clinical outcomes, under submission</em></strong></p>
+<hr />
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p>The <strong>sigminer</strong> package can be installed from <del>CRAN or</del> Github:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ShixiangWang/sigminer&quot;</span>)</span></code></pre></div>
+</div>
+<div id="issues-or-suggestions" class="section level2">
+<h2>Issues or Suggestions</h2>
+<p>Any issue can be posted on <a href="https://github.com/ShixiangWang/sigminer/issues">GitHub issue</a>, we will reply ASAP.</p>
+<p>We have plans to extend other mutational signatures (like INDEL and DBS) to <strong>sigminer</strong> or
+extend reading input from other softwares, contribution is welcome.</p>
+</div>
+<div id="preparation" class="section level2">
+<h2>Preparation</h2>
+<p>To reproduce the examples shown in this manual, users should load the following packages firstly.
+<strong>sigminer</strong> is requred to have version &gt;= 1.0.0.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a><span class="kw">library</span>(sigminer)</span>
+<span id="cb2-2"><a href="index.html#cb2-2"></a><span class="kw">library</span>(NMF)</span></code></pre></div>
+<p>Current manual uses <strong>sigminer</strong> 1.0.0. More info about <strong>sigminer</strong> can be given as:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1"></a><span class="kw">hello</span>()</span>
+<span id="cb3-2"><a href="index.html#cb3-2"></a><span class="co">#&gt;              ------ </span></span>
+<span id="cb3-3"><a href="index.html#cb3-3"></a><span class="co">#&gt;           Welcome to &#39;sigminer&#39; package!</span></span>
+<span id="cb3-4"><a href="index.html#cb3-4"></a><span class="co">#&gt; =========================================================================</span></span>
+<span id="cb3-5"><a href="index.html#cb3-5"></a><span class="co">#&gt; Quick overview please type ?sigminer</span></span>
+<span id="cb3-6"><a href="index.html#cb3-6"></a><span class="co">#&gt; </span></span>
+<span id="cb3-7"><a href="index.html#cb3-7"></a><span class="co">#&gt; Github page: https://github.com/ShixiangWang/sigminer</span></span>
+<span id="cb3-8"><a href="index.html#cb3-8"></a><span class="co">#&gt; Bug report: https://github.com/ShixiangWang/sigminer/issues</span></span>
+<span id="cb3-9"><a href="index.html#cb3-9"></a><span class="co">#&gt; Documentation: https://github.com/ShixiangWang/sigminer</span></span>
+<span id="cb3-10"><a href="index.html#cb3-10"></a><span class="co">#&gt; =========================================================================</span></span>
+<span id="cb3-11"><a href="index.html#cb3-11"></a><span class="co">#&gt;                   </span></span>
+<span id="cb3-12"><a href="index.html#cb3-12"></a><span class="co">#&gt;              ------ </span></span>
+<span id="cb3-13"><a href="index.html#cb3-13"></a><span class="co">#&gt;                  \   </span></span>
+<span id="cb3-14"><a href="index.html#cb3-14"></a><span class="co">#&gt;                   \  </span></span>
+<span id="cb3-15"><a href="index.html#cb3-15"></a><span class="co">#&gt;                    \</span></span>
+<span id="cb3-16"><a href="index.html#cb3-16"></a><span class="co">#&gt;                       . .     </span></span>
+<span id="cb3-17"><a href="index.html#cb3-17"></a><span class="co">#&gt;                       |\|\_   </span></span>
+<span id="cb3-18"><a href="index.html#cb3-18"></a><span class="co">#&gt;                       /  ^ \  </span></span>
+<span id="cb3-19"><a href="index.html#cb3-19"></a><span class="co">#&gt;                      /  _-_/° </span></span>
+<span id="cb3-20"><a href="index.html#cb3-20"></a><span class="co">#&gt;    \\\\\\\\\       /   / \    </span></span>
+<span id="cb3-21"><a href="index.html#cb3-21"></a><span class="co">#&gt;   ////////////   /  \ / ||    </span></span>
+<span id="cb3-22"><a href="index.html#cb3-22"></a><span class="co">#&gt;  \\\\\\\\\\\\\\ /   /\\ \\    </span></span>
+<span id="cb3-23"><a href="index.html#cb3-23"></a><span class="co">#&gt; ////////////////   /  \\ \\   </span></span>
+<span id="cb3-24"><a href="index.html#cb3-24"></a><span class="co">#&gt;  \\\\\\\\\\\\\/   /  / `` ``  </span></span>
+<span id="cb3-25"><a href="index.html#cb3-25"></a><span class="co">#&gt;      /////////   \  /  \      </span></span>
+<span id="cb3-26"><a href="index.html#cb3-26"></a><span class="co">#&gt;  ML     \\\\\\___/_/___/</span></span></code></pre></div>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-macintyre2018copy">
+<p>Macintyre, Geoff, Teodora E Goranova, Dilrini De Silva, Darren Ennis, Anna M Piskorz, Matthew Eldridge, Daoud Sie, et al. 2018. “Copy Number Signatures and Mutational Processes in Ovarian Carcinoma.” <em>Nature Genetics</em> 50 (9): 1262–70.</p>
+</div>
 </div>
             </section>
 

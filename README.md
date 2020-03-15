@@ -1,9 +1,9 @@
-# Manual of Genomic Alteration Signature Analysis in R
+# Genomic Alteration Signature Analysis in R
 
 [![HitCount](http://hits.dwyl.io/ShixiangWang/sigminer-doc.svg)](http://hits.dwyl.io/ShixiangWang/sigminer-doc)
 
-
-Read it online at <https://shixiangwang.github.io/sigminer-doc/>.
+Manual book for R package [sigminer](https://github.com/ShixiangWang/sigminer),
+read it online at <https://shixiangwang.github.io/sigminer-doc/>.
 
 *** 
 

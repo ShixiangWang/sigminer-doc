@@ -2,7 +2,7 @@ knitr::opts_chunk$set(
   fig.align = 'center',
   fig.width = 4,
   fig.height = 4,
-  message = FALSE
+  message = TRUE,
+  collapse = TRUE,
+  comment = "#>"
 )
-
-library(sigminer)

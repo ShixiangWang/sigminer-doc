@@ -1,5 +1,15 @@
 # Copy Number Signature Identification {#cnsig}
 
+@macintyre2018copy created a new method to generate the matrix for extracting signature by non-negative matrix factorization (NMF) algorithm. The steps are:
+
+- derive 6 copy number features from absolute copy number profile
+- apply mixture modelling to breakdown each feature distribution into mixtures of Gaussian or mixtures of Poisson distributions
+- generate a sample-by-component matrix representing the sum of posterior probabilities of each copy-number event being assigned to each component.
+
+Based on previous work, our group devised a new method which discards the statistical modeling and create a fixed number of predefined components from 8 copy number features to generate the matrix as the input of NMF,
+it is easier to reproduce the result, apply to different cancer types and compare results.
+To test if the method would works, we applied it to prostate cancer and successfully identified 5 copy number signatures.
+
 ## Read Data {-}
 
 ## Tally Components {-}

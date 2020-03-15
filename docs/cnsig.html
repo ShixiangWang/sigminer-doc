@@ -132,7 +132,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">sigminer: Signature Miner</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-or-suggestions"><i class="fa fa-check"></i>Issues or Suggestions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#preparation"><i class="fa fa-check"></i>Preparation</a></li>
+</ul></li>
 <li class="part"><span><b>I Signature Identification</b></span></li>
 <li class="chapter" data-level="1" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>1</b> SBS Signature Identification</a>
 <ul>
@@ -193,6 +198,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="cnsig" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Copy Number Signature Identification</h1>
+<p><span class="citation">Macintyre et al. (<a href="#ref-macintyre2018copy" role="doc-biblioref">2018</a>)</span> created a new method to generate the matrix for extracting signature by non-negative matrix factorization (NMF) algorithm. The steps are:</p>
+<ul>
+<li>derive 6 copy number features from absolute copy number profile</li>
+<li>apply mixture modelling to breakdown each feature distribution into mixtures of Gaussian or mixtures of Poisson distributions</li>
+<li>generate a sample-by-component matrix representing the sum of posterior probabilities of each copy-number event being assigned to each component.</li>
+</ul>
+<p>Based on previous work, our group devised a new method which discards the statistical modeling and create a fixed number of predefined components from 8 copy number features to generate the matrix as the input of NMF,
+it is easier to reproduce the result, apply to different cancer types and compare results.
+To test if the method would works, we applied it to prostate cancer and successfully identified 5 copy number signatures.</p>
 <div id="read-data-1" class="section level2">
 <h2>Read Data</h2>
 </div>
@@ -202,6 +216,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="signature-extraction-1" class="section level2">
 <h2>Signature Extraction</h2>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-macintyre2018copy">
+<p>Macintyre, Geoff, Teodora E Goranova, Dilrini De Silva, Darren Ennis, Anna M Piskorz, Matthew Eldridge, Daoud Sie, et al. 2018. “Copy Number Signatures and Mutational Processes in Ovarian Carcinoma.” <em>Nature Genetics</em> 50 (9): 1262–70.</p>
 </div>
 </div>
             </section>
