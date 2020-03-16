@@ -147,6 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>2</b> Copy Number Signature Identification</a>
 <ul>
+<li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i>Read Data</a></li>
 <li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i>Tally Components</a></li>
 <li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#signature-extraction-1"><i class="fa fa-check"></i>Signature Extraction</a></li>
@@ -198,10 +199,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="sbssig" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> SBS Signature Identification</h1>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sbssig.html#cb4-1"></a><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-10-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>In this chapter, we will introduce how to identify SBS signatures from SBS records of variant calling data.
+The input data should be in <a href="https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/">MAF</a> format, it can be either a MAF file or a <code>data.frame</code>.</p>
+<p>The signature identification procedure has been divided into 3 steps:</p>
+<ol style="list-style-type: decimal">
+<li>Read data</li>
+<li>Tally components: classify SBS into 96 components and generate sample matrix</li>
+<li>Extract signatures: estimate signature number and identify signatures</li>
+</ol>
 <div id="read-data" class="section level2">
 <h2>Read Data</h2>
+<p>There is a famous R/Bioconductor package <a href="https://github.com/PoisonAlien/maftools"><strong>Maftools</strong></a> <span class="citation">(Mayakonda et al. <a href="#ref-mayakonda2018maftools" role="doc-biblioref">2018</a>)</span> for analyzing MAF data.
+Here, we use the example MAF file stored in <strong>Maftools</strong> as input and extract SBS signatures from the data.</p>
+<blockquote>
+<p>Make sure <code>library(sigminer)</code> before running the following code.</p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sbssig.html#cb4-1"></a>laml.maf &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;tcga_laml.maf.gz&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;maftools&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb4-2"><a href="sbssig.html#cb4-2"></a>laml &lt;-<span class="st"> </span><span class="kw">read_maf</span>(<span class="dt">maf =</span> laml.maf)</span>
+<span id="cb4-3"><a href="sbssig.html#cb4-3"></a><span class="co">#&gt; -Reading</span></span>
+<span id="cb4-4"><a href="sbssig.html#cb4-4"></a><span class="co">#&gt; -Validating</span></span>
+<span id="cb4-5"><a href="sbssig.html#cb4-5"></a><span class="co">#&gt; -Silent variants: 475 </span></span>
+<span id="cb4-6"><a href="sbssig.html#cb4-6"></a><span class="co">#&gt; -Summarizing</span></span>
+<span id="cb4-7"><a href="sbssig.html#cb4-7"></a><span class="co">#&gt; -Processing clinical data</span></span>
+<span id="cb4-8"><a href="sbssig.html#cb4-8"></a><span class="co">#&gt; --Missing clinical data</span></span>
+<span id="cb4-9"><a href="sbssig.html#cb4-9"></a><span class="co">#&gt; -Finished in 0.330s elapsed (0.220s cpu)</span></span>
+<span id="cb4-10"><a href="sbssig.html#cb4-10"></a>laml</span>
+<span id="cb4-11"><a href="sbssig.html#cb4-11"></a><span class="co">#&gt; An object of class  MAF </span></span>
+<span id="cb4-12"><a href="sbssig.html#cb4-12"></a><span class="co">#&gt;                    ID          summary  Mean Median</span></span>
+<span id="cb4-13"><a href="sbssig.html#cb4-13"></a><span class="co">#&gt;  1:        NCBI_Build               37    NA     NA</span></span>
+<span id="cb4-14"><a href="sbssig.html#cb4-14"></a><span class="co">#&gt;  2:            Center genome.wustl.edu    NA     NA</span></span>
+<span id="cb4-15"><a href="sbssig.html#cb4-15"></a><span class="co">#&gt;  3:           Samples              193    NA     NA</span></span>
+<span id="cb4-16"><a href="sbssig.html#cb4-16"></a><span class="co">#&gt;  4:            nGenes             1241    NA     NA</span></span>
+<span id="cb4-17"><a href="sbssig.html#cb4-17"></a><span class="co">#&gt;  5:   Frame_Shift_Del               52 0.271      0</span></span>
+<span id="cb4-18"><a href="sbssig.html#cb4-18"></a><span class="co">#&gt;  6:   Frame_Shift_Ins               91 0.474      0</span></span>
+<span id="cb4-19"><a href="sbssig.html#cb4-19"></a><span class="co">#&gt;  7:      In_Frame_Del               10 0.052      0</span></span>
+<span id="cb4-20"><a href="sbssig.html#cb4-20"></a><span class="co">#&gt;  8:      In_Frame_Ins               42 0.219      0</span></span>
+<span id="cb4-21"><a href="sbssig.html#cb4-21"></a><span class="co">#&gt;  9: Missense_Mutation             1342 6.990      7</span></span>
+<span id="cb4-22"><a href="sbssig.html#cb4-22"></a><span class="co">#&gt; 10: Nonsense_Mutation              103 0.536      0</span></span>
+<span id="cb4-23"><a href="sbssig.html#cb4-23"></a><span class="co">#&gt; 11:       Splice_Site               92 0.479      0</span></span>
+<span id="cb4-24"><a href="sbssig.html#cb4-24"></a><span class="co">#&gt; 12:             total             1732 9.021      9</span></span></code></pre></div>
 </div>
 <div id="tally-components" class="section level2">
 <h2>Tally Components</h2>
@@ -209,6 +245,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="signature-extraction" class="section level2">
 <h2>Signature Extraction</h2>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-mayakonda2018maftools">
+<p>Mayakonda, Anand, De-Chen Lin, Yassen Assenov, Christoph Plass, and H Phillip Koeffler. 2018. “Maftools: Efficient and Comprehensive Analysis of Somatic Variants in Cancer.” <em>Genome Research</em> 28 (11): 1747–56.</p>
 </div>
 </div>
             </section>

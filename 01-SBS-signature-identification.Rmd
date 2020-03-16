@@ -2,12 +2,27 @@
 
 # SBS Signature Identification {#sbssig}
 
-```{r}
-plot(1:10)
-```
+In this chapter, we will introduce how to identify SBS signatures from SBS records of variant calling data.
+The input data should be in [MAF](https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/) format, it can be either a MAF file or a `data.frame`. 
 
+The signature identification procedure has been divided into 3 steps:
+
+1. Read data
+2. Tally components: classify SBS into 96 components and generate sample matrix
+3. Extract signatures: estimate signature number and identify signatures
 
 ## Read Data {-}
+
+There is a famous R/Bioconductor package [**Maftools**](https://github.com/PoisonAlien/maftools) [@mayakonda2018maftools] for analyzing MAF data. 
+Here, we use the example MAF file stored in **Maftools** as input and extract SBS signatures from the data.
+
+> Make sure `library(sigminer)` before running the following code.
+
+```{r}
+laml.maf <- system.file("extdata", "tcga_laml.maf.gz", package = "maftools", mustWork = TRUE)
+laml <- read_maf(maf = laml.maf)
+laml
+```
 
 ## Tally Components {-}
 

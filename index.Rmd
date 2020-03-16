@@ -25,18 +25,20 @@ alteration spectra, called 'signature'.
 To illustrate the biological significance of genome alteration signatures, we show some
 well organized figures here.
 
-```{r echo=FALSE, fig.cap="The illustration of SBS signature (2), fig source: https://www.nature.com/articles/nrg3729"}
+```{r echo=FALSE, fig.cap="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729"}
 knitr::include_graphics("fig/sbs_signature_overview_nat_review.png")
 ```
 
-```{r echo=FALSE, fig.cap="The illustration of SBS signature, fig source: https://www.nature.com/articles/s41467-018-05228-y"}
+```{r echo=FALSE, fig.cap="The illustration of SBS signature (2), fig source: https://www.nature.com/articles/s41467-018-05228-y"}
 knitr::include_graphics("fig/sbs_signature_overview.png")
 ```
 
-SBS signature is also known as mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
+SBS signature is previously known as mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
 Common etiologies contain aging, defective DNA mismatch repair, smoking, ultraviolet light exposure and APOBOE.
 
 Currently, all SBS signatures are summarized in COSMIC database, including two versions: [v2](https://cancer.sanger.ac.uk/cosmic/signatures_v2) and [v3](https://cancer.sanger.ac.uk/cosmic/signatures/SBS/).
+
+> Recently, @alexandrov2020repertoire extends the concept of mutational signature to three types of mutation: SBS, DBS and INDEL. Here, we use genomic alteration signature to refer any kind of mutation type can be used to generate signature.
 
 
 ```{r echo=FALSE, fig.cap="The illustration of copy number signatures, fig source: https://www.nature.com/articles/s41588-018-0212-y"}
