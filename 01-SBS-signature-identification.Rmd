@@ -3,16 +3,16 @@
 # SBS Signature Identification {#sbssig}
 
 In this chapter, we will introduce how to identify SBS signatures from SBS records of variant calling data.
-The input data should be in [MAF](https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/) format, it can be either a MAF file or a `data.frame`. 
 
 The signature identification procedure has been divided into 3 steps:
 
-1. Read data
+1. Read mutation data
 2. Tally components: classify SBS into 96 components and generate sample matrix
 3. Extract signatures: estimate signature number and identify signatures
 
 ## Read Data {-}
 
+The input data should be in [MAF](https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/) format, it can be either a MAF file or a `data.frame`. 
 There is a famous R/Bioconductor package [**Maftools**](https://github.com/PoisonAlien/maftools) [@mayakonda2018maftools] for analyzing MAF data. 
 Here, we use the example MAF file stored in **Maftools** as input and extract SBS signatures from the data.
 
@@ -24,8 +24,119 @@ laml <- read_maf(maf = laml.maf)
 laml
 ```
 
+The `laml` is a `MAF` object. The `MAF` class is exported from **Maftools** to **sigminer**. So `laml` can be directly use functions provided by **Maftools**. 
+
+As a `MAF` object, the mutation records are stored in slot `data` and `maf.silent`.
+
+```{r}
+head(laml@data)
+head(laml@maf.silent)
+```
+
+The `data` slot contains non-silent variants, and the `maf.silent` slot contains silent variants.
+Default uses Variant Classifications with High/Moderate variant consequences as non-silent variants. http://asia.ensembl.org/Help/Glossary?id=535: "Frame_Shift_Del", "Frame_Shift_Ins", "Splice_Site", "Translation_Start_Site","Nonsense_Mutation", "Nonstop_Mutation", "In_Frame_Del","In_Frame_Ins", "Missense_Mutation" (see `?read_maf`). If you want to change, please set `vc_nonSyn` option.
+
+
+Other slots in `MAF` object are summary data either by sample or gene/variant type etc.
+
+```{r}
+slotNames(laml)
+```
+
+
 ## Tally Components {-}
+
+According to 3-nucleotide context (mutated base, 5' and 3' adjacent bases) and base complementary pairing principle, we can divide all SBS mutations into 96 mutation types. We call each mutation type as a *component* here.
+
+> This classification is based the six substitution subtypes: C>A, C>G, C>T, T>A, T>C, and T>G (all substitutions are referred to by the pyrimidine of the mutated Watson—Crick base pair). Further, each of the substitutions is examined by incorporating information on the bases immediately 5’ and 3’ to each mutated base generating 96 possible mutation types (6 types of substitution x 4 types of 5’ base x 4 types of 3’ base). 
+
+We tally components in each sample, and generate a sample-by-component matrix.
+
+```{r}
+if (require("BSgenome.Hsapiens.UCSC.hg19")) {
+  mt_tally <- sig_tally(
+    laml,
+    ref_genome = "BSgenome.Hsapiens.UCSC.hg19",
+    prefix = "chr", add = TRUE, useSyn = TRUE
+  )
+} else {
+  message("Please install package 'BSgenome.Hsapiens.UCSC.hg19' firstly!")
+}
+```
+
+```{r}
+mt_tally$nmf_matrix
+```
+
+We use notion `left[ref>mut]right` to mark each component, e.g. `C[T>G]A` means a base T with 5' adjacent base C and 3' adjacent base A is mutated to base G.
+
+> If you have used signature extraction feature in Maftools, you may feel familiar.
+> Currently, Maftools is the backend for `read_maf()` and `sig_tally` for SBS mutation.
 
 ## Signature Extraction {-}
 
+There are two methods can be used to implement signature extraction.
 
+1. Firstly estimate signature number and then extract signatures. This method is powered by [**NMF**](https://github.com/renozao/NMF) package [@gaujoux2010flexible].
+2. Auto-extract signatures by automatic relevance determination technique in nonnegative matrix factorization [@tan2012automatic], the code is implemented by **SignatureAnalyzer** [@kim2016somatic] and exported to **sigminer**.
+
+### Method 1: Estimate signature number  {-}
+
+To estimate signature number, we firstly run NMF for multiple times and calculate some measures from the results, then select the best signature number base the measure vs. signature number plot.
+
+This is done by `sig_estimate()` function. Let's try signature number 2-5. For simplicity, we just run NMF twice for each signature number. We use 4 cores to speed up the computation.
+
+```{r}
+mt_est <- sig_estimate(mt_tally$nmf_matrix,
+                       range = 2:5,
+                       nrun = 2,
+                       use_random = TRUE,
+                       cores = 4,
+                       pConstant = 1e-13,
+                       verbose = TRUE)
+```
+
+We can show signature number survey for different measures by `show_sig_number_survey2()`.
+
+```{r}
+## You can also select the measures to show
+## by 'what' option
+show_sig_number_survey2(mt_est$survey, mt_est$survey.random)
+```
+
+For the details of all the measures above, please read @gaujoux2010flexible and [vignette](https://cran.r-project.org/web/packages/NMF/vignettes/) of R package **NMF**.
+
+Typically, measure **cophenetic** is used for determing the signature number. We can easily generate an elbow plot with `
+function `show_sig_number_survey()`.
+
+```{r}
+show_sig_number_survey(mt_est$survey, right_y = NULL)
+```
+
+Cophenetic indicates the robustness of consensus matrix clustering. In this situation, 2 or 3 is good.
+
+> The most common approach is to use the cophenetic correlation coefficient. Brunet et al. suggested choosing the smallest value of r for which this coefficient starts decreasing. [@gaujoux2010flexible]
+
+However, there are no gold standard to determine the signature number. Sometimes, you should consider multiple measures. Remember, the most important thing is that you should have a good biological explanation for each signature.
+The best solution in study may not be the best solution in math.
+
+### Method 1: Extract signatures {-}
+
+After selecting a proper signature, you can now extract signatures. In general, use 30~50 NMF runs will get a robust result.
+
+```{r}
+mt_sig <- sig_extract(mt_tally$nmf_matrix, 
+                      n_sig = 3,
+                      nrun = 10,
+                      cores = 4,
+                      pConstant = 1e-13)
+```
+
+
+### Method 2: Auto-extract {-}
+
+If you have no idea to select a optimal signature number from technologies above, you can try auto-extract feature here.
+
+```{r}
+mt_sig <- sig_auto_extract(mt_tally$nmf_matrix, K0 = 10, nrun = 5)
+```
