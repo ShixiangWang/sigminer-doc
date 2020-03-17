@@ -20,5 +20,5 @@ Currently, there are few studies focus on copy number signatures and no referenc
 
 ## Tally Components {-}
 
-## Signature Extraction {-}
+## Extract Signatures {-}
 

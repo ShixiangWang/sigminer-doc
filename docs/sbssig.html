@@ -144,19 +144,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#read-data"><i class="fa fa-check"></i>Read Data</a></li>
 <li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#tally-components"><i class="fa fa-check"></i>Tally Components</a></li>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#signature-extraction"><i class="fa fa-check"></i>Signature Extraction</a>
+<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i>Extract Signatures</a>
 <ul>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#method-1-estimate-signature-number"><i class="fa fa-check"></i>Method 1: Estimate signature number</a></li>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#method-1-extract-signatures"><i class="fa fa-check"></i>Method 1: Extract signatures</a></li>
+<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#method-1-estimate-signature-number"><i class="fa fa-check"></i>Method 1: Estimate Signature Number</a></li>
+<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#method-1-extract-signatures"><i class="fa fa-check"></i>Method 1: Extract Signatures</a></li>
 <li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#method-2-auto-extract"><i class="fa fa-check"></i>Method 2: Auto-extract</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#match-signatures"><i class="fa fa-check"></i>Match Signatures</a></li>
+<li><a href="sbssig.html#operate-signature">Operate <code>Signature</code></a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>2</b> Copy Number Signature Identification</a>
 <ul>
 <li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i>Read Data</a></li>
 <li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i>Tally Components</a></li>
-<li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#signature-extraction-1"><i class="fa fa-check"></i>Signature Extraction</a></li>
+<li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#extract-signatures-1"><i class="fa fa-check"></i>Extract Signatures</a></li>
 </ul></li>
 <li class="part"><span><b>II Object Visualization</b></span></li>
 <li class="chapter" data-level="3" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>3</b> <code>CopyNumber</code> Object</a>
@@ -228,7 +230,7 @@ Here, we use the example MAF file stored in <strong>Maftools</strong> as input a
 <span id="cb4-6"><a href="sbssig.html#cb4-6"></a><span class="co">#&gt; -Summarizing</span></span>
 <span id="cb4-7"><a href="sbssig.html#cb4-7"></a><span class="co">#&gt; -Processing clinical data</span></span>
 <span id="cb4-8"><a href="sbssig.html#cb4-8"></a><span class="co">#&gt; --Missing clinical data</span></span>
-<span id="cb4-9"><a href="sbssig.html#cb4-9"></a><span class="co">#&gt; -Finished in 0.310s elapsed (0.190s cpu)</span></span>
+<span id="cb4-9"><a href="sbssig.html#cb4-9"></a><span class="co">#&gt; -Finished in 0.340s elapsed (0.260s cpu)</span></span>
 <span id="cb4-10"><a href="sbssig.html#cb4-10"></a>laml</span>
 <span id="cb4-11"><a href="sbssig.html#cb4-11"></a><span class="co">#&gt; An object of class  MAF </span></span>
 <span id="cb4-12"><a href="sbssig.html#cb4-12"></a><span class="co">#&gt;                    ID          summary  Mean Median</span></span>
@@ -323,111 +325,28 @@ Default uses Variant Classifications with High/Moderate variant consequences as 
 <span id="cb7-16"><a href="sbssig.html#cb7-16"></a><span class="co">#&gt; ---APOBEC related mutations are enriched in  3.315 % of samples (APOBEC enrichment score &gt; 2 ;  6  of  181  samples)</span></span>
 <span id="cb7-17"><a href="sbssig.html#cb7-17"></a><span class="co">#&gt; -Creating mutation matrix</span></span>
 <span id="cb7-18"><a href="sbssig.html#cb7-18"></a><span class="co">#&gt; --matrix of dimension 188x96</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="sbssig.html#cb8-1"></a>mt_tally<span class="op">$</span>nmf_matrix</span>
-<span id="cb8-2"><a href="sbssig.html#cb8-2"></a><span class="co">#&gt;              A[C&gt;A]A A[C&gt;A]C A[C&gt;A]G A[C&gt;A]T C[C&gt;A]A C[C&gt;A]C C[C&gt;A]G C[C&gt;A]T G[C&gt;A]A G[C&gt;A]C G[C&gt;A]G G[C&gt;A]T T[C&gt;A]A</span></span>
-<span id="cb8-3"><a href="sbssig.html#cb8-3"></a><span class="co">#&gt; TCGA-AB-2802       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-4"><a href="sbssig.html#cb8-4"></a><span class="co">#&gt; TCGA-AB-2803       0       2       0       0       0       1       0       0       0       0       0       0       0</span></span>
-<span id="cb8-5"><a href="sbssig.html#cb8-5"></a><span class="co">#&gt; TCGA-AB-2804       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-6"><a href="sbssig.html#cb8-6"></a><span class="co">#&gt; TCGA-AB-2805       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-7"><a href="sbssig.html#cb8-7"></a><span class="co">#&gt; TCGA-AB-2806       0       0       0       0       0       0       0       0       1       0       1       0       0</span></span>
-<span id="cb8-8"><a href="sbssig.html#cb8-8"></a><span class="co">#&gt; TCGA-AB-2807       0       0       1       0       0       1       0       0       0       1       0       0       0</span></span>
-<span id="cb8-9"><a href="sbssig.html#cb8-9"></a><span class="co">#&gt; TCGA-AB-2808       0       0       0       0       0       0       1       0       0       0       0       0       0</span></span>
-<span id="cb8-10"><a href="sbssig.html#cb8-10"></a><span class="co">#&gt; TCGA-AB-2809       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-11"><a href="sbssig.html#cb8-11"></a><span class="co">#&gt; TCGA-AB-2810       0       0       0       0       0       1       0       0       0       0       0       0       0</span></span>
-<span id="cb8-12"><a href="sbssig.html#cb8-12"></a><span class="co">#&gt; TCGA-AB-2812       0       1       0       0       0       0       0       0       0       0       0       1       1</span></span>
-<span id="cb8-13"><a href="sbssig.html#cb8-13"></a><span class="co">#&gt;              T[C&gt;A]C T[C&gt;A]G T[C&gt;A]T A[C&gt;G]A A[C&gt;G]C A[C&gt;G]G A[C&gt;G]T C[C&gt;G]A C[C&gt;G]C C[C&gt;G]G C[C&gt;G]T G[C&gt;G]A G[C&gt;G]C</span></span>
-<span id="cb8-14"><a href="sbssig.html#cb8-14"></a><span class="co">#&gt; TCGA-AB-2802       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-15"><a href="sbssig.html#cb8-15"></a><span class="co">#&gt; TCGA-AB-2803       0       0       0       0       0       0       0       1       0       0       0       1       0</span></span>
-<span id="cb8-16"><a href="sbssig.html#cb8-16"></a><span class="co">#&gt; TCGA-AB-2804       0       0       0       0       0       0       0       0       0       1       0       0       0</span></span>
-<span id="cb8-17"><a href="sbssig.html#cb8-17"></a><span class="co">#&gt; TCGA-AB-2805       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-18"><a href="sbssig.html#cb8-18"></a><span class="co">#&gt; TCGA-AB-2806       0       0       1       0       0       1       0       0       0       1       0       0       0</span></span>
-<span id="cb8-19"><a href="sbssig.html#cb8-19"></a><span class="co">#&gt; TCGA-AB-2807       1       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-20"><a href="sbssig.html#cb8-20"></a><span class="co">#&gt; TCGA-AB-2808       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-21"><a href="sbssig.html#cb8-21"></a><span class="co">#&gt; TCGA-AB-2809       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-22"><a href="sbssig.html#cb8-22"></a><span class="co">#&gt; TCGA-AB-2810       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-23"><a href="sbssig.html#cb8-23"></a><span class="co">#&gt; TCGA-AB-2812       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-24"><a href="sbssig.html#cb8-24"></a><span class="co">#&gt;              G[C&gt;G]G G[C&gt;G]T T[C&gt;G]A T[C&gt;G]C T[C&gt;G]G T[C&gt;G]T A[C&gt;T]A A[C&gt;T]C A[C&gt;T]G A[C&gt;T]T C[C&gt;T]A C[C&gt;T]C C[C&gt;T]G</span></span>
-<span id="cb8-25"><a href="sbssig.html#cb8-25"></a><span class="co">#&gt; TCGA-AB-2802       0       0       0       0       0       0       0       0       1       0       1       0       1</span></span>
-<span id="cb8-26"><a href="sbssig.html#cb8-26"></a><span class="co">#&gt; TCGA-AB-2803       0       0       0       0       0       0       2       0       2       0       0       0       1</span></span>
-<span id="cb8-27"><a href="sbssig.html#cb8-27"></a><span class="co">#&gt; TCGA-AB-2804       0       0       0       0       0       0       1       0       2       0       0       0       1</span></span>
-<span id="cb8-28"><a href="sbssig.html#cb8-28"></a><span class="co">#&gt; TCGA-AB-2805       0       0       0       0       0       0       0       0       3       1       0       0       4</span></span>
-<span id="cb8-29"><a href="sbssig.html#cb8-29"></a><span class="co">#&gt; TCGA-AB-2806       0       0       0       0       1       0       0       0       1       0       0       0       2</span></span>
-<span id="cb8-30"><a href="sbssig.html#cb8-30"></a><span class="co">#&gt; TCGA-AB-2807       1       0       0       0       0       0       0       1       4       2       0       0       4</span></span>
-<span id="cb8-31"><a href="sbssig.html#cb8-31"></a><span class="co">#&gt; TCGA-AB-2808       0       0       0       0       0       0       0       2       2       0       0       0       1</span></span>
-<span id="cb8-32"><a href="sbssig.html#cb8-32"></a><span class="co">#&gt; TCGA-AB-2809       0       0       0       0       0       0       0       0       1       0       0       0       0</span></span>
-<span id="cb8-33"><a href="sbssig.html#cb8-33"></a><span class="co">#&gt; TCGA-AB-2810       0       0       0       0       0       0       0       0       0       0       0       1       5</span></span>
-<span id="cb8-34"><a href="sbssig.html#cb8-34"></a><span class="co">#&gt; TCGA-AB-2812       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-35"><a href="sbssig.html#cb8-35"></a><span class="co">#&gt;              C[C&gt;T]T G[C&gt;T]A G[C&gt;T]C G[C&gt;T]G G[C&gt;T]T T[C&gt;T]A T[C&gt;T]C T[C&gt;T]G T[C&gt;T]T A[T&gt;A]A A[T&gt;A]C A[T&gt;A]G A[T&gt;A]T</span></span>
-<span id="cb8-36"><a href="sbssig.html#cb8-36"></a><span class="co">#&gt; TCGA-AB-2802       1       0       0       1       1       1       0       0       0       0       0       1       0</span></span>
-<span id="cb8-37"><a href="sbssig.html#cb8-37"></a><span class="co">#&gt; TCGA-AB-2803       1       0       0       1       1       0       0       1       0       0       0       0       0</span></span>
-<span id="cb8-38"><a href="sbssig.html#cb8-38"></a><span class="co">#&gt; TCGA-AB-2804       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-39"><a href="sbssig.html#cb8-39"></a><span class="co">#&gt; TCGA-AB-2805       0       0       0       1       1       0       1       0       0       0       0       0       0</span></span>
-<span id="cb8-40"><a href="sbssig.html#cb8-40"></a><span class="co">#&gt; TCGA-AB-2806       0       0       0       3       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-41"><a href="sbssig.html#cb8-41"></a><span class="co">#&gt; TCGA-AB-2807       1       0       1       5       0       1       1       0       0       0       0       0       0</span></span>
-<span id="cb8-42"><a href="sbssig.html#cb8-42"></a><span class="co">#&gt; TCGA-AB-2808       0       0       0       2       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-43"><a href="sbssig.html#cb8-43"></a><span class="co">#&gt; TCGA-AB-2809       0       0       0       2       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-44"><a href="sbssig.html#cb8-44"></a><span class="co">#&gt; TCGA-AB-2810       0       0       1       0       0       1       1       1       0       0       0       0       0</span></span>
-<span id="cb8-45"><a href="sbssig.html#cb8-45"></a><span class="co">#&gt; TCGA-AB-2812       0       0       0       0       1       0       0       0       1       0       0       0       0</span></span>
-<span id="cb8-46"><a href="sbssig.html#cb8-46"></a><span class="co">#&gt;              C[T&gt;A]A C[T&gt;A]C C[T&gt;A]G C[T&gt;A]T G[T&gt;A]A G[T&gt;A]C G[T&gt;A]G G[T&gt;A]T T[T&gt;A]A T[T&gt;A]C T[T&gt;A]G T[T&gt;A]T A[T&gt;C]A</span></span>
-<span id="cb8-47"><a href="sbssig.html#cb8-47"></a><span class="co">#&gt; TCGA-AB-2802       0       0       1       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-48"><a href="sbssig.html#cb8-48"></a><span class="co">#&gt; TCGA-AB-2803       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-49"><a href="sbssig.html#cb8-49"></a><span class="co">#&gt; TCGA-AB-2804       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-50"><a href="sbssig.html#cb8-50"></a><span class="co">#&gt; TCGA-AB-2805       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-51"><a href="sbssig.html#cb8-51"></a><span class="co">#&gt; TCGA-AB-2806       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-52"><a href="sbssig.html#cb8-52"></a><span class="co">#&gt; TCGA-AB-2807       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-53"><a href="sbssig.html#cb8-53"></a><span class="co">#&gt; TCGA-AB-2808       0       0       0       0       0       0       0       0       0       0       0       0       1</span></span>
-<span id="cb8-54"><a href="sbssig.html#cb8-54"></a><span class="co">#&gt; TCGA-AB-2809       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-55"><a href="sbssig.html#cb8-55"></a><span class="co">#&gt; TCGA-AB-2810       0       0       0       0       0       0       0       0       0       0       0       0       1</span></span>
-<span id="cb8-56"><a href="sbssig.html#cb8-56"></a><span class="co">#&gt; TCGA-AB-2812       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-57"><a href="sbssig.html#cb8-57"></a><span class="co">#&gt;              A[T&gt;C]C A[T&gt;C]G A[T&gt;C]T C[T&gt;C]A C[T&gt;C]C C[T&gt;C]G C[T&gt;C]T G[T&gt;C]A G[T&gt;C]C G[T&gt;C]G G[T&gt;C]T T[T&gt;C]A T[T&gt;C]C</span></span>
-<span id="cb8-58"><a href="sbssig.html#cb8-58"></a><span class="co">#&gt; TCGA-AB-2802       0       0       0       0       0       1       0       0       0       0       0       0       0</span></span>
-<span id="cb8-59"><a href="sbssig.html#cb8-59"></a><span class="co">#&gt; TCGA-AB-2803       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-60"><a href="sbssig.html#cb8-60"></a><span class="co">#&gt; TCGA-AB-2804       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-61"><a href="sbssig.html#cb8-61"></a><span class="co">#&gt; TCGA-AB-2805       0       1       0       0       0       0       0       0       0       0       0       0       1</span></span>
-<span id="cb8-62"><a href="sbssig.html#cb8-62"></a><span class="co">#&gt; TCGA-AB-2806       0       0       0       0       1       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-63"><a href="sbssig.html#cb8-63"></a><span class="co">#&gt; TCGA-AB-2807       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-64"><a href="sbssig.html#cb8-64"></a><span class="co">#&gt; TCGA-AB-2808       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-65"><a href="sbssig.html#cb8-65"></a><span class="co">#&gt; TCGA-AB-2809       0       0       0       0       0       0       1       0       0       0       0       0       0</span></span>
-<span id="cb8-66"><a href="sbssig.html#cb8-66"></a><span class="co">#&gt; TCGA-AB-2810       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-67"><a href="sbssig.html#cb8-67"></a><span class="co">#&gt; TCGA-AB-2812       0       0       1       1       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-68"><a href="sbssig.html#cb8-68"></a><span class="co">#&gt;              T[T&gt;C]G T[T&gt;C]T A[T&gt;G]A A[T&gt;G]C A[T&gt;G]G A[T&gt;G]T C[T&gt;G]A C[T&gt;G]C C[T&gt;G]G C[T&gt;G]T G[T&gt;G]A G[T&gt;G]C G[T&gt;G]G</span></span>
-<span id="cb8-69"><a href="sbssig.html#cb8-69"></a><span class="co">#&gt; TCGA-AB-2802       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-70"><a href="sbssig.html#cb8-70"></a><span class="co">#&gt; TCGA-AB-2803       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-71"><a href="sbssig.html#cb8-71"></a><span class="co">#&gt; TCGA-AB-2804       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-72"><a href="sbssig.html#cb8-72"></a><span class="co">#&gt; TCGA-AB-2805       0       0       0       0       0       0       0       0       0       1       0       0       0</span></span>
-<span id="cb8-73"><a href="sbssig.html#cb8-73"></a><span class="co">#&gt; TCGA-AB-2806       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-74"><a href="sbssig.html#cb8-74"></a><span class="co">#&gt; TCGA-AB-2807       0       0       0       0       0       0       0       1       0       0       0       0       0</span></span>
-<span id="cb8-75"><a href="sbssig.html#cb8-75"></a><span class="co">#&gt; TCGA-AB-2808       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-76"><a href="sbssig.html#cb8-76"></a><span class="co">#&gt; TCGA-AB-2809       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-77"><a href="sbssig.html#cb8-77"></a><span class="co">#&gt; TCGA-AB-2810       0       1       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-78"><a href="sbssig.html#cb8-78"></a><span class="co">#&gt; TCGA-AB-2812       0       0       0       0       0       0       0       0       0       0       0       0       0</span></span>
-<span id="cb8-79"><a href="sbssig.html#cb8-79"></a><span class="co">#&gt;              G[T&gt;G]T T[T&gt;G]A T[T&gt;G]C T[T&gt;G]G T[T&gt;G]T</span></span>
-<span id="cb8-80"><a href="sbssig.html#cb8-80"></a><span class="co">#&gt; TCGA-AB-2802       0       0       0       0       0</span></span>
-<span id="cb8-81"><a href="sbssig.html#cb8-81"></a><span class="co">#&gt; TCGA-AB-2803       0       0       0       0       0</span></span>
-<span id="cb8-82"><a href="sbssig.html#cb8-82"></a><span class="co">#&gt; TCGA-AB-2804       0       0       0       0       0</span></span>
-<span id="cb8-83"><a href="sbssig.html#cb8-83"></a><span class="co">#&gt; TCGA-AB-2805       0       0       0       0       0</span></span>
-<span id="cb8-84"><a href="sbssig.html#cb8-84"></a><span class="co">#&gt; TCGA-AB-2806       0       0       0       0       0</span></span>
-<span id="cb8-85"><a href="sbssig.html#cb8-85"></a><span class="co">#&gt; TCGA-AB-2807       0       0       0       0       0</span></span>
-<span id="cb8-86"><a href="sbssig.html#cb8-86"></a><span class="co">#&gt; TCGA-AB-2808       0       0       0       0       0</span></span>
-<span id="cb8-87"><a href="sbssig.html#cb8-87"></a><span class="co">#&gt; TCGA-AB-2809       0       0       0       0       0</span></span>
-<span id="cb8-88"><a href="sbssig.html#cb8-88"></a><span class="co">#&gt; TCGA-AB-2810       0       0       0       0       0</span></span>
-<span id="cb8-89"><a href="sbssig.html#cb8-89"></a><span class="co">#&gt; TCGA-AB-2812       0       0       1       0       0</span></span>
-<span id="cb8-90"><a href="sbssig.html#cb8-90"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 178 rows ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="sbssig.html#cb8-1"></a>mt_tally<span class="op">$</span>nmf_matrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb8-2"><a href="sbssig.html#cb8-2"></a><span class="co">#&gt;              A[C&gt;A]A A[C&gt;A]C A[C&gt;A]G A[C&gt;A]T C[C&gt;A]A</span></span>
+<span id="cb8-3"><a href="sbssig.html#cb8-3"></a><span class="co">#&gt; TCGA-AB-2802       0       0       0       0       0</span></span>
+<span id="cb8-4"><a href="sbssig.html#cb8-4"></a><span class="co">#&gt; TCGA-AB-2803       0       2       0       0       0</span></span>
+<span id="cb8-5"><a href="sbssig.html#cb8-5"></a><span class="co">#&gt; TCGA-AB-2804       0       0       0       0       0</span></span>
+<span id="cb8-6"><a href="sbssig.html#cb8-6"></a><span class="co">#&gt; TCGA-AB-2805       0       0       0       0       0</span></span>
+<span id="cb8-7"><a href="sbssig.html#cb8-7"></a><span class="co">#&gt; TCGA-AB-2806       0       0       0       0       0</span></span></code></pre></div>
 <p>We use notion <code>left[ref&gt;mut]right</code> to mark each component, e.g. <code>C[T&gt;G]A</code> means a base T with 5’ adjacent base C and 3’ adjacent base A is mutated to base G.</p>
 <blockquote>
 <p>If you have used signature extraction feature in Maftools, you may feel familiar.
 Currently, Maftools is the backend for <code>read_maf()</code> and <code>sig_tally</code> for SBS mutation.</p>
 </blockquote>
 </div>
-<div id="signature-extraction" class="section level2">
-<h2>Signature Extraction</h2>
+<div id="extract-signatures" class="section level2">
+<h2>Extract Signatures</h2>
 <p>There are two methods can be used to implement signature extraction.</p>
 <ol style="list-style-type: decimal">
 <li>Firstly estimate signature number and then extract signatures. This method is powered by <a href="https://github.com/renozao/NMF"><strong>NMF</strong></a> package <span class="citation">(Gaujoux and Seoighe <a href="#ref-gaujoux2010flexible" role="doc-biblioref">2010</a>)</span>.</li>
 <li>Auto-extract signatures by automatic relevance determination technique in nonnegative matrix factorization <span class="citation">(Tan and Févotte <a href="#ref-tan2012automatic" role="doc-biblioref">2012</a>)</span>, the code is implemented by <strong>SignatureAnalyzer</strong> <span class="citation">(Kim et al. <a href="#ref-kim2016somatic" role="doc-biblioref">2016</a>)</span> and exported to <strong>sigminer</strong>.</li>
 </ol>
 <div id="method-1-estimate-signature-number" class="section level3">
-<h3>Method 1: Estimate signature number</h3>
+<h3>Method 1: Estimate Signature Number</h3>
 <p>To estimate signature number, we firstly run NMF for multiple times and calculate some measures from the results, then select the best signature number base the measure vs. signature number plot.</p>
 <p>This is done by <code>sig_estimate()</code> function. Let’s try signature number 2-5. For simplicity, we just run NMF twice for each signature number. We use 4 cores to speed up the computation.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="sbssig.html#cb9-1"></a>mt_est &lt;-<span class="st"> </span><span class="kw">sig_estimate</span>(mt_tally<span class="op">$</span>nmf_matrix,</span>
@@ -437,47 +356,19 @@ Currently, Maftools is the backend for <code>read_maf()</code> and <code>sig_tal
 <span id="cb9-5"><a href="sbssig.html#cb9-5"></a>  <span class="dt">cores =</span> <span class="dv">4</span>,</span>
 <span id="cb9-6"><a href="sbssig.html#cb9-6"></a>  <span class="dt">pConstant =</span> <span class="fl">1e-13</span>,</span>
 <span id="cb9-7"><a href="sbssig.html#cb9-7"></a>  <span class="dt">verbose =</span> <span class="ot">TRUE</span></span>
-<span id="cb9-8"><a href="sbssig.html#cb9-8"></a>)</span>
-<span id="cb9-9"><a href="sbssig.html#cb9-9"></a><span class="co">#&gt; Compute NMF rank= 2  ... + measures ... OK</span></span>
-<span id="cb9-10"><a href="sbssig.html#cb9-10"></a><span class="co">#&gt; Compute NMF rank= 3  ... + measures ... OK</span></span>
-<span id="cb9-11"><a href="sbssig.html#cb9-11"></a><span class="co">#&gt; Compute NMF rank= 4  ... + measures ... OK</span></span>
-<span id="cb9-12"><a href="sbssig.html#cb9-12"></a><span class="co">#&gt; Compute NMF rank= 5  ... + measures ... OK</span></span>
-<span id="cb9-13"><a href="sbssig.html#cb9-13"></a><span class="co">#&gt; Estimation of rank based on observed data.</span></span>
-<span id="cb9-14"><a href="sbssig.html#cb9-14"></a><span class="co">#&gt;   method   seed rng metric rank sparseness.basis sparseness.coef      rss      evar silhouette.coef silhouette.basis</span></span>
-<span id="cb9-15"><a href="sbssig.html#cb9-15"></a><span class="co">#&gt; 2 brunet random   1     KL    2        0.6370458       0.5971855 1810.435 0.4015091       1.0000000        1.0000000</span></span>
-<span id="cb9-16"><a href="sbssig.html#cb9-16"></a><span class="co">#&gt; 3 brunet random   1     KL    3        0.6372400       0.6743758 1754.146 0.4201171       0.7649832        0.8266818</span></span>
-<span id="cb9-17"><a href="sbssig.html#cb9-17"></a><span class="co">#&gt; 4 brunet random   2     KL    4        0.7210895       0.6237914 1630.012 0.4611532       0.6076863        0.7796580</span></span>
-<span id="cb9-18"><a href="sbssig.html#cb9-18"></a><span class="co">#&gt; 5 brunet random   2     KL    5        0.7823037       0.5983197 1533.242 0.4931432       0.5177984        0.7674282</span></span>
-<span id="cb9-19"><a href="sbssig.html#cb9-19"></a><span class="co">#&gt;   residuals niter cpu cpu.all nrun cophenetic dispersion silhouette.consensus</span></span>
-<span id="cb9-20"><a href="sbssig.html#cb9-20"></a><span class="co">#&gt; 2  2801.391  1050  NA      NA    2  0.8936413  0.5951222            0.7212555</span></span>
-<span id="cb9-21"><a href="sbssig.html#cb9-21"></a><span class="co">#&gt; 3  2642.752  1490  NA      NA    2  0.8654979  0.6343368            0.6409380</span></span>
-<span id="cb9-22"><a href="sbssig.html#cb9-22"></a><span class="co">#&gt; 4  2471.362  2000  NA      NA    2  0.8004145  0.6614418            0.4680241</span></span>
-<span id="cb9-23"><a href="sbssig.html#cb9-23"></a><span class="co">#&gt; 5  2348.765  2000  NA      NA    2  0.8312824  0.7230081            0.5746573</span></span>
-<span id="cb9-24"><a href="sbssig.html#cb9-24"></a><span class="co">#&gt; Generating random matrix and run NMF...</span></span>
-<span id="cb9-25"><a href="sbssig.html#cb9-25"></a><span class="co">#&gt; Compute NMF rank= 2  ... + measures ... OK</span></span>
-<span id="cb9-26"><a href="sbssig.html#cb9-26"></a><span class="co">#&gt; Compute NMF rank= 3  ... + measures ... OK</span></span>
-<span id="cb9-27"><a href="sbssig.html#cb9-27"></a><span class="co">#&gt; Compute NMF rank= 4  ... + measures ... OK</span></span>
-<span id="cb9-28"><a href="sbssig.html#cb9-28"></a><span class="co">#&gt; Compute NMF rank= 5  ... + measures ... OK</span></span>
-<span id="cb9-29"><a href="sbssig.html#cb9-29"></a><span class="co">#&gt; Estimation of rank based on random data.</span></span>
-<span id="cb9-30"><a href="sbssig.html#cb9-30"></a><span class="co">#&gt;   method   seed rng metric rank sparseness.basis sparseness.coef      rss      evar silhouette.coef silhouette.basis</span></span>
-<span id="cb9-31"><a href="sbssig.html#cb9-31"></a><span class="co">#&gt; 2 brunet random   1     KL    2        0.2494534       0.6045842 2661.185 0.1202694       1.0000000        1.0000000</span></span>
-<span id="cb9-32"><a href="sbssig.html#cb9-32"></a><span class="co">#&gt; 3 brunet random   2     KL    3        0.3907124       0.6493613 2589.416 0.1439948       0.7777385        0.8022393</span></span>
-<span id="cb9-33"><a href="sbssig.html#cb9-33"></a><span class="co">#&gt; 4 brunet random   2     KL    4        0.4620419       0.6869145 2557.646 0.1544973       0.7018059        0.7010735</span></span>
-<span id="cb9-34"><a href="sbssig.html#cb9-34"></a><span class="co">#&gt; 5 brunet random   1     KL    5        0.5198287       0.6905379 2508.413 0.1707726       0.6186418        0.6924856</span></span>
-<span id="cb9-35"><a href="sbssig.html#cb9-35"></a><span class="co">#&gt;   residuals niter cpu cpu.all nrun cophenetic dispersion silhouette.consensus</span></span>
-<span id="cb9-36"><a href="sbssig.html#cb9-36"></a><span class="co">#&gt; 2  4154.801  2000  NA      NA    2  0.8698443  0.5183341            0.6746446</span></span>
-<span id="cb9-37"><a href="sbssig.html#cb9-37"></a><span class="co">#&gt; 3  3884.292  1620  NA      NA    2  0.8158685  0.5601517            0.5902376</span></span>
-<span id="cb9-38"><a href="sbssig.html#cb9-38"></a><span class="co">#&gt; 4  3712.658  2000  NA      NA    2  0.7622900  0.6370530            0.4329954</span></span>
-<span id="cb9-39"><a href="sbssig.html#cb9-39"></a><span class="co">#&gt; 5  3549.757  2000  NA      NA    2  0.7941740  0.7210842            0.4579933</span></span></code></pre></div>
+<span id="cb9-8"><a href="sbssig.html#cb9-8"></a>)</span></code></pre></div>
+<blockquote>
+<p><code>pConstant</code> option is set to avoid errors raised by <strong>NMF</strong> package.</p>
+</blockquote>
 <p>We can show signature number survey for different measures by <code>show_sig_number_survey2()</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="sbssig.html#cb10-1"></a><span class="co">## You can also select the measures to show</span></span>
 <span id="cb10-2"><a href="sbssig.html#cb10-2"></a><span class="co">## by &#39;what&#39; option</span></span>
 <span id="cb10-3"><a href="sbssig.html#cb10-3"></a><span class="kw">show_sig_number_survey2</span>(mt_est<span class="op">$</span>survey, mt_est<span class="op">$</span>survey.random)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>For the details of all the measures above, please read <span class="citation">Gaujoux and Seoighe (<a href="#ref-gaujoux2010flexible" role="doc-biblioref">2010</a>)</span> and <a href="https://cran.r-project.org/web/packages/NMF/vignettes/">vignette</a> of R package <strong>NMF</strong>.</p>
 <p>Typically, measure <strong>cophenetic</strong> is used for determing the signature number. We can easily generate an elbow plot with <code>function</code>show_sig_number_survey()`.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="sbssig.html#cb11-1"></a><span class="kw">show_sig_number_survey</span>(mt_est<span class="op">$</span>survey, <span class="dt">right_y =</span> <span class="ot">NULL</span>)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Cophenetic indicates the robustness of consensus matrix clustering. In this situation, 2 or 3 is good.</p>
 <blockquote>
 <p>The most common approach is to use the cophenetic correlation coefficient. Brunet et al. suggested choosing the smallest value of r for which this coefficient starts decreasing. <span class="citation">(Gaujoux and Seoighe <a href="#ref-gaujoux2010flexible" role="doc-biblioref">2010</a>)</span></p>
@@ -486,7 +377,7 @@ Currently, Maftools is the backend for <code>read_maf()</code> and <code>sig_tal
 The best solution in study may not be the best solution in math.</p>
 </div>
 <div id="method-1-extract-signatures" class="section level3">
-<h3>Method 1: Extract signatures</h3>
+<h3>Method 1: Extract Signatures</h3>
 <p>After selecting a proper signature, you can now extract signatures. In general, use 30~50 NMF runs will get a robust result.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="sbssig.html#cb12-1"></a>mt_sig &lt;-<span class="st"> </span><span class="kw">sig_extract</span>(mt_tally<span class="op">$</span>nmf_matrix,</span>
 <span id="cb12-2"><a href="sbssig.html#cb12-2"></a>  <span class="dt">n_sig =</span> <span class="dv">3</span>,</span>
@@ -497,11 +388,112 @@ The best solution in study may not be the best solution in math.</p>
 </div>
 <div id="method-2-auto-extract" class="section level3">
 <h3>Method 2: Auto-extract</h3>
-<p>If you have no idea to select a optimal signature number from technologies above, you can try auto-extract feature here.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="sbssig.html#cb13-1"></a>mt_sig &lt;-<span class="st"> </span><span class="kw">sig_auto_extract</span>(mt_tally<span class="op">$</span>nmf_matrix, <span class="dt">K0 =</span> <span class="dv">10</span>, <span class="dt">nrun =</span> <span class="dv">5</span>)</span>
-<span id="cb13-2"><a href="sbssig.html#cb13-2"></a><span class="co">#&gt; Select Run 2, which K = 3 as best solution.</span></span></code></pre></div>
-
+<p>If you have no idea to select a optimal signature number from technologies above, you can try auto-extract feature here. It uses a bayesian variant of NMF algorithm. You need to set a maximum signature number (default is <code>25</code>) and run times to get the result.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="sbssig.html#cb13-1"></a>mt_sig2 &lt;-<span class="st"> </span><span class="kw">sig_auto_extract</span>(mt_tally<span class="op">$</span>nmf_matrix, <span class="dt">K0 =</span> <span class="dv">10</span>, <span class="dt">nrun =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>At default, the code will use ‘robust’ strategy to return the result (see <code>strategy</code> option). It means that if you run 10 times and 6 of them return <code>4</code> signatures, then the optimal result with <code>4</code> signatures will be returned.</p>
+<p>The info of each run can be given as:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="sbssig.html#cb14-1"></a>mt_sig2<span class="op">$</span>Raw<span class="op">$</span>summary_run</span>
+<span id="cb14-2"><a href="sbssig.html#cb14-2"></a><span class="co">#&gt; # A tibble: 10 x 4</span></span>
+<span id="cb14-3"><a href="sbssig.html#cb14-3"></a><span class="co">#&gt;      Run     K posterior file                                      </span></span>
+<span id="cb14-4"><a href="sbssig.html#cb14-4"></a><span class="co">#&gt;    &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;                                     </span></span>
+<span id="cb14-5"><a href="sbssig.html#cb14-5"></a><span class="co">#&gt;  1     9     2     1813. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.9.rds&quot; </span></span>
+<span id="cb14-6"><a href="sbssig.html#cb14-6"></a><span class="co">#&gt;  2     6     3     1776. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.6.rds&quot; </span></span>
+<span id="cb14-7"><a href="sbssig.html#cb14-7"></a><span class="co">#&gt;  3     3     2     1775. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.3.rds&quot; </span></span>
+<span id="cb14-8"><a href="sbssig.html#cb14-8"></a><span class="co">#&gt;  4     5     3     1745. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.5.rds&quot; </span></span>
+<span id="cb14-9"><a href="sbssig.html#cb14-9"></a><span class="co">#&gt;  5     8     4     1732. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.8.rds&quot; </span></span>
+<span id="cb14-10"><a href="sbssig.html#cb14-10"></a><span class="co">#&gt;  6     7     4     1702. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.7.rds&quot; </span></span>
+<span id="cb14-11"><a href="sbssig.html#cb14-11"></a><span class="co">#&gt;  7     1     4     1684. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.1.rds&quot; </span></span>
+<span id="cb14-12"><a href="sbssig.html#cb14-12"></a><span class="co">#&gt;  8     4     4     1661. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.4.rds&quot; </span></span>
+<span id="cb14-13"><a href="sbssig.html#cb14-13"></a><span class="co">#&gt;  9    10     4     1658. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.10.rds&quot;</span></span>
+<span id="cb14-14"><a href="sbssig.html#cb14-14"></a><span class="co">#&gt; 10     2     5     1652. &quot;D:/Tool/Rtmp\\RtmpURv3Ba/BayesNMF.2.rds&quot;</span></span></code></pre></div>
 </div>
+</div>
+<div id="match-signatures" class="section level2">
+<h2>Match Signatures</h2>
+<p>After extracting signatures, we need to know their etiologies. This can be done by comparing the identified signatures and reference signatures from COSMIC database.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="sbssig.html#cb15-1"></a>sim &lt;-<span class="st"> </span><span class="kw">get_sig_similarity</span>(mt_sig)</span>
+<span id="cb15-2"><a href="sbssig.html#cb15-2"></a><span class="co">#&gt; -Comparing against COSMIC signatures</span></span>
+<span id="cb15-3"><a href="sbssig.html#cb15-3"></a><span class="co">#&gt; ------------------------------------</span></span>
+<span id="cb15-4"><a href="sbssig.html#cb15-4"></a><span class="co">#&gt; --Found Sig1 most similar to COSMIC_6</span></span>
+<span id="cb15-5"><a href="sbssig.html#cb15-5"></a><span class="co">#&gt;    Aetiology: defective DNA mismatch repair [similarity: 0.667]</span></span>
+<span id="cb15-6"><a href="sbssig.html#cb15-6"></a><span class="co">#&gt; --Found Sig2 most similar to COSMIC_1</span></span>
+<span id="cb15-7"><a href="sbssig.html#cb15-7"></a><span class="co">#&gt;    Aetiology: spontaneous deamination of 5-methylcytosine [similarity: 0.84]</span></span>
+<span id="cb15-8"><a href="sbssig.html#cb15-8"></a><span class="co">#&gt; --Found Sig3 most similar to COSMIC_1</span></span>
+<span id="cb15-9"><a href="sbssig.html#cb15-9"></a><span class="co">#&gt;    Aetiology: spontaneous deamination of 5-methylcytosine [similarity: 0.922]</span></span>
+<span id="cb15-10"><a href="sbssig.html#cb15-10"></a><span class="co">#&gt; ------------------------------------</span></span>
+<span id="cb15-11"><a href="sbssig.html#cb15-11"></a><span class="co">#&gt; Return result invisiblely.</span></span></code></pre></div>
+<p>The result object <code>sim</code> is a list.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="sbssig.html#cb16-1"></a><span class="kw">str</span>(sim)</span>
+<span id="cb16-2"><a href="sbssig.html#cb16-2"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb16-3"><a href="sbssig.html#cb16-3"></a><span class="co">#&gt;  $ similarity  : num [1:3, 1:30] 0.612 0.84 0.922 0.212 0.172 0.105 0.362 0.327 0.236 0.295 ...</span></span>
+<span id="cb16-4"><a href="sbssig.html#cb16-4"></a><span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
+<span id="cb16-5"><a href="sbssig.html#cb16-5"></a><span class="co">#&gt;   .. ..$ : chr [1:3] &quot;Sig1&quot; &quot;Sig2&quot; &quot;Sig3&quot;</span></span>
+<span id="cb16-6"><a href="sbssig.html#cb16-6"></a><span class="co">#&gt;   .. ..$ : chr [1:30] &quot;COSMIC_1&quot; &quot;COSMIC_2&quot; &quot;COSMIC_3&quot; &quot;COSMIC_4&quot; ...</span></span>
+<span id="cb16-7"><a href="sbssig.html#cb16-7"></a><span class="co">#&gt;  $ aetiology_db:List of 1</span></span>
+<span id="cb16-8"><a href="sbssig.html#cb16-8"></a><span class="co">#&gt;   ..$ : chr [1:30] &quot;spontaneous deamination of 5-methylcytosine&quot; &quot;APOBEC Cytidine Deaminase (C&gt;T)&quot; &quot;defects in DNA-DSB repair by HR&quot; &quot;exposure to tobacco (smoking) mutagens&quot; ...</span></span>
+<span id="cb16-9"><a href="sbssig.html#cb16-9"></a><span class="co">#&gt;  $ best_match  :List of 3</span></span>
+<span id="cb16-10"><a href="sbssig.html#cb16-10"></a><span class="co">#&gt;   ..$ Sig1:List of 2</span></span>
+<span id="cb16-11"><a href="sbssig.html#cb16-11"></a><span class="co">#&gt;   .. ..$ aetiology : chr &quot;defective DNA mismatch repair&quot;</span></span>
+<span id="cb16-12"><a href="sbssig.html#cb16-12"></a><span class="co">#&gt;   .. ..$ best_match: chr &quot;Best match: COSMIC_6 [similarity: 0.667]&quot;</span></span>
+<span id="cb16-13"><a href="sbssig.html#cb16-13"></a><span class="co">#&gt;   ..$ Sig2:List of 2</span></span>
+<span id="cb16-14"><a href="sbssig.html#cb16-14"></a><span class="co">#&gt;   .. ..$ aetiology : chr &quot;spontaneous deamination of 5-methylcytosine&quot;</span></span>
+<span id="cb16-15"><a href="sbssig.html#cb16-15"></a><span class="co">#&gt;   .. ..$ best_match: chr &quot;Best match: COSMIC_1 [similarity: 0.84]&quot;</span></span>
+<span id="cb16-16"><a href="sbssig.html#cb16-16"></a><span class="co">#&gt;   ..$ Sig3:List of 2</span></span>
+<span id="cb16-17"><a href="sbssig.html#cb16-17"></a><span class="co">#&gt;   .. ..$ aetiology : chr &quot;spontaneous deamination of 5-methylcytosine&quot;</span></span>
+<span id="cb16-18"><a href="sbssig.html#cb16-18"></a><span class="co">#&gt;   .. ..$ best_match: chr &quot;Best match: COSMIC_1 [similarity: 0.922]&quot;</span></span>
+<span id="cb16-19"><a href="sbssig.html#cb16-19"></a><span class="co">#&gt;  - attr(*, &quot;class&quot;)= chr [1:2] &quot;similarity&quot; &quot;list&quot;</span></span></code></pre></div>
+<p>From the result we can see that only one signature is clear. If you find unknow signatures in your study, you should explore the etiologies by other analyses and even experiments.</p>
+<p>The similarity matrix can be plotted.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="sbssig.html#cb17-1"></a>pheatmap<span class="op">::</span><span class="kw">pheatmap</span>(sim<span class="op">$</span>similarity)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>You can also try the COSMIC signature database V3 with:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="sbssig.html#cb18-1"></a>sim_v3 &lt;-<span class="st"> </span><span class="kw">get_sig_similarity</span>(mt_sig, <span class="dt">sig_db =</span> <span class="st">&quot;SBS&quot;</span>)</span>
+<span id="cb18-2"><a href="sbssig.html#cb18-2"></a><span class="co">#&gt; -Comparing against COSMIC signatures</span></span>
+<span id="cb18-3"><a href="sbssig.html#cb18-3"></a><span class="co">#&gt; ------------------------------------</span></span>
+<span id="cb18-4"><a href="sbssig.html#cb18-4"></a><span class="co">#&gt; --Found Sig1 most similar to SBS6</span></span>
+<span id="cb18-5"><a href="sbssig.html#cb18-5"></a><span class="co">#&gt;    Aetiology: defective DNA mismatch repair [similarity: 0.659]</span></span>
+<span id="cb18-6"><a href="sbssig.html#cb18-6"></a><span class="co">#&gt; --Found Sig2 most similar to SBS1</span></span>
+<span id="cb18-7"><a href="sbssig.html#cb18-7"></a><span class="co">#&gt;    Aetiology: spontaneous or enzymatic deamination of 5-methylcytosine [similarity: 0.796]</span></span>
+<span id="cb18-8"><a href="sbssig.html#cb18-8"></a><span class="co">#&gt; --Found Sig3 most similar to SBS1</span></span>
+<span id="cb18-9"><a href="sbssig.html#cb18-9"></a><span class="co">#&gt;    Aetiology: spontaneous or enzymatic deamination of 5-methylcytosine [similarity: 0.905]</span></span>
+<span id="cb18-10"><a href="sbssig.html#cb18-10"></a><span class="co">#&gt; ------------------------------------</span></span>
+<span id="cb18-11"><a href="sbssig.html#cb18-11"></a><span class="co">#&gt; Return result invisiblely.</span></span></code></pre></div>
+</div>
+<div id="operate-signature" class="section level2">
+<h2>Operate <code>Signature</code></h2>
+<p>The result of <code>sig_extract()</code> or <code>sig_auto_extract()</code> is a <code>list</code> with <code>Signature</code> class. You can use <code>$</code> or use operation function to obtain the data stored in it.</p>
+<p>To get the signature matrix:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="sbssig.html#cb19-1"></a><span class="co"># Or mt_sig$Signature</span></span>
+<span id="cb19-2"><a href="sbssig.html#cb19-2"></a><span class="kw">sig_signature</span>(mt_sig)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, ]</span>
+<span id="cb19-3"><a href="sbssig.html#cb19-3"></a><span class="co">#&gt;                 Sig1         Sig2         Sig3</span></span>
+<span id="cb19-4"><a href="sbssig.html#cb19-4"></a><span class="co">#&gt; A[C&gt;A]A 2.573440e-03 5.328563e-03 1.452366e-02</span></span>
+<span id="cb19-5"><a href="sbssig.html#cb19-5"></a><span class="co">#&gt; A[C&gt;A]C 5.615313e-19 4.431593e-02 2.663616e-14</span></span>
+<span id="cb19-6"><a href="sbssig.html#cb19-6"></a><span class="co">#&gt; A[C&gt;A]G 1.456309e-15 6.330847e-03 1.252344e-14</span></span>
+<span id="cb19-7"><a href="sbssig.html#cb19-7"></a><span class="co">#&gt; A[C&gt;A]T 9.651010e-15 4.254580e-15 1.142587e-02</span></span>
+<span id="cb19-8"><a href="sbssig.html#cb19-8"></a><span class="co">#&gt; C[C&gt;A]A 6.955815e-03 2.937405e-14 2.005539e-02</span></span></code></pre></div>
+<p>To get signature exposure matrix:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="sbssig.html#cb20-1"></a><span class="co"># Or mt_sig$Exposure</span></span>
+<span id="cb20-2"><a href="sbssig.html#cb20-2"></a><span class="kw">sig_exposure</span>(mt_sig)[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb20-3"><a href="sbssig.html#cb20-3"></a><span class="co">#&gt;      TCGA-AB-2802 TCGA-AB-2803 TCGA-AB-2804 TCGA-AB-2805 TCGA-AB-2806</span></span>
+<span id="cb20-4"><a href="sbssig.html#cb20-4"></a><span class="co">#&gt; Sig1 5.951574e+00 6.874475e+00 8.830048e-13 2.457190e-13 1.764339e-12</span></span>
+<span id="cb20-5"><a href="sbssig.html#cb20-5"></a><span class="co">#&gt; Sig2 2.106827e-12 7.125541e+00 1.593764e+00 6.964313e+00 3.483714e-12</span></span>
+<span id="cb20-6"><a href="sbssig.html#cb20-6"></a><span class="co">#&gt; Sig3 4.048419e+00 9.300760e-14 3.406233e+00 7.035688e+00 1.299997e+01</span></span></code></pre></div>
+<p><code>get_sig_exposure()</code> may be more useful, it can be used to return a <code>data.frame</code> and set an exposure threshold.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="sbssig.html#cb21-1"></a><span class="kw">get_sig_exposure</span>(mt_sig)</span>
+<span id="cb21-2"><a href="sbssig.html#cb21-2"></a><span class="co">#&gt;            sample         Sig1         Sig2         Sig3</span></span>
+<span id="cb21-3"><a href="sbssig.html#cb21-3"></a><span class="co">#&gt;   1: TCGA-AB-2802 5.951574e+00 2.106827e-12 4.048419e+00</span></span>
+<span id="cb21-4"><a href="sbssig.html#cb21-4"></a><span class="co">#&gt;   2: TCGA-AB-2803 6.874475e+00 7.125541e+00 9.300760e-14</span></span>
+<span id="cb21-5"><a href="sbssig.html#cb21-5"></a><span class="co">#&gt;   3: TCGA-AB-2804 8.830048e-13 1.593764e+00 3.406233e+00</span></span>
+<span id="cb21-6"><a href="sbssig.html#cb21-6"></a><span class="co">#&gt;   4: TCGA-AB-2805 2.457190e-13 6.964313e+00 7.035688e+00</span></span>
+<span id="cb21-7"><a href="sbssig.html#cb21-7"></a><span class="co">#&gt;   5: TCGA-AB-2806 1.764339e-12 3.483714e-12 1.299997e+01</span></span>
+<span id="cb21-8"><a href="sbssig.html#cb21-8"></a><span class="co">#&gt;  ---                                                    </span></span>
+<span id="cb21-9"><a href="sbssig.html#cb21-9"></a><span class="co">#&gt; 184: TCGA-AB-3007 1.014093e-12 4.575247e+00 2.424758e+00</span></span>
+<span id="cb21-10"><a href="sbssig.html#cb21-10"></a><span class="co">#&gt; 185: TCGA-AB-3008 1.294223e-11 4.000009e+00 3.528735e-12</span></span>
+<span id="cb21-11"><a href="sbssig.html#cb21-11"></a><span class="co">#&gt; 186: TCGA-AB-3009 8.818428e+00 7.079667e+00 1.910188e+01</span></span>
+<span id="cb21-12"><a href="sbssig.html#cb21-12"></a><span class="co">#&gt; 187: TCGA-AB-3011 5.000001e+00 4.441747e-11 1.666433e-11</span></span>
+<span id="cb21-13"><a href="sbssig.html#cb21-13"></a><span class="co">#&gt; 188: TCGA-AB-3012 1.385718e-13 2.810821e+00 3.189179e+00</span></span></code></pre></div>
+<p>For plotting signature profile and exposure profile, please go to chapter <a href="sigobject.html#sigobject">4</a>.</p>
+
 </div>
 </div>
 <h3>References</h3>

@@ -65,7 +65,7 @@ if (require("BSgenome.Hsapiens.UCSC.hg19")) {
 ```
 
 ```{r}
-mt_tally$nmf_matrix
+mt_tally$nmf_matrix[1:5, 1:5]
 ```
 
 We use notion `left[ref>mut]right` to mark each component, e.g. `C[T>G]A` means a base T with 5' adjacent base C and 3' adjacent base A is mutated to base G.
@@ -73,20 +73,21 @@ We use notion `left[ref>mut]right` to mark each component, e.g. `C[T>G]A` means 
 > If you have used signature extraction feature in Maftools, you may feel familiar.
 > Currently, Maftools is the backend for `read_maf()` and `sig_tally` for SBS mutation.
 
-## Signature Extraction {-}
+
+## Extract Signatures {-}
 
 There are two methods can be used to implement signature extraction.
 
 1. Firstly estimate signature number and then extract signatures. This method is powered by [**NMF**](https://github.com/renozao/NMF) package [@gaujoux2010flexible].
 2. Auto-extract signatures by automatic relevance determination technique in nonnegative matrix factorization [@tan2012automatic], the code is implemented by **SignatureAnalyzer** [@kim2016somatic] and exported to **sigminer**.
 
-### Method 1: Estimate signature number  {-}
+### Method 1: Estimate Signature Number  {-}
 
 To estimate signature number, we firstly run NMF for multiple times and calculate some measures from the results, then select the best signature number base the measure vs. signature number plot.
 
 This is done by `sig_estimate()` function. Let's try signature number 2-5. For simplicity, we just run NMF twice for each signature number. We use 4 cores to speed up the computation.
 
-```{r}
+```{r, eval=FALSE}
 mt_est <- sig_estimate(mt_tally$nmf_matrix,
                        range = 2:5,
                        nrun = 2,
@@ -95,6 +96,12 @@ mt_est <- sig_estimate(mt_tally$nmf_matrix,
                        pConstant = 1e-13,
                        verbose = TRUE)
 ```
+
+```{r, include=FALSE}
+load("data/mt_est.RData")
+```
+
+> `pConstant` option is set to avoid errors raised by **NMF** package.
 
 We can show signature number survey for different measures by `show_sig_number_survey2()`.
 
@@ -120,11 +127,13 @@ Cophenetic indicates the robustness of consensus matrix clustering. In this situ
 However, there are no gold standard to determine the signature number. Sometimes, you should consider multiple measures. Remember, the most important thing is that you should have a good biological explanation for each signature.
 The best solution in study may not be the best solution in math.
 
-### Method 1: Extract signatures {-}
+### Method 1: Extract Signatures {-}
 
 After selecting a proper signature, you can now extract signatures. In general, use 30~50 NMF runs will get a robust result.
 
-```{r}
+
+
+```{r, eval=FALSE}
 mt_sig <- sig_extract(mt_tally$nmf_matrix, 
                       n_sig = 3,
                       nrun = 10,
@@ -132,11 +141,88 @@ mt_sig <- sig_extract(mt_tally$nmf_matrix,
                       pConstant = 1e-13)
 ```
 
+```{r, include=FALSE}
+load("data/mt_sig.RData")
+```
+
 
 ### Method 2: Auto-extract {-}
 
-If you have no idea to select a optimal signature number from technologies above, you can try auto-extract feature here.
+If you have no idea to select a optimal signature number from technologies above, you can try auto-extract feature here. It uses a bayesian variant of NMF algorithm. You need to set a maximum signature number (default is `25`) and run times to get the result.
+
+```{r, eval=FALSE}
+mt_sig2 <- sig_auto_extract(mt_tally$nmf_matrix, K0 = 10, nrun = 10)
+```
+
+```{r, include=FALSE}
+load("data/mt_sig2.RData")
+```
+
+
+At default, the code will use 'robust' strategy to return the result (see `strategy` option). It means that if you run 10 times and 6 of them return `4` signatures, then the optimal result with `4` signatures will be returned.
+
+
+The info of each run can be given as:
 
 ```{r}
-mt_sig <- sig_auto_extract(mt_tally$nmf_matrix, K0 = 10, nrun = 5)
+mt_sig2$Raw$summary_run
 ```
+
+
+## Match Signatures  {-}
+
+After extracting signatures, we need to know their etiologies. This can be done by comparing the identified signatures and reference signatures from COSMIC database.
+
+```{r}
+sim <- get_sig_similarity(mt_sig)
+```
+
+The result object `sim` is a list.
+
+```{r}
+str(sim)
+```
+
+
+From the result we can see that only one signature is clear. If you find unknow signatures in your study, you should explore the etiologies by other analyses and even experiments.
+
+The similarity matrix can be plotted.
+
+```{r}
+pheatmap::pheatmap(sim$similarity)
+```
+
+You can also try the COSMIC signature database V3 with:
+
+```{r}
+sim_v3 <- get_sig_similarity(mt_sig, sig_db = "SBS")
+```
+
+## Operate `Signature` {-}
+
+The result of `sig_extract()` or `sig_auto_extract()` is a `list` with `Signature` class. You can use `$` or use operation function to obtain the data stored in it.
+
+To get the signature matrix:
+
+```{r}
+# Or mt_sig$Signature
+sig_signature(mt_sig)[1:5, ]
+```
+
+To get signature exposure matrix:
+
+```{r}
+# Or mt_sig$Exposure
+sig_exposure(mt_sig)[, 1:5]
+```
+
+`get_sig_exposure()` may be more useful, it can be used to return a `data.frame` and set an exposure threshold.
+
+
+```{r}
+get_sig_exposure(mt_sig)
+```
+
+
+For plotting signature profile and exposure profile, please go to chapter \@ref(sigobject).
+
