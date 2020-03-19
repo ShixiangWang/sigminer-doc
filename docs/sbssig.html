@@ -168,8 +168,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>4</b> <code>Signature</code> Object</a>
 <ul>
-<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i>Signature Profile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i>Signature Profile</a>
+<ul>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i>SBS Signature profile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i>Copy Number Signature Porfile</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i>Exposure Profile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i>Consensus Map</a></li>
 </ul></li>
 <li class="part"><span><b>III Signature Analysis and Visualization</b></span></li>
 <li class="chapter" data-level="5" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>5</b> Association Analysis and Visualization</a></li>
@@ -182,7 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>IV Others</b></span></li>
 <li class="chapter" data-level="7" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>7</b> Datasets</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="datasets.html"><a href="datasets.html#chromosome-size"><i class="fa fa-check"></i><b>7.1</b> Chromosome Size</a></li>
+<li class="chapter" data-level="" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i>Reference Annotation</a></li>
+<li class="chapter" data-level="" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i>Copy Number components setting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -230,7 +236,7 @@ Here, we use the example MAF file stored in <strong>Maftools</strong> as input a
 <span id="cb4-6"><a href="sbssig.html#cb4-6"></a><span class="co">#&gt; -Summarizing</span></span>
 <span id="cb4-7"><a href="sbssig.html#cb4-7"></a><span class="co">#&gt; -Processing clinical data</span></span>
 <span id="cb4-8"><a href="sbssig.html#cb4-8"></a><span class="co">#&gt; --Missing clinical data</span></span>
-<span id="cb4-9"><a href="sbssig.html#cb4-9"></a><span class="co">#&gt; -Finished in 0.340s elapsed (0.260s cpu)</span></span>
+<span id="cb4-9"><a href="sbssig.html#cb4-9"></a><span class="co">#&gt; -Finished in 0.370s elapsed (0.300s cpu)</span></span>
 <span id="cb4-10"><a href="sbssig.html#cb4-10"></a>laml</span>
 <span id="cb4-11"><a href="sbssig.html#cb4-11"></a><span class="co">#&gt; An object of class  MAF </span></span>
 <span id="cb4-12"><a href="sbssig.html#cb4-12"></a><span class="co">#&gt;                    ID          summary  Mean Median</span></span>
@@ -347,7 +353,7 @@ Currently, Maftools is the backend for <code>read_maf()</code> and <code>sig_tal
 </ol>
 <div id="method-1-estimate-signature-number" class="section level3">
 <h3>Method 1: Estimate Signature Number</h3>
-<p>To estimate signature number, we firstly run NMF for multiple times and calculate some measures from the results, then select the best signature number base the measure vs. signature number plot.</p>
+<p>To estimate signature number, we firstly run NMF for multiple times and calculate some measures from the results, then select the best signature number based on the measure vs. signature number plot.</p>
 <p>This is done by <code>sig_estimate()</code> function. Let’s try signature number 2-5. For simplicity, we just run NMF twice for each signature number. We use 4 cores to speed up the computation.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="sbssig.html#cb9-1"></a>mt_est &lt;-<span class="st"> </span><span class="kw">sig_estimate</span>(mt_tally<span class="op">$</span>nmf_matrix,</span>
 <span id="cb9-2"><a href="sbssig.html#cb9-2"></a>  <span class="dt">range =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>,</span>
@@ -364,11 +370,11 @@ Currently, Maftools is the backend for <code>read_maf()</code> and <code>sig_tal
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="sbssig.html#cb10-1"></a><span class="co">## You can also select the measures to show</span></span>
 <span id="cb10-2"><a href="sbssig.html#cb10-2"></a><span class="co">## by &#39;what&#39; option</span></span>
 <span id="cb10-3"><a href="sbssig.html#cb10-3"></a><span class="kw">show_sig_number_survey2</span>(mt_est<span class="op">$</span>survey, mt_est<span class="op">$</span>survey.random)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>For the details of all the measures above, please read <span class="citation">Gaujoux and Seoighe (<a href="#ref-gaujoux2010flexible" role="doc-biblioref">2010</a>)</span> and <a href="https://cran.r-project.org/web/packages/NMF/vignettes/">vignette</a> of R package <strong>NMF</strong>.</p>
 <p>Typically, measure <strong>cophenetic</strong> is used for determing the signature number. We can easily generate an elbow plot with <code>function</code>show_sig_number_survey()`.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="sbssig.html#cb11-1"></a><span class="kw">show_sig_number_survey</span>(mt_est<span class="op">$</span>survey, <span class="dt">right_y =</span> <span class="ot">NULL</span>)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Cophenetic indicates the robustness of consensus matrix clustering. In this situation, 2 or 3 is good.</p>
 <blockquote>
 <p>The most common approach is to use the cophenetic correlation coefficient. Brunet et al. suggested choosing the smallest value of r for which this coefficient starts decreasing. <span class="citation">(Gaujoux and Seoighe <a href="#ref-gaujoux2010flexible" role="doc-biblioref">2010</a>)</span></p>
@@ -445,7 +451,6 @@ The best solution in study may not be the best solution in math.</p>
 <p>From the result we can see that only one signature is clear. If you find unknow signatures in your study, you should explore the etiologies by other analyses and even experiments.</p>
 <p>The similarity matrix can be plotted.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="sbssig.html#cb17-1"></a>pheatmap<span class="op">::</span><span class="kw">pheatmap</span>(sim<span class="op">$</span>similarity)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>You can also try the COSMIC signature database V3 with:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="sbssig.html#cb18-1"></a>sim_v3 &lt;-<span class="st"> </span><span class="kw">get_sig_similarity</span>(mt_sig, <span class="dt">sig_db =</span> <span class="st">&quot;SBS&quot;</span>)</span>
 <span id="cb18-2"><a href="sbssig.html#cb18-2"></a><span class="co">#&gt; -Comparing against COSMIC signatures</span></span>

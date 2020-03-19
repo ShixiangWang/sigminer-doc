@@ -83,7 +83,7 @@ There are two methods can be used to implement signature extraction.
 
 ### Method 1: Estimate Signature Number  {-}
 
-To estimate signature number, we firstly run NMF for multiple times and calculate some measures from the results, then select the best signature number base the measure vs. signature number plot.
+To estimate signature number, we firstly run NMF for multiple times and calculate some measures from the results, then select the best signature number based on the measure vs. signature number plot.
 
 This is done by `sig_estimate()` function. Let's try signature number 2-5. For simplicity, we just run NMF twice for each signature number. We use 4 cores to speed up the computation.
 

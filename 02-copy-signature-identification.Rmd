@@ -18,7 +18,91 @@ Currently, there are few studies focus on copy number signatures and no referenc
 
 ## Read Data {-}
 
+The input requires absolute copy number profile with following information:
+
+- Segment chromosome.
+- Segment start.
+- Segment end.
+- **Segment value**: must be integer.
+- Sample ID.
+
+The input data can be result from any softwares which provides information above.
+
+- For chip data/segmentation data (copy ratio is available), [ABSOLUTE](https://software.broadinstitute.org/cancer/cga/absolute) is recommended.
+- For raw sequencing data, [Sequenza](https://cran.r-project.org/web/packages/sequenza/index.html) and [FACETS](https://github.com/mskcc/facets) are recommended.
+
+The import work is done by `read_copynumber`, this function supports `data.frame` or file, and even result directory from [ABSOLUTE](https://software.broadinstitute.org/cancer/cga/absolute).
+
+
+```{r}
+# Load toy dataset of absolute copynumber profile
+load(system.file("extdata", "toy_segTab.RData",
+  package = "sigminer", mustWork = TRUE
+))
+cn <- read_copynumber(segTabs,
+  seg_cols = c("chromosome", "start", "end", "segVal"),
+  genome_build = "hg19", complement = FALSE, verbose = TRUE
+)
+cn
+```
+
+
 ## Tally Components {-}
 
+Currently, there are two methods for generating sample-by-component matrix, i.e. "W" or "M".
+
+Options `sigminer.sex` and `sigminer.copynumber.max` are used to control the processing of sex and max values. Run `?sig_tally` to see more.
+
+```{r, eval=FALSE}
+options(sigminer.sex = "male", sigminer.copynumber.max = 10)
+
+# Load copy number object
+load(system.file("extdata", "toy_copynumber.RData",
+  package = "sigminer", mustWork = TRUE
+))
+
+# Use method designed by Wang, Shixiang et al.
+cn_tally_W <- sig_tally(cn, method = "W")
+# Use method designed by Macintyre et al.
+cn_tally_M <- sig_tally(cn, method = "M")
+```
+
+
+```{r, include=FALSE}
+load(system.file("extdata", "toy_copynumber_tally_W.RData",
+  package = "sigminer", mustWork = TRUE
+))
+
+load(system.file("extdata", "toy_copynumber_tally_M.RData",
+  package = "sigminer", mustWork = TRUE
+))
+```
+
+
+This step return a `list` containing information about copy number features, components and matrix for NMF etc.
+
 ## Extract Signatures {-}
+
+
+When you get the matrix, you can just do the signature extractin as SBS signatures. So here we won't talk much.
+
+```{r}
+cn_tally_W$nmf_matrix[1:5, 1:5]
+```
+
+
+
+```{r, eval=FALSE}
+# library(NMF)
+sig_w = sig_extract(cn_tally_W$nmf_matrix, n_sig = 2, pConstant = 1e-13)
+```
+
+
+```{r, include=FALSE}
+load("data/sig_w.RData")
+load("data/sig_m.RData")
+```
+
+
+
 

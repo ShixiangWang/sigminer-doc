@@ -168,8 +168,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>4</b> <code>Signature</code> Object</a>
 <ul>
-<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i>Signature Profile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i>Signature Profile</a>
+<ul>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i>SBS Signature profile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i>Copy Number Signature Porfile</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i>Exposure Profile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i>Consensus Map</a></li>
 </ul></li>
 <li class="part"><span><b>III Signature Analysis and Visualization</b></span></li>
 <li class="chapter" data-level="5" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>5</b> Association Analysis and Visualization</a></li>
@@ -182,7 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>IV Others</b></span></li>
 <li class="chapter" data-level="7" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>7</b> Datasets</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="datasets.html"><a href="datasets.html#chromosome-size"><i class="fa fa-check"></i><b>7.1</b> Chromosome Size</a></li>
+<li class="chapter" data-level="" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i>Reference Annotation</a></li>
+<li class="chapter" data-level="" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i>Copy Number components setting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -209,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">sigminer: Genomic Alteration Signature Analysis in R</h1>
 <p class="author"><em>Shixiang Wang, ShanghaiTech University</em></p>
 <p class="author"><em>Xue-Song Liu, ShanghaiTech University</em></p>
-<p class="date"><em>last revised on 2020-03-17</em></p>
+<p class="date"><em>last revised on 2020-03-19</em></p>
 </div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
@@ -220,13 +226,13 @@ lesions caused by genomic alterations, we can generate characteristic
 alteration spectra, called ‘signature’.</p>
 <p>To illustrate the biological significance of genome alteration signatures, we show some
 well organized figures here.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="fig/sbs_signature_overview_nat_review.png" alt="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729"  />
 <p class="caption">
 Figure 0.1: The illustration of SBS signature, fig source: <a href="https://www.nature.com/articles/nrg3729" class="uri">https://www.nature.com/articles/nrg3729</a>
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="fig/sbs_signature_overview.png" alt="The illustration of SBS signature (2), fig source: https://www.nature.com/articles/s41467-018-05228-y"  />
 <p class="caption">
 Figure 0.2: The illustration of SBS signature (2), fig source: <a href="https://www.nature.com/articles/s41467-018-05228-y" class="uri">https://www.nature.com/articles/s41467-018-05228-y</a>
@@ -238,7 +244,7 @@ Common etiologies contain aging, defective DNA mismatch repair, smoking, ultravi
 <blockquote>
 <p>Recently, <span class="citation">Alexandrov et al. (<a href="#ref-alexandrov2020repertoire" role="doc-biblioref">2020</a>)</span> extends the concept of mutational signature to three types of mutation: SBS, DBS and INDEL. Here, we use genomic alteration signature to refer any kind of mutation type can be used to generate signature.</p>
 </blockquote>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="fig/cn_signature_overview.png" alt="The illustration of copy number signatures, fig source: https://www.nature.com/articles/s41588-018-0212-y"  />
 <p class="caption">
 Figure 0.3: The illustration of copy number signatures, fig source: <a href="https://www.nature.com/articles/s41588-018-0212-y" class="uri">https://www.nature.com/articles/s41588-018-0212-y</a>

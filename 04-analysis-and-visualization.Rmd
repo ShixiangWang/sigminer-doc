@@ -4,7 +4,31 @@
 
 # Group Analysis and Visualization {#group-analysis}
 
+Group analysis is a common task in cancer study. **sigminer** supports dividing samples into multiple groups and comparing genotype/phenotype feature measures.
+
 ## Group Generation {-}
+
+There are multiple methods to generate groups, including 'consensus' (default, can be only used by result from `sig_extract()`), 'k-means' etc. After determining groups, **sigminer** will assign each group to a signature with maximum fraction. We may say a group is `Sig_x` enriched.
+
+```{r, message=TRUE}
+mt_grps <- get_groups(mt_sig, method = "consensus", match_consensus = TRUE)
+head(mt_grps)
+```
+
+The returned sample orders match sample orders in clustered consensus matrix.
+
+```{r}
+show_sig_consensusmap(mt_sig)
+```
+
+
+Sometimes, the mapping between groups and enriched signatures may not right. Users should check it and even correct it manually.
+
+
+```{r}
+attr(mt_grps, "map_table")
+```
+
 
 ## Group Comparison Analysis {-}
 

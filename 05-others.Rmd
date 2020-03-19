@@ -2,4 +2,47 @@
 
 # Datasets {#datasets}
 
-## Chromosome Size
+## Reference Annotation   {-}
+
+**sigminer** stores many reference annotation datasets for internal calculation. It can be exported for other usage either by `data()` or `get_genome_annotation()`.
+
+Currently, there are the following datasets:
+
+- `centromeres.hg19`
+- `centromeres.hg38`
+- `chromsize.hg19`
+- `chromsize.hg38`
+- `cytobands.hg19`
+- `cytobands.hg38`
+
+An example is given as below:
+
+```{r}
+data("centromeres.hg19")
+head(centromeres.hg19)
+
+```
+
+
+`get_genome_annotation()` can better control the returned `data.frame`.
+
+```{r}
+get_genome_annotation(data_type = "chr_size",
+                      chrs = c("chr1", "chr10", "chr20"),
+                      genome_build = "hg19")
+```
+
+
+More see `?get_genome_annotation`.
+
+## Copy Number components setting   {-}
+
+Dataset `CN.features` is a predefined component data table for identifying copy number signatures by method "Wang".
+Users can define a custom table with similar structure and pass it to function like `sig_tally()`.
+
+Detail about how to generate this dataset can be viewed at <https://github.com/ShixiangWang/sigminer/blob/master/data-raw/CN-features.R>.
+
+```{r}
+CN.features
+```
+

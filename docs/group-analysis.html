@@ -168,8 +168,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>4</b> <code>Signature</code> Object</a>
 <ul>
-<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i>Signature Profile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i>Signature Profile</a>
+<ul>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i>SBS Signature profile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i>Copy Number Signature Porfile</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i>Exposure Profile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i>Consensus Map</a></li>
 </ul></li>
 <li class="part"><span><b>III Signature Analysis and Visualization</b></span></li>
 <li class="chapter" data-level="5" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>5</b> Association Analysis and Visualization</a></li>
@@ -182,7 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>IV Others</b></span></li>
 <li class="chapter" data-level="7" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>7</b> Datasets</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="datasets.html"><a href="datasets.html#chromosome-size"><i class="fa fa-check"></i><b>7.1</b> Chromosome Size</a></li>
+<li class="chapter" data-level="" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i>Reference Annotation</a></li>
+<li class="chapter" data-level="" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i>Copy Number components setting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -207,8 +213,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="group-analysis" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Group Analysis and Visualization</h1>
+<p>Group analysis is a common task in cancer study. <strong>sigminer</strong> supports dividing samples into multiple groups and comparing genotype/phenotype feature measures.</p>
 <div id="group-generation" class="section level2">
 <h2>Group Generation</h2>
+<p>There are multiple methods to generate groups, including ‘consensus’ (default, can be only used by result from <code>sig_extract()</code>), ‘k-means’ etc. After determining groups, <strong>sigminer</strong> will assign each group to a signature with maximum fraction. We may say a group is <code>Sig_x</code> enriched.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="group-analysis.html#cb37-1"></a>mt_grps &lt;-<span class="st"> </span><span class="kw">get_groups</span>(mt_sig, <span class="dt">method =</span> <span class="st">&quot;consensus&quot;</span>, <span class="dt">match_consensus =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb37-2"><a href="group-analysis.html#cb37-2"></a><span class="co">#&gt; =&gt; Obtaining clusters from the hierarchical clustering of the consensus matrix...</span></span>
+<span id="cb37-3"><a href="group-analysis.html#cb37-3"></a><span class="co">#&gt; =&gt; Finding the dominant signature of each group...</span></span>
+<span id="cb37-4"><a href="group-analysis.html#cb37-4"></a><span class="co">#&gt; =&gt; Generating a table of group and dominant signature:</span></span>
+<span id="cb37-5"><a href="group-analysis.html#cb37-5"></a><span class="co">#&gt;    </span></span>
+<span id="cb37-6"><a href="group-analysis.html#cb37-6"></a><span class="co">#&gt;     Sig1 Sig2 Sig3</span></span>
+<span id="cb37-7"><a href="group-analysis.html#cb37-7"></a><span class="co">#&gt;   1    9   43   39</span></span>
+<span id="cb37-8"><a href="group-analysis.html#cb37-8"></a><span class="co">#&gt;   2   14    6    8</span></span>
+<span id="cb37-9"><a href="group-analysis.html#cb37-9"></a><span class="co">#&gt;   3   28   12   29</span></span>
+<span id="cb37-10"><a href="group-analysis.html#cb37-10"></a><span class="co">#&gt; =&gt; Assigning a group to a signature with the maxium fraction (stored in &#39;map_table&#39; attr)...</span></span>
+<span id="cb37-11"><a href="group-analysis.html#cb37-11"></a><span class="co">#&gt; =&gt; Summarizing...</span></span>
+<span id="cb37-12"><a href="group-analysis.html#cb37-12"></a><span class="co">#&gt;  group #1: 91 samples with Sig2 enriched.</span></span>
+<span id="cb37-13"><a href="group-analysis.html#cb37-13"></a><span class="co">#&gt;  group #2: 28 samples with Sig1 enriched.</span></span>
+<span id="cb37-14"><a href="group-analysis.html#cb37-14"></a><span class="co">#&gt;  group #3: 69 samples with Sig3 enriched.</span></span>
+<span id="cb37-15"><a href="group-analysis.html#cb37-15"></a><span class="kw">head</span>(mt_grps)</span>
+<span id="cb37-16"><a href="group-analysis.html#cb37-16"></a><span class="co">#&gt;          sample group silhouette_width enrich_sig</span></span>
+<span id="cb37-17"><a href="group-analysis.html#cb37-17"></a><span class="co">#&gt; 1: TCGA-AB-2977     1           0.1810       Sig2</span></span>
+<span id="cb37-18"><a href="group-analysis.html#cb37-18"></a><span class="co">#&gt; 2: TCGA-AB-2867     1          -0.0231       Sig2</span></span>
+<span id="cb37-19"><a href="group-analysis.html#cb37-19"></a><span class="co">#&gt; 3: TCGA-AB-2832     1           0.2290       Sig2</span></span>
+<span id="cb37-20"><a href="group-analysis.html#cb37-20"></a><span class="co">#&gt; 4: TCGA-AB-2925     1           0.4080       Sig2</span></span>
+<span id="cb37-21"><a href="group-analysis.html#cb37-21"></a><span class="co">#&gt; 5: TCGA-AB-3009     1           0.3130       Sig2</span></span>
+<span id="cb37-22"><a href="group-analysis.html#cb37-22"></a><span class="co">#&gt; 6: TCGA-AB-2881     1           0.2850       Sig2</span></span></code></pre></div>
+<p>The returned sample orders match sample orders in clustered consensus matrix.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="group-analysis.html#cb38-1"></a><span class="kw">show_sig_consensusmap</span>(mt_sig)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Sometimes, the mapping between groups and enriched signatures may not right. Users should check it and even correct it manually.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="group-analysis.html#cb39-1"></a><span class="kw">attr</span>(mt_grps, <span class="st">&quot;map_table&quot;</span>)</span>
+<span id="cb39-2"><a href="group-analysis.html#cb39-2"></a><span class="co">#&gt;    </span></span>
+<span id="cb39-3"><a href="group-analysis.html#cb39-3"></a><span class="co">#&gt;     Sig1 Sig2 Sig3</span></span>
+<span id="cb39-4"><a href="group-analysis.html#cb39-4"></a><span class="co">#&gt;   1    9   43   39</span></span>
+<span id="cb39-5"><a href="group-analysis.html#cb39-5"></a><span class="co">#&gt;   2   14    6    8</span></span>
+<span id="cb39-6"><a href="group-analysis.html#cb39-6"></a><span class="co">#&gt;   3   28   12   29</span></span></code></pre></div>
 </div>
 <div id="group-comparison-analysis" class="section level2">
 <h2>Group Comparison Analysis</h2>
