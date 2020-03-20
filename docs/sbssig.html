@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 SBS Signature Identification | sigminer: Genomic Alteration Signature Analysis in R</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 SBS Signature Identification | sigminer: Genomic Alteration Signature Analysis in R" />
   <meta property="og:type" content="book" />
@@ -172,6 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i>SBS Signature profile</a></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i>Copy Number Signature Porfile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i>COSMIC Signature Profile</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i>Exposure Profile</a></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i>Consensus Map</a></li>
@@ -236,7 +237,7 @@ Here, we use the example MAF file stored in <strong>Maftools</strong> as input a
 <span id="cb4-6"><a href="sbssig.html#cb4-6"></a><span class="co">#&gt; -Summarizing</span></span>
 <span id="cb4-7"><a href="sbssig.html#cb4-7"></a><span class="co">#&gt; -Processing clinical data</span></span>
 <span id="cb4-8"><a href="sbssig.html#cb4-8"></a><span class="co">#&gt; --Missing clinical data</span></span>
-<span id="cb4-9"><a href="sbssig.html#cb4-9"></a><span class="co">#&gt; -Finished in 0.370s elapsed (0.300s cpu)</span></span>
+<span id="cb4-9"><a href="sbssig.html#cb4-9"></a><span class="co">#&gt; -Finished in 0.340s elapsed (0.270s cpu)</span></span>
 <span id="cb4-10"><a href="sbssig.html#cb4-10"></a>laml</span>
 <span id="cb4-11"><a href="sbssig.html#cb4-11"></a><span class="co">#&gt; An object of class  MAF </span></span>
 <span id="cb4-12"><a href="sbssig.html#cb4-12"></a><span class="co">#&gt;                    ID          summary  Mean Median</span></span>
@@ -451,6 +452,7 @@ The best solution in study may not be the best solution in math.</p>
 <p>From the result we can see that only one signature is clear. If you find unknow signatures in your study, you should explore the etiologies by other analyses and even experiments.</p>
 <p>The similarity matrix can be plotted.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="sbssig.html#cb17-1"></a>pheatmap<span class="op">::</span><span class="kw">pheatmap</span>(sim<span class="op">$</span>similarity)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>You can also try the COSMIC signature database V3 with:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="sbssig.html#cb18-1"></a>sim_v3 &lt;-<span class="st"> </span><span class="kw">get_sig_similarity</span>(mt_sig, <span class="dt">sig_db =</span> <span class="st">&quot;SBS&quot;</span>)</span>
 <span id="cb18-2"><a href="sbssig.html#cb18-2"></a><span class="co">#&gt; -Comparing against COSMIC signatures</span></span>

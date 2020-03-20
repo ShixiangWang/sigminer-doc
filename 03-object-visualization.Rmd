@@ -50,6 +50,7 @@ show_sig_profile(mt_sig, mode = "SBS", paint_axis_text = FALSE)
 show_sig_profile(mt_sig, mode = "SBS", style = "cosmic")
 ```
 
+
 ### Copy Number Signature Porfile  {-}
 
 For copy number signatures from tally method "W", you have to specify the `normalize` option as "feature", so  the bar heights can be more clearly compared.
@@ -60,6 +61,29 @@ show_sig_profile(sig_w,
                  normalize = "feature",
                  method = "W",
                  style = "cosmic")
+```
+
+### COSMIC Signature Profile  {-}
+
+Users can show profile of COSMIC signatures by `show_cosmic_sig_profile()`.
+
+> Currently support v2 and SBS from v3.
+
+To see valid signature numbers, run
+
+```{r}
+show_cosmic_sig_profile(sig_db = "legacy")
+```
+
+```{r}
+show_cosmic_sig_profile(sig_db = "legacy")
+```
+
+
+To show the plot, specify signature shortnames to `sig_index` option.
+
+```{r}
+show_cosmic_sig_profile(sig_index = c(1, 5, 6), style = "cosmic")
 ```
 
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Signature Object | sigminer: Genomic Alteration Signature Analysis in R</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Signature Object | sigminer: Genomic Alteration Signature Analysis in R" />
   <meta property="og:type" content="book" />
@@ -172,6 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i>SBS Signature profile</a></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i>Copy Number Signature Porfile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i>COSMIC Signature Profile</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i>Exposure Profile</a></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i>Consensus Map</a></li>
@@ -239,15 +240,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb32-6"><a href="sigobject.html#cb32-6"></a>)</span></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-45-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
+<div id="cosmic-signature-profile" class="section level3">
+<h3>COSMIC Signature Profile</h3>
+<p>Users can show profile of COSMIC signatures by <code>show_cosmic_sig_profile()</code>.</p>
+<blockquote>
+<p>Currently support v2 and SBS from v3.</p>
+</blockquote>
+<p>To see valid signature numbers, run</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="sigobject.html#cb33-1"></a><span class="kw">show_cosmic_sig_profile</span>(<span class="dt">sig_db =</span> <span class="st">&quot;legacy&quot;</span>)</span>
+<span id="cb33-2"><a href="sigobject.html#cb33-2"></a><span class="co">#&gt; </span></span>
+<span id="cb33-3"><a href="sigobject.html#cb33-3"></a><span class="co">#&gt; Valid index for db &#39;legacy&#39;:</span></span>
+<span id="cb33-4"><a href="sigobject.html#cb33-4"></a><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="sigobject.html#cb34-1"></a><span class="kw">show_cosmic_sig_profile</span>(<span class="dt">sig_db =</span> <span class="st">&quot;legacy&quot;</span>)</span>
+<span id="cb34-2"><a href="sigobject.html#cb34-2"></a><span class="co">#&gt; </span></span>
+<span id="cb34-3"><a href="sigobject.html#cb34-3"></a><span class="co">#&gt; Valid index for db &#39;legacy&#39;:</span></span>
+<span id="cb34-4"><a href="sigobject.html#cb34-4"></a><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></span></code></pre></div>
+<p>To show the plot, specify signature shortnames to <code>sig_index</code> option.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="sigobject.html#cb35-1"></a><span class="kw">show_cosmic_sig_profile</span>(<span class="dt">sig_index =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span>
+<span id="cb35-2"><a href="sigobject.html#cb35-2"></a><span class="co">#&gt; </span></span>
+<span id="cb35-3"><a href="sigobject.html#cb35-3"></a><span class="co">#&gt; Valid index for db &#39;legacy&#39;:</span></span>
+<span id="cb35-4"><a href="sigobject.html#cb35-4"></a><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
 </div>
 <div id="exposure-profile" class="section level2">
 <h2>Exposure Profile</h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="sigobject.html#cb33-1"></a><span class="kw">show_sig_exposure</span>(mt_sig)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-46-1.png" width="1152" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="sigobject.html#cb34-1"></a><span class="kw">show_sig_exposure</span>(mt_sig, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-47-1.png" width="1152" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="sigobject.html#cb35-1"></a><span class="kw">show_sig_exposure</span>(sig_w, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-48-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="sigobject.html#cb36-1"></a><span class="kw">show_sig_exposure</span>(mt_sig)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-49-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="sigobject.html#cb37-1"></a><span class="kw">show_sig_exposure</span>(mt_sig, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-50-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="sigobject.html#cb38-1"></a><span class="kw">show_sig_exposure</span>(sig_w, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-51-1.png" width="1152" style="display: block; margin: auto;" /></p>
 <p>Of note:</p>
 <ul>
 <li>For SBS signature, the absolute exposure is the estimated SBS count.</li>
@@ -257,8 +280,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="consensus-map" class="section level2">
 <h2>Consensus Map</h2>
 <p>This can only support the result from <code>sig_extract()</code> with multiple runs.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="sigobject.html#cb36-1"></a><span class="kw">show_sig_consensusmap</span>(mt_sig)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-49-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="sigobject.html#cb39-1"></a><span class="kw">show_sig_consensusmap</span>(mt_sig)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Datasets | sigminer: Genomic Alteration Signature Analysis in R</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Datasets | sigminer: Genomic Alteration Signature Analysis in R" />
   <meta property="og:type" content="book" />
@@ -172,6 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i>SBS Signature profile</a></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i>Copy Number Signature Porfile</a></li>
+<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i>COSMIC Signature Profile</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i>Exposure Profile</a></li>
 <li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i>Consensus Map</a></li>
@@ -226,25 +227,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>cytobands.hg38</code></li>
 </ul>
 <p>An example is given as below:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="datasets.html#cb40-1"></a><span class="kw">data</span>(<span class="st">&quot;centromeres.hg19&quot;</span>)</span>
-<span id="cb40-2"><a href="datasets.html#cb40-2"></a><span class="kw">head</span>(centromeres.hg19)</span>
-<span id="cb40-3"><a href="datasets.html#cb40-3"></a><span class="co">#&gt;   chrom left.base right.base</span></span>
-<span id="cb40-4"><a href="datasets.html#cb40-4"></a><span class="co">#&gt; 1  chr1 121535434  124535434</span></span>
-<span id="cb40-5"><a href="datasets.html#cb40-5"></a><span class="co">#&gt; 2  chr2  92326171   95326171</span></span>
-<span id="cb40-6"><a href="datasets.html#cb40-6"></a><span class="co">#&gt; 3  chr3  90504854   93504854</span></span>
-<span id="cb40-7"><a href="datasets.html#cb40-7"></a><span class="co">#&gt; 4  chr4  49660117   52660117</span></span>
-<span id="cb40-8"><a href="datasets.html#cb40-8"></a><span class="co">#&gt; 5  chr5  46405641   49405641</span></span>
-<span id="cb40-9"><a href="datasets.html#cb40-9"></a><span class="co">#&gt; 6  chr6  58830166   61830166</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="datasets.html#cb43-1"></a><span class="kw">data</span>(<span class="st">&quot;centromeres.hg19&quot;</span>)</span>
+<span id="cb43-2"><a href="datasets.html#cb43-2"></a><span class="kw">head</span>(centromeres.hg19)</span>
+<span id="cb43-3"><a href="datasets.html#cb43-3"></a><span class="co">#&gt;   chrom left.base right.base</span></span>
+<span id="cb43-4"><a href="datasets.html#cb43-4"></a><span class="co">#&gt; 1  chr1 121535434  124535434</span></span>
+<span id="cb43-5"><a href="datasets.html#cb43-5"></a><span class="co">#&gt; 2  chr2  92326171   95326171</span></span>
+<span id="cb43-6"><a href="datasets.html#cb43-6"></a><span class="co">#&gt; 3  chr3  90504854   93504854</span></span>
+<span id="cb43-7"><a href="datasets.html#cb43-7"></a><span class="co">#&gt; 4  chr4  49660117   52660117</span></span>
+<span id="cb43-8"><a href="datasets.html#cb43-8"></a><span class="co">#&gt; 5  chr5  46405641   49405641</span></span>
+<span id="cb43-9"><a href="datasets.html#cb43-9"></a><span class="co">#&gt; 6  chr6  58830166   61830166</span></span></code></pre></div>
 <p><code>get_genome_annotation()</code> can better control the returned <code>data.frame</code>.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="datasets.html#cb41-1"></a><span class="kw">get_genome_annotation</span>(</span>
-<span id="cb41-2"><a href="datasets.html#cb41-2"></a>  <span class="dt">data_type =</span> <span class="st">&quot;chr_size&quot;</span>,</span>
-<span id="cb41-3"><a href="datasets.html#cb41-3"></a>  <span class="dt">chrs =</span> <span class="kw">c</span>(<span class="st">&quot;chr1&quot;</span>, <span class="st">&quot;chr10&quot;</span>, <span class="st">&quot;chr20&quot;</span>),</span>
-<span id="cb41-4"><a href="datasets.html#cb41-4"></a>  <span class="dt">genome_build =</span> <span class="st">&quot;hg19&quot;</span></span>
-<span id="cb41-5"><a href="datasets.html#cb41-5"></a>)</span>
-<span id="cb41-6"><a href="datasets.html#cb41-6"></a><span class="co">#&gt;   chrom      size</span></span>
-<span id="cb41-7"><a href="datasets.html#cb41-7"></a><span class="co">#&gt; 1  chr1 249250621</span></span>
-<span id="cb41-8"><a href="datasets.html#cb41-8"></a><span class="co">#&gt; 2 chr10 135534747</span></span>
-<span id="cb41-9"><a href="datasets.html#cb41-9"></a><span class="co">#&gt; 3 chr20  63025520</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="datasets.html#cb44-1"></a><span class="kw">get_genome_annotation</span>(</span>
+<span id="cb44-2"><a href="datasets.html#cb44-2"></a>  <span class="dt">data_type =</span> <span class="st">&quot;chr_size&quot;</span>,</span>
+<span id="cb44-3"><a href="datasets.html#cb44-3"></a>  <span class="dt">chrs =</span> <span class="kw">c</span>(<span class="st">&quot;chr1&quot;</span>, <span class="st">&quot;chr10&quot;</span>, <span class="st">&quot;chr20&quot;</span>),</span>
+<span id="cb44-4"><a href="datasets.html#cb44-4"></a>  <span class="dt">genome_build =</span> <span class="st">&quot;hg19&quot;</span></span>
+<span id="cb44-5"><a href="datasets.html#cb44-5"></a>)</span>
+<span id="cb44-6"><a href="datasets.html#cb44-6"></a><span class="co">#&gt;   chrom      size</span></span>
+<span id="cb44-7"><a href="datasets.html#cb44-7"></a><span class="co">#&gt; 1  chr1 249250621</span></span>
+<span id="cb44-8"><a href="datasets.html#cb44-8"></a><span class="co">#&gt; 2 chr10 135534747</span></span>
+<span id="cb44-9"><a href="datasets.html#cb44-9"></a><span class="co">#&gt; 3 chr20  63025520</span></span></code></pre></div>
 <p>More see <code>?get_genome_annotation</code>.</p>
 </div>
 <div id="copy-number-components-setting" class="section level2">
@@ -252,89 +253,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Dataset <code>CN.features</code> is a predefined component data table for identifying copy number signatures by method “Wang”.
 Users can define a custom table with similar structure and pass it to function like <code>sig_tally()</code>.</p>
 <p>Detail about how to generate this dataset can be viewed at <a href="https://github.com/ShixiangWang/sigminer/blob/master/data-raw/CN-features.R" class="uri">https://github.com/ShixiangWang/sigminer/blob/master/data-raw/CN-features.R</a>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="datasets.html#cb42-1"></a>CN.features</span>
-<span id="cb42-2"><a href="datasets.html#cb42-2"></a><span class="co">#&gt;     feature         component label  min max</span></span>
-<span id="cb42-3"><a href="datasets.html#cb42-3"></a><span class="co">#&gt;  1:  BP10MB         BP10MB[0] point    0   0</span></span>
-<span id="cb42-4"><a href="datasets.html#cb42-4"></a><span class="co">#&gt;  2:  BP10MB         BP10MB[1] point    1   1</span></span>
-<span id="cb42-5"><a href="datasets.html#cb42-5"></a><span class="co">#&gt;  3:  BP10MB         BP10MB[2] point    2   2</span></span>
-<span id="cb42-6"><a href="datasets.html#cb42-6"></a><span class="co">#&gt;  4:  BP10MB         BP10MB[3] point    3   3</span></span>
-<span id="cb42-7"><a href="datasets.html#cb42-7"></a><span class="co">#&gt;  5:  BP10MB         BP10MB[4] point    4   4</span></span>
-<span id="cb42-8"><a href="datasets.html#cb42-8"></a><span class="co">#&gt;  6:  BP10MB         BP10MB[5] point    5   5</span></span>
-<span id="cb42-9"><a href="datasets.html#cb42-9"></a><span class="co">#&gt;  7:  BP10MB        BP10MB[&gt;5] range    5 Inf</span></span>
-<span id="cb42-10"><a href="datasets.html#cb42-10"></a><span class="co">#&gt;  8:   BPArm          BPArm[0] point    0   0</span></span>
-<span id="cb42-11"><a href="datasets.html#cb42-11"></a><span class="co">#&gt;  9:   BPArm          BPArm[1] point    1   1</span></span>
-<span id="cb42-12"><a href="datasets.html#cb42-12"></a><span class="co">#&gt; 10:   BPArm          BPArm[2] point    2   2</span></span>
-<span id="cb42-13"><a href="datasets.html#cb42-13"></a><span class="co">#&gt; 11:   BPArm          BPArm[3] point    3   3</span></span>
-<span id="cb42-14"><a href="datasets.html#cb42-14"></a><span class="co">#&gt; 12:   BPArm          BPArm[4] point    4   4</span></span>
-<span id="cb42-15"><a href="datasets.html#cb42-15"></a><span class="co">#&gt; 13:   BPArm          BPArm[5] point    5   5</span></span>
-<span id="cb42-16"><a href="datasets.html#cb42-16"></a><span class="co">#&gt; 14:   BPArm          BPArm[6] point    6   6</span></span>
-<span id="cb42-17"><a href="datasets.html#cb42-17"></a><span class="co">#&gt; 15:   BPArm          BPArm[7] point    7   7</span></span>
-<span id="cb42-18"><a href="datasets.html#cb42-18"></a><span class="co">#&gt; 16:   BPArm          BPArm[8] point    8   8</span></span>
-<span id="cb42-19"><a href="datasets.html#cb42-19"></a><span class="co">#&gt; 17:   BPArm          BPArm[9] point    9   9</span></span>
-<span id="cb42-20"><a href="datasets.html#cb42-20"></a><span class="co">#&gt; 18:   BPArm         BPArm[10] point   10  10</span></span>
-<span id="cb42-21"><a href="datasets.html#cb42-21"></a><span class="co">#&gt; 19:   BPArm BPArm[&gt;10 &amp; &lt;=20] range   10  20</span></span>
-<span id="cb42-22"><a href="datasets.html#cb42-22"></a><span class="co">#&gt; 20:   BPArm BPArm[&gt;20 &amp; &lt;=30] range   20  30</span></span>
-<span id="cb42-23"><a href="datasets.html#cb42-23"></a><span class="co">#&gt; 21:   BPArm        BPArm[&gt;30] range   30 Inf</span></span>
-<span id="cb42-24"><a href="datasets.html#cb42-24"></a><span class="co">#&gt; 22:      CN             CN[0] point    0   0</span></span>
-<span id="cb42-25"><a href="datasets.html#cb42-25"></a><span class="co">#&gt; 23:      CN             CN[1] point    1   1</span></span>
-<span id="cb42-26"><a href="datasets.html#cb42-26"></a><span class="co">#&gt; 24:      CN             CN[2] point    2   2</span></span>
-<span id="cb42-27"><a href="datasets.html#cb42-27"></a><span class="co">#&gt; 25:      CN             CN[3] point    3   3</span></span>
-<span id="cb42-28"><a href="datasets.html#cb42-28"></a><span class="co">#&gt; 26:      CN             CN[4] point    4   4</span></span>
-<span id="cb42-29"><a href="datasets.html#cb42-29"></a><span class="co">#&gt; 27:      CN      CN[&gt;4 &amp; &lt;=8] range    4   8</span></span>
-<span id="cb42-30"><a href="datasets.html#cb42-30"></a><span class="co">#&gt; 28:      CN            CN[&gt;8] range    8 Inf</span></span>
-<span id="cb42-31"><a href="datasets.html#cb42-31"></a><span class="co">#&gt; 29:    CNCP           CNCP[0] point    0   0</span></span>
-<span id="cb42-32"><a href="datasets.html#cb42-32"></a><span class="co">#&gt; 30:    CNCP           CNCP[1] point    1   1</span></span>
-<span id="cb42-33"><a href="datasets.html#cb42-33"></a><span class="co">#&gt; 31:    CNCP           CNCP[2] point    2   2</span></span>
-<span id="cb42-34"><a href="datasets.html#cb42-34"></a><span class="co">#&gt; 32:    CNCP           CNCP[3] point    3   3</span></span>
-<span id="cb42-35"><a href="datasets.html#cb42-35"></a><span class="co">#&gt; 33:    CNCP           CNCP[4] point    4   4</span></span>
-<span id="cb42-36"><a href="datasets.html#cb42-36"></a><span class="co">#&gt; 34:    CNCP    CNCP[&gt;4 &amp; &lt;=8] range    4   8</span></span>
-<span id="cb42-37"><a href="datasets.html#cb42-37"></a><span class="co">#&gt; 35:    CNCP          CNCP[&gt;8] range    8 Inf</span></span>
-<span id="cb42-38"><a href="datasets.html#cb42-38"></a><span class="co">#&gt; 36:    OsCN           OsCN[0] point    0   0</span></span>
-<span id="cb42-39"><a href="datasets.html#cb42-39"></a><span class="co">#&gt; 37:    OsCN           OsCN[1] point    1   1</span></span>
-<span id="cb42-40"><a href="datasets.html#cb42-40"></a><span class="co">#&gt; 38:    OsCN           OsCN[2] point    2   2</span></span>
-<span id="cb42-41"><a href="datasets.html#cb42-41"></a><span class="co">#&gt; 39:    OsCN           OsCN[3] point    3   3</span></span>
-<span id="cb42-42"><a href="datasets.html#cb42-42"></a><span class="co">#&gt; 40:    OsCN           OsCN[4] point    4   4</span></span>
-<span id="cb42-43"><a href="datasets.html#cb42-43"></a><span class="co">#&gt; 41:    OsCN   OsCN[&gt;4 &amp; &lt;=10] range    4  10</span></span>
-<span id="cb42-44"><a href="datasets.html#cb42-44"></a><span class="co">#&gt; 42:    OsCN         OsCN[&gt;10] range   10 Inf</span></span>
-<span id="cb42-45"><a href="datasets.html#cb42-45"></a><span class="co">#&gt; 43:      SS           SS[&lt;=2] range -Inf   2</span></span>
-<span id="cb42-46"><a href="datasets.html#cb42-46"></a><span class="co">#&gt; 44:      SS      SS[&gt;2 &amp; &lt;=3] range    2   3</span></span>
-<span id="cb42-47"><a href="datasets.html#cb42-47"></a><span class="co">#&gt; 45:      SS      SS[&gt;3 &amp; &lt;=4] range    3   4</span></span>
-<span id="cb42-48"><a href="datasets.html#cb42-48"></a><span class="co">#&gt; 46:      SS      SS[&gt;4 &amp; &lt;=5] range    4   5</span></span>
-<span id="cb42-49"><a href="datasets.html#cb42-49"></a><span class="co">#&gt; 47:      SS      SS[&gt;5 &amp; &lt;=6] range    5   6</span></span>
-<span id="cb42-50"><a href="datasets.html#cb42-50"></a><span class="co">#&gt; 48:      SS      SS[&gt;6 &amp; &lt;=7] range    6   7</span></span>
-<span id="cb42-51"><a href="datasets.html#cb42-51"></a><span class="co">#&gt; 49:      SS      SS[&gt;7 &amp; &lt;=8] range    7   8</span></span>
-<span id="cb42-52"><a href="datasets.html#cb42-52"></a><span class="co">#&gt; 50:      SS            SS[&gt;8] range    8 Inf</span></span>
-<span id="cb42-53"><a href="datasets.html#cb42-53"></a><span class="co">#&gt; 51:    NC50         NC50[&lt;=2] range -Inf   2</span></span>
-<span id="cb42-54"><a href="datasets.html#cb42-54"></a><span class="co">#&gt; 52:    NC50           NC50[3] point    3   3</span></span>
-<span id="cb42-55"><a href="datasets.html#cb42-55"></a><span class="co">#&gt; 53:    NC50           NC50[4] point    4   4</span></span>
-<span id="cb42-56"><a href="datasets.html#cb42-56"></a><span class="co">#&gt; 54:    NC50           NC50[5] point    5   5</span></span>
-<span id="cb42-57"><a href="datasets.html#cb42-57"></a><span class="co">#&gt; 55:    NC50           NC50[6] point    6   6</span></span>
-<span id="cb42-58"><a href="datasets.html#cb42-58"></a><span class="co">#&gt; 56:    NC50           NC50[7] point    7   7</span></span>
-<span id="cb42-59"><a href="datasets.html#cb42-59"></a><span class="co">#&gt; 57:    NC50          NC50[&gt;7] range    7 Inf</span></span>
-<span id="cb42-60"><a href="datasets.html#cb42-60"></a><span class="co">#&gt; 58:   BoChr          BoChr[1] point    1   1</span></span>
-<span id="cb42-61"><a href="datasets.html#cb42-61"></a><span class="co">#&gt; 59:   BoChr          BoChr[2] point    2   2</span></span>
-<span id="cb42-62"><a href="datasets.html#cb42-62"></a><span class="co">#&gt; 60:   BoChr          BoChr[3] point    3   3</span></span>
-<span id="cb42-63"><a href="datasets.html#cb42-63"></a><span class="co">#&gt; 61:   BoChr          BoChr[4] point    4   4</span></span>
-<span id="cb42-64"><a href="datasets.html#cb42-64"></a><span class="co">#&gt; 62:   BoChr          BoChr[5] point    5   5</span></span>
-<span id="cb42-65"><a href="datasets.html#cb42-65"></a><span class="co">#&gt; 63:   BoChr          BoChr[6] point    6   6</span></span>
-<span id="cb42-66"><a href="datasets.html#cb42-66"></a><span class="co">#&gt; 64:   BoChr          BoChr[7] point    7   7</span></span>
-<span id="cb42-67"><a href="datasets.html#cb42-67"></a><span class="co">#&gt; 65:   BoChr          BoChr[8] point    8   8</span></span>
-<span id="cb42-68"><a href="datasets.html#cb42-68"></a><span class="co">#&gt; 66:   BoChr          BoChr[9] point    9   9</span></span>
-<span id="cb42-69"><a href="datasets.html#cb42-69"></a><span class="co">#&gt; 67:   BoChr         BoChr[10] point   10  10</span></span>
-<span id="cb42-70"><a href="datasets.html#cb42-70"></a><span class="co">#&gt; 68:   BoChr         BoChr[11] point   11  11</span></span>
-<span id="cb42-71"><a href="datasets.html#cb42-71"></a><span class="co">#&gt; 69:   BoChr         BoChr[12] point   12  12</span></span>
-<span id="cb42-72"><a href="datasets.html#cb42-72"></a><span class="co">#&gt; 70:   BoChr         BoChr[13] point   13  13</span></span>
-<span id="cb42-73"><a href="datasets.html#cb42-73"></a><span class="co">#&gt; 71:   BoChr         BoChr[14] point   14  14</span></span>
-<span id="cb42-74"><a href="datasets.html#cb42-74"></a><span class="co">#&gt; 72:   BoChr         BoChr[15] point   15  15</span></span>
-<span id="cb42-75"><a href="datasets.html#cb42-75"></a><span class="co">#&gt; 73:   BoChr         BoChr[16] point   16  16</span></span>
-<span id="cb42-76"><a href="datasets.html#cb42-76"></a><span class="co">#&gt; 74:   BoChr         BoChr[17] point   17  17</span></span>
-<span id="cb42-77"><a href="datasets.html#cb42-77"></a><span class="co">#&gt; 75:   BoChr         BoChr[18] point   18  18</span></span>
-<span id="cb42-78"><a href="datasets.html#cb42-78"></a><span class="co">#&gt; 76:   BoChr         BoChr[19] point   19  19</span></span>
-<span id="cb42-79"><a href="datasets.html#cb42-79"></a><span class="co">#&gt; 77:   BoChr         BoChr[20] point   20  20</span></span>
-<span id="cb42-80"><a href="datasets.html#cb42-80"></a><span class="co">#&gt; 78:   BoChr         BoChr[21] point   21  21</span></span>
-<span id="cb42-81"><a href="datasets.html#cb42-81"></a><span class="co">#&gt; 79:   BoChr         BoChr[22] point   22  22</span></span>
-<span id="cb42-82"><a href="datasets.html#cb42-82"></a><span class="co">#&gt; 80:   BoChr         BoChr[23] point   23  23</span></span>
-<span id="cb42-83"><a href="datasets.html#cb42-83"></a><span class="co">#&gt;     feature         component label  min max</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="datasets.html#cb45-1"></a>CN.features</span>
+<span id="cb45-2"><a href="datasets.html#cb45-2"></a><span class="co">#&gt;     feature         component label  min max</span></span>
+<span id="cb45-3"><a href="datasets.html#cb45-3"></a><span class="co">#&gt;  1:  BP10MB         BP10MB[0] point    0   0</span></span>
+<span id="cb45-4"><a href="datasets.html#cb45-4"></a><span class="co">#&gt;  2:  BP10MB         BP10MB[1] point    1   1</span></span>
+<span id="cb45-5"><a href="datasets.html#cb45-5"></a><span class="co">#&gt;  3:  BP10MB         BP10MB[2] point    2   2</span></span>
+<span id="cb45-6"><a href="datasets.html#cb45-6"></a><span class="co">#&gt;  4:  BP10MB         BP10MB[3] point    3   3</span></span>
+<span id="cb45-7"><a href="datasets.html#cb45-7"></a><span class="co">#&gt;  5:  BP10MB         BP10MB[4] point    4   4</span></span>
+<span id="cb45-8"><a href="datasets.html#cb45-8"></a><span class="co">#&gt;  6:  BP10MB         BP10MB[5] point    5   5</span></span>
+<span id="cb45-9"><a href="datasets.html#cb45-9"></a><span class="co">#&gt;  7:  BP10MB        BP10MB[&gt;5] range    5 Inf</span></span>
+<span id="cb45-10"><a href="datasets.html#cb45-10"></a><span class="co">#&gt;  8:   BPArm          BPArm[0] point    0   0</span></span>
+<span id="cb45-11"><a href="datasets.html#cb45-11"></a><span class="co">#&gt;  9:   BPArm          BPArm[1] point    1   1</span></span>
+<span id="cb45-12"><a href="datasets.html#cb45-12"></a><span class="co">#&gt; 10:   BPArm          BPArm[2] point    2   2</span></span>
+<span id="cb45-13"><a href="datasets.html#cb45-13"></a><span class="co">#&gt; 11:   BPArm          BPArm[3] point    3   3</span></span>
+<span id="cb45-14"><a href="datasets.html#cb45-14"></a><span class="co">#&gt; 12:   BPArm          BPArm[4] point    4   4</span></span>
+<span id="cb45-15"><a href="datasets.html#cb45-15"></a><span class="co">#&gt; 13:   BPArm          BPArm[5] point    5   5</span></span>
+<span id="cb45-16"><a href="datasets.html#cb45-16"></a><span class="co">#&gt; 14:   BPArm          BPArm[6] point    6   6</span></span>
+<span id="cb45-17"><a href="datasets.html#cb45-17"></a><span class="co">#&gt; 15:   BPArm          BPArm[7] point    7   7</span></span>
+<span id="cb45-18"><a href="datasets.html#cb45-18"></a><span class="co">#&gt; 16:   BPArm          BPArm[8] point    8   8</span></span>
+<span id="cb45-19"><a href="datasets.html#cb45-19"></a><span class="co">#&gt; 17:   BPArm          BPArm[9] point    9   9</span></span>
+<span id="cb45-20"><a href="datasets.html#cb45-20"></a><span class="co">#&gt; 18:   BPArm         BPArm[10] point   10  10</span></span>
+<span id="cb45-21"><a href="datasets.html#cb45-21"></a><span class="co">#&gt; 19:   BPArm BPArm[&gt;10 &amp; &lt;=20] range   10  20</span></span>
+<span id="cb45-22"><a href="datasets.html#cb45-22"></a><span class="co">#&gt; 20:   BPArm BPArm[&gt;20 &amp; &lt;=30] range   20  30</span></span>
+<span id="cb45-23"><a href="datasets.html#cb45-23"></a><span class="co">#&gt; 21:   BPArm        BPArm[&gt;30] range   30 Inf</span></span>
+<span id="cb45-24"><a href="datasets.html#cb45-24"></a><span class="co">#&gt; 22:      CN             CN[0] point    0   0</span></span>
+<span id="cb45-25"><a href="datasets.html#cb45-25"></a><span class="co">#&gt; 23:      CN             CN[1] point    1   1</span></span>
+<span id="cb45-26"><a href="datasets.html#cb45-26"></a><span class="co">#&gt; 24:      CN             CN[2] point    2   2</span></span>
+<span id="cb45-27"><a href="datasets.html#cb45-27"></a><span class="co">#&gt; 25:      CN             CN[3] point    3   3</span></span>
+<span id="cb45-28"><a href="datasets.html#cb45-28"></a><span class="co">#&gt; 26:      CN             CN[4] point    4   4</span></span>
+<span id="cb45-29"><a href="datasets.html#cb45-29"></a><span class="co">#&gt; 27:      CN      CN[&gt;4 &amp; &lt;=8] range    4   8</span></span>
+<span id="cb45-30"><a href="datasets.html#cb45-30"></a><span class="co">#&gt; 28:      CN            CN[&gt;8] range    8 Inf</span></span>
+<span id="cb45-31"><a href="datasets.html#cb45-31"></a><span class="co">#&gt; 29:    CNCP           CNCP[0] point    0   0</span></span>
+<span id="cb45-32"><a href="datasets.html#cb45-32"></a><span class="co">#&gt; 30:    CNCP           CNCP[1] point    1   1</span></span>
+<span id="cb45-33"><a href="datasets.html#cb45-33"></a><span class="co">#&gt; 31:    CNCP           CNCP[2] point    2   2</span></span>
+<span id="cb45-34"><a href="datasets.html#cb45-34"></a><span class="co">#&gt; 32:    CNCP           CNCP[3] point    3   3</span></span>
+<span id="cb45-35"><a href="datasets.html#cb45-35"></a><span class="co">#&gt; 33:    CNCP           CNCP[4] point    4   4</span></span>
+<span id="cb45-36"><a href="datasets.html#cb45-36"></a><span class="co">#&gt; 34:    CNCP    CNCP[&gt;4 &amp; &lt;=8] range    4   8</span></span>
+<span id="cb45-37"><a href="datasets.html#cb45-37"></a><span class="co">#&gt; 35:    CNCP          CNCP[&gt;8] range    8 Inf</span></span>
+<span id="cb45-38"><a href="datasets.html#cb45-38"></a><span class="co">#&gt; 36:    OsCN           OsCN[0] point    0   0</span></span>
+<span id="cb45-39"><a href="datasets.html#cb45-39"></a><span class="co">#&gt; 37:    OsCN           OsCN[1] point    1   1</span></span>
+<span id="cb45-40"><a href="datasets.html#cb45-40"></a><span class="co">#&gt; 38:    OsCN           OsCN[2] point    2   2</span></span>
+<span id="cb45-41"><a href="datasets.html#cb45-41"></a><span class="co">#&gt; 39:    OsCN           OsCN[3] point    3   3</span></span>
+<span id="cb45-42"><a href="datasets.html#cb45-42"></a><span class="co">#&gt; 40:    OsCN           OsCN[4] point    4   4</span></span>
+<span id="cb45-43"><a href="datasets.html#cb45-43"></a><span class="co">#&gt; 41:    OsCN   OsCN[&gt;4 &amp; &lt;=10] range    4  10</span></span>
+<span id="cb45-44"><a href="datasets.html#cb45-44"></a><span class="co">#&gt; 42:    OsCN         OsCN[&gt;10] range   10 Inf</span></span>
+<span id="cb45-45"><a href="datasets.html#cb45-45"></a><span class="co">#&gt; 43:      SS           SS[&lt;=2] range -Inf   2</span></span>
+<span id="cb45-46"><a href="datasets.html#cb45-46"></a><span class="co">#&gt; 44:      SS      SS[&gt;2 &amp; &lt;=3] range    2   3</span></span>
+<span id="cb45-47"><a href="datasets.html#cb45-47"></a><span class="co">#&gt; 45:      SS      SS[&gt;3 &amp; &lt;=4] range    3   4</span></span>
+<span id="cb45-48"><a href="datasets.html#cb45-48"></a><span class="co">#&gt; 46:      SS      SS[&gt;4 &amp; &lt;=5] range    4   5</span></span>
+<span id="cb45-49"><a href="datasets.html#cb45-49"></a><span class="co">#&gt; 47:      SS      SS[&gt;5 &amp; &lt;=6] range    5   6</span></span>
+<span id="cb45-50"><a href="datasets.html#cb45-50"></a><span class="co">#&gt; 48:      SS      SS[&gt;6 &amp; &lt;=7] range    6   7</span></span>
+<span id="cb45-51"><a href="datasets.html#cb45-51"></a><span class="co">#&gt; 49:      SS      SS[&gt;7 &amp; &lt;=8] range    7   8</span></span>
+<span id="cb45-52"><a href="datasets.html#cb45-52"></a><span class="co">#&gt; 50:      SS            SS[&gt;8] range    8 Inf</span></span>
+<span id="cb45-53"><a href="datasets.html#cb45-53"></a><span class="co">#&gt; 51:    NC50         NC50[&lt;=2] range -Inf   2</span></span>
+<span id="cb45-54"><a href="datasets.html#cb45-54"></a><span class="co">#&gt; 52:    NC50           NC50[3] point    3   3</span></span>
+<span id="cb45-55"><a href="datasets.html#cb45-55"></a><span class="co">#&gt; 53:    NC50           NC50[4] point    4   4</span></span>
+<span id="cb45-56"><a href="datasets.html#cb45-56"></a><span class="co">#&gt; 54:    NC50           NC50[5] point    5   5</span></span>
+<span id="cb45-57"><a href="datasets.html#cb45-57"></a><span class="co">#&gt; 55:    NC50           NC50[6] point    6   6</span></span>
+<span id="cb45-58"><a href="datasets.html#cb45-58"></a><span class="co">#&gt; 56:    NC50           NC50[7] point    7   7</span></span>
+<span id="cb45-59"><a href="datasets.html#cb45-59"></a><span class="co">#&gt; 57:    NC50          NC50[&gt;7] range    7 Inf</span></span>
+<span id="cb45-60"><a href="datasets.html#cb45-60"></a><span class="co">#&gt; 58:   BoChr          BoChr[1] point    1   1</span></span>
+<span id="cb45-61"><a href="datasets.html#cb45-61"></a><span class="co">#&gt; 59:   BoChr          BoChr[2] point    2   2</span></span>
+<span id="cb45-62"><a href="datasets.html#cb45-62"></a><span class="co">#&gt; 60:   BoChr          BoChr[3] point    3   3</span></span>
+<span id="cb45-63"><a href="datasets.html#cb45-63"></a><span class="co">#&gt; 61:   BoChr          BoChr[4] point    4   4</span></span>
+<span id="cb45-64"><a href="datasets.html#cb45-64"></a><span class="co">#&gt; 62:   BoChr          BoChr[5] point    5   5</span></span>
+<span id="cb45-65"><a href="datasets.html#cb45-65"></a><span class="co">#&gt; 63:   BoChr          BoChr[6] point    6   6</span></span>
+<span id="cb45-66"><a href="datasets.html#cb45-66"></a><span class="co">#&gt; 64:   BoChr          BoChr[7] point    7   7</span></span>
+<span id="cb45-67"><a href="datasets.html#cb45-67"></a><span class="co">#&gt; 65:   BoChr          BoChr[8] point    8   8</span></span>
+<span id="cb45-68"><a href="datasets.html#cb45-68"></a><span class="co">#&gt; 66:   BoChr          BoChr[9] point    9   9</span></span>
+<span id="cb45-69"><a href="datasets.html#cb45-69"></a><span class="co">#&gt; 67:   BoChr         BoChr[10] point   10  10</span></span>
+<span id="cb45-70"><a href="datasets.html#cb45-70"></a><span class="co">#&gt; 68:   BoChr         BoChr[11] point   11  11</span></span>
+<span id="cb45-71"><a href="datasets.html#cb45-71"></a><span class="co">#&gt; 69:   BoChr         BoChr[12] point   12  12</span></span>
+<span id="cb45-72"><a href="datasets.html#cb45-72"></a><span class="co">#&gt; 70:   BoChr         BoChr[13] point   13  13</span></span>
+<span id="cb45-73"><a href="datasets.html#cb45-73"></a><span class="co">#&gt; 71:   BoChr         BoChr[14] point   14  14</span></span>
+<span id="cb45-74"><a href="datasets.html#cb45-74"></a><span class="co">#&gt; 72:   BoChr         BoChr[15] point   15  15</span></span>
+<span id="cb45-75"><a href="datasets.html#cb45-75"></a><span class="co">#&gt; 73:   BoChr         BoChr[16] point   16  16</span></span>
+<span id="cb45-76"><a href="datasets.html#cb45-76"></a><span class="co">#&gt; 74:   BoChr         BoChr[17] point   17  17</span></span>
+<span id="cb45-77"><a href="datasets.html#cb45-77"></a><span class="co">#&gt; 75:   BoChr         BoChr[18] point   18  18</span></span>
+<span id="cb45-78"><a href="datasets.html#cb45-78"></a><span class="co">#&gt; 76:   BoChr         BoChr[19] point   19  19</span></span>
+<span id="cb45-79"><a href="datasets.html#cb45-79"></a><span class="co">#&gt; 77:   BoChr         BoChr[20] point   20  20</span></span>
+<span id="cb45-80"><a href="datasets.html#cb45-80"></a><span class="co">#&gt; 78:   BoChr         BoChr[21] point   21  21</span></span>
+<span id="cb45-81"><a href="datasets.html#cb45-81"></a><span class="co">#&gt; 79:   BoChr         BoChr[22] point   22  22</span></span>
+<span id="cb45-82"><a href="datasets.html#cb45-82"></a><span class="co">#&gt; 80:   BoChr         BoChr[23] point   23  23</span></span>
+<span id="cb45-83"><a href="datasets.html#cb45-83"></a><span class="co">#&gt;     feature         component label  min max</span></span></code></pre></div>
 
 </div>
 </div>
