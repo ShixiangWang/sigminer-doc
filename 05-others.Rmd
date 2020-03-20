@@ -1,8 +1,8 @@
-# (PART) Others {-} 
+# (PART) Useful Utilities {-} 
 
 # Datasets {#datasets}
 
-## Reference Annotation   {-}
+## Reference Annotation 
 
 **sigminer** stores many reference annotation datasets for internal calculation. It can be exported for other usage either by `data()` or `get_genome_annotation()`.
 
@@ -35,7 +35,7 @@ get_genome_annotation(data_type = "chr_size",
 
 More see `?get_genome_annotation`.
 
-## Copy Number components setting   {-}
+## Copy Number components setting 
 
 Dataset `CN.features` is a predefined component data table for identifying copy number signatures by method "Wang".
 Users can define a custom table with similar structure and pass it to function like `sig_tally()`.

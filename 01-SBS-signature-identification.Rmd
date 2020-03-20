@@ -1,4 +1,4 @@
-# (PART) Signature Identification {-} 
+# (PART) Common Workflow  {-}
 
 # SBS Signature Identification {#sbssig}
 
@@ -10,7 +10,7 @@ The signature identification procedure has been divided into 3 steps:
 2. Tally components: classify SBS into 96 components and generate sample matrix
 3. Extract signatures: estimate signature number and identify signatures
 
-## Read Data {-}
+## Read Data 
 
 The input data should be in [MAF](https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/) format, it can be either a MAF file or a `data.frame`. 
 There is a famous R/Bioconductor package [**Maftools**](https://github.com/PoisonAlien/maftools) [@mayakonda2018maftools] for analyzing MAF data. 
@@ -44,7 +44,7 @@ slotNames(laml)
 ```
 
 
-## Tally Components {-}
+## Tally Components 
 
 According to 3-nucleotide context (mutated base, 5' and 3' adjacent bases) and base complementary pairing principle, we can divide all SBS mutations into 96 mutation types. We call each mutation type as a *component* here.
 
@@ -74,14 +74,14 @@ We use notion `left[ref>mut]right` to mark each component, e.g. `C[T>G]A` means 
 > Currently, Maftools is the backend for `read_maf()` and `sig_tally` for SBS mutation.
 
 
-## Extract Signatures {-}
+## Extract Signatures 
 
 There are two methods can be used to implement signature extraction.
 
 1. Firstly estimate signature number and then extract signatures. This method is powered by [**NMF**](https://github.com/renozao/NMF) package [@gaujoux2010flexible].
 2. Auto-extract signatures by automatic relevance determination technique in nonnegative matrix factorization [@tan2012automatic], the code is implemented by **SignatureAnalyzer** [@kim2016somatic] and exported to **sigminer**.
 
-### Method 1: Estimate Signature Number  {-}
+### Method 1: Estimate Signature Number  
 
 To estimate signature number, we firstly run NMF for multiple times and calculate some measures from the results, then select the best signature number based on the measure vs. signature number plot.
 
@@ -127,7 +127,7 @@ Cophenetic indicates the robustness of consensus matrix clustering. In this situ
 However, there are no gold standard to determine the signature number. Sometimes, you should consider multiple measures. Remember, the most important thing is that you should have a good biological explanation for each signature.
 The best solution in study may not be the best solution in math.
 
-### Method 1: Extract Signatures {-}
+### Method 1: Extract Signatures 
 
 After selecting a proper signature, you can now extract signatures. In general, use 30~50 NMF runs will get a robust result.
 
@@ -146,7 +146,7 @@ load("data/mt_sig.RData")
 ```
 
 
-### Method 2: Auto-extract {-}
+### Method 2: Auto-extract 
 
 If you have no idea to select a optimal signature number from technologies above, you can try auto-extract feature here. It uses a bayesian variant of NMF algorithm. You need to set a maximum signature number (default is `25`) and run times to get the result.
 
@@ -169,7 +169,7 @@ mt_sig2$Raw$summary_run
 ```
 
 
-## Match Signatures  {-}
+## Match Signatures  
 
 After extracting signatures, we need to know their etiologies. This can be done by comparing the identified signatures and reference signatures from COSMIC database.
 
@@ -198,7 +198,7 @@ You can also try the COSMIC signature database V3 with:
 sim_v3 <- get_sig_similarity(mt_sig, sig_db = "SBS")
 ```
 
-## Operate `Signature` {-}
+## Operate `Signature` 
 
 The result of `sig_extract()` or `sig_auto_extract()` is a `list` with `Signature` class. You can use `$` or use operation function to obtain the data stored in it.
 

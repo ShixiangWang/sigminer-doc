@@ -1,4 +1,4 @@
-# (PART) Signature Analysis and Visualization {-} 
+# (PART)  Universal Analysis {-} 
 
 # Association Analysis and Visualization {#association-analysis}
 
@@ -6,7 +6,7 @@
 
 Group analysis is a common task in cancer study. **sigminer** supports dividing samples into multiple groups and comparing genotype/phenotype feature measures.
 
-## Group Generation {-}
+## Group Generation 
 
 There are multiple methods to generate groups, including 'consensus' (default, can be only used by result from `sig_extract()`), 'k-means' etc. After determining groups, **sigminer** will assign each group to a signature with maximum fraction. We may say a group is `Sig_x` enriched.
 
@@ -30,6 +30,6 @@ attr(mt_grps, "map_table")
 ```
 
 
-## Group Comparison Analysis {-}
+## Group Comparison Analysis 
 
-## Group Visualization {-}
+## Group Visualization 

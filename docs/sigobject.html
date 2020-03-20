@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Signature Object | sigminer: Genomic Alteration Signature Analysis in R</title>
+  <title>Chapter 5 Signature Object | sigminer: Genomic Alteration Signature Analysis in R</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Signature Object | sigminer: Genomic Alteration Signature Analysis in R" />
+  <meta property="og:title" content="Chapter 5 Signature Object | sigminer: Genomic Alteration Signature Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ShixiangWang/sigminer-doc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Signature Object | sigminer: Genomic Alteration Signature Analysis in R" />
+  <meta name="twitter:title" content="Chapter 5 Signature Object | sigminer: Genomic Alteration Signature Analysis in R" />
   
   <meta name="twitter:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="cnobject.html"/>
-<link rel="next" href="part-signature-analysis-and-visualization.html"/>
+<link rel="next" href="part-universal-analysis.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -132,64 +132,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">sigminer: Signature Miner</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-or-suggestions"><i class="fa fa-check"></i>Issues or Suggestions</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#preparation"><i class="fa fa-check"></i>Preparation</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#citation-and-license"><i class="fa fa-check"></i>Citation and LICENSE</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#biological-significance-of-signature"><i class="fa fa-check"></i><b>1.1</b> Biological Significance of Signature</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sigminer"><i class="fa fa-check"></i><b>1.2</b> Sigminer</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.3</b> Installation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#issues-or-suggestions"><i class="fa fa-check"></i><b>1.4</b> Issues or Suggestions</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#preparation"><i class="fa fa-check"></i><b>1.5</b> Preparation</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#overview-of-contents"><i class="fa fa-check"></i><b>1.6</b> Overview of Contents</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#citation-and-license"><i class="fa fa-check"></i><b>1.7</b> Citation and LICENSE</a></li>
 </ul></li>
-<li class="part"><span><b>I Signature Identification</b></span></li>
-<li class="chapter" data-level="1" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>1</b> SBS Signature Identification</a>
+<li class="part"><span><b>I Common Workflow</b></span></li>
+<li class="chapter" data-level="2" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>2</b> SBS Signature Identification</a>
 <ul>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#read-data"><i class="fa fa-check"></i>Read Data</a></li>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#tally-components"><i class="fa fa-check"></i>Tally Components</a></li>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i>Extract Signatures</a>
+<li class="chapter" data-level="2.1" data-path="sbssig.html"><a href="sbssig.html#read-data"><i class="fa fa-check"></i><b>2.1</b> Read Data</a></li>
+<li class="chapter" data-level="2.2" data-path="sbssig.html"><a href="sbssig.html#tally-components"><i class="fa fa-check"></i><b>2.2</b> Tally Components</a></li>
+<li class="chapter" data-level="2.3" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>2.3</b> Extract Signatures</a>
 <ul>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#method-1-estimate-signature-number"><i class="fa fa-check"></i>Method 1: Estimate Signature Number</a></li>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#method-1-extract-signatures"><i class="fa fa-check"></i>Method 1: Extract Signatures</a></li>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#method-2-auto-extract"><i class="fa fa-check"></i>Method 2: Auto-extract</a></li>
+<li class="chapter" data-level="2.3.1" data-path="sbssig.html"><a href="sbssig.html#method-1-estimate-signature-number"><i class="fa fa-check"></i><b>2.3.1</b> Method 1: Estimate Signature Number</a></li>
+<li class="chapter" data-level="2.3.2" data-path="sbssig.html"><a href="sbssig.html#method-1-extract-signatures"><i class="fa fa-check"></i><b>2.3.2</b> Method 1: Extract Signatures</a></li>
+<li class="chapter" data-level="2.3.3" data-path="sbssig.html"><a href="sbssig.html#method-2-auto-extract"><i class="fa fa-check"></i><b>2.3.3</b> Method 2: Auto-extract</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="sbssig.html"><a href="sbssig.html#match-signatures"><i class="fa fa-check"></i>Match Signatures</a></li>
-<li><a href="sbssig.html#operate-signature">Operate <code>Signature</code></a></li>
+<li class="chapter" data-level="2.4" data-path="sbssig.html"><a href="sbssig.html#match-signatures"><i class="fa fa-check"></i><b>2.4</b> Match Signatures</a></li>
+<li class="chapter" data-level="2.5" data-path="sbssig.html"><a href="sbssig.html#operate-signature"><i class="fa fa-check"></i><b>2.5</b> Operate <code>Signature</code></a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>2</b> Copy Number Signature Identification</a>
+<li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a>
 <ul>
-<li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i>Read Data</a></li>
-<li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i>Tally Components</a></li>
-<li class="chapter" data-level="" data-path="cnsig.html"><a href="cnsig.html#extract-signatures-1"><i class="fa fa-check"></i>Extract Signatures</a></li>
+<li class="chapter" data-level="3.1" data-path="cnsig.html"><a href="cnsig.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i><b>3.2</b> Read Data</a></li>
+<li class="chapter" data-level="3.3" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i><b>3.3</b> Tally Components</a></li>
+<li class="chapter" data-level="3.4" data-path="cnsig.html"><a href="cnsig.html#extract-signatures-1"><i class="fa fa-check"></i><b>3.4</b> Extract Signatures</a></li>
 </ul></li>
-<li class="part"><span><b>II Object Visualization</b></span></li>
-<li class="chapter" data-level="3" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>3</b> <code>CopyNumber</code> Object</a>
+<li class="part"><span><b>II Target Visualization</b></span></li>
+<li class="chapter" data-level="4" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>4</b> <code>CopyNumber</code> Object</a>
 <ul>
-<li class="chapter" data-level="" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i>Profile</a></li>
-<li class="chapter" data-level="" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i>Distribution</a></li>
+<li class="chapter" data-level="4.1" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i><b>4.1</b> Profile</a></li>
+<li class="chapter" data-level="4.2" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i><b>4.2</b> Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>4</b> <code>Signature</code> Object</a>
+<li class="chapter" data-level="5" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>5</b> <code>Signature</code> Object</a>
 <ul>
-<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i>Signature Profile</a>
+<li class="chapter" data-level="5.1" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i><b>5.1</b> Signature Profile</a>
 <ul>
-<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i>SBS Signature profile</a></li>
-<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i>Copy Number Signature Porfile</a></li>
-<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i>COSMIC Signature Profile</a></li>
+<li class="chapter" data-level="5.1.1" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i><b>5.1.1</b> SBS Signature profile</a></li>
+<li class="chapter" data-level="5.1.2" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i><b>5.1.2</b> Copy Number Signature Porfile</a></li>
+<li class="chapter" data-level="5.1.3" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i><b>5.1.3</b> COSMIC Signature Profile</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i>Exposure Profile</a></li>
-<li class="chapter" data-level="" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i>Consensus Map</a></li>
+<li class="chapter" data-level="5.2" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i><b>5.2</b> Exposure Profile</a></li>
+<li class="chapter" data-level="5.3" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i><b>5.3</b> Consensus Map</a></li>
 </ul></li>
-<li class="part"><span><b>III Signature Analysis and Visualization</b></span></li>
-<li class="chapter" data-level="5" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>5</b> Association Analysis and Visualization</a></li>
-<li class="chapter" data-level="6" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>6</b> Group Analysis and Visualization</a>
+<li class="part"><span><b>III Universal Analysis</b></span></li>
+<li class="chapter" data-level="6" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>6</b> Association Analysis and Visualization</a></li>
+<li class="chapter" data-level="7" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>7</b> Group Analysis and Visualization</a>
 <ul>
-<li class="chapter" data-level="" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i>Group Generation</a></li>
-<li class="chapter" data-level="" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i>Group Comparison Analysis</a></li>
-<li class="chapter" data-level="" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i>Group Visualization</a></li>
+<li class="chapter" data-level="7.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>7.1</b> Group Generation</a></li>
+<li class="chapter" data-level="7.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>7.2</b> Group Comparison Analysis</a></li>
+<li class="chapter" data-level="7.3" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i><b>7.3</b> Group Visualization</a></li>
 </ul></li>
-<li class="part"><span><b>IV Others</b></span></li>
-<li class="chapter" data-level="7" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>7</b> Datasets</a>
+<li class="part"><span><b>IV Useful Utilities</b></span></li>
+<li class="chapter" data-level="8" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>8</b> Datasets</a>
 <ul>
-<li class="chapter" data-level="" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i>Reference Annotation</a></li>
-<li class="chapter" data-level="" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i>Copy Number components setting</a></li>
+<li class="chapter" data-level="8.1" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i><b>8.1</b> Reference Annotation</a></li>
+<li class="chapter" data-level="8.2" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i><b>8.2</b> Copy Number components setting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -213,24 +216,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="sigobject" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> <code>Signature</code> Object</h1>
+<h1><span class="header-section-number">Chapter 5</span> <code>Signature</code> Object</h1>
 <p><code>Signature</code> is a core object in <strong>sigminer</strong>, it stores signatures and their exposures. Here we show how to plot signature profile and exposure profile. The result plots are basically <strong>ggplot</strong> based, so they can be further edited by your custom operations with <strong>ggplot</strong> grammar.</p>
 <div id="signature-profile" class="section level2">
-<h2>Signature Profile</h2>
+<h2><span class="header-section-number">5.1</span> Signature Profile</h2>
 <p>A signature is composed of distinct component patterns. They can be shown by <code>show_sig_profile()</code>. Of note, for different types of signature, the bar heights may have different meanings.</p>
 <ul>
 <li>SBS signatures are displayed based on the observed component frequency of the human genome, i.e., representing the relative proportions of mutations generated by each signature based on the actual trinucleotide frequencies of the reference human genome.</li>
 <li>Similar to SBS signatures, copy number signatures are displayed based on the observed component frequency of the human genome. Of note, considering the count process of each feature is relatively independent, the profile is row normalized by each feature, unlike Macintyre et al. (2018) did column normalization (this method is easy to mislead readers), so the bar height can be compared within/between features.</li>
 </ul>
 <div id="sbs-signature-profile" class="section level3">
-<h3>SBS Signature profile</h3>
+<h3><span class="header-section-number">5.1.1</span> SBS Signature profile</h3>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="sigobject.html#cb30-1"></a><span class="kw">show_sig_profile</span>(mt_sig, <span class="dt">mode =</span> <span class="st">&quot;SBS&quot;</span>, <span class="dt">paint_axis_text =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-43-1.png" width="1152" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="sigobject.html#cb31-1"></a><span class="kw">show_sig_profile</span>(mt_sig, <span class="dt">mode =</span> <span class="st">&quot;SBS&quot;</span>, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-44-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
 <div id="copy-number-signature-porfile" class="section level3">
-<h3>Copy Number Signature Porfile</h3>
+<h3><span class="header-section-number">5.1.2</span> Copy Number Signature Porfile</h3>
 <p>For copy number signatures from tally method “W”, you have to specify the <code>normalize</code> option as “feature”, so the bar heights can be more clearly compared.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="sigobject.html#cb32-1"></a><span class="kw">show_sig_profile</span>(sig_w,</span>
 <span id="cb32-2"><a href="sigobject.html#cb32-2"></a>  <span class="dt">mode =</span> <span class="st">&quot;copynumber&quot;</span>,</span>
@@ -241,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-45-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
 <div id="cosmic-signature-profile" class="section level3">
-<h3>COSMIC Signature Profile</h3>
+<h3><span class="header-section-number">5.1.3</span> COSMIC Signature Profile</h3>
 <p>Users can show profile of COSMIC signatures by <code>show_cosmic_sig_profile()</code>.</p>
 <blockquote>
 <p>Currently support v2 and SBS from v3.</p>
@@ -264,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="exposure-profile" class="section level2">
-<h2>Exposure Profile</h2>
+<h2><span class="header-section-number">5.2</span> Exposure Profile</h2>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="sigobject.html#cb36-1"></a><span class="kw">show_sig_exposure</span>(mt_sig)</span></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-49-1.png" width="1152" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="sigobject.html#cb37-1"></a><span class="kw">show_sig_exposure</span>(mt_sig, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
@@ -278,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="consensus-map" class="section level2">
-<h2>Consensus Map</h2>
+<h2><span class="header-section-number">5.3</span> Consensus Map</h2>
 <p>This can only support the result from <code>sig_extract()</code> with multiple runs.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="sigobject.html#cb39-1"></a><span class="kw">show_sig_consensusmap</span>(mt_sig)</span></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -291,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="cnobject.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="part-signature-analysis-and-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="part-universal-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -14,13 +14,15 @@ description: "This package helps users to extract, analyze and visualize signatu
 github-repo: ShixiangWang/sigminer-doc
 ---
 
-# Introduction {-}
+# Introduction {#intro}
 
 Genomic alterations including single nucleotide substitution (SBS),
 copy number alteration (CNA), etc. are the major force for cancer
 initialization and development. Due to the specificity of molecular
 lesions caused by genomic alterations, we can generate characteristic
 alteration spectra, called 'signature'. 
+
+## Biological Significance of Signature
 
 To illustrate the biological significance of genome alteration signatures, we show some
 well organized figures here.
@@ -38,7 +40,7 @@ Common etiologies contain aging, defective DNA mismatch repair, smoking, ultravi
 
 Currently, all SBS signatures are summarized in COSMIC database, including two versions: [v2](https://cancer.sanger.ac.uk/cosmic/signatures_v2) and [v3](https://cancer.sanger.ac.uk/cosmic/signatures/SBS/).
 
-> Recently, @alexandrov2020repertoire extends the concept of mutational signature to three types of mutation: SBS, DBS and INDEL. Here, we use genomic alteration signature to refer any kind of mutation type can be used to generate signature.
+> Recently, @alexandrov2020repertoire extends the concept of mutational signature to three types of alteration: SBS, DBS and INDEL. Here, we use genomic alteration signature to refer any kind of alteration type can be used to generate 'signature'.
 
 
 ```{r echo=FALSE, fig.cap="The illustration of copy number signatures, fig source: https://www.nature.com/articles/s41588-018-0212-y"}
@@ -47,35 +49,38 @@ knitr::include_graphics("fig/cn_signature_overview.png")
 
 Copy number signatures are less studied and many works are still to be done.
 
+## Sigminer
 
-To study signatures, we created an easy-to-use and scalable toolkit for genomic alteration signature analysis and visualization in R. We named it **sigminer** (`signature` + `miner`). 
+Here, we present an easy-to-use and scalable toolkit for genomic alteration signature analysis and visualization in R. We named it **sigminer** (`signature` + `miner`). 
 This tool can help users to extract, analyze and visualize signatures from genomic alteration records,
 thus providing new insight into cancer study.
 
 Currently, **sigminer** supports two types of signature:
 
-- SBS signature in the form of 96 components
+- SBS signature in the form of 96 components.
 - Copy number signature by the method either from @macintyre2018copy or from our group work.
 
 
-## Installation {-}
+## Installation 
 
-The **sigminer** package can be installed from ~~CRAN or~~ Github:
+**This manual is not designed for current release of sigminer on CRAN**.
+
+The development version of **sigminer** package can be installed from Github:
 
 ```{r eval=FALSE}
 remotes::install_github("ShixiangWang/sigminer")
 ```
 
 
-## Issues or Suggestions  {-}
+## Issues or Suggestions  
 
 Any issue can be posted on [GitHub issue](https://github.com/ShixiangWang/sigminer/issues), we will reply ASAP.
 
-We have plans to extend other mutational signatures (like INDEL and DBS) to **sigminer** or 
+We have plans to extend other genomic alteration signatures (like INDEL and DBS) to **sigminer** or 
 extend reading input from other softwares, contribution is welcome.
 
 
-## Preparation {-}
+## Preparation 
 
 To reproduce the examples shown in this manual, users should load the following packages firstly.
 **sigminer** is requred to have version >= 1.0.0.
@@ -92,7 +97,16 @@ hello()
 ```
 
 
-## Citation and LICENSE  {-}
+## Overview of Contents
+
+The contents of this manual have been divided into 4 sections:
+
+- Common workflow.
+- Target visualization.
+- Universal analysis.
+- Other utilities.
+
+## Citation and LICENSE  
 
 If you use **sigminer** in academic field, please cite our work:
 
