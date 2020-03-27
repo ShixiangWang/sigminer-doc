@@ -1,6 +1,6 @@
 # (PART) Target Visualization  {-}
 
-# `CopyNumber` Object {#cnobject}
+# CopyNumber Object {#cnobject}
 
 ## Profile 
 
@@ -28,7 +28,7 @@ show_cn_distribution(cn, mode = "cd")
 ```
 
 
-# `Signature` Object {#sigobject}
+# Signature Object {#sigobject}
 
 `Signature` is a core object in **sigminer**, it stores signatures and their exposures. Here we show how to plot signature profile and exposure profile. The result plots are basically **ggplot** based, so they can be further edited by your custom operations with **ggplot** grammar.
 
@@ -76,13 +76,13 @@ show_cosmic_sig_profile(sig_db = "legacy")
 ```
 
 ```{r}
-show_cosmic_sig_profile(sig_db = "legacy")
+show_cosmic_sig_profile(sig_db = "SBS")
 ```
 
 
 To show the plot, specify signature shortnames to `sig_index` option.
 
-```{r}
+```{r, fig.width=12}
 show_cosmic_sig_profile(sig_index = c(1, 5, 6), style = "cosmic")
 ```
 
@@ -108,11 +108,28 @@ Of note:
 - For SBS signature, the absolute exposure is the estimated SBS count.
 - For copy number signatures, the absolute exposure is the estimated copy number segments.
 
+
 ## Consensus Map  
 
 This can only support the result from `sig_extract()` with multiple runs. 
 
 ```{r}
 show_sig_consensusmap(mt_sig)
+```
+
+
+## Catalogue Profile
+
+Based on plot method for signature, we can plot raw catalogue profile.
+
+```{r, fig.width=12}
+show_catalogue(t(mt_tally$nmf_matrix), style = "cosmic")
+```
+
+At default, the function sums all samples. Users can specify sample ID.
+
+
+```{r, fig.width=12}
+show_catalogue(t(mt_tally$nmf_matrix), style = "cosmic", samples = "TCGA-AB-3009")
 ```
 

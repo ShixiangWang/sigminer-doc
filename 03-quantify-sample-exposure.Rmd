@@ -1,0 +1,78 @@
+# Signature Fit: Sample Exposure Quantification {#sigfit}
+
+Besides *de novo* signature discovery shown in previous chapters, another common task is that
+you have gotten a reference signature database (either from known database like COSMIC or *de novo* discovery step), you want to know how these signatures fit in a new sample. That's the target of `sig_fit()`.
+
+`sig_fit()` uses linear combination decomposition to compute exposure of pre-defined signatures from the total
+alteration spectrum of a (can be more) sample. Use `?` see more detail.
+
+To show how this function works, we use a sample with maximum mutation counts as example data.
+
+```{r}
+i <- which.max(apply(mt_tally$nmf_matrix, 1, sum))
+
+example_mat <- mt_tally$nmf_matrix[i, , drop = FALSE] %>% t()
+```
+
+```{r}
+head(example_mat)
+```
+
+
+## Fit Signatures from reference databases
+
+For SBS signatures, users may want to directly use reference signatures from COSMIC database. This can be done by specifying the option `sig_index`.
+
+
+
+```{r}
+sig_fit(example_mat, sig_index = 1:30)
+```
+
+That's it!
+
+You can set `type = "relative"` for getting relative exposure.
+
+```{r}
+sig_fit(example_mat, sig_index = 1:30, type = "relative")
+```
+
+
+For multiple samples, you can return a `data.table`, it can be easier to integrate with other information in R.
+
+```{r}
+sig_fit(t(mt_tally$nmf_matrix[1:5, ]), sig_index = 1:30, return_class = "data.table", rel_threshold = 0.05)
+```
+
+When you set multiple signatures, we recommend setting `rel_threshold` option, which will set exposure of a signature to `0` if its relative exposure in a sample less than the `rel_threshold`.
+
+## Fit Custom Signatures
+
+We have already determined the SBS signatures before. Here we can set them to `sig` option.
+
+```{r}
+sig_fit(example_mat, sig = mt_sig)
+```
+
+## Performance Comparison
+
+Now that we can use `sig_fit` for getting optimal exposures, we can compare the RSS between **raw matrix** and the **reconstructed matrix** either by NMF and `sig_fit()`.
+
+
+i.e. 
+
+$$
+RSS = \sum(\hat H - H)^2
+$$
+
+```{r}
+## Exposure got from NMF
+sum((apply(mt_sig$Signature, 2, function(x) x/sum(x)) %*% mt_sig$Exposure - t(mt_tally$nmf_matrix))^2)
+```
+
+```{r}
+## Exposure optimized by sig_fit
+sum((apply(mt_sig$Signature, 2, function(x) x/sum(x)) %*% sig_fit(t(mt_tally$nmf_matrix), sig = mt_sig) - t(mt_tally$nmf_matrix))^2)
+```
+
+

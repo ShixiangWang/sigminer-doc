@@ -63,11 +63,18 @@ Currently, **sigminer** supports two types of signature:
 
 ## Installation 
 
-**This manual is not designed for current release of sigminer on CRAN**.
+The stable release version of **sigminer** package can be installed from the CRAN:
+
+```{r, eval=FALSE}
+install.packages("sigminer")
+# Or
+BiocManager::install("sigminer")
+```
 
 The development version of **sigminer** package can be installed from Github:
 
 ```{r eval=FALSE}
+# install.packages("remotes")
 remotes::install_github("ShixiangWang/sigminer")
 ```
 
@@ -102,8 +109,18 @@ hello()
 The contents of this manual have been divided into 4 sections:
 
 - Common workflow.
+  - de novo signature discovery.
+  - single sample exposure quantification.
 - Target visualization.
+  - copy number profile.
+  - copy number distribution.
+  - catalogue profile.
+  - signature profile.
+  - exposure profile.
+  - ...
 - Universal analysis.
+  - association analysis.
+  - group analysis.
 - Other utilities.
 
 ## Citation and LICENSE  

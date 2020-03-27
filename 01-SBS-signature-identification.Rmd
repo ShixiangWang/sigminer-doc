@@ -226,3 +226,5 @@ get_sig_exposure(mt_sig)
 
 For plotting signature profile and exposure profile, please go to chapter \@ref(sigobject).
 
+For optimizing signature exposure, please use `sig_fit()`.
+
