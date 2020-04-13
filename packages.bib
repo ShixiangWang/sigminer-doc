@@ -3,7 +3,7 @@
   author = {{R Core Team}},
   organization = {R Foundation for Statistical Computing},
   address = {Vienna, Austria},
-  year = {2020},
+  year = {2019},
   url = {https://www.R-project.org/},
 }
 @Manual{R-Biobase,
@@ -18,12 +18,31 @@
   year = {2019},
   note = {R package version 0.32.0},
 }
+@Manual{R-Biostrings,
+  title = {Biostrings: Efficient manipulation of biological strings},
+  author = {H. Pagès and P. Aboyoun and R. Gentleman and S. DebRoy},
+  year = {2019},
+  note = {R package version 2.54.0},
+}
 @Manual{R-bookdown,
   title = {bookdown: Authoring Books and Technical Documents with R Markdown},
   author = {Yihui Xie},
   year = {2020},
   note = {R package version 0.18},
   url = {https://CRAN.R-project.org/package=bookdown},
+}
+@Manual{R-BSgenome,
+  title = {BSgenome: Software infrastructure for efficient representation of full
+genomes and their SNPs},
+  author = {Hervé Pagès},
+  year = {2019},
+  note = {R package version 1.54.0},
+}
+@Manual{R-BSgenome.Hsapiens.UCSC.hg19,
+  title = {BSgenome.Hsapiens.UCSC.hg19: Full genome sequences for Homo sapiens (UCSC version hg19)},
+  author = {The Bioconductor Dev Team},
+  year = {2014},
+  note = {R package version 1.4.0},
 }
 @Manual{R-cluster,
   title = {cluster: "Finding Groups in Data": Cluster Analysis Extended Rousseeuw et
@@ -32,6 +51,25 @@ al.},
   year = {2019},
   note = {R package version 2.1.0},
   url = {https://CRAN.R-project.org/package=cluster},
+}
+@Manual{R-GenomeInfoDb,
+  title = {GenomeInfoDb: Utilities for manipulating chromosome names, including modifying
+them to follow a particular naming style},
+  author = {Sonali Arora and Martin Morgan and Marc Carlson and H. Pagès},
+  year = {2019},
+  note = {R package version 1.22.0},
+}
+@Manual{R-GenomicRanges,
+  title = {GenomicRanges: Representation and manipulation of genomic intervals},
+  author = {P. Aboyoun and H. Pagès and M. Lawrence},
+  year = {2019},
+  note = {R package version 1.38.0},
+}
+@Manual{R-IRanges,
+  title = {IRanges: Foundation of integer range manipulation in Bioconductor},
+  author = {H. Pagès and P. Aboyoun and M. Lawrence},
+  year = {2019},
+  note = {R package version 2.20.1},
 }
 @Manual{R-knitr,
   title = {knitr: A General-Purpose Package for Dynamic Report Generation in R},
@@ -62,6 +100,13 @@ al.},
   note = {R package version 0.31.1},
   url = {https://CRAN.R-project.org/package=pkgmaker},
 }
+@Manual{R-RColorBrewer,
+  title = {RColorBrewer: ColorBrewer Palettes},
+  author = {Erich Neuwirth},
+  year = {2014},
+  note = {R package version 1.1-2},
+  url = {https://CRAN.R-project.org/package=RColorBrewer},
+}
 @Manual{R-registry,
   title = {registry: Infrastructure for R Package Registries},
   author = {David Meyer},
@@ -83,13 +128,33 @@ al.},
   note = {R package version 1.5},
   url = {https://CRAN.R-project.org/package=rngtools},
 }
+@Manual{R-rtracklayer,
+  title = {rtracklayer: R interface to genome annotation files and the UCSC genome
+browser},
+  author = {Michael Lawrence and Vince Carey and Robert Gentleman},
+  year = {2019},
+  note = {R package version 1.46.0},
+}
+@Manual{R-S4Vectors,
+  title = {S4Vectors: Foundation of vector-like and list-like containers in
+Bioconductor},
+  author = {H. Pagès and M. Lawrence and P. Aboyoun},
+  year = {2019},
+  note = {R package version 0.24.1},
+}
 @Manual{R-sigminer,
-  title = {sigminer: Extract, Analyze and Visualize Signatures for Genomic
-Variations},
+  title = {sigminer: Extract, Analyze and Visualize Signatures for Genomic Variations},
   author = {Shixiang Wang and Xue-Song Liu},
-  note = {R package version 1.0.0},
-  url = {https://github.com/ShixiangWang/sigminer},
   year = {2020},
+  note = {R package version 1.0.0},
+  url = {https://CRAN.R-project.org/package=sigminer},
+}
+@Manual{R-XVector,
+  title = {XVector: Foundation of external vector representation and manipulation in
+Bioconductor},
+  author = {Hervé Pagès and Patrick Aboyoun},
+  year = {2019},
+  note = {R package version 0.26.0},
 }
 @Article{Biobase2015,
   author = {W. Huber and V. J. Carey and R. Gentleman and S. Anders and M. Carlson and B. S. Carvalho and H. C. Bravo and S. Davis and L. Gatto and T. Girke and R. Gottardo and F. Hahne and K. D. Hansen and R. A. Irizarry and M. Lawrence and M. I. Love and J. MacDonald and V. Obenchain and A. K. {Ole's} and H. {Pag`es} and A. Reyes and P. Shannon and G. K. Smyth and D. Tenenbaum and L. Waldron and M. Morgan},
@@ -119,6 +184,26 @@ Variations},
   year = {2016},
   note = {ISBN 978-1138700109},
   url = {https://github.com/rstudio/bookdown},
+}
+@Article{GenomicRanges2013,
+  title = {Software for Computing and Annotating Genomic Ranges},
+  author = {Michael Lawrence and Wolfgang Huber and Herv\'e Pag\`es and Patrick Aboyoun and Marc Carlson and Robert Gentleman and Martin Morgan and Vincent Carey},
+  year = {2013},
+  journal = {{PLoS} Computational Biology},
+  volume = {9},
+  issue = {8},
+  doi = {10.1371/journal.pcbi.1003118},
+  url = {http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118},
+}
+@Article{IRanges2013,
+  title = {Software for Computing and Annotating Genomic Ranges},
+  author = {Michael Lawrence and Wolfgang Huber and Herv\'e Pag\`es and Patrick Aboyoun and Marc Carlson and Robert Gentleman and Martin Morgan and Vincent Carey},
+  year = {2013},
+  journal = {{PLoS} Computational Biology},
+  volume = {9},
+  issue = {8},
+  doi = {10.1371/journal.pcbi.1003118},
+  url = {http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118},
 }
 @Book{knitr2015,
   title = {Dynamic Documents with {R} and knitr},
@@ -168,4 +253,15 @@ Variations},
   year = {2018},
   note = {ISBN 9781138359338},
   url = {https://bookdown.org/yihui/rmarkdown},
+}
+@Article{rtracklayer2009,
+  title = {rtracklayer: an R package for interfacing with
+                  genome browsers},
+  author = {Michael Lawrence and Robert Gentleman and Vincent Carey},
+  year = {2009},
+  journal = {Bioinformatics},
+  volume = {25},
+  pages = {1841-1842},
+  doi = {10.1093/bioinformatics/btp328},
+  url = {http://bioinformatics.oxfordjournals.org/content/25/14/1841.abstract},
 }

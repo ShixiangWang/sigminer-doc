@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Group Analysis and Visualization | sigminer: Genomic Alteration Signature Analysis in R</title>
+  <title>Chapter 9 Group Analysis and Visualization | sigminer: Genomic Alteration Signature Analysis in R</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Group Analysis and Visualization | sigminer: Genomic Alteration Signature Analysis in R" />
+  <meta property="og:title" content="Chapter 9 Group Analysis and Visualization | sigminer: Genomic Alteration Signature Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ShixiangWang/sigminer-doc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Group Analysis and Visualization | sigminer: Genomic Alteration Signature Analysis in R" />
+  <meta name="twitter:title" content="Chapter 9 Group Analysis and Visualization | sigminer: Genomic Alteration Signature Analysis in R" />
   
   <meta name="twitter:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="association-analysis.html"/>
-<link rel="next" href="part-useful-utilities.html"/>
+<link rel="next" href="datasets.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,26 +53,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,8 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">sigminer: Signature Miner</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#biological-significance-of-signature"><i class="fa fa-check"></i><b>1.1</b> Biological Significance of Signature</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sigminer"><i class="fa fa-check"></i><b>1.2</b> Sigminer</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.3</b> Installation</a></li>
@@ -143,12 +141,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#citation-and-license"><i class="fa fa-check"></i><b>1.7</b> Citation and LICENSE</a></li>
 </ul></li>
 <li class="part"><span><b>I Common Workflow</b></span></li>
-<li class="chapter" data-level="2" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>2</b> SBS Signature Identification</a>
-<ul>
+<li class="chapter" data-level="2" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>2</b> SBS Signature Identification</a><ul>
 <li class="chapter" data-level="2.1" data-path="sbssig.html"><a href="sbssig.html#read-data"><i class="fa fa-check"></i><b>2.1</b> Read Data</a></li>
 <li class="chapter" data-level="2.2" data-path="sbssig.html"><a href="sbssig.html#tally-components"><i class="fa fa-check"></i><b>2.2</b> Tally Components</a></li>
-<li class="chapter" data-level="2.3" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>2.3</b> Extract Signatures</a>
-<ul>
+<li class="chapter" data-level="2.3" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>2.3</b> Extract Signatures</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="sbssig.html"><a href="sbssig.html#method-1-estimate-signature-number"><i class="fa fa-check"></i><b>2.3.1</b> Method 1: Estimate Signature Number</a></li>
 <li class="chapter" data-level="2.3.2" data-path="sbssig.html"><a href="sbssig.html#method-1-extract-signatures"><i class="fa fa-check"></i><b>2.3.2</b> Method 1: Extract Signatures</a></li>
 <li class="chapter" data-level="2.3.3" data-path="sbssig.html"><a href="sbssig.html#method-2-auto-extract"><i class="fa fa-check"></i><b>2.3.3</b> Method 2: Auto-extract</a></li>
@@ -156,51 +152,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="sbssig.html"><a href="sbssig.html#match-signatures"><i class="fa fa-check"></i><b>2.4</b> Match Signatures</a></li>
 <li class="chapter" data-level="2.5" data-path="sbssig.html"><a href="sbssig.html#operate-signature"><i class="fa fa-check"></i><b>2.5</b> Operate <code>Signature</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a>
-<ul>
+<li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a><ul>
 <li class="chapter" data-level="3.1" data-path="cnsig.html"><a href="cnsig.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i><b>3.2</b> Read Data</a></li>
 <li class="chapter" data-level="3.3" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i><b>3.3</b> Tally Components</a></li>
 <li class="chapter" data-level="3.4" data-path="cnsig.html"><a href="cnsig.html#extract-signatures-1"><i class="fa fa-check"></i><b>3.4</b> Extract Signatures</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="sigfit.html"><a href="sigfit.html"><i class="fa fa-check"></i><b>4</b> Signature Fit: Sample Exposure Quantification</a>
-<ul>
+<li class="chapter" data-level="4" data-path="sigfit.html"><a href="sigfit.html"><i class="fa fa-check"></i><b>4</b> Signature Fit: Sample Exposure Quantification</a><ul>
 <li class="chapter" data-level="4.1" data-path="sigfit.html"><a href="sigfit.html#fit-signatures-from-reference-databases"><i class="fa fa-check"></i><b>4.1</b> Fit Signatures from reference databases</a></li>
 <li class="chapter" data-level="4.2" data-path="sigfit.html"><a href="sigfit.html#fit-custom-signatures"><i class="fa fa-check"></i><b>4.2</b> Fit Custom Signatures</a></li>
 <li class="chapter" data-level="4.3" data-path="sigfit.html"><a href="sigfit.html#performance-comparison"><i class="fa fa-check"></i><b>4.3</b> Performance Comparison</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="subtyping.html"><a href="subtyping.html"><i class="fa fa-check"></i><b>5</b> Subtype prediction</a></li>
 <li class="part"><span><b>II Target Visualization</b></span></li>
-<li class="chapter" data-level="5" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>5</b> CopyNumber Object</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i><b>5.1</b> Profile</a></li>
-<li class="chapter" data-level="5.2" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i><b>5.2</b> Distribution</a></li>
+<li class="chapter" data-level="6" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>6</b> CopyNumber Object</a><ul>
+<li class="chapter" data-level="6.1" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i><b>6.1</b> Profile</a></li>
+<li class="chapter" data-level="6.2" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i><b>6.2</b> Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>6</b> Signature Object</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i><b>6.1</b> Signature Profile</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i><b>6.1.1</b> SBS Signature profile</a></li>
-<li class="chapter" data-level="6.1.2" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i><b>6.1.2</b> Copy Number Signature Porfile</a></li>
-<li class="chapter" data-level="6.1.3" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i><b>6.1.3</b> COSMIC Signature Profile</a></li>
+<li class="chapter" data-level="7" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>7</b> Signature Object</a><ul>
+<li class="chapter" data-level="7.1" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i><b>7.1</b> Signature Profile</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i><b>7.1.1</b> SBS Signature profile</a></li>
+<li class="chapter" data-level="7.1.2" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i><b>7.1.2</b> Copy Number Signature Porfile</a></li>
+<li class="chapter" data-level="7.1.3" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i><b>7.1.3</b> COSMIC Signature Profile</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i><b>6.2</b> Exposure Profile</a></li>
-<li class="chapter" data-level="6.3" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i><b>6.3</b> Consensus Map</a></li>
-<li class="chapter" data-level="6.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>6.4</b> Catalogue Profile</a></li>
+<li class="chapter" data-level="7.2" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i><b>7.2</b> Exposure Profile</a></li>
+<li class="chapter" data-level="7.3" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i><b>7.3</b> Consensus Map</a></li>
+<li class="chapter" data-level="7.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>7.4</b> Catalogue Profile</a></li>
 </ul></li>
 <li class="part"><span><b>III Universal Analysis</b></span></li>
-<li class="chapter" data-level="7" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>7</b> Association Analysis and Visualization</a></li>
-<li class="chapter" data-level="8" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>8</b> Group Analysis and Visualization</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>8.1</b> Group Generation</a></li>
-<li class="chapter" data-level="8.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>8.2</b> Group Comparison Analysis</a></li>
-<li class="chapter" data-level="8.3" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i><b>8.3</b> Group Visualization</a></li>
+<li class="chapter" data-level="8" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>8</b> Association Analysis and Visualization</a></li>
+<li class="chapter" data-level="9" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>9</b> Group Analysis and Visualization</a><ul>
+<li class="chapter" data-level="9.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>9.1</b> Group Generation</a></li>
+<li class="chapter" data-level="9.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>9.2</b> Group Comparison Analysis</a></li>
+<li class="chapter" data-level="9.3" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i><b>9.3</b> Group Visualization</a></li>
 </ul></li>
 <li class="part"><span><b>IV Useful Utilities</b></span></li>
-<li class="chapter" data-level="9" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>9</b> Datasets</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i><b>9.1</b> Reference Annotation</a></li>
-<li class="chapter" data-level="9.2" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i><b>9.2</b> Copy Number components setting</a></li>
-<li class="chapter" data-level="9.3" data-path="datasets.html"><a href="datasets.html#sbs-signature-conversion"><i class="fa fa-check"></i><b>9.3</b> SBS Signature Conversion</a></li>
+<li class="chapter" data-level="10" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>10</b> Datasets</a><ul>
+<li class="chapter" data-level="10.1" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i><b>10.1</b> Reference Annotation</a></li>
+<li class="chapter" data-level="10.2" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i><b>10.2</b> Copy Number components setting</a></li>
+<li class="chapter" data-level="10.3" data-path="datasets.html"><a href="datasets.html#sbs-signature-conversion"><i class="fa fa-check"></i><b>10.3</b> SBS Signature Conversion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -224,59 +214,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="group-analysis" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Group Analysis and Visualization</h1>
+<h1><span class="header-section-number">Chapter 9</span> Group Analysis and Visualization</h1>
 <p>Group analysis is a common task in cancer study. <strong>sigminer</strong> supports dividing samples into multiple groups and comparing genotype/phenotype feature measures.</p>
 <div id="group-generation" class="section level2">
-<h2><span class="header-section-number">8.1</span> Group Generation</h2>
+<h2><span class="header-section-number">9.1</span> Group Generation</h2>
 <p>There are multiple methods to generate groups, including ‘consensus’ (default, can be only used by result from <code>sig_extract()</code>), ‘k-means’ etc. After determining groups, <strong>sigminer</strong> will assign each group to a signature with maximum fraction. We may say a group is <code>Sig_x</code> enriched.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="group-analysis.html#cb51-1"></a>mt_grps &lt;-<span class="st"> </span><span class="kw">get_groups</span>(mt_sig, <span class="dt">method =</span> <span class="st">&quot;consensus&quot;</span>, <span class="dt">match_consensus =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb51-2"><a href="group-analysis.html#cb51-2"></a><span class="co">#&gt; =&gt; Obtaining clusters from the hierarchical clustering of the consensus matrix...</span></span>
-<span id="cb51-3"><a href="group-analysis.html#cb51-3"></a><span class="co">#&gt; =&gt; Finding the dominant signature of each group...</span></span>
-<span id="cb51-4"><a href="group-analysis.html#cb51-4"></a><span class="co">#&gt; =&gt; Generating a table of group and dominant signature:</span></span>
-<span id="cb51-5"><a href="group-analysis.html#cb51-5"></a><span class="co">#&gt;    </span></span>
-<span id="cb51-6"><a href="group-analysis.html#cb51-6"></a><span class="co">#&gt;     Sig1 Sig2 Sig3</span></span>
-<span id="cb51-7"><a href="group-analysis.html#cb51-7"></a><span class="co">#&gt;   1    9   43   39</span></span>
-<span id="cb51-8"><a href="group-analysis.html#cb51-8"></a><span class="co">#&gt;   2   14    6    8</span></span>
-<span id="cb51-9"><a href="group-analysis.html#cb51-9"></a><span class="co">#&gt;   3   28   12   29</span></span>
-<span id="cb51-10"><a href="group-analysis.html#cb51-10"></a><span class="co">#&gt; =&gt; Assigning a group to a signature with the maxium fraction (stored in &#39;map_table&#39; attr)...</span></span>
-<span id="cb51-11"><a href="group-analysis.html#cb51-11"></a><span class="co">#&gt; =&gt; Summarizing...</span></span>
-<span id="cb51-12"><a href="group-analysis.html#cb51-12"></a><span class="co">#&gt;  group #1: 91 samples with Sig2 enriched.</span></span>
-<span id="cb51-13"><a href="group-analysis.html#cb51-13"></a><span class="co">#&gt;  group #2: 28 samples with Sig1 enriched.</span></span>
-<span id="cb51-14"><a href="group-analysis.html#cb51-14"></a><span class="co">#&gt;  group #3: 69 samples with Sig3 enriched.</span></span>
-<span id="cb51-15"><a href="group-analysis.html#cb51-15"></a><span class="kw">head</span>(mt_grps)</span>
-<span id="cb51-16"><a href="group-analysis.html#cb51-16"></a><span class="co">#&gt;          sample group silhouette_width enrich_sig</span></span>
-<span id="cb51-17"><a href="group-analysis.html#cb51-17"></a><span class="co">#&gt; 1: TCGA-AB-2977     1           0.1810       Sig2</span></span>
-<span id="cb51-18"><a href="group-analysis.html#cb51-18"></a><span class="co">#&gt; 2: TCGA-AB-2867     1          -0.0231       Sig2</span></span>
-<span id="cb51-19"><a href="group-analysis.html#cb51-19"></a><span class="co">#&gt; 3: TCGA-AB-2832     1           0.2290       Sig2</span></span>
-<span id="cb51-20"><a href="group-analysis.html#cb51-20"></a><span class="co">#&gt; 4: TCGA-AB-2925     1           0.4080       Sig2</span></span>
-<span id="cb51-21"><a href="group-analysis.html#cb51-21"></a><span class="co">#&gt; 5: TCGA-AB-3009     1           0.3130       Sig2</span></span>
-<span id="cb51-22"><a href="group-analysis.html#cb51-22"></a><span class="co">#&gt; 6: TCGA-AB-2881     1           0.2850       Sig2</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">mt_grps &lt;-<span class="st"> </span><span class="kw">get_groups</span>(mt_sig, <span class="dt">method =</span> <span class="st">&quot;consensus&quot;</span>, <span class="dt">match_consensus =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="co">#&gt; =&gt; Obtaining clusters from the hierarchical clustering of the consensus matrix...</span></a>
+<a class="sourceLine" id="cb51-3" data-line-number="3"><span class="co">#&gt; =&gt; Finding the dominant signature of each group...</span></a>
+<a class="sourceLine" id="cb51-4" data-line-number="4"><span class="co">#&gt; =&gt; Generating a table of group and dominant signature:</span></a>
+<a class="sourceLine" id="cb51-5" data-line-number="5"><span class="co">#&gt;    </span></a>
+<a class="sourceLine" id="cb51-6" data-line-number="6"><span class="co">#&gt;     Sig1 Sig2 Sig3</span></a>
+<a class="sourceLine" id="cb51-7" data-line-number="7"><span class="co">#&gt;   1    9   43   39</span></a>
+<a class="sourceLine" id="cb51-8" data-line-number="8"><span class="co">#&gt;   2   14    6    8</span></a>
+<a class="sourceLine" id="cb51-9" data-line-number="9"><span class="co">#&gt;   3   28   12   29</span></a>
+<a class="sourceLine" id="cb51-10" data-line-number="10"><span class="co">#&gt; =&gt; Assigning a group to a signature with the maxium fraction (stored in &#39;map_table&#39; attr)...</span></a>
+<a class="sourceLine" id="cb51-11" data-line-number="11"><span class="co">#&gt; =&gt; Summarizing...</span></a>
+<a class="sourceLine" id="cb51-12" data-line-number="12"><span class="co">#&gt;  group #1: 91 samples with Sig2 enriched.</span></a>
+<a class="sourceLine" id="cb51-13" data-line-number="13"><span class="co">#&gt;  group #2: 28 samples with Sig1 enriched.</span></a>
+<a class="sourceLine" id="cb51-14" data-line-number="14"><span class="co">#&gt;  group #3: 69 samples with Sig3 enriched.</span></a>
+<a class="sourceLine" id="cb51-15" data-line-number="15"><span class="kw">head</span>(mt_grps)</a>
+<a class="sourceLine" id="cb51-16" data-line-number="16"><span class="co">#&gt;          sample group silhouette_width enrich_sig</span></a>
+<a class="sourceLine" id="cb51-17" data-line-number="17"><span class="co">#&gt; 1: TCGA-AB-2977     1           0.1810       Sig2</span></a>
+<a class="sourceLine" id="cb51-18" data-line-number="18"><span class="co">#&gt; 2: TCGA-AB-2867     1          -0.0231       Sig2</span></a>
+<a class="sourceLine" id="cb51-19" data-line-number="19"><span class="co">#&gt; 3: TCGA-AB-2832     1           0.2290       Sig2</span></a>
+<a class="sourceLine" id="cb51-20" data-line-number="20"><span class="co">#&gt; 4: TCGA-AB-2925     1           0.4080       Sig2</span></a>
+<a class="sourceLine" id="cb51-21" data-line-number="21"><span class="co">#&gt; 5: TCGA-AB-3009     1           0.3130       Sig2</span></a>
+<a class="sourceLine" id="cb51-22" data-line-number="22"><span class="co">#&gt; 6: TCGA-AB-2881     1           0.2850       Sig2</span></a></code></pre></div>
 <p>The returned sample orders match sample orders in clustered consensus matrix.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="group-analysis.html#cb52-1"></a><span class="kw">show_sig_consensusmap</span>(mt_sig)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">show_sig_consensusmap</span>(mt_sig)</a></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-67-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Sometimes, the mapping between groups and enriched signatures may not right. Users should check it and even correct it manually.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="group-analysis.html#cb53-1"></a><span class="kw">attr</span>(mt_grps, <span class="st">&quot;map_table&quot;</span>)</span>
-<span id="cb53-2"><a href="group-analysis.html#cb53-2"></a><span class="co">#&gt;    </span></span>
-<span id="cb53-3"><a href="group-analysis.html#cb53-3"></a><span class="co">#&gt;     Sig1 Sig2 Sig3</span></span>
-<span id="cb53-4"><a href="group-analysis.html#cb53-4"></a><span class="co">#&gt;   1    9   43   39</span></span>
-<span id="cb53-5"><a href="group-analysis.html#cb53-5"></a><span class="co">#&gt;   2   14    6    8</span></span>
-<span id="cb53-6"><a href="group-analysis.html#cb53-6"></a><span class="co">#&gt;   3   28   12   29</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">attr</span>(mt_grps, <span class="st">&quot;map_table&quot;</span>)</a>
+<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="co">#&gt;    </span></a>
+<a class="sourceLine" id="cb53-3" data-line-number="3"><span class="co">#&gt;     Sig1 Sig2 Sig3</span></a>
+<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="co">#&gt;   1    9   43   39</span></a>
+<a class="sourceLine" id="cb53-5" data-line-number="5"><span class="co">#&gt;   2   14    6    8</span></a>
+<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="co">#&gt;   3   28   12   29</span></a></code></pre></div>
 </div>
 <div id="group-comparison-analysis" class="section level2">
-<h2><span class="header-section-number">8.2</span> Group Comparison Analysis</h2>
+<h2><span class="header-section-number">9.2</span> Group Comparison Analysis</h2>
 </div>
 <div id="group-visualization" class="section level2">
-<h2><span class="header-section-number">8.3</span> Group Visualization</h2>
+<h2><span class="header-section-number">9.3</span> Group Visualization</h2>
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
 <a href="association-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="part-useful-utilities.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="datasets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

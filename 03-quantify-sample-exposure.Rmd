@@ -75,4 +75,7 @@ sum((apply(mt_sig$Signature, 2, function(x) x/sum(x)) %*% mt_sig$Exposure - t(mt
 sum((apply(mt_sig$Signature, 2, function(x) x/sum(x)) %*% sig_fit(t(mt_tally$nmf_matrix), sig = mt_sig) - t(mt_tally$nmf_matrix))^2)
 ```
 
+# Subtype prediction {#subtyping}
+
+To expand the power of signatures to clinical application, based on **signature discovery** and **signature fitting** workflow, we can go further build neutral network model prediction model with **keras**. This feature is currently experimental and implemented in **sigminer**'s child package [**sigminer.prediction**](https://github.com/ShixiangWang/sigminer.prediction).
 

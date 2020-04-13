@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Datasets | sigminer: Genomic Alteration Signature Analysis in R</title>
+  <title>Chapter 10 Datasets | sigminer: Genomic Alteration Signature Analysis in R</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Datasets | sigminer: Genomic Alteration Signature Analysis in R" />
+  <meta property="og:title" content="Chapter 10 Datasets | sigminer: Genomic Alteration Signature Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ShixiangWang/sigminer-doc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Datasets | sigminer: Genomic Alteration Signature Analysis in R" />
+  <meta name="twitter:title" content="Chapter 10 Datasets | sigminer: Genomic Alteration Signature Analysis in R" />
   
   <meta name="twitter:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="part-useful-utilities.html"/>
+<link rel="prev" href="group-analysis.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,26 +53,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,8 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">sigminer: Signature Miner</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#biological-significance-of-signature"><i class="fa fa-check"></i><b>1.1</b> Biological Significance of Signature</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sigminer"><i class="fa fa-check"></i><b>1.2</b> Sigminer</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.3</b> Installation</a></li>
@@ -143,12 +141,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#citation-and-license"><i class="fa fa-check"></i><b>1.7</b> Citation and LICENSE</a></li>
 </ul></li>
 <li class="part"><span><b>I Common Workflow</b></span></li>
-<li class="chapter" data-level="2" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>2</b> SBS Signature Identification</a>
-<ul>
+<li class="chapter" data-level="2" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>2</b> SBS Signature Identification</a><ul>
 <li class="chapter" data-level="2.1" data-path="sbssig.html"><a href="sbssig.html#read-data"><i class="fa fa-check"></i><b>2.1</b> Read Data</a></li>
 <li class="chapter" data-level="2.2" data-path="sbssig.html"><a href="sbssig.html#tally-components"><i class="fa fa-check"></i><b>2.2</b> Tally Components</a></li>
-<li class="chapter" data-level="2.3" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>2.3</b> Extract Signatures</a>
-<ul>
+<li class="chapter" data-level="2.3" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>2.3</b> Extract Signatures</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="sbssig.html"><a href="sbssig.html#method-1-estimate-signature-number"><i class="fa fa-check"></i><b>2.3.1</b> Method 1: Estimate Signature Number</a></li>
 <li class="chapter" data-level="2.3.2" data-path="sbssig.html"><a href="sbssig.html#method-1-extract-signatures"><i class="fa fa-check"></i><b>2.3.2</b> Method 1: Extract Signatures</a></li>
 <li class="chapter" data-level="2.3.3" data-path="sbssig.html"><a href="sbssig.html#method-2-auto-extract"><i class="fa fa-check"></i><b>2.3.3</b> Method 2: Auto-extract</a></li>
@@ -156,51 +152,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="sbssig.html"><a href="sbssig.html#match-signatures"><i class="fa fa-check"></i><b>2.4</b> Match Signatures</a></li>
 <li class="chapter" data-level="2.5" data-path="sbssig.html"><a href="sbssig.html#operate-signature"><i class="fa fa-check"></i><b>2.5</b> Operate <code>Signature</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a>
-<ul>
+<li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a><ul>
 <li class="chapter" data-level="3.1" data-path="cnsig.html"><a href="cnsig.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i><b>3.2</b> Read Data</a></li>
 <li class="chapter" data-level="3.3" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i><b>3.3</b> Tally Components</a></li>
 <li class="chapter" data-level="3.4" data-path="cnsig.html"><a href="cnsig.html#extract-signatures-1"><i class="fa fa-check"></i><b>3.4</b> Extract Signatures</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="sigfit.html"><a href="sigfit.html"><i class="fa fa-check"></i><b>4</b> Signature Fit: Sample Exposure Quantification</a>
-<ul>
+<li class="chapter" data-level="4" data-path="sigfit.html"><a href="sigfit.html"><i class="fa fa-check"></i><b>4</b> Signature Fit: Sample Exposure Quantification</a><ul>
 <li class="chapter" data-level="4.1" data-path="sigfit.html"><a href="sigfit.html#fit-signatures-from-reference-databases"><i class="fa fa-check"></i><b>4.1</b> Fit Signatures from reference databases</a></li>
 <li class="chapter" data-level="4.2" data-path="sigfit.html"><a href="sigfit.html#fit-custom-signatures"><i class="fa fa-check"></i><b>4.2</b> Fit Custom Signatures</a></li>
 <li class="chapter" data-level="4.3" data-path="sigfit.html"><a href="sigfit.html#performance-comparison"><i class="fa fa-check"></i><b>4.3</b> Performance Comparison</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="subtyping.html"><a href="subtyping.html"><i class="fa fa-check"></i><b>5</b> Subtype prediction</a></li>
 <li class="part"><span><b>II Target Visualization</b></span></li>
-<li class="chapter" data-level="5" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>5</b> CopyNumber Object</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i><b>5.1</b> Profile</a></li>
-<li class="chapter" data-level="5.2" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i><b>5.2</b> Distribution</a></li>
+<li class="chapter" data-level="6" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>6</b> CopyNumber Object</a><ul>
+<li class="chapter" data-level="6.1" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i><b>6.1</b> Profile</a></li>
+<li class="chapter" data-level="6.2" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i><b>6.2</b> Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>6</b> Signature Object</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i><b>6.1</b> Signature Profile</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i><b>6.1.1</b> SBS Signature profile</a></li>
-<li class="chapter" data-level="6.1.2" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i><b>6.1.2</b> Copy Number Signature Porfile</a></li>
-<li class="chapter" data-level="6.1.3" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i><b>6.1.3</b> COSMIC Signature Profile</a></li>
+<li class="chapter" data-level="7" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>7</b> Signature Object</a><ul>
+<li class="chapter" data-level="7.1" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i><b>7.1</b> Signature Profile</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i><b>7.1.1</b> SBS Signature profile</a></li>
+<li class="chapter" data-level="7.1.2" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i><b>7.1.2</b> Copy Number Signature Porfile</a></li>
+<li class="chapter" data-level="7.1.3" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i><b>7.1.3</b> COSMIC Signature Profile</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i><b>6.2</b> Exposure Profile</a></li>
-<li class="chapter" data-level="6.3" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i><b>6.3</b> Consensus Map</a></li>
-<li class="chapter" data-level="6.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>6.4</b> Catalogue Profile</a></li>
+<li class="chapter" data-level="7.2" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i><b>7.2</b> Exposure Profile</a></li>
+<li class="chapter" data-level="7.3" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i><b>7.3</b> Consensus Map</a></li>
+<li class="chapter" data-level="7.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>7.4</b> Catalogue Profile</a></li>
 </ul></li>
 <li class="part"><span><b>III Universal Analysis</b></span></li>
-<li class="chapter" data-level="7" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>7</b> Association Analysis and Visualization</a></li>
-<li class="chapter" data-level="8" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>8</b> Group Analysis and Visualization</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>8.1</b> Group Generation</a></li>
-<li class="chapter" data-level="8.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>8.2</b> Group Comparison Analysis</a></li>
-<li class="chapter" data-level="8.3" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i><b>8.3</b> Group Visualization</a></li>
+<li class="chapter" data-level="8" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>8</b> Association Analysis and Visualization</a></li>
+<li class="chapter" data-level="9" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>9</b> Group Analysis and Visualization</a><ul>
+<li class="chapter" data-level="9.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>9.1</b> Group Generation</a></li>
+<li class="chapter" data-level="9.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>9.2</b> Group Comparison Analysis</a></li>
+<li class="chapter" data-level="9.3" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i><b>9.3</b> Group Visualization</a></li>
 </ul></li>
 <li class="part"><span><b>IV Useful Utilities</b></span></li>
-<li class="chapter" data-level="9" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>9</b> Datasets</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i><b>9.1</b> Reference Annotation</a></li>
-<li class="chapter" data-level="9.2" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i><b>9.2</b> Copy Number components setting</a></li>
-<li class="chapter" data-level="9.3" data-path="datasets.html"><a href="datasets.html#sbs-signature-conversion"><i class="fa fa-check"></i><b>9.3</b> SBS Signature Conversion</a></li>
+<li class="chapter" data-level="10" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>10</b> Datasets</a><ul>
+<li class="chapter" data-level="10.1" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i><b>10.1</b> Reference Annotation</a></li>
+<li class="chapter" data-level="10.2" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i><b>10.2</b> Copy Number components setting</a></li>
+<li class="chapter" data-level="10.3" data-path="datasets.html"><a href="datasets.html#sbs-signature-conversion"><i class="fa fa-check"></i><b>10.3</b> SBS Signature Conversion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -224,9 +214,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="datasets" class="section level1">
-<h1><span class="header-section-number">Chapter 9</span> Datasets</h1>
+<h1><span class="header-section-number">Chapter 10</span> Datasets</h1>
 <div id="reference-annotation" class="section level2">
-<h2><span class="header-section-number">9.1</span> Reference Annotation</h2>
+<h2><span class="header-section-number">10.1</span> Reference Annotation</h2>
 <p><strong>sigminer</strong> stores many reference annotation datasets for internal calculation. It can be exported for other usage either by <code>data()</code> or <code>get_genome_annotation()</code>.</p>
 <p>Currently, there are the following datasets:</p>
 <ul>
@@ -238,230 +228,230 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>cytobands.hg38</code></li>
 </ul>
 <p>An example is given as below:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="datasets.html#cb54-1"></a><span class="kw">data</span>(<span class="st">&quot;centromeres.hg19&quot;</span>)</span>
-<span id="cb54-2"><a href="datasets.html#cb54-2"></a><span class="kw">head</span>(centromeres.hg19)</span>
-<span id="cb54-3"><a href="datasets.html#cb54-3"></a><span class="co">#&gt;   chrom left.base right.base</span></span>
-<span id="cb54-4"><a href="datasets.html#cb54-4"></a><span class="co">#&gt; 1  chr1 121535434  124535434</span></span>
-<span id="cb54-5"><a href="datasets.html#cb54-5"></a><span class="co">#&gt; 2  chr2  92326171   95326171</span></span>
-<span id="cb54-6"><a href="datasets.html#cb54-6"></a><span class="co">#&gt; 3  chr3  90504854   93504854</span></span>
-<span id="cb54-7"><a href="datasets.html#cb54-7"></a><span class="co">#&gt; 4  chr4  49660117   52660117</span></span>
-<span id="cb54-8"><a href="datasets.html#cb54-8"></a><span class="co">#&gt; 5  chr5  46405641   49405641</span></span>
-<span id="cb54-9"><a href="datasets.html#cb54-9"></a><span class="co">#&gt; 6  chr6  58830166   61830166</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;centromeres.hg19&quot;</span>)</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="kw">head</span>(centromeres.hg19)</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="co">#&gt;   chrom left.base right.base</span></a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="co">#&gt; 1  chr1 121535434  124535434</span></a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="co">#&gt; 2  chr2  92326171   95326171</span></a>
+<a class="sourceLine" id="cb54-6" data-line-number="6"><span class="co">#&gt; 3  chr3  90504854   93504854</span></a>
+<a class="sourceLine" id="cb54-7" data-line-number="7"><span class="co">#&gt; 4  chr4  49660117   52660117</span></a>
+<a class="sourceLine" id="cb54-8" data-line-number="8"><span class="co">#&gt; 5  chr5  46405641   49405641</span></a>
+<a class="sourceLine" id="cb54-9" data-line-number="9"><span class="co">#&gt; 6  chr6  58830166   61830166</span></a></code></pre></div>
 <p><code>get_genome_annotation()</code> can better control the returned <code>data.frame</code>.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="datasets.html#cb55-1"></a><span class="kw">get_genome_annotation</span>(</span>
-<span id="cb55-2"><a href="datasets.html#cb55-2"></a>  <span class="dt">data_type =</span> <span class="st">&quot;chr_size&quot;</span>,</span>
-<span id="cb55-3"><a href="datasets.html#cb55-3"></a>  <span class="dt">chrs =</span> <span class="kw">c</span>(<span class="st">&quot;chr1&quot;</span>, <span class="st">&quot;chr10&quot;</span>, <span class="st">&quot;chr20&quot;</span>),</span>
-<span id="cb55-4"><a href="datasets.html#cb55-4"></a>  <span class="dt">genome_build =</span> <span class="st">&quot;hg19&quot;</span></span>
-<span id="cb55-5"><a href="datasets.html#cb55-5"></a>)</span>
-<span id="cb55-6"><a href="datasets.html#cb55-6"></a><span class="co">#&gt;   chrom      size</span></span>
-<span id="cb55-7"><a href="datasets.html#cb55-7"></a><span class="co">#&gt; 1  chr1 249250621</span></span>
-<span id="cb55-8"><a href="datasets.html#cb55-8"></a><span class="co">#&gt; 2 chr10 135534747</span></span>
-<span id="cb55-9"><a href="datasets.html#cb55-9"></a><span class="co">#&gt; 3 chr20  63025520</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">get_genome_annotation</span>(</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">  <span class="dt">data_type =</span> <span class="st">&quot;chr_size&quot;</span>,</a>
+<a class="sourceLine" id="cb55-3" data-line-number="3">  <span class="dt">chrs =</span> <span class="kw">c</span>(<span class="st">&quot;chr1&quot;</span>, <span class="st">&quot;chr10&quot;</span>, <span class="st">&quot;chr20&quot;</span>),</a>
+<a class="sourceLine" id="cb55-4" data-line-number="4">  <span class="dt">genome_build =</span> <span class="st">&quot;hg19&quot;</span></a>
+<a class="sourceLine" id="cb55-5" data-line-number="5">)</a>
+<a class="sourceLine" id="cb55-6" data-line-number="6"><span class="co">#&gt;   chrom      size</span></a>
+<a class="sourceLine" id="cb55-7" data-line-number="7"><span class="co">#&gt; 1  chr1 249250621</span></a>
+<a class="sourceLine" id="cb55-8" data-line-number="8"><span class="co">#&gt; 2 chr10 135534747</span></a>
+<a class="sourceLine" id="cb55-9" data-line-number="9"><span class="co">#&gt; 3 chr20  63025520</span></a></code></pre></div>
 <p>More see <code>?get_genome_annotation</code>.</p>
 </div>
 <div id="copy-number-components-setting" class="section level2">
-<h2><span class="header-section-number">9.2</span> Copy Number components setting</h2>
+<h2><span class="header-section-number">10.2</span> Copy Number components setting</h2>
 <p>Dataset <code>CN.features</code> is a predefined component data table for identifying copy number signatures by method “Wang”.
 Users can define a custom table with similar structure and pass it to function like <code>sig_tally()</code>.</p>
 <p>Detail about how to generate this dataset can be viewed at <a href="https://github.com/ShixiangWang/sigminer/blob/master/data-raw/CN-features.R" class="uri">https://github.com/ShixiangWang/sigminer/blob/master/data-raw/CN-features.R</a>.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="datasets.html#cb56-1"></a>CN.features</span>
-<span id="cb56-2"><a href="datasets.html#cb56-2"></a><span class="co">#&gt;     feature         component label  min max</span></span>
-<span id="cb56-3"><a href="datasets.html#cb56-3"></a><span class="co">#&gt;  1:  BP10MB         BP10MB[0] point    0   0</span></span>
-<span id="cb56-4"><a href="datasets.html#cb56-4"></a><span class="co">#&gt;  2:  BP10MB         BP10MB[1] point    1   1</span></span>
-<span id="cb56-5"><a href="datasets.html#cb56-5"></a><span class="co">#&gt;  3:  BP10MB         BP10MB[2] point    2   2</span></span>
-<span id="cb56-6"><a href="datasets.html#cb56-6"></a><span class="co">#&gt;  4:  BP10MB         BP10MB[3] point    3   3</span></span>
-<span id="cb56-7"><a href="datasets.html#cb56-7"></a><span class="co">#&gt;  5:  BP10MB         BP10MB[4] point    4   4</span></span>
-<span id="cb56-8"><a href="datasets.html#cb56-8"></a><span class="co">#&gt;  6:  BP10MB         BP10MB[5] point    5   5</span></span>
-<span id="cb56-9"><a href="datasets.html#cb56-9"></a><span class="co">#&gt;  7:  BP10MB        BP10MB[&gt;5] range    5 Inf</span></span>
-<span id="cb56-10"><a href="datasets.html#cb56-10"></a><span class="co">#&gt;  8:   BPArm          BPArm[0] point    0   0</span></span>
-<span id="cb56-11"><a href="datasets.html#cb56-11"></a><span class="co">#&gt;  9:   BPArm          BPArm[1] point    1   1</span></span>
-<span id="cb56-12"><a href="datasets.html#cb56-12"></a><span class="co">#&gt; 10:   BPArm          BPArm[2] point    2   2</span></span>
-<span id="cb56-13"><a href="datasets.html#cb56-13"></a><span class="co">#&gt; 11:   BPArm          BPArm[3] point    3   3</span></span>
-<span id="cb56-14"><a href="datasets.html#cb56-14"></a><span class="co">#&gt; 12:   BPArm          BPArm[4] point    4   4</span></span>
-<span id="cb56-15"><a href="datasets.html#cb56-15"></a><span class="co">#&gt; 13:   BPArm          BPArm[5] point    5   5</span></span>
-<span id="cb56-16"><a href="datasets.html#cb56-16"></a><span class="co">#&gt; 14:   BPArm          BPArm[6] point    6   6</span></span>
-<span id="cb56-17"><a href="datasets.html#cb56-17"></a><span class="co">#&gt; 15:   BPArm          BPArm[7] point    7   7</span></span>
-<span id="cb56-18"><a href="datasets.html#cb56-18"></a><span class="co">#&gt; 16:   BPArm          BPArm[8] point    8   8</span></span>
-<span id="cb56-19"><a href="datasets.html#cb56-19"></a><span class="co">#&gt; 17:   BPArm          BPArm[9] point    9   9</span></span>
-<span id="cb56-20"><a href="datasets.html#cb56-20"></a><span class="co">#&gt; 18:   BPArm         BPArm[10] point   10  10</span></span>
-<span id="cb56-21"><a href="datasets.html#cb56-21"></a><span class="co">#&gt; 19:   BPArm BPArm[&gt;10 &amp; &lt;=20] range   10  20</span></span>
-<span id="cb56-22"><a href="datasets.html#cb56-22"></a><span class="co">#&gt; 20:   BPArm BPArm[&gt;20 &amp; &lt;=30] range   20  30</span></span>
-<span id="cb56-23"><a href="datasets.html#cb56-23"></a><span class="co">#&gt; 21:   BPArm        BPArm[&gt;30] range   30 Inf</span></span>
-<span id="cb56-24"><a href="datasets.html#cb56-24"></a><span class="co">#&gt; 22:      CN             CN[0] point    0   0</span></span>
-<span id="cb56-25"><a href="datasets.html#cb56-25"></a><span class="co">#&gt; 23:      CN             CN[1] point    1   1</span></span>
-<span id="cb56-26"><a href="datasets.html#cb56-26"></a><span class="co">#&gt; 24:      CN             CN[2] point    2   2</span></span>
-<span id="cb56-27"><a href="datasets.html#cb56-27"></a><span class="co">#&gt; 25:      CN             CN[3] point    3   3</span></span>
-<span id="cb56-28"><a href="datasets.html#cb56-28"></a><span class="co">#&gt; 26:      CN             CN[4] point    4   4</span></span>
-<span id="cb56-29"><a href="datasets.html#cb56-29"></a><span class="co">#&gt; 27:      CN      CN[&gt;4 &amp; &lt;=8] range    4   8</span></span>
-<span id="cb56-30"><a href="datasets.html#cb56-30"></a><span class="co">#&gt; 28:      CN            CN[&gt;8] range    8 Inf</span></span>
-<span id="cb56-31"><a href="datasets.html#cb56-31"></a><span class="co">#&gt; 29:    CNCP           CNCP[0] point    0   0</span></span>
-<span id="cb56-32"><a href="datasets.html#cb56-32"></a><span class="co">#&gt; 30:    CNCP           CNCP[1] point    1   1</span></span>
-<span id="cb56-33"><a href="datasets.html#cb56-33"></a><span class="co">#&gt; 31:    CNCP           CNCP[2] point    2   2</span></span>
-<span id="cb56-34"><a href="datasets.html#cb56-34"></a><span class="co">#&gt; 32:    CNCP           CNCP[3] point    3   3</span></span>
-<span id="cb56-35"><a href="datasets.html#cb56-35"></a><span class="co">#&gt; 33:    CNCP           CNCP[4] point    4   4</span></span>
-<span id="cb56-36"><a href="datasets.html#cb56-36"></a><span class="co">#&gt; 34:    CNCP    CNCP[&gt;4 &amp; &lt;=8] range    4   8</span></span>
-<span id="cb56-37"><a href="datasets.html#cb56-37"></a><span class="co">#&gt; 35:    CNCP          CNCP[&gt;8] range    8 Inf</span></span>
-<span id="cb56-38"><a href="datasets.html#cb56-38"></a><span class="co">#&gt; 36:    OsCN           OsCN[0] point    0   0</span></span>
-<span id="cb56-39"><a href="datasets.html#cb56-39"></a><span class="co">#&gt; 37:    OsCN           OsCN[1] point    1   1</span></span>
-<span id="cb56-40"><a href="datasets.html#cb56-40"></a><span class="co">#&gt; 38:    OsCN           OsCN[2] point    2   2</span></span>
-<span id="cb56-41"><a href="datasets.html#cb56-41"></a><span class="co">#&gt; 39:    OsCN           OsCN[3] point    3   3</span></span>
-<span id="cb56-42"><a href="datasets.html#cb56-42"></a><span class="co">#&gt; 40:    OsCN           OsCN[4] point    4   4</span></span>
-<span id="cb56-43"><a href="datasets.html#cb56-43"></a><span class="co">#&gt; 41:    OsCN   OsCN[&gt;4 &amp; &lt;=10] range    4  10</span></span>
-<span id="cb56-44"><a href="datasets.html#cb56-44"></a><span class="co">#&gt; 42:    OsCN         OsCN[&gt;10] range   10 Inf</span></span>
-<span id="cb56-45"><a href="datasets.html#cb56-45"></a><span class="co">#&gt; 43:      SS           SS[&lt;=2] range -Inf   2</span></span>
-<span id="cb56-46"><a href="datasets.html#cb56-46"></a><span class="co">#&gt; 44:      SS      SS[&gt;2 &amp; &lt;=3] range    2   3</span></span>
-<span id="cb56-47"><a href="datasets.html#cb56-47"></a><span class="co">#&gt; 45:      SS      SS[&gt;3 &amp; &lt;=4] range    3   4</span></span>
-<span id="cb56-48"><a href="datasets.html#cb56-48"></a><span class="co">#&gt; 46:      SS      SS[&gt;4 &amp; &lt;=5] range    4   5</span></span>
-<span id="cb56-49"><a href="datasets.html#cb56-49"></a><span class="co">#&gt; 47:      SS      SS[&gt;5 &amp; &lt;=6] range    5   6</span></span>
-<span id="cb56-50"><a href="datasets.html#cb56-50"></a><span class="co">#&gt; 48:      SS      SS[&gt;6 &amp; &lt;=7] range    6   7</span></span>
-<span id="cb56-51"><a href="datasets.html#cb56-51"></a><span class="co">#&gt; 49:      SS      SS[&gt;7 &amp; &lt;=8] range    7   8</span></span>
-<span id="cb56-52"><a href="datasets.html#cb56-52"></a><span class="co">#&gt; 50:      SS            SS[&gt;8] range    8 Inf</span></span>
-<span id="cb56-53"><a href="datasets.html#cb56-53"></a><span class="co">#&gt; 51:    NC50         NC50[&lt;=2] range -Inf   2</span></span>
-<span id="cb56-54"><a href="datasets.html#cb56-54"></a><span class="co">#&gt; 52:    NC50           NC50[3] point    3   3</span></span>
-<span id="cb56-55"><a href="datasets.html#cb56-55"></a><span class="co">#&gt; 53:    NC50           NC50[4] point    4   4</span></span>
-<span id="cb56-56"><a href="datasets.html#cb56-56"></a><span class="co">#&gt; 54:    NC50           NC50[5] point    5   5</span></span>
-<span id="cb56-57"><a href="datasets.html#cb56-57"></a><span class="co">#&gt; 55:    NC50           NC50[6] point    6   6</span></span>
-<span id="cb56-58"><a href="datasets.html#cb56-58"></a><span class="co">#&gt; 56:    NC50           NC50[7] point    7   7</span></span>
-<span id="cb56-59"><a href="datasets.html#cb56-59"></a><span class="co">#&gt; 57:    NC50          NC50[&gt;7] range    7 Inf</span></span>
-<span id="cb56-60"><a href="datasets.html#cb56-60"></a><span class="co">#&gt; 58:   BoChr          BoChr[1] point    1   1</span></span>
-<span id="cb56-61"><a href="datasets.html#cb56-61"></a><span class="co">#&gt; 59:   BoChr          BoChr[2] point    2   2</span></span>
-<span id="cb56-62"><a href="datasets.html#cb56-62"></a><span class="co">#&gt; 60:   BoChr          BoChr[3] point    3   3</span></span>
-<span id="cb56-63"><a href="datasets.html#cb56-63"></a><span class="co">#&gt; 61:   BoChr          BoChr[4] point    4   4</span></span>
-<span id="cb56-64"><a href="datasets.html#cb56-64"></a><span class="co">#&gt; 62:   BoChr          BoChr[5] point    5   5</span></span>
-<span id="cb56-65"><a href="datasets.html#cb56-65"></a><span class="co">#&gt; 63:   BoChr          BoChr[6] point    6   6</span></span>
-<span id="cb56-66"><a href="datasets.html#cb56-66"></a><span class="co">#&gt; 64:   BoChr          BoChr[7] point    7   7</span></span>
-<span id="cb56-67"><a href="datasets.html#cb56-67"></a><span class="co">#&gt; 65:   BoChr          BoChr[8] point    8   8</span></span>
-<span id="cb56-68"><a href="datasets.html#cb56-68"></a><span class="co">#&gt; 66:   BoChr          BoChr[9] point    9   9</span></span>
-<span id="cb56-69"><a href="datasets.html#cb56-69"></a><span class="co">#&gt; 67:   BoChr         BoChr[10] point   10  10</span></span>
-<span id="cb56-70"><a href="datasets.html#cb56-70"></a><span class="co">#&gt; 68:   BoChr         BoChr[11] point   11  11</span></span>
-<span id="cb56-71"><a href="datasets.html#cb56-71"></a><span class="co">#&gt; 69:   BoChr         BoChr[12] point   12  12</span></span>
-<span id="cb56-72"><a href="datasets.html#cb56-72"></a><span class="co">#&gt; 70:   BoChr         BoChr[13] point   13  13</span></span>
-<span id="cb56-73"><a href="datasets.html#cb56-73"></a><span class="co">#&gt; 71:   BoChr         BoChr[14] point   14  14</span></span>
-<span id="cb56-74"><a href="datasets.html#cb56-74"></a><span class="co">#&gt; 72:   BoChr         BoChr[15] point   15  15</span></span>
-<span id="cb56-75"><a href="datasets.html#cb56-75"></a><span class="co">#&gt; 73:   BoChr         BoChr[16] point   16  16</span></span>
-<span id="cb56-76"><a href="datasets.html#cb56-76"></a><span class="co">#&gt; 74:   BoChr         BoChr[17] point   17  17</span></span>
-<span id="cb56-77"><a href="datasets.html#cb56-77"></a><span class="co">#&gt; 75:   BoChr         BoChr[18] point   18  18</span></span>
-<span id="cb56-78"><a href="datasets.html#cb56-78"></a><span class="co">#&gt; 76:   BoChr         BoChr[19] point   19  19</span></span>
-<span id="cb56-79"><a href="datasets.html#cb56-79"></a><span class="co">#&gt; 77:   BoChr         BoChr[20] point   20  20</span></span>
-<span id="cb56-80"><a href="datasets.html#cb56-80"></a><span class="co">#&gt; 78:   BoChr         BoChr[21] point   21  21</span></span>
-<span id="cb56-81"><a href="datasets.html#cb56-81"></a><span class="co">#&gt; 79:   BoChr         BoChr[22] point   22  22</span></span>
-<span id="cb56-82"><a href="datasets.html#cb56-82"></a><span class="co">#&gt; 80:   BoChr         BoChr[23] point   23  23</span></span>
-<span id="cb56-83"><a href="datasets.html#cb56-83"></a><span class="co">#&gt;     feature         component label  min max</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">CN.features</a>
+<a class="sourceLine" id="cb56-2" data-line-number="2"><span class="co">#&gt;     feature         component label  min max</span></a>
+<a class="sourceLine" id="cb56-3" data-line-number="3"><span class="co">#&gt;  1:  BP10MB         BP10MB[0] point    0   0</span></a>
+<a class="sourceLine" id="cb56-4" data-line-number="4"><span class="co">#&gt;  2:  BP10MB         BP10MB[1] point    1   1</span></a>
+<a class="sourceLine" id="cb56-5" data-line-number="5"><span class="co">#&gt;  3:  BP10MB         BP10MB[2] point    2   2</span></a>
+<a class="sourceLine" id="cb56-6" data-line-number="6"><span class="co">#&gt;  4:  BP10MB         BP10MB[3] point    3   3</span></a>
+<a class="sourceLine" id="cb56-7" data-line-number="7"><span class="co">#&gt;  5:  BP10MB         BP10MB[4] point    4   4</span></a>
+<a class="sourceLine" id="cb56-8" data-line-number="8"><span class="co">#&gt;  6:  BP10MB         BP10MB[5] point    5   5</span></a>
+<a class="sourceLine" id="cb56-9" data-line-number="9"><span class="co">#&gt;  7:  BP10MB        BP10MB[&gt;5] range    5 Inf</span></a>
+<a class="sourceLine" id="cb56-10" data-line-number="10"><span class="co">#&gt;  8:   BPArm          BPArm[0] point    0   0</span></a>
+<a class="sourceLine" id="cb56-11" data-line-number="11"><span class="co">#&gt;  9:   BPArm          BPArm[1] point    1   1</span></a>
+<a class="sourceLine" id="cb56-12" data-line-number="12"><span class="co">#&gt; 10:   BPArm          BPArm[2] point    2   2</span></a>
+<a class="sourceLine" id="cb56-13" data-line-number="13"><span class="co">#&gt; 11:   BPArm          BPArm[3] point    3   3</span></a>
+<a class="sourceLine" id="cb56-14" data-line-number="14"><span class="co">#&gt; 12:   BPArm          BPArm[4] point    4   4</span></a>
+<a class="sourceLine" id="cb56-15" data-line-number="15"><span class="co">#&gt; 13:   BPArm          BPArm[5] point    5   5</span></a>
+<a class="sourceLine" id="cb56-16" data-line-number="16"><span class="co">#&gt; 14:   BPArm          BPArm[6] point    6   6</span></a>
+<a class="sourceLine" id="cb56-17" data-line-number="17"><span class="co">#&gt; 15:   BPArm          BPArm[7] point    7   7</span></a>
+<a class="sourceLine" id="cb56-18" data-line-number="18"><span class="co">#&gt; 16:   BPArm          BPArm[8] point    8   8</span></a>
+<a class="sourceLine" id="cb56-19" data-line-number="19"><span class="co">#&gt; 17:   BPArm          BPArm[9] point    9   9</span></a>
+<a class="sourceLine" id="cb56-20" data-line-number="20"><span class="co">#&gt; 18:   BPArm         BPArm[10] point   10  10</span></a>
+<a class="sourceLine" id="cb56-21" data-line-number="21"><span class="co">#&gt; 19:   BPArm BPArm[&gt;10 &amp; &lt;=20] range   10  20</span></a>
+<a class="sourceLine" id="cb56-22" data-line-number="22"><span class="co">#&gt; 20:   BPArm BPArm[&gt;20 &amp; &lt;=30] range   20  30</span></a>
+<a class="sourceLine" id="cb56-23" data-line-number="23"><span class="co">#&gt; 21:   BPArm        BPArm[&gt;30] range   30 Inf</span></a>
+<a class="sourceLine" id="cb56-24" data-line-number="24"><span class="co">#&gt; 22:      CN             CN[0] point    0   0</span></a>
+<a class="sourceLine" id="cb56-25" data-line-number="25"><span class="co">#&gt; 23:      CN             CN[1] point    1   1</span></a>
+<a class="sourceLine" id="cb56-26" data-line-number="26"><span class="co">#&gt; 24:      CN             CN[2] point    2   2</span></a>
+<a class="sourceLine" id="cb56-27" data-line-number="27"><span class="co">#&gt; 25:      CN             CN[3] point    3   3</span></a>
+<a class="sourceLine" id="cb56-28" data-line-number="28"><span class="co">#&gt; 26:      CN             CN[4] point    4   4</span></a>
+<a class="sourceLine" id="cb56-29" data-line-number="29"><span class="co">#&gt; 27:      CN      CN[&gt;4 &amp; &lt;=8] range    4   8</span></a>
+<a class="sourceLine" id="cb56-30" data-line-number="30"><span class="co">#&gt; 28:      CN            CN[&gt;8] range    8 Inf</span></a>
+<a class="sourceLine" id="cb56-31" data-line-number="31"><span class="co">#&gt; 29:    CNCP           CNCP[0] point    0   0</span></a>
+<a class="sourceLine" id="cb56-32" data-line-number="32"><span class="co">#&gt; 30:    CNCP           CNCP[1] point    1   1</span></a>
+<a class="sourceLine" id="cb56-33" data-line-number="33"><span class="co">#&gt; 31:    CNCP           CNCP[2] point    2   2</span></a>
+<a class="sourceLine" id="cb56-34" data-line-number="34"><span class="co">#&gt; 32:    CNCP           CNCP[3] point    3   3</span></a>
+<a class="sourceLine" id="cb56-35" data-line-number="35"><span class="co">#&gt; 33:    CNCP           CNCP[4] point    4   4</span></a>
+<a class="sourceLine" id="cb56-36" data-line-number="36"><span class="co">#&gt; 34:    CNCP    CNCP[&gt;4 &amp; &lt;=8] range    4   8</span></a>
+<a class="sourceLine" id="cb56-37" data-line-number="37"><span class="co">#&gt; 35:    CNCP          CNCP[&gt;8] range    8 Inf</span></a>
+<a class="sourceLine" id="cb56-38" data-line-number="38"><span class="co">#&gt; 36:    OsCN           OsCN[0] point    0   0</span></a>
+<a class="sourceLine" id="cb56-39" data-line-number="39"><span class="co">#&gt; 37:    OsCN           OsCN[1] point    1   1</span></a>
+<a class="sourceLine" id="cb56-40" data-line-number="40"><span class="co">#&gt; 38:    OsCN           OsCN[2] point    2   2</span></a>
+<a class="sourceLine" id="cb56-41" data-line-number="41"><span class="co">#&gt; 39:    OsCN           OsCN[3] point    3   3</span></a>
+<a class="sourceLine" id="cb56-42" data-line-number="42"><span class="co">#&gt; 40:    OsCN           OsCN[4] point    4   4</span></a>
+<a class="sourceLine" id="cb56-43" data-line-number="43"><span class="co">#&gt; 41:    OsCN   OsCN[&gt;4 &amp; &lt;=10] range    4  10</span></a>
+<a class="sourceLine" id="cb56-44" data-line-number="44"><span class="co">#&gt; 42:    OsCN         OsCN[&gt;10] range   10 Inf</span></a>
+<a class="sourceLine" id="cb56-45" data-line-number="45"><span class="co">#&gt; 43:      SS           SS[&lt;=2] range -Inf   2</span></a>
+<a class="sourceLine" id="cb56-46" data-line-number="46"><span class="co">#&gt; 44:      SS      SS[&gt;2 &amp; &lt;=3] range    2   3</span></a>
+<a class="sourceLine" id="cb56-47" data-line-number="47"><span class="co">#&gt; 45:      SS      SS[&gt;3 &amp; &lt;=4] range    3   4</span></a>
+<a class="sourceLine" id="cb56-48" data-line-number="48"><span class="co">#&gt; 46:      SS      SS[&gt;4 &amp; &lt;=5] range    4   5</span></a>
+<a class="sourceLine" id="cb56-49" data-line-number="49"><span class="co">#&gt; 47:      SS      SS[&gt;5 &amp; &lt;=6] range    5   6</span></a>
+<a class="sourceLine" id="cb56-50" data-line-number="50"><span class="co">#&gt; 48:      SS      SS[&gt;6 &amp; &lt;=7] range    6   7</span></a>
+<a class="sourceLine" id="cb56-51" data-line-number="51"><span class="co">#&gt; 49:      SS      SS[&gt;7 &amp; &lt;=8] range    7   8</span></a>
+<a class="sourceLine" id="cb56-52" data-line-number="52"><span class="co">#&gt; 50:      SS            SS[&gt;8] range    8 Inf</span></a>
+<a class="sourceLine" id="cb56-53" data-line-number="53"><span class="co">#&gt; 51:    NC50         NC50[&lt;=2] range -Inf   2</span></a>
+<a class="sourceLine" id="cb56-54" data-line-number="54"><span class="co">#&gt; 52:    NC50           NC50[3] point    3   3</span></a>
+<a class="sourceLine" id="cb56-55" data-line-number="55"><span class="co">#&gt; 53:    NC50           NC50[4] point    4   4</span></a>
+<a class="sourceLine" id="cb56-56" data-line-number="56"><span class="co">#&gt; 54:    NC50           NC50[5] point    5   5</span></a>
+<a class="sourceLine" id="cb56-57" data-line-number="57"><span class="co">#&gt; 55:    NC50           NC50[6] point    6   6</span></a>
+<a class="sourceLine" id="cb56-58" data-line-number="58"><span class="co">#&gt; 56:    NC50           NC50[7] point    7   7</span></a>
+<a class="sourceLine" id="cb56-59" data-line-number="59"><span class="co">#&gt; 57:    NC50          NC50[&gt;7] range    7 Inf</span></a>
+<a class="sourceLine" id="cb56-60" data-line-number="60"><span class="co">#&gt; 58:   BoChr          BoChr[1] point    1   1</span></a>
+<a class="sourceLine" id="cb56-61" data-line-number="61"><span class="co">#&gt; 59:   BoChr          BoChr[2] point    2   2</span></a>
+<a class="sourceLine" id="cb56-62" data-line-number="62"><span class="co">#&gt; 60:   BoChr          BoChr[3] point    3   3</span></a>
+<a class="sourceLine" id="cb56-63" data-line-number="63"><span class="co">#&gt; 61:   BoChr          BoChr[4] point    4   4</span></a>
+<a class="sourceLine" id="cb56-64" data-line-number="64"><span class="co">#&gt; 62:   BoChr          BoChr[5] point    5   5</span></a>
+<a class="sourceLine" id="cb56-65" data-line-number="65"><span class="co">#&gt; 63:   BoChr          BoChr[6] point    6   6</span></a>
+<a class="sourceLine" id="cb56-66" data-line-number="66"><span class="co">#&gt; 64:   BoChr          BoChr[7] point    7   7</span></a>
+<a class="sourceLine" id="cb56-67" data-line-number="67"><span class="co">#&gt; 65:   BoChr          BoChr[8] point    8   8</span></a>
+<a class="sourceLine" id="cb56-68" data-line-number="68"><span class="co">#&gt; 66:   BoChr          BoChr[9] point    9   9</span></a>
+<a class="sourceLine" id="cb56-69" data-line-number="69"><span class="co">#&gt; 67:   BoChr         BoChr[10] point   10  10</span></a>
+<a class="sourceLine" id="cb56-70" data-line-number="70"><span class="co">#&gt; 68:   BoChr         BoChr[11] point   11  11</span></a>
+<a class="sourceLine" id="cb56-71" data-line-number="71"><span class="co">#&gt; 69:   BoChr         BoChr[12] point   12  12</span></a>
+<a class="sourceLine" id="cb56-72" data-line-number="72"><span class="co">#&gt; 70:   BoChr         BoChr[13] point   13  13</span></a>
+<a class="sourceLine" id="cb56-73" data-line-number="73"><span class="co">#&gt; 71:   BoChr         BoChr[14] point   14  14</span></a>
+<a class="sourceLine" id="cb56-74" data-line-number="74"><span class="co">#&gt; 72:   BoChr         BoChr[15] point   15  15</span></a>
+<a class="sourceLine" id="cb56-75" data-line-number="75"><span class="co">#&gt; 73:   BoChr         BoChr[16] point   16  16</span></a>
+<a class="sourceLine" id="cb56-76" data-line-number="76"><span class="co">#&gt; 74:   BoChr         BoChr[17] point   17  17</span></a>
+<a class="sourceLine" id="cb56-77" data-line-number="77"><span class="co">#&gt; 75:   BoChr         BoChr[18] point   18  18</span></a>
+<a class="sourceLine" id="cb56-78" data-line-number="78"><span class="co">#&gt; 76:   BoChr         BoChr[19] point   19  19</span></a>
+<a class="sourceLine" id="cb56-79" data-line-number="79"><span class="co">#&gt; 77:   BoChr         BoChr[20] point   20  20</span></a>
+<a class="sourceLine" id="cb56-80" data-line-number="80"><span class="co">#&gt; 78:   BoChr         BoChr[21] point   21  21</span></a>
+<a class="sourceLine" id="cb56-81" data-line-number="81"><span class="co">#&gt; 79:   BoChr         BoChr[22] point   22  22</span></a>
+<a class="sourceLine" id="cb56-82" data-line-number="82"><span class="co">#&gt; 80:   BoChr         BoChr[23] point   23  23</span></a>
+<a class="sourceLine" id="cb56-83" data-line-number="83"><span class="co">#&gt;     feature         component label  min max</span></a></code></pre></div>
 </div>
 <div id="sbs-signature-conversion" class="section level2">
-<h2><span class="header-section-number">9.3</span> SBS Signature Conversion</h2>
+<h2><span class="header-section-number">10.3</span> SBS Signature Conversion</h2>
 <p>Converts signatures between two representations relative to different sets of mutational opportunities. Currently, only SBS signature is supported.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="datasets.html#cb57-1"></a><span class="co"># Load SBS signature</span></span>
-<span id="cb57-2"><a href="datasets.html#cb57-2"></a><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_mutational_signature.RData&quot;</span>,</span>
-<span id="cb57-3"><a href="datasets.html#cb57-3"></a>  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
-<span id="cb57-4"><a href="datasets.html#cb57-4"></a>))</span>
-<span id="cb57-5"><a href="datasets.html#cb57-5"></a><span class="co"># Exome-relative to Genome-relative</span></span>
-<span id="cb57-6"><a href="datasets.html#cb57-6"></a>sig_converted &lt;-<span class="st"> </span><span class="kw">sig_convert</span>(sig2,</span>
-<span id="cb57-7"><a href="datasets.html#cb57-7"></a>  <span class="dt">from =</span> <span class="st">&quot;human-exome&quot;</span>,</span>
-<span id="cb57-8"><a href="datasets.html#cb57-8"></a>  <span class="dt">to =</span> <span class="st">&quot;human-genome&quot;</span></span>
-<span id="cb57-9"><a href="datasets.html#cb57-9"></a>)</span>
-<span id="cb57-10"><a href="datasets.html#cb57-10"></a>sig_converted</span>
-<span id="cb57-11"><a href="datasets.html#cb57-11"></a><span class="co">#&gt;                  Sig1          Sig2          Sig3</span></span>
-<span id="cb57-12"><a href="datasets.html#cb57-12"></a><span class="co">#&gt; A[C&gt;A]A  0.000000e+00  1.283652e-02 2.354578e-204</span></span>
-<span id="cb57-13"><a href="datasets.html#cb57-13"></a><span class="co">#&gt; A[C&gt;A]C  0.000000e+00  1.866572e-02  0.000000e+00</span></span>
-<span id="cb57-14"><a href="datasets.html#cb57-14"></a><span class="co">#&gt; A[C&gt;A]G  0.000000e+00  1.618700e-03  0.000000e+00</span></span>
-<span id="cb57-15"><a href="datasets.html#cb57-15"></a><span class="co">#&gt; A[C&gt;A]T  0.000000e+00  7.572233e-03  0.000000e+00</span></span>
-<span id="cb57-16"><a href="datasets.html#cb57-16"></a><span class="co">#&gt; C[C&gt;A]A  0.000000e+00  1.209076e-02  0.000000e+00</span></span>
-<span id="cb57-17"><a href="datasets.html#cb57-17"></a><span class="co">#&gt; C[C&gt;A]C  0.000000e+00  7.032249e-03 1.170400e-133</span></span>
-<span id="cb57-18"><a href="datasets.html#cb57-18"></a><span class="co">#&gt; C[C&gt;A]G  0.000000e+00  3.839313e-03 1.165310e-269</span></span>
-<span id="cb57-19"><a href="datasets.html#cb57-19"></a><span class="co">#&gt; C[C&gt;A]T  0.000000e+00  1.166974e-02  0.000000e+00</span></span>
-<span id="cb57-20"><a href="datasets.html#cb57-20"></a><span class="co">#&gt; G[C&gt;A]A  0.000000e+00  1.025669e-02  4.089543e-15</span></span>
-<span id="cb57-21"><a href="datasets.html#cb57-21"></a><span class="co">#&gt; G[C&gt;A]C 2.975389e-296  4.002311e-03  0.000000e+00</span></span>
-<span id="cb57-22"><a href="datasets.html#cb57-22"></a><span class="co">#&gt; G[C&gt;A]G  4.796114e-02 4.527374e-117  0.000000e+00</span></span>
-<span id="cb57-23"><a href="datasets.html#cb57-23"></a><span class="co">#&gt; G[C&gt;A]T  0.000000e+00  5.994876e-03 1.669814e-131</span></span>
-<span id="cb57-24"><a href="datasets.html#cb57-24"></a><span class="co">#&gt; T[C&gt;A]A  0.000000e+00  3.324941e-96  7.673114e-02</span></span>
-<span id="cb57-25"><a href="datasets.html#cb57-25"></a><span class="co">#&gt; T[C&gt;A]C  0.000000e+00  1.467589e-02 9.720402e-229</span></span>
-<span id="cb57-26"><a href="datasets.html#cb57-26"></a><span class="co">#&gt; T[C&gt;A]G  0.000000e+00  3.199454e-03  0.000000e+00</span></span>
-<span id="cb57-27"><a href="datasets.html#cb57-27"></a><span class="co">#&gt; T[C&gt;A]T  0.000000e+00  2.338506e-02  0.000000e+00</span></span>
-<span id="cb57-28"><a href="datasets.html#cb57-28"></a><span class="co">#&gt; A[C&gt;G]A  0.000000e+00  1.198076e-02 1.210238e-153</span></span>
-<span id="cb57-29"><a href="datasets.html#cb57-29"></a><span class="co">#&gt; A[C&gt;G]C  0.000000e+00  3.999796e-03  0.000000e+00</span></span>
-<span id="cb57-30"><a href="datasets.html#cb57-30"></a><span class="co">#&gt; A[C&gt;G]G  9.976549e-02  7.184837e-58  0.000000e+00</span></span>
-<span id="cb57-31"><a href="datasets.html#cb57-31"></a><span class="co">#&gt; A[C&gt;G]T  0.000000e+00  7.572233e-03 9.731662e-108</span></span>
-<span id="cb57-32"><a href="datasets.html#cb57-32"></a><span class="co">#&gt; C[C&gt;G]A  0.000000e+00  8.732217e-03  1.472610e-34</span></span>
-<span id="cb57-33"><a href="datasets.html#cb57-33"></a><span class="co">#&gt; C[C&gt;G]C  0.000000e+00  1.875266e-03  0.000000e+00</span></span>
-<span id="cb57-34"><a href="datasets.html#cb57-34"></a><span class="co">#&gt; C[C&gt;G]G  0.000000e+00  4.429976e-03  1.144811e-70</span></span>
-<span id="cb57-35"><a href="datasets.html#cb57-35"></a><span class="co">#&gt; C[C&gt;G]T  1.398527e-01  1.003533e-19  0.000000e+00</span></span>
-<span id="cb57-36"><a href="datasets.html#cb57-36"></a><span class="co">#&gt; G[C&gt;G]A 1.227107e-293  7.521572e-03 2.969058e-285</span></span>
-<span id="cb57-37"><a href="datasets.html#cb57-37"></a><span class="co">#&gt; G[C&gt;G]C  0.000000e+00  3.001734e-03 2.665595e-168</span></span>
-<span id="cb57-38"><a href="datasets.html#cb57-38"></a><span class="co">#&gt; G[C&gt;G]G  0.000000e+00  2.178881e-03  0.000000e+00</span></span>
-<span id="cb57-39"><a href="datasets.html#cb57-39"></a><span class="co">#&gt; G[C&gt;G]T  0.000000e+00  3.996584e-03  0.000000e+00</span></span>
-<span id="cb57-40"><a href="datasets.html#cb57-40"></a><span class="co">#&gt; T[C&gt;G]A  0.000000e+00  4.493267e-03 2.338585e-311</span></span>
-<span id="cb57-41"><a href="datasets.html#cb57-41"></a><span class="co">#&gt; T[C&gt;G]C  0.000000e+00  5.336688e-03 1.100445e-248</span></span>
-<span id="cb57-42"><a href="datasets.html#cb57-42"></a><span class="co">#&gt; T[C&gt;G]G  0.000000e+00  5.027714e-03 2.505791e-283</span></span>
-<span id="cb57-43"><a href="datasets.html#cb57-43"></a><span class="co">#&gt; T[C&gt;G]T  0.000000e+00  8.094828e-03  4.211703e-12</span></span>
-<span id="cb57-44"><a href="datasets.html#cb57-44"></a><span class="co">#&gt; A[C&gt;T]A  0.000000e+00  4.278842e-02 6.186711e-285</span></span>
-<span id="cb57-45"><a href="datasets.html#cb57-45"></a><span class="co">#&gt; A[C&gt;T]C  0.000000e+00  3.266500e-02 4.009287e-180</span></span>
-<span id="cb57-46"><a href="datasets.html#cb57-46"></a><span class="co">#&gt; A[C&gt;T]G  0.000000e+00  8.943317e-02 1.936180e-271</span></span>
-<span id="cb57-47"><a href="datasets.html#cb57-47"></a><span class="co">#&gt; A[C&gt;T]T  0.000000e+00  2.366323e-02  0.000000e+00</span></span>
-<span id="cb57-48"><a href="datasets.html#cb57-48"></a><span class="co">#&gt; C[C&gt;T]A  0.000000e+00  2.552494e-02  0.000000e+00</span></span>
-<span id="cb57-49"><a href="datasets.html#cb57-49"></a><span class="co">#&gt; C[C&gt;T]C  0.000000e+00  1.406450e-02 1.334078e-226</span></span>
-<span id="cb57-50"><a href="datasets.html#cb57-50"></a><span class="co">#&gt; C[C&gt;T]G  0.000000e+00  5.463637e-02 9.737288e-158</span></span>
-<span id="cb57-51"><a href="datasets.html#cb57-51"></a><span class="co">#&gt; C[C&gt;T]T  0.000000e+00  3.695418e-02 4.246509e-172</span></span>
-<span id="cb57-52"><a href="datasets.html#cb57-52"></a><span class="co">#&gt; G[C&gt;T]A  0.000000e+00 1.550033e-134  1.379990e-01</span></span>
-<span id="cb57-53"><a href="datasets.html#cb57-53"></a><span class="co">#&gt; G[C&gt;T]C  0.000000e+00  2.401387e-02 9.655208e-197</span></span>
-<span id="cb57-54"><a href="datasets.html#cb57-54"></a><span class="co">#&gt; G[C&gt;T]G  0.000000e+00  5.665090e-02 1.322415e-193</span></span>
-<span id="cb57-55"><a href="datasets.html#cb57-55"></a><span class="co">#&gt; G[C&gt;T]T  0.000000e+00  3.197267e-02 1.483309e-124</span></span>
-<span id="cb57-56"><a href="datasets.html#cb57-56"></a><span class="co">#&gt; T[C&gt;T]A  0.000000e+00  3.504749e-02 1.602583e-125</span></span>
-<span id="cb57-57"><a href="datasets.html#cb57-57"></a><span class="co">#&gt; T[C&gt;T]C  0.000000e+00  2.868470e-02 2.192251e-133</span></span>
-<span id="cb57-58"><a href="datasets.html#cb57-58"></a><span class="co">#&gt; T[C&gt;T]G  0.000000e+00  5.607061e-45  3.725237e-01</span></span>
-<span id="cb57-59"><a href="datasets.html#cb57-59"></a><span class="co">#&gt; T[C&gt;T]T  0.000000e+00  2.248563e-02 5.991874e-150</span></span>
-<span id="cb57-60"><a href="datasets.html#cb57-60"></a><span class="co">#&gt; A[T&gt;A]A  0.000000e+00 8.169022e-163 4.909543e-207</span></span>
-<span id="cb57-61"><a href="datasets.html#cb57-61"></a><span class="co">#&gt; A[T&gt;A]C  0.000000e+00  9.451235e-03 9.169290e-161</span></span>
-<span id="cb57-62"><a href="datasets.html#cb57-62"></a><span class="co">#&gt; A[T&gt;A]G  0.000000e+00 1.860257e-209  3.781700e-02</span></span>
-<span id="cb57-63"><a href="datasets.html#cb57-63"></a><span class="co">#&gt; A[T&gt;A]T  0.000000e+00  3.646724e-03  0.000000e+00</span></span>
-<span id="cb57-64"><a href="datasets.html#cb57-64"></a><span class="co">#&gt; C[T&gt;A]A  0.000000e+00  9.626354e-63 1.877035e-152</span></span>
-<span id="cb57-65"><a href="datasets.html#cb57-65"></a><span class="co">#&gt; C[T&gt;A]C  0.000000e+00  4.098575e-03  8.954807e-03</span></span>
-<span id="cb57-66"><a href="datasets.html#cb57-66"></a><span class="co">#&gt; C[T&gt;A]G  0.000000e+00  7.584736e-03  1.779246e-46</span></span>
-<span id="cb57-67"><a href="datasets.html#cb57-67"></a><span class="co">#&gt; C[T&gt;A]T  0.000000e+00  4.886651e-03  0.000000e+00</span></span>
-<span id="cb57-68"><a href="datasets.html#cb57-68"></a><span class="co">#&gt; G[T&gt;A]A  0.000000e+00 1.923466e-257  1.645056e-02</span></span>
-<span id="cb57-69"><a href="datasets.html#cb57-69"></a><span class="co">#&gt; G[T&gt;A]C  0.000000e+00  5.990275e-03 2.816093e-138</span></span>
-<span id="cb57-70"><a href="datasets.html#cb57-70"></a><span class="co">#&gt; G[T&gt;A]G  0.000000e+00  2.491146e-03 5.966918e-137</span></span>
-<span id="cb57-71"><a href="datasets.html#cb57-71"></a><span class="co">#&gt; G[T&gt;A]T  1.780073e-01 1.470587e-107  0.000000e+00</span></span>
-<span id="cb57-72"><a href="datasets.html#cb57-72"></a><span class="co">#&gt; T[T&gt;A]A  0.000000e+00  0.000000e+00  1.576605e-78</span></span>
-<span id="cb57-73"><a href="datasets.html#cb57-73"></a><span class="co">#&gt; T[T&gt;A]C  0.000000e+00 3.652510e-193  3.025830e-02</span></span>
-<span id="cb57-74"><a href="datasets.html#cb57-74"></a><span class="co">#&gt; T[T&gt;A]G  0.000000e+00  0.000000e+00  3.102984e-02</span></span>
-<span id="cb57-75"><a href="datasets.html#cb57-75"></a><span class="co">#&gt; T[T&gt;A]T  0.000000e+00  5.570191e-03 2.661350e-186</span></span>
-<span id="cb57-76"><a href="datasets.html#cb57-76"></a><span class="co">#&gt; A[T&gt;C]A  0.000000e+00  3.673499e-02 2.037390e-236</span></span>
-<span id="cb57-77"><a href="datasets.html#cb57-77"></a><span class="co">#&gt; A[T&gt;C]C  0.000000e+00  4.875997e-80  8.069896e-02</span></span>
-<span id="cb57-78"><a href="datasets.html#cb57-78"></a><span class="co">#&gt; A[T&gt;C]G  0.000000e+00  2.533400e-02 4.653276e-300</span></span>
-<span id="cb57-79"><a href="datasets.html#cb57-79"></a><span class="co">#&gt; A[T&gt;C]T  0.000000e+00  3.403610e-02 1.137147e-235</span></span>
-<span id="cb57-80"><a href="datasets.html#cb57-80"></a><span class="co">#&gt; C[T&gt;C]A  0.000000e+00  7.619558e-03  1.273356e-94</span></span>
-<span id="cb57-81"><a href="datasets.html#cb57-81"></a><span class="co">#&gt; C[T&gt;C]C  0.000000e+00  1.116095e-02 1.501723e-122</span></span>
-<span id="cb57-82"><a href="datasets.html#cb57-82"></a><span class="co">#&gt; C[T&gt;C]G  0.000000e+00  9.506418e-50  9.321794e-02</span></span>
-<span id="cb57-83"><a href="datasets.html#cb57-83"></a><span class="co">#&gt; C[T&gt;C]T  0.000000e+00  1.172796e-02  1.679251e-87</span></span>
-<span id="cb57-84"><a href="datasets.html#cb57-84"></a><span class="co">#&gt; G[T&gt;C]A  0.000000e+00  4.585040e-03  5.536247e-03</span></span>
-<span id="cb57-85"><a href="datasets.html#cb57-85"></a><span class="co">#&gt; G[T&gt;C]C  0.000000e+00 5.073564e-255  4.133148e-02</span></span>
-<span id="cb57-86"><a href="datasets.html#cb57-86"></a><span class="co">#&gt; G[T&gt;C]G  0.000000e+00  6.850650e-03  0.000000e+00</span></span>
-<span id="cb57-87"><a href="datasets.html#cb57-87"></a><span class="co">#&gt; G[T&gt;C]T  3.036787e-50  1.058999e-02 7.624782e-161</span></span>
-<span id="cb57-88"><a href="datasets.html#cb57-88"></a><span class="co">#&gt; T[T&gt;C]A  0.000000e+00 1.774320e-183  1.917769e-02</span></span>
-<span id="cb57-89"><a href="datasets.html#cb57-89"></a><span class="co">#&gt; T[T&gt;C]C 3.471970e-224  7.796288e-03  0.000000e+00</span></span>
-<span id="cb57-90"><a href="datasets.html#cb57-90"></a><span class="co">#&gt; T[T&gt;C]G  0.000000e+00  9.993850e-03  0.000000e+00</span></span>
-<span id="cb57-91"><a href="datasets.html#cb57-91"></a><span class="co">#&gt; T[T&gt;C]T  0.000000e+00  2.116673e-02 4.729625e-249</span></span>
-<span id="cb57-92"><a href="datasets.html#cb57-92"></a><span class="co">#&gt; A[T&gt;G]A  0.000000e+00  6.559820e-03  0.000000e+00</span></span>
-<span id="cb57-93"><a href="datasets.html#cb57-93"></a><span class="co">#&gt; A[T&gt;G]C  0.000000e+00 8.576821e-159  1.467254e-02</span></span>
-<span id="cb57-94"><a href="datasets.html#cb57-94"></a><span class="co">#&gt; A[T&gt;G]G  0.000000e+00  1.544237e-03  3.140069e-03</span></span>
-<span id="cb57-95"><a href="datasets.html#cb57-95"></a><span class="co">#&gt; A[T&gt;G]T  0.000000e+00  3.646724e-03  0.000000e+00</span></span>
-<span id="cb57-96"><a href="datasets.html#cb57-96"></a><span class="co">#&gt; C[T&gt;G]A  0.000000e+00  1.088508e-03  0.000000e+00</span></span>
-<span id="cb57-97"><a href="datasets.html#cb57-97"></a><span class="co">#&gt; C[T&gt;G]C  0.000000e+00  5.252213e-03 5.352907e-111</span></span>
-<span id="cb57-98"><a href="datasets.html#cb57-98"></a><span class="co">#&gt; C[T&gt;G]G  0.000000e+00  6.320613e-03  0.000000e+00</span></span>
-<span id="cb57-99"><a href="datasets.html#cb57-99"></a><span class="co">#&gt; C[T&gt;G]T  1.505897e-01  2.544085e-94 2.345935e-218</span></span>
-<span id="cb57-100"><a href="datasets.html#cb57-100"></a><span class="co">#&gt; G[T&gt;G]A  9.796461e-02  2.199487e-93 1.446688e-154</span></span>
-<span id="cb57-101"><a href="datasets.html#cb57-101"></a><span class="co">#&gt; G[T&gt;G]C  0.000000e+00  1.996758e-03  0.000000e+00</span></span>
-<span id="cb57-102"><a href="datasets.html#cb57-102"></a><span class="co">#&gt; G[T&gt;G]G  0.000000e+00  3.736718e-03  0.000000e+00</span></span>
-<span id="cb57-103"><a href="datasets.html#cb57-103"></a><span class="co">#&gt; G[T&gt;G]T  0.000000e+00  3.701349e-72  1.494581e-02</span></span>
-<span id="cb57-104"><a href="datasets.html#cb57-104"></a><span class="co">#&gt; T[T&gt;G]A  1.142049e-01 5.198170e-158  0.000000e+00</span></span>
-<span id="cb57-105"><a href="datasets.html#cb57-105"></a><span class="co">#&gt; T[T&gt;G]C  0.000000e+00  4.872680e-03  0.000000e+00</span></span>
-<span id="cb57-106"><a href="datasets.html#cb57-106"></a><span class="co">#&gt; T[T&gt;G]G  0.000000e+00  1.798724e-19  1.551492e-02</span></span>
-<span id="cb57-107"><a href="datasets.html#cb57-107"></a><span class="co">#&gt; T[T&gt;G]T  1.716541e-01  1.775134e-54  0.000000e+00</span></span>
-<span id="cb57-108"><a href="datasets.html#cb57-108"></a></span>
-<span id="cb57-109"><a href="datasets.html#cb57-109"></a><span class="kw">show_sig_profile</span>(sig2, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="co"># Load SBS signature</span></a>
+<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_mutational_signature.RData&quot;</span>,</a>
+<a class="sourceLine" id="cb57-3" data-line-number="3">  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb57-4" data-line-number="4">))</a>
+<a class="sourceLine" id="cb57-5" data-line-number="5"><span class="co"># Exome-relative to Genome-relative</span></a>
+<a class="sourceLine" id="cb57-6" data-line-number="6">sig_converted &lt;-<span class="st"> </span><span class="kw">sig_convert</span>(sig2,</a>
+<a class="sourceLine" id="cb57-7" data-line-number="7">  <span class="dt">from =</span> <span class="st">&quot;human-exome&quot;</span>,</a>
+<a class="sourceLine" id="cb57-8" data-line-number="8">  <span class="dt">to =</span> <span class="st">&quot;human-genome&quot;</span></a>
+<a class="sourceLine" id="cb57-9" data-line-number="9">)</a>
+<a class="sourceLine" id="cb57-10" data-line-number="10">sig_converted</a>
+<a class="sourceLine" id="cb57-11" data-line-number="11"><span class="co">#&gt;                  Sig1          Sig2          Sig3</span></a>
+<a class="sourceLine" id="cb57-12" data-line-number="12"><span class="co">#&gt; A[C&gt;A]A  0.000000e+00  1.283652e-02 2.354578e-204</span></a>
+<a class="sourceLine" id="cb57-13" data-line-number="13"><span class="co">#&gt; A[C&gt;A]C  0.000000e+00  1.866572e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-14" data-line-number="14"><span class="co">#&gt; A[C&gt;A]G  0.000000e+00  1.618700e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-15" data-line-number="15"><span class="co">#&gt; A[C&gt;A]T  0.000000e+00  7.572233e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-16" data-line-number="16"><span class="co">#&gt; C[C&gt;A]A  0.000000e+00  1.209076e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-17" data-line-number="17"><span class="co">#&gt; C[C&gt;A]C  0.000000e+00  7.032249e-03 1.170400e-133</span></a>
+<a class="sourceLine" id="cb57-18" data-line-number="18"><span class="co">#&gt; C[C&gt;A]G  0.000000e+00  3.839313e-03 1.165310e-269</span></a>
+<a class="sourceLine" id="cb57-19" data-line-number="19"><span class="co">#&gt; C[C&gt;A]T  0.000000e+00  1.166974e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-20" data-line-number="20"><span class="co">#&gt; G[C&gt;A]A  0.000000e+00  1.025669e-02  4.089543e-15</span></a>
+<a class="sourceLine" id="cb57-21" data-line-number="21"><span class="co">#&gt; G[C&gt;A]C 2.975389e-296  4.002311e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-22" data-line-number="22"><span class="co">#&gt; G[C&gt;A]G  4.796114e-02 4.527374e-117  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-23" data-line-number="23"><span class="co">#&gt; G[C&gt;A]T  0.000000e+00  5.994876e-03 1.669814e-131</span></a>
+<a class="sourceLine" id="cb57-24" data-line-number="24"><span class="co">#&gt; T[C&gt;A]A  0.000000e+00  3.324941e-96  7.673114e-02</span></a>
+<a class="sourceLine" id="cb57-25" data-line-number="25"><span class="co">#&gt; T[C&gt;A]C  0.000000e+00  1.467589e-02 9.720402e-229</span></a>
+<a class="sourceLine" id="cb57-26" data-line-number="26"><span class="co">#&gt; T[C&gt;A]G  0.000000e+00  3.199454e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-27" data-line-number="27"><span class="co">#&gt; T[C&gt;A]T  0.000000e+00  2.338506e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-28" data-line-number="28"><span class="co">#&gt; A[C&gt;G]A  0.000000e+00  1.198076e-02 1.210238e-153</span></a>
+<a class="sourceLine" id="cb57-29" data-line-number="29"><span class="co">#&gt; A[C&gt;G]C  0.000000e+00  3.999796e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-30" data-line-number="30"><span class="co">#&gt; A[C&gt;G]G  9.976549e-02  7.184837e-58  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-31" data-line-number="31"><span class="co">#&gt; A[C&gt;G]T  0.000000e+00  7.572233e-03 9.731662e-108</span></a>
+<a class="sourceLine" id="cb57-32" data-line-number="32"><span class="co">#&gt; C[C&gt;G]A  0.000000e+00  8.732217e-03  1.472610e-34</span></a>
+<a class="sourceLine" id="cb57-33" data-line-number="33"><span class="co">#&gt; C[C&gt;G]C  0.000000e+00  1.875266e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-34" data-line-number="34"><span class="co">#&gt; C[C&gt;G]G  0.000000e+00  4.429976e-03  1.144811e-70</span></a>
+<a class="sourceLine" id="cb57-35" data-line-number="35"><span class="co">#&gt; C[C&gt;G]T  1.398527e-01  1.003533e-19  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-36" data-line-number="36"><span class="co">#&gt; G[C&gt;G]A 1.227107e-293  7.521572e-03 2.969058e-285</span></a>
+<a class="sourceLine" id="cb57-37" data-line-number="37"><span class="co">#&gt; G[C&gt;G]C  0.000000e+00  3.001734e-03 2.665595e-168</span></a>
+<a class="sourceLine" id="cb57-38" data-line-number="38"><span class="co">#&gt; G[C&gt;G]G  0.000000e+00  2.178881e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-39" data-line-number="39"><span class="co">#&gt; G[C&gt;G]T  0.000000e+00  3.996584e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-40" data-line-number="40"><span class="co">#&gt; T[C&gt;G]A  0.000000e+00  4.493267e-03 2.338585e-311</span></a>
+<a class="sourceLine" id="cb57-41" data-line-number="41"><span class="co">#&gt; T[C&gt;G]C  0.000000e+00  5.336688e-03 1.100445e-248</span></a>
+<a class="sourceLine" id="cb57-42" data-line-number="42"><span class="co">#&gt; T[C&gt;G]G  0.000000e+00  5.027714e-03 2.505791e-283</span></a>
+<a class="sourceLine" id="cb57-43" data-line-number="43"><span class="co">#&gt; T[C&gt;G]T  0.000000e+00  8.094828e-03  4.211703e-12</span></a>
+<a class="sourceLine" id="cb57-44" data-line-number="44"><span class="co">#&gt; A[C&gt;T]A  0.000000e+00  4.278842e-02 6.186711e-285</span></a>
+<a class="sourceLine" id="cb57-45" data-line-number="45"><span class="co">#&gt; A[C&gt;T]C  0.000000e+00  3.266500e-02 4.009287e-180</span></a>
+<a class="sourceLine" id="cb57-46" data-line-number="46"><span class="co">#&gt; A[C&gt;T]G  0.000000e+00  8.943317e-02 1.936180e-271</span></a>
+<a class="sourceLine" id="cb57-47" data-line-number="47"><span class="co">#&gt; A[C&gt;T]T  0.000000e+00  2.366323e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-48" data-line-number="48"><span class="co">#&gt; C[C&gt;T]A  0.000000e+00  2.552494e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-49" data-line-number="49"><span class="co">#&gt; C[C&gt;T]C  0.000000e+00  1.406450e-02 1.334078e-226</span></a>
+<a class="sourceLine" id="cb57-50" data-line-number="50"><span class="co">#&gt; C[C&gt;T]G  0.000000e+00  5.463637e-02 9.737288e-158</span></a>
+<a class="sourceLine" id="cb57-51" data-line-number="51"><span class="co">#&gt; C[C&gt;T]T  0.000000e+00  3.695418e-02 4.246509e-172</span></a>
+<a class="sourceLine" id="cb57-52" data-line-number="52"><span class="co">#&gt; G[C&gt;T]A  0.000000e+00 1.550033e-134  1.379990e-01</span></a>
+<a class="sourceLine" id="cb57-53" data-line-number="53"><span class="co">#&gt; G[C&gt;T]C  0.000000e+00  2.401387e-02 9.655208e-197</span></a>
+<a class="sourceLine" id="cb57-54" data-line-number="54"><span class="co">#&gt; G[C&gt;T]G  0.000000e+00  5.665090e-02 1.322415e-193</span></a>
+<a class="sourceLine" id="cb57-55" data-line-number="55"><span class="co">#&gt; G[C&gt;T]T  0.000000e+00  3.197267e-02 1.483309e-124</span></a>
+<a class="sourceLine" id="cb57-56" data-line-number="56"><span class="co">#&gt; T[C&gt;T]A  0.000000e+00  3.504749e-02 1.602583e-125</span></a>
+<a class="sourceLine" id="cb57-57" data-line-number="57"><span class="co">#&gt; T[C&gt;T]C  0.000000e+00  2.868470e-02 2.192251e-133</span></a>
+<a class="sourceLine" id="cb57-58" data-line-number="58"><span class="co">#&gt; T[C&gt;T]G  0.000000e+00  5.607061e-45  3.725237e-01</span></a>
+<a class="sourceLine" id="cb57-59" data-line-number="59"><span class="co">#&gt; T[C&gt;T]T  0.000000e+00  2.248563e-02 5.991874e-150</span></a>
+<a class="sourceLine" id="cb57-60" data-line-number="60"><span class="co">#&gt; A[T&gt;A]A  0.000000e+00 8.169022e-163 4.909543e-207</span></a>
+<a class="sourceLine" id="cb57-61" data-line-number="61"><span class="co">#&gt; A[T&gt;A]C  0.000000e+00  9.451235e-03 9.169290e-161</span></a>
+<a class="sourceLine" id="cb57-62" data-line-number="62"><span class="co">#&gt; A[T&gt;A]G  0.000000e+00 1.860257e-209  3.781700e-02</span></a>
+<a class="sourceLine" id="cb57-63" data-line-number="63"><span class="co">#&gt; A[T&gt;A]T  0.000000e+00  3.646724e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-64" data-line-number="64"><span class="co">#&gt; C[T&gt;A]A  0.000000e+00  9.626354e-63 1.877035e-152</span></a>
+<a class="sourceLine" id="cb57-65" data-line-number="65"><span class="co">#&gt; C[T&gt;A]C  0.000000e+00  4.098575e-03  8.954807e-03</span></a>
+<a class="sourceLine" id="cb57-66" data-line-number="66"><span class="co">#&gt; C[T&gt;A]G  0.000000e+00  7.584736e-03  1.779246e-46</span></a>
+<a class="sourceLine" id="cb57-67" data-line-number="67"><span class="co">#&gt; C[T&gt;A]T  0.000000e+00  4.886651e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-68" data-line-number="68"><span class="co">#&gt; G[T&gt;A]A  0.000000e+00 1.923466e-257  1.645056e-02</span></a>
+<a class="sourceLine" id="cb57-69" data-line-number="69"><span class="co">#&gt; G[T&gt;A]C  0.000000e+00  5.990275e-03 2.816093e-138</span></a>
+<a class="sourceLine" id="cb57-70" data-line-number="70"><span class="co">#&gt; G[T&gt;A]G  0.000000e+00  2.491146e-03 5.966918e-137</span></a>
+<a class="sourceLine" id="cb57-71" data-line-number="71"><span class="co">#&gt; G[T&gt;A]T  1.780073e-01 1.470587e-107  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-72" data-line-number="72"><span class="co">#&gt; T[T&gt;A]A  0.000000e+00  0.000000e+00  1.576605e-78</span></a>
+<a class="sourceLine" id="cb57-73" data-line-number="73"><span class="co">#&gt; T[T&gt;A]C  0.000000e+00 3.652510e-193  3.025830e-02</span></a>
+<a class="sourceLine" id="cb57-74" data-line-number="74"><span class="co">#&gt; T[T&gt;A]G  0.000000e+00  0.000000e+00  3.102984e-02</span></a>
+<a class="sourceLine" id="cb57-75" data-line-number="75"><span class="co">#&gt; T[T&gt;A]T  0.000000e+00  5.570191e-03 2.661350e-186</span></a>
+<a class="sourceLine" id="cb57-76" data-line-number="76"><span class="co">#&gt; A[T&gt;C]A  0.000000e+00  3.673499e-02 2.037390e-236</span></a>
+<a class="sourceLine" id="cb57-77" data-line-number="77"><span class="co">#&gt; A[T&gt;C]C  0.000000e+00  4.875997e-80  8.069896e-02</span></a>
+<a class="sourceLine" id="cb57-78" data-line-number="78"><span class="co">#&gt; A[T&gt;C]G  0.000000e+00  2.533400e-02 4.653276e-300</span></a>
+<a class="sourceLine" id="cb57-79" data-line-number="79"><span class="co">#&gt; A[T&gt;C]T  0.000000e+00  3.403610e-02 1.137147e-235</span></a>
+<a class="sourceLine" id="cb57-80" data-line-number="80"><span class="co">#&gt; C[T&gt;C]A  0.000000e+00  7.619558e-03  1.273356e-94</span></a>
+<a class="sourceLine" id="cb57-81" data-line-number="81"><span class="co">#&gt; C[T&gt;C]C  0.000000e+00  1.116095e-02 1.501723e-122</span></a>
+<a class="sourceLine" id="cb57-82" data-line-number="82"><span class="co">#&gt; C[T&gt;C]G  0.000000e+00  9.506418e-50  9.321794e-02</span></a>
+<a class="sourceLine" id="cb57-83" data-line-number="83"><span class="co">#&gt; C[T&gt;C]T  0.000000e+00  1.172796e-02  1.679251e-87</span></a>
+<a class="sourceLine" id="cb57-84" data-line-number="84"><span class="co">#&gt; G[T&gt;C]A  0.000000e+00  4.585040e-03  5.536247e-03</span></a>
+<a class="sourceLine" id="cb57-85" data-line-number="85"><span class="co">#&gt; G[T&gt;C]C  0.000000e+00 5.073564e-255  4.133148e-02</span></a>
+<a class="sourceLine" id="cb57-86" data-line-number="86"><span class="co">#&gt; G[T&gt;C]G  0.000000e+00  6.850650e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-87" data-line-number="87"><span class="co">#&gt; G[T&gt;C]T  3.036787e-50  1.058999e-02 7.624782e-161</span></a>
+<a class="sourceLine" id="cb57-88" data-line-number="88"><span class="co">#&gt; T[T&gt;C]A  0.000000e+00 1.774320e-183  1.917769e-02</span></a>
+<a class="sourceLine" id="cb57-89" data-line-number="89"><span class="co">#&gt; T[T&gt;C]C 3.471970e-224  7.796288e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-90" data-line-number="90"><span class="co">#&gt; T[T&gt;C]G  0.000000e+00  9.993850e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-91" data-line-number="91"><span class="co">#&gt; T[T&gt;C]T  0.000000e+00  2.116673e-02 4.729625e-249</span></a>
+<a class="sourceLine" id="cb57-92" data-line-number="92"><span class="co">#&gt; A[T&gt;G]A  0.000000e+00  6.559820e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-93" data-line-number="93"><span class="co">#&gt; A[T&gt;G]C  0.000000e+00 8.576821e-159  1.467254e-02</span></a>
+<a class="sourceLine" id="cb57-94" data-line-number="94"><span class="co">#&gt; A[T&gt;G]G  0.000000e+00  1.544237e-03  3.140069e-03</span></a>
+<a class="sourceLine" id="cb57-95" data-line-number="95"><span class="co">#&gt; A[T&gt;G]T  0.000000e+00  3.646724e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-96" data-line-number="96"><span class="co">#&gt; C[T&gt;G]A  0.000000e+00  1.088508e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-97" data-line-number="97"><span class="co">#&gt; C[T&gt;G]C  0.000000e+00  5.252213e-03 5.352907e-111</span></a>
+<a class="sourceLine" id="cb57-98" data-line-number="98"><span class="co">#&gt; C[T&gt;G]G  0.000000e+00  6.320613e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-99" data-line-number="99"><span class="co">#&gt; C[T&gt;G]T  1.505897e-01  2.544085e-94 2.345935e-218</span></a>
+<a class="sourceLine" id="cb57-100" data-line-number="100"><span class="co">#&gt; G[T&gt;G]A  9.796461e-02  2.199487e-93 1.446688e-154</span></a>
+<a class="sourceLine" id="cb57-101" data-line-number="101"><span class="co">#&gt; G[T&gt;G]C  0.000000e+00  1.996758e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-102" data-line-number="102"><span class="co">#&gt; G[T&gt;G]G  0.000000e+00  3.736718e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-103" data-line-number="103"><span class="co">#&gt; G[T&gt;G]T  0.000000e+00  3.701349e-72  1.494581e-02</span></a>
+<a class="sourceLine" id="cb57-104" data-line-number="104"><span class="co">#&gt; T[T&gt;G]A  1.142049e-01 5.198170e-158  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-105" data-line-number="105"><span class="co">#&gt; T[T&gt;G]C  0.000000e+00  4.872680e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-106" data-line-number="106"><span class="co">#&gt; T[T&gt;G]G  0.000000e+00  1.798724e-19  1.551492e-02</span></a>
+<a class="sourceLine" id="cb57-107" data-line-number="107"><span class="co">#&gt; T[T&gt;G]T  1.716541e-01  1.775134e-54  0.000000e+00</span></a>
+<a class="sourceLine" id="cb57-108" data-line-number="108"></a>
+<a class="sourceLine" id="cb57-109" data-line-number="109"><span class="kw">show_sig_profile</span>(sig2, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</a></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-73-1.png" width="1152" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="datasets.html#cb58-1"></a><span class="kw">show_sig_profile</span>(sig_converted, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">show_sig_profile</span>(sig_converted, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</a></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-73-2.png" width="1152" style="display: block; margin: auto;" /></p>
 
 </div>
@@ -471,7 +461,7 @@ Users can define a custom table with similar structure and pass it to function l
           </div>
         </div>
       </div>
-<a href="part-useful-utilities.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="group-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

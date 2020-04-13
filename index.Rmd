@@ -24,7 +24,7 @@ alteration spectra, called 'signature'.
 
 ## Biological Significance of Signature
 
-To illustrate the biological significance of genome alteration signatures, we show some
+To illustrate the biological significance of genome alteration signatures (a.k.a. mutational signatures), we show some
 well organized figures here.
 
 ```{r echo=FALSE, fig.cap="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729"}
@@ -35,7 +35,7 @@ knitr::include_graphics("fig/sbs_signature_overview_nat_review.png")
 knitr::include_graphics("fig/sbs_signature_overview.png")
 ```
 
-SBS signature is previously known as mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
+SBS signature is a famous type of mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
 Common etiologies contain aging, defective DNA mismatch repair, smoking, ultraviolet light exposure and APOBOE.
 
 Currently, all SBS signatures are summarized in COSMIC database, including two versions: [v2](https://cancer.sanger.ac.uk/cosmic/signatures_v2) and [v3](https://cancer.sanger.ac.uk/cosmic/signatures/SBS/).
@@ -111,6 +111,7 @@ The contents of this manual have been divided into 4 sections:
 - Common workflow.
   - de novo signature discovery.
   - single sample exposure quantification.
+  - subtype prediction.
 - Target visualization.
   - copy number profile.
   - copy number distribution.

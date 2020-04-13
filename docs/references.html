@@ -53,26 +53,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,8 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">sigminer: Signature Miner</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#biological-significance-of-signature"><i class="fa fa-check"></i><b>1.1</b> Biological Significance of Signature</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sigminer"><i class="fa fa-check"></i><b>1.2</b> Sigminer</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.3</b> Installation</a></li>
@@ -143,12 +141,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#citation-and-license"><i class="fa fa-check"></i><b>1.7</b> Citation and LICENSE</a></li>
 </ul></li>
 <li class="part"><span><b>I Common Workflow</b></span></li>
-<li class="chapter" data-level="2" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>2</b> SBS Signature Identification</a>
-<ul>
+<li class="chapter" data-level="2" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>2</b> SBS Signature Identification</a><ul>
 <li class="chapter" data-level="2.1" data-path="sbssig.html"><a href="sbssig.html#read-data"><i class="fa fa-check"></i><b>2.1</b> Read Data</a></li>
 <li class="chapter" data-level="2.2" data-path="sbssig.html"><a href="sbssig.html#tally-components"><i class="fa fa-check"></i><b>2.2</b> Tally Components</a></li>
-<li class="chapter" data-level="2.3" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>2.3</b> Extract Signatures</a>
-<ul>
+<li class="chapter" data-level="2.3" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>2.3</b> Extract Signatures</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="sbssig.html"><a href="sbssig.html#method-1-estimate-signature-number"><i class="fa fa-check"></i><b>2.3.1</b> Method 1: Estimate Signature Number</a></li>
 <li class="chapter" data-level="2.3.2" data-path="sbssig.html"><a href="sbssig.html#method-1-extract-signatures"><i class="fa fa-check"></i><b>2.3.2</b> Method 1: Extract Signatures</a></li>
 <li class="chapter" data-level="2.3.3" data-path="sbssig.html"><a href="sbssig.html#method-2-auto-extract"><i class="fa fa-check"></i><b>2.3.3</b> Method 2: Auto-extract</a></li>
@@ -156,51 +152,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="sbssig.html"><a href="sbssig.html#match-signatures"><i class="fa fa-check"></i><b>2.4</b> Match Signatures</a></li>
 <li class="chapter" data-level="2.5" data-path="sbssig.html"><a href="sbssig.html#operate-signature"><i class="fa fa-check"></i><b>2.5</b> Operate <code>Signature</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a>
-<ul>
+<li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a><ul>
 <li class="chapter" data-level="3.1" data-path="cnsig.html"><a href="cnsig.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i><b>3.2</b> Read Data</a></li>
 <li class="chapter" data-level="3.3" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i><b>3.3</b> Tally Components</a></li>
 <li class="chapter" data-level="3.4" data-path="cnsig.html"><a href="cnsig.html#extract-signatures-1"><i class="fa fa-check"></i><b>3.4</b> Extract Signatures</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="sigfit.html"><a href="sigfit.html"><i class="fa fa-check"></i><b>4</b> Signature Fit: Sample Exposure Quantification</a>
-<ul>
+<li class="chapter" data-level="4" data-path="sigfit.html"><a href="sigfit.html"><i class="fa fa-check"></i><b>4</b> Signature Fit: Sample Exposure Quantification</a><ul>
 <li class="chapter" data-level="4.1" data-path="sigfit.html"><a href="sigfit.html#fit-signatures-from-reference-databases"><i class="fa fa-check"></i><b>4.1</b> Fit Signatures from reference databases</a></li>
 <li class="chapter" data-level="4.2" data-path="sigfit.html"><a href="sigfit.html#fit-custom-signatures"><i class="fa fa-check"></i><b>4.2</b> Fit Custom Signatures</a></li>
 <li class="chapter" data-level="4.3" data-path="sigfit.html"><a href="sigfit.html#performance-comparison"><i class="fa fa-check"></i><b>4.3</b> Performance Comparison</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="subtyping.html"><a href="subtyping.html"><i class="fa fa-check"></i><b>5</b> Subtype prediction</a></li>
 <li class="part"><span><b>II Target Visualization</b></span></li>
-<li class="chapter" data-level="5" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>5</b> CopyNumber Object</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i><b>5.1</b> Profile</a></li>
-<li class="chapter" data-level="5.2" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i><b>5.2</b> Distribution</a></li>
+<li class="chapter" data-level="6" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>6</b> CopyNumber Object</a><ul>
+<li class="chapter" data-level="6.1" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i><b>6.1</b> Profile</a></li>
+<li class="chapter" data-level="6.2" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i><b>6.2</b> Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>6</b> Signature Object</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i><b>6.1</b> Signature Profile</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i><b>6.1.1</b> SBS Signature profile</a></li>
-<li class="chapter" data-level="6.1.2" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i><b>6.1.2</b> Copy Number Signature Porfile</a></li>
-<li class="chapter" data-level="6.1.3" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i><b>6.1.3</b> COSMIC Signature Profile</a></li>
+<li class="chapter" data-level="7" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>7</b> Signature Object</a><ul>
+<li class="chapter" data-level="7.1" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i><b>7.1</b> Signature Profile</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i><b>7.1.1</b> SBS Signature profile</a></li>
+<li class="chapter" data-level="7.1.2" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i><b>7.1.2</b> Copy Number Signature Porfile</a></li>
+<li class="chapter" data-level="7.1.3" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i><b>7.1.3</b> COSMIC Signature Profile</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i><b>6.2</b> Exposure Profile</a></li>
-<li class="chapter" data-level="6.3" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i><b>6.3</b> Consensus Map</a></li>
-<li class="chapter" data-level="6.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>6.4</b> Catalogue Profile</a></li>
+<li class="chapter" data-level="7.2" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i><b>7.2</b> Exposure Profile</a></li>
+<li class="chapter" data-level="7.3" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i><b>7.3</b> Consensus Map</a></li>
+<li class="chapter" data-level="7.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>7.4</b> Catalogue Profile</a></li>
 </ul></li>
 <li class="part"><span><b>III Universal Analysis</b></span></li>
-<li class="chapter" data-level="7" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>7</b> Association Analysis and Visualization</a></li>
-<li class="chapter" data-level="8" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>8</b> Group Analysis and Visualization</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>8.1</b> Group Generation</a></li>
-<li class="chapter" data-level="8.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>8.2</b> Group Comparison Analysis</a></li>
-<li class="chapter" data-level="8.3" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i><b>8.3</b> Group Visualization</a></li>
+<li class="chapter" data-level="8" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>8</b> Association Analysis and Visualization</a></li>
+<li class="chapter" data-level="9" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>9</b> Group Analysis and Visualization</a><ul>
+<li class="chapter" data-level="9.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>9.1</b> Group Generation</a></li>
+<li class="chapter" data-level="9.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>9.2</b> Group Comparison Analysis</a></li>
+<li class="chapter" data-level="9.3" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i><b>9.3</b> Group Visualization</a></li>
 </ul></li>
 <li class="part"><span><b>IV Useful Utilities</b></span></li>
-<li class="chapter" data-level="9" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>9</b> Datasets</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i><b>9.1</b> Reference Annotation</a></li>
-<li class="chapter" data-level="9.2" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i><b>9.2</b> Copy Number components setting</a></li>
-<li class="chapter" data-level="9.3" data-path="datasets.html"><a href="datasets.html#sbs-signature-conversion"><i class="fa fa-check"></i><b>9.3</b> SBS Signature Conversion</a></li>
+<li class="chapter" data-level="10" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>10</b> Datasets</a><ul>
+<li class="chapter" data-level="10.1" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i><b>10.1</b> Reference Annotation</a></li>
+<li class="chapter" data-level="10.2" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i><b>10.2</b> Copy Number components setting</a></li>
+<li class="chapter" data-level="10.3" data-path="datasets.html"><a href="datasets.html#sbs-signature-conversion"><i class="fa fa-check"></i><b>10.3</b> SBS Signature Conversion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -223,27 +213,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1">
+<div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 
-<div id="refs" class="references hanging-indent">
+<div id="refs" class="references">
 <div>
-<p>Alexandrov, Ludmil B, Jaegil Kim, Nicholas J Haradhvala, Mi Ni Huang, Alvin Wei Tian Ng, Yang Wu, Arnoud Boot, et al. 2020. “The Repertoire of Mutational Signatures in Human Cancer.” <em>Nature</em> 578 (7793): 94–101.</p>
+<p>Alexandrov, Ludmil B, Jaegil Kim, Nicholas J Haradhvala, Mi Ni Huang, Alvin Wei Tian Ng, Yang Wu, Arnoud Boot, et al. 2020. “The Repertoire of Mutational Signatures in Human Cancer.” <em>Nature</em> 578 (7793). Nature Publishing Group: 94–101.</p>
 </div>
 <div>
-<p>Gaujoux, Renaud, and Cathal Seoighe. 2010. “A Flexible R Package for Nonnegative Matrix Factorization.” <em>BMC Bioinformatics</em> 11 (1): 367.</p>
+<p>Gaujoux, Renaud, and Cathal Seoighe. 2010. “A Flexible R Package for Nonnegative Matrix Factorization.” <em>BMC Bioinformatics</em> 11 (1). Springer: 367.</p>
 </div>
 <div>
-<p>Kim, Jaegil, Kent W Mouw, Paz Polak, Lior Z Braunstein, Atanas Kamburov, Grace Tiao, David J Kwiatkowski, et al. 2016. “Somatic Ercc2 Mutations Are Associated with a Distinct Genomic Signature in Urothelial Tumors.” <em>Nature Genetics</em> 48 (6): 600.</p>
+<p>Kim, Jaegil, Kent W Mouw, Paz Polak, Lior Z Braunstein, Atanas Kamburov, Grace Tiao, David J Kwiatkowski, et al. 2016. “Somatic Ercc2 Mutations Are Associated with a Distinct Genomic Signature in Urothelial Tumors.” <em>Nature Genetics</em> 48 (6). Nature Publishing Group: 600.</p>
 </div>
 <div>
-<p>Macintyre, Geoff, Teodora E Goranova, Dilrini De Silva, Darren Ennis, Anna M Piskorz, Matthew Eldridge, Daoud Sie, et al. 2018. “Copy Number Signatures and Mutational Processes in Ovarian Carcinoma.” <em>Nature Genetics</em> 50 (9): 1262–70.</p>
+<p>Macintyre, Geoff, Teodora E Goranova, Dilrini De Silva, Darren Ennis, Anna M Piskorz, Matthew Eldridge, Daoud Sie, et al. 2018. “Copy Number Signatures and Mutational Processes in Ovarian Carcinoma.” <em>Nature Genetics</em> 50 (9). Nature Publishing Group: 1262–70.</p>
 </div>
 <div>
-<p>Mayakonda, Anand, De-Chen Lin, Yassen Assenov, Christoph Plass, and H Phillip Koeffler. 2018. “Maftools: Efficient and Comprehensive Analysis of Somatic Variants in Cancer.” <em>Genome Research</em> 28 (11): 1747–56.</p>
+<p>Mayakonda, Anand, De-Chen Lin, Yassen Assenov, Christoph Plass, and H Phillip Koeffler. 2018. “Maftools: Efficient and Comprehensive Analysis of Somatic Variants in Cancer.” <em>Genome Research</em> 28 (11). Cold Spring Harbor Lab: 1747–56.</p>
 </div>
 <div>
-<p>Tan, Vincent YF, and Cédric Févotte. 2012. “Automatic Relevance Determination in Nonnegative Matrix Factorization with the/Spl Beta/-Divergence.” <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em> 35 (7): 1592–1605.</p>
+<p>Tan, Vincent YF, and Cédric Févotte. 2012. “Automatic Relevance Determination in Nonnegative Matrix Factorization with the/Spl Beta/-Divergence.” <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em> 35 (7). IEEE: 1592–1605.</p>
 </div>
 </div>
 </div>
