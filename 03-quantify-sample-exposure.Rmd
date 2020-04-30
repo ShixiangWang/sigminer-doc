@@ -72,7 +72,10 @@ sum((apply(mt_sig$Signature, 2, function(x) x/sum(x)) %*% mt_sig$Exposure - t(mt
 
 ```{r}
 ## Exposure optimized by sig_fit
-sum((apply(mt_sig$Signature, 2, function(x) x/sum(x)) %*% sig_fit(t(mt_tally$nmf_matrix), sig = mt_sig) - t(mt_tally$nmf_matrix))^2)
+H_estimate = apply(mt_sig$Signature, 2, function(x) x/sum(x)) %*% sig_fit(t(mt_tally$nmf_matrix), sig = mt_sig)
+H_estimate = apply(H_estimate, 2, function(x) ifelse(is.nan(x), 0, x))
+H_real = t(mt_tally$nmf_matrix)
+sum((H_estimate - H_real)^2)
 ```
 
 # Subtype prediction {#subtyping}

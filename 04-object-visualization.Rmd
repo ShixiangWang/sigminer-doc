@@ -42,12 +42,12 @@ A signature is composed of distinct component patterns. They can be shown by `sh
 ### SBS Signature profile 
 
 ```{r, fig.width=12}
-show_sig_profile(mt_sig, mode = "SBS", paint_axis_text = FALSE)
+show_sig_profile(mt_sig, mode = "SBS", paint_axis_text = FALSE, x_label_angle = 90)
 ```
 
 
 ```{r, fig.width=12}
-show_sig_profile(mt_sig, mode = "SBS", style = "cosmic")
+show_sig_profile(mt_sig, mode = "SBS", style = "cosmic", x_label_angle = 90)
 ```
 
 
@@ -83,7 +83,7 @@ show_cosmic_sig_profile(sig_db = "SBS")
 To show the plot, specify signature shortnames to `sig_index` option.
 
 ```{r, fig.width=12}
-show_cosmic_sig_profile(sig_index = c(1, 5, 6), style = "cosmic")
+show_cosmic_sig_profile(sig_index = c(1, 5, 6), style = "cosmic", x_label_angle = 90)
 ```
 
 
@@ -123,13 +123,13 @@ show_sig_consensusmap(mt_sig)
 Based on plot method for signature, we can plot raw catalogue profile.
 
 ```{r, fig.width=12}
-show_catalogue(t(mt_tally$nmf_matrix), style = "cosmic")
+show_catalogue(t(mt_tally$nmf_matrix), style = "cosmic", x_label_angle = 90)
 ```
 
 At default, the function sums all samples. Users can specify sample ID.
 
 
 ```{r, fig.width=12}
-show_catalogue(t(mt_tally$nmf_matrix), style = "cosmic", samples = "TCGA-AB-3009")
+show_catalogue(t(mt_tally$nmf_matrix), style = "cosmic", samples = "TCGA-AB-3009", x_label_angle = 90)
 ```
 

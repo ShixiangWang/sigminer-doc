@@ -219,38 +219,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="group-generation" class="section level2">
 <h2><span class="header-section-number">9.1</span> Group Generation</h2>
 <p>There are multiple methods to generate groups, including ‘consensus’ (default, can be only used by result from <code>sig_extract()</code>), ‘k-means’ etc. After determining groups, <strong>sigminer</strong> will assign each group to a signature with maximum fraction. We may say a group is <code>Sig_x</code> enriched.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">mt_grps &lt;-<span class="st"> </span><span class="kw">get_groups</span>(mt_sig, <span class="dt">method =</span> <span class="st">&quot;consensus&quot;</span>, <span class="dt">match_consensus =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="co">#&gt; =&gt; Obtaining clusters from the hierarchical clustering of the consensus matrix...</span></a>
-<a class="sourceLine" id="cb51-3" data-line-number="3"><span class="co">#&gt; =&gt; Finding the dominant signature of each group...</span></a>
-<a class="sourceLine" id="cb51-4" data-line-number="4"><span class="co">#&gt; =&gt; Generating a table of group and dominant signature:</span></a>
-<a class="sourceLine" id="cb51-5" data-line-number="5"><span class="co">#&gt;    </span></a>
-<a class="sourceLine" id="cb51-6" data-line-number="6"><span class="co">#&gt;     Sig1 Sig2 Sig3</span></a>
-<a class="sourceLine" id="cb51-7" data-line-number="7"><span class="co">#&gt;   1    9   43   39</span></a>
-<a class="sourceLine" id="cb51-8" data-line-number="8"><span class="co">#&gt;   2   14    6    8</span></a>
-<a class="sourceLine" id="cb51-9" data-line-number="9"><span class="co">#&gt;   3   28   12   29</span></a>
-<a class="sourceLine" id="cb51-10" data-line-number="10"><span class="co">#&gt; =&gt; Assigning a group to a signature with the maxium fraction (stored in &#39;map_table&#39; attr)...</span></a>
-<a class="sourceLine" id="cb51-11" data-line-number="11"><span class="co">#&gt; =&gt; Summarizing...</span></a>
-<a class="sourceLine" id="cb51-12" data-line-number="12"><span class="co">#&gt;  group #1: 91 samples with Sig2 enriched.</span></a>
-<a class="sourceLine" id="cb51-13" data-line-number="13"><span class="co">#&gt;  group #2: 28 samples with Sig1 enriched.</span></a>
-<a class="sourceLine" id="cb51-14" data-line-number="14"><span class="co">#&gt;  group #3: 69 samples with Sig3 enriched.</span></a>
-<a class="sourceLine" id="cb51-15" data-line-number="15"><span class="kw">head</span>(mt_grps)</a>
-<a class="sourceLine" id="cb51-16" data-line-number="16"><span class="co">#&gt;          sample group silhouette_width enrich_sig</span></a>
-<a class="sourceLine" id="cb51-17" data-line-number="17"><span class="co">#&gt; 1: TCGA-AB-2977     1           0.1810       Sig2</span></a>
-<a class="sourceLine" id="cb51-18" data-line-number="18"><span class="co">#&gt; 2: TCGA-AB-2867     1          -0.0231       Sig2</span></a>
-<a class="sourceLine" id="cb51-19" data-line-number="19"><span class="co">#&gt; 3: TCGA-AB-2832     1           0.2290       Sig2</span></a>
-<a class="sourceLine" id="cb51-20" data-line-number="20"><span class="co">#&gt; 4: TCGA-AB-2925     1           0.4080       Sig2</span></a>
-<a class="sourceLine" id="cb51-21" data-line-number="21"><span class="co">#&gt; 5: TCGA-AB-3009     1           0.3130       Sig2</span></a>
-<a class="sourceLine" id="cb51-22" data-line-number="22"><span class="co">#&gt; 6: TCGA-AB-2881     1           0.2850       Sig2</span></a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">mt_grps &lt;-<span class="st"> </span><span class="kw">get_groups</span>(mt_sig, <span class="dt">method =</span> <span class="st">&quot;consensus&quot;</span>, <span class="dt">match_consensus =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="co">#&gt; =&gt; Obtaining clusters from the hierarchical clustering of the consensus matrix...</span></a>
+<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="co">#&gt; =&gt; Finding the dominant signature of each group...</span></a>
+<a class="sourceLine" id="cb52-4" data-line-number="4"><span class="co">#&gt; =&gt; Generating a table of group and dominant signature:</span></a>
+<a class="sourceLine" id="cb52-5" data-line-number="5"><span class="co">#&gt;    </span></a>
+<a class="sourceLine" id="cb52-6" data-line-number="6"><span class="co">#&gt;     Sig1 Sig2 Sig3</span></a>
+<a class="sourceLine" id="cb52-7" data-line-number="7"><span class="co">#&gt;   1   48   35    1</span></a>
+<a class="sourceLine" id="cb52-8" data-line-number="8"><span class="co">#&gt;   2   13   11   30</span></a>
+<a class="sourceLine" id="cb52-9" data-line-number="9"><span class="co">#&gt;   3    6   14   35</span></a>
+<a class="sourceLine" id="cb52-10" data-line-number="10"><span class="co">#&gt; =&gt; Assigning a group to a signature with the maxium fraction (stored in &#39;map_table&#39; attr)...</span></a>
+<a class="sourceLine" id="cb52-11" data-line-number="11"><span class="co">#&gt; =&gt; Summarizing...</span></a>
+<a class="sourceLine" id="cb52-12" data-line-number="12"><span class="co">#&gt;  group #1: 84 samples with Sig1 enriched.</span></a>
+<a class="sourceLine" id="cb52-13" data-line-number="13"><span class="co">#&gt;  group #2: 54 samples with Sig3 enriched.</span></a>
+<a class="sourceLine" id="cb52-14" data-line-number="14"><span class="co">#&gt;  group #3: 55 samples with Sig3 enriched.</span></a>
+<a class="sourceLine" id="cb52-15" data-line-number="15"><span class="kw">head</span>(mt_grps)</a>
+<a class="sourceLine" id="cb52-16" data-line-number="16"><span class="co">#&gt;          sample group silhouette_width enrich_sig</span></a>
+<a class="sourceLine" id="cb52-17" data-line-number="17"><span class="co">#&gt; 1: TCGA-AB-2922     1           0.1680       Sig1</span></a>
+<a class="sourceLine" id="cb52-18" data-line-number="18"><span class="co">#&gt; 2: TCGA-AB-2816     1           0.1780       Sig1</span></a>
+<a class="sourceLine" id="cb52-19" data-line-number="19"><span class="co">#&gt; 3: TCGA-AB-2972     1           0.2610       Sig1</span></a>
+<a class="sourceLine" id="cb52-20" data-line-number="20"><span class="co">#&gt; 4: TCGA-AB-2854     1           0.0659       Sig1</span></a>
+<a class="sourceLine" id="cb52-21" data-line-number="21"><span class="co">#&gt; 5: TCGA-AB-2847     1           0.0644       Sig1</span></a>
+<a class="sourceLine" id="cb52-22" data-line-number="22"><span class="co">#&gt; 6: TCGA-AB-2843     1           0.0609       Sig1</span></a></code></pre></div>
 <p>The returned sample orders match sample orders in clustered consensus matrix.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">show_sig_consensusmap</span>(mt_sig)</a></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-67-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">show_sig_consensusmap</span>(mt_sig)</a></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Sometimes, the mapping between groups and enriched signatures may not right. Users should check it and even correct it manually.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">attr</span>(mt_grps, <span class="st">&quot;map_table&quot;</span>)</a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="co">#&gt;    </span></a>
-<a class="sourceLine" id="cb53-3" data-line-number="3"><span class="co">#&gt;     Sig1 Sig2 Sig3</span></a>
-<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="co">#&gt;   1    9   43   39</span></a>
-<a class="sourceLine" id="cb53-5" data-line-number="5"><span class="co">#&gt;   2   14    6    8</span></a>
-<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="co">#&gt;   3   28   12   29</span></a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">attr</span>(mt_grps, <span class="st">&quot;map_table&quot;</span>)</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="co">#&gt;    </span></a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="co">#&gt;     Sig1 Sig2 Sig3</span></a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="co">#&gt;   1   48   35    1</span></a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="co">#&gt;   2   13   11   30</span></a>
+<a class="sourceLine" id="cb54-6" data-line-number="6"><span class="co">#&gt;   3    6   14   35</span></a></code></pre></div>
 </div>
 <div id="group-comparison-analysis" class="section level2">
 <h2><span class="header-section-number">9.2</span> Group Comparison Analysis</h2>

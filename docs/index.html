@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">sigminer: Genomic Alteration Signature Analysis in R</h1>
 <p class="author"><em>Shixiang Wang, ShanghaiTech University</em></p>
 <p class="author"><em>Xue-Song Liu, ShanghaiTech University</em></p>
-<p class="date"><em>last revised on 2020-04-13</em></p>
+<p class="date"><em>last revised on 2020-04-30</em></p>
 </div>
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -230,13 +230,13 @@ alteration spectra, called ‘signature’.</p>
 <h2><span class="header-section-number">1.1</span> Biological Significance of Signature</h2>
 <p>To illustrate the biological significance of genome alteration signatures (a.k.a. mutational signatures), we show some
 well organized figures here.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="fig/sbs_signature_overview_nat_review.png" alt="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729"  />
 <p class="caption">
 Figure 1.1: The illustration of SBS signature, fig source: <a href="https://www.nature.com/articles/nrg3729" class="uri">https://www.nature.com/articles/nrg3729</a>
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="fig/sbs_signature_overview.png" alt="The illustration of SBS signature (2), fig source: https://www.nature.com/articles/s41467-018-05228-y"  />
 <p class="caption">
 Figure 1.2: The illustration of SBS signature (2), fig source: <a href="https://www.nature.com/articles/s41467-018-05228-y" class="uri">https://www.nature.com/articles/s41467-018-05228-y</a>
@@ -248,7 +248,7 @@ Common etiologies contain aging, defective DNA mismatch repair, smoking, ultravi
 <blockquote>
 <p>Recently, <span class="citation">Alexandrov et al. (<a href="#ref-alexandrov2020repertoire">2020</a>)</span> extends the concept of mutational signature to three types of alteration: SBS, DBS and INDEL. Here, we use genomic alteration signature to refer any kind of alteration type can be used to generate ‘signature’.</p>
 </blockquote>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
 <img src="fig/cn_signature_overview.png" alt="The illustration of copy number signatures, fig source: https://www.nature.com/articles/s41588-018-0212-y"  />
 <p class="caption">
 Figure 1.3: The illustration of copy number signatures, fig source: <a href="https://www.nature.com/articles/s41588-018-0212-y" class="uri">https://www.nature.com/articles/s41588-018-0212-y</a>
@@ -289,17 +289,18 @@ extend reading input from other softwares, contribution is welcome.</p>
 <strong>sigminer</strong> is requred to have version &gt;= 1.0.0.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(sigminer)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(NMF)</a></code></pre></div>
-<p>Current manual uses <strong>sigminer</strong> 1.0.0. More info about <strong>sigminer</strong> can be given as:</p>
+<p>Current manual uses <strong>sigminer</strong> 1.0.3. More info about <strong>sigminer</strong> can be given as:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">hello</span>()</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Thanks for using &#39;sigminer&#39; package!</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; =========================================================================</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Version: 1.0.0</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; Project home : https://github.com/ShixiangWang/sigminer</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; Bug report   : https://github.com/ShixiangWang/sigminer/issues</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Documentation: https://shixiangwang.github.io/sigminer-doc/</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; =========================================================================</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; </span></a></code></pre></div>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Version: 1.0.3</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; Run citation(&#39;sigminer&#39;) to see how to cite sigminer in publications.</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; Project home : https://github.com/ShixiangWang/sigminer</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Bug report   : https://github.com/ShixiangWang/sigminer/issues</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; Documentation: https://shixiangwang.github.io/sigminer-doc/</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; =========================================================================</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; </span></a></code></pre></div>
 </div>
 <div id="overview-of-contents" class="section level2">
 <h2><span class="header-section-number">1.6</span> Overview of Contents</h2>
@@ -330,8 +331,22 @@ extend reading input from other softwares, contribution is welcome.</p>
 </div>
 <div id="citation-and-license" class="section level2">
 <h2><span class="header-section-number">1.7</span> Citation and LICENSE</h2>
-<p>If you use <strong>sigminer</strong> in academic field, please cite our work:</p>
-<p><strong><em>Copy number signature analyses in prostate cancer reveal distinct etiologies and clinical outcomes, under submission</em></strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">citation</span>(<span class="st">&quot;sigminer&quot;</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; To cite sigminer in publications use:</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   Wang, Shixiang, et al. &quot;Copy number signature analyses in prostate cancer reveal distinct etiologies and clinical outcomes&quot;</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   medRxiv (2020).</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;   @Article{,</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;     title = {Copy number signature analyses in prostate cancer reveal distinct etiologies and clinical outcomes},</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;     author = {Shixiang Wang and Huimin Li and Minfang Song and Zaoke He and Tao Wu and Xuan Wang and Ziyu Tao and Kai Wu and Xue-Song Liu},</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;     journal = {medRxiv},</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;     year = {2020},</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;     url = {https://www.medrxiv.org/content/early/2020/04/29/2020.04.27.20082404},</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;   }</span></a></code></pre></div>
 <hr />
 <p>The software is made available for non commercial research purposes only
 under the <a href="https://github.com/ShixiangWang/sigminer/blob/master/LICENSE.md">MIT</a>. However, notwithstanding any provision of
