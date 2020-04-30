@@ -1,5 +1,5 @@
 --- 
-title: "sigminer: Genomic Alteration Signature Analysis in R"
+title: "Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures"
 author:
   - Shixiang Wang, ShanghaiTech University
   - Xue-Song Liu, ShanghaiTech University

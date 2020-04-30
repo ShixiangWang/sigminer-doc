@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 SBS Signature Identification | sigminer: Genomic Alteration Signature Analysis in R</title>
+  <title>Chapter 2 SBS Signature Identification | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 SBS Signature Identification | sigminer: Genomic Alteration Signature Analysis in R" />
+  <meta property="og:title" content="Chapter 2 SBS Signature Identification | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ShixiangWang/sigminer-doc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 SBS Signature Identification | sigminer: Genomic Alteration Signature Analysis in R" />
+  <meta name="twitter:title" content="Chapter 2 SBS Signature Identification | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
   
   <meta name="twitter:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   
@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">sigminer: Genomic Alteration Signature Analysis in R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</a>
           </h1>
         </div>
 
@@ -238,7 +238,7 @@ Here, we use the example MAF file stored in <strong>Maftools</strong> as input a
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; -Summarizing</span></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; -Processing clinical data</span></a>
 <a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; --Missing clinical data</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; -Finished in 0.318s elapsed (0.275s cpu)</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; -Finished in 0.350s elapsed (0.300s cpu)</span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10">laml</a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; An object of class  MAF </span></a>
 <a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;                    ID          summary  Mean Median</span></a>
@@ -309,25 +309,25 @@ Default uses Variant Classifications with High/Moderate variant consequences as 
 <a class="sourceLine" id="cb9-7" data-line-number="7">} <span class="cf">else</span> {</a>
 <a class="sourceLine" id="cb9-8" data-line-number="8">  <span class="kw">message</span>(<span class="st">&quot;Please install package &#39;BSgenome.Hsapiens.UCSC.hg19&#39; firstly!&quot;</span>)</a>
 <a class="sourceLine" id="cb9-9" data-line-number="9">}</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:36:15]: Started.</span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:15]: Reference genome loaded.</span></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:15]: Variants from MAF object queried.</span></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:15]: Chromosome names checked.</span></a>
-<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:15]: Sex chromosomes properly handled.</span></a>
-<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:15]: Variant start and end position checked.</span></a>
-<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:15]: Variant data for matrix generation preprocessed.</span></a>
-<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:36:15]: Extracting 5&#39; and 3&#39; adjacent bases.</span></a>
-<a class="sourceLine" id="cb9-18" data-line-number="18"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:36:16]: Extracting +/- 20bp around mutated bases for background C&gt;T estimation.</span></a>
-<a class="sourceLine" id="cb9-19" data-line-number="19"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:36:16]: Estimating APOBEC enrichment scores.</span></a>
-<a class="sourceLine" id="cb9-20" data-line-number="20"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:36:16]: Performing one-way Fisher&#39;s test for APOBEC enrichment.</span></a>
-<a class="sourceLine" id="cb9-21" data-line-number="21"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:16]: APOBEC related mutations are enriched in 3.297% of samples (APOBEC enrichment score &gt; 2; 6 of 182 samples)</span></a>
-<a class="sourceLine" id="cb9-22" data-line-number="22"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:36:16]: Creating SBS sample-by-component matrices.</span></a>
-<a class="sourceLine" id="cb9-23" data-line-number="23"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:16]: SBS-6 matrix created.</span></a>
-<a class="sourceLine" id="cb9-24" data-line-number="24"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:16]: SBS-96 matrix created.</span></a>
-<a class="sourceLine" id="cb9-25" data-line-number="25"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:16]: SBS-1536 matrix created.</span></a>
-<a class="sourceLine" id="cb9-26" data-line-number="26"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:36:16]: Return SBS-96 as major matrix.</span></a>
-<a class="sourceLine" id="cb9-27" data-line-number="27"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:36:16]: Done.</span></a>
-<a class="sourceLine" id="cb9-28" data-line-number="28"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:36:16]: 1.216 secs elapsed.</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:49:49]: Started.</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:49]: Reference genome loaded.</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:49]: Variants from MAF object queried.</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:49]: Chromosome names checked.</span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:49]: Sex chromosomes properly handled.</span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:49]: Variant start and end position checked.</span></a>
+<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:49]: Variant data for matrix generation preprocessed.</span></a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:49:49]: Extracting 5&#39; and 3&#39; adjacent bases.</span></a>
+<a class="sourceLine" id="cb9-18" data-line-number="18"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:49:49]: Extracting +/- 20bp around mutated bases for background C&gt;T estimation.</span></a>
+<a class="sourceLine" id="cb9-19" data-line-number="19"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:49:50]: Estimating APOBEC enrichment scores.</span></a>
+<a class="sourceLine" id="cb9-20" data-line-number="20"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:49:50]: Performing one-way Fisher&#39;s test for APOBEC enrichment.</span></a>
+<a class="sourceLine" id="cb9-21" data-line-number="21"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:50]: APOBEC related mutations are enriched in 3.297% of samples (APOBEC enrichment score &gt; 2; 6 of 182 samples)</span></a>
+<a class="sourceLine" id="cb9-22" data-line-number="22"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:49:50]: Creating SBS sample-by-component matrices.</span></a>
+<a class="sourceLine" id="cb9-23" data-line-number="23"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:50]: SBS-6 matrix created.</span></a>
+<a class="sourceLine" id="cb9-24" data-line-number="24"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:50]: SBS-96 matrix created.</span></a>
+<a class="sourceLine" id="cb9-25" data-line-number="25"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:50]: SBS-1536 matrix created.</span></a>
+<a class="sourceLine" id="cb9-26" data-line-number="26"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:49:50]: Return SBS-96 as major matrix.</span></a>
+<a class="sourceLine" id="cb9-27" data-line-number="27"><span class="co">#&gt; [32m✓[39m [2020-04-30 13:49:50]: Done.</span></a>
+<a class="sourceLine" id="cb9-28" data-line-number="28"><span class="co">#&gt; [36mℹ[39m [2020-04-30 13:49:50]: 1.211 secs elapsed.</span></a></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">mt_tally<span class="op">$</span>nmf_matrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt;              A[T&gt;C]A C[T&gt;C]A G[T&gt;C]A T[T&gt;C]A A[C&gt;T]A</span></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; TCGA-AB-2802       0       0       0       0       0</span></a>
@@ -367,11 +367,11 @@ Currently, Maftools is the backend for <code>read_maf()</code> and <code>sig_tal
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">## You can also select the measures to show</span></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">## by &#39;what&#39; option</span></a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"><span class="kw">show_sig_number_survey2</span>(mt_est<span class="op">$</span>survey, mt_est<span class="op">$</span>survey.random)</a></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>For the details of all the measures above, please read <span class="citation">Gaujoux and Seoighe (<a href="#ref-gaujoux2010flexible">2010</a>)</span> and <a href="https://cran.r-project.org/web/packages/NMF/vignettes/">vignette</a> of R package <strong>NMF</strong>.</p>
 <p>Typically, measure <strong>cophenetic</strong> is used for determing the signature number. We can easily generate an elbow plot with <code>function</code>show_sig_number_survey()`.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">show_sig_number_survey</span>(mt_est<span class="op">$</span>survey, <span class="dt">right_y =</span> <span class="ot">NULL</span>)</a></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Cophenetic indicates the robustness of consensus matrix clustering. In this situation, 2 or 3 is good.</p>
 <blockquote>
 <p>The most common approach is to use the cophenetic correlation coefficient. Brunet et al. suggested choosing the smallest value of r for which this coefficient starts decreasing. <span class="citation">(Gaujoux and Seoighe <a href="#ref-gaujoux2010flexible">2010</a>)</span></p>
@@ -448,7 +448,7 @@ The best solution in study may not be the best solution in math.</p>
 <p>From the result we can see that only one signature is clear. If you find unknow signatures in your study, you should explore the etiologies by other analyses and even experiments.</p>
 <p>The similarity matrix can be plotted.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">pheatmap<span class="op">::</span><span class="kw">pheatmap</span>(sim<span class="op">$</span>similarity)</a></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>You can also try the COSMIC signature database V3 with:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">sim_v3 &lt;-<span class="st"> </span><span class="kw">get_sig_similarity</span>(mt_sig, <span class="dt">sig_db =</span> <span class="st">&quot;SBS&quot;</span>)</a>
 <a class="sourceLine" id="cb20-2" data-line-number="2"><span class="co">#&gt; -Comparing against COSMIC signatures</span></a>
