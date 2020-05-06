@@ -20,11 +20,11 @@ Genomic alterations including single nucleotide substitution (SBS),
 copy number alteration (CNA), etc. are the major force for cancer
 initialization and development. Due to the specificity of molecular
 lesions caused by genomic alterations, we can generate characteristic
-alteration spectra, called 'signature'. 
+alteration spectra, called **mutational signature**. 
 
-## Biological Significance of Signature
+## Biological Significance of Mutational Signature
 
-To illustrate the biological significance of genome alteration signatures (a.k.a. mutational signatures), we show some
+To illustrate the biological significance of mutational signatures, we show some
 well organized figures here.
 
 ```{r echo=FALSE, fig.cap="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729"}
@@ -36,22 +36,23 @@ knitr::include_graphics("fig/sbs_signature_overview.png")
 ```
 
 SBS signature is a famous type of mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
-Common etiologies contain aging, defective DNA mismatch repair, smoking, ultraviolet light exposure and APOBOE.
+Common etiologies contain aging, defective DNA mismatch repair, smoking, ultraviolet light exposure and [APOBEC](https://en.wikipedia.org/wiki/APOBEC).
 
 Currently, all SBS signatures are summarized in COSMIC database, including two versions: [v2](https://cancer.sanger.ac.uk/cosmic/signatures_v2) and [v3](https://cancer.sanger.ac.uk/cosmic/signatures/SBS/).
 
-> Recently, @alexandrov2020repertoire extends the concept of mutational signature to three types of alteration: SBS, DBS and INDEL. Here, we use genomic alteration signature to refer any kind of alteration type can be used to generate 'signature'.
+Recently, @alexandrov2020repertoire extends the concept of mutational signature to three types of alteration: SBS, DBS and INDEL.
+All reported common signatures are recorded in COSMIC (https://cancer.sanger.ac.uk/cosmic/signatures/), so we usually call them **COSMIC signatures**.
 
 
 ```{r echo=FALSE, fig.cap="The illustration of copy number signatures, fig source: https://www.nature.com/articles/s41588-018-0212-y"}
 knitr::include_graphics("fig/cn_signature_overview.png")
 ```
 
-Copy number signatures are less studied and many works are still to be done.
+Copy number signatures are less studied and many works are still to be done. The introduction is described in Chapter \@ref(cnsig).
 
 ## Sigminer
 
-Here, we present an easy-to-use and scalable toolkit for genomic alteration signature analysis and visualization in R. We named it **sigminer** (`signature` + `miner`). 
+Here, we present an easy-to-use and scalable toolkit for mutational signature analysis and visualization in R. We named it **sigminer** (`signature` + `miner`). 
 This tool can help users to extract, analyze and visualize signatures from genomic alteration records,
 thus providing new insight into cancer study.
 

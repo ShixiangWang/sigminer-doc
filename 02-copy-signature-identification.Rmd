@@ -10,7 +10,7 @@ Unlike several mutation types presented in current COSMIC database for generatin
 - apply mixture modelling to breakdown each feature distribution into mixtures of Gaussian or mixtures of Poisson distributions
 - generate a sample-by-component matrix representing the sum of posterior probabilities of each copy-number event being assigned to each component.
 
-Based on previous work, our group devised a new method which discards the statistical modeling and create a fixed number of predefined components from 8 copy number features to generate the matrix as the input of NMF,
+Based on previous work, our group devised a new method which discards the statistical modeling and create a fixed number of predefined components from 8 copy number features to generate the matrix as the input of NMF [@WangSX2020],
 it is easier to reproduce the result, apply to different cancer types and compare results.
 To test if the method would works, we applied it to prostate cancer and successfully identified 5 copy number signatures.
 
@@ -84,7 +84,7 @@ This step return a `list` containing information about copy number features, com
 ## Extract Signatures 
 
 
-When you get the matrix, you can just do the signature extractin as SBS signatures. So here we won't talk much.
+When you get the matrix, you can just do the signature extractin as SBS signatures (see chapter Chapter \@ref(sbssig)). So here we won't talk much.
 
 ```{r}
 cn_tally_W$nmf_matrix[1:5, 1:5]

@@ -67,13 +67,13 @@ show_sig_profile(sig_w,
 
 Users can show profile of COSMIC signatures by `show_cosmic_sig_profile()`.
 
-> Currently support v2 and SBS from v3.
-
 To see valid signature numbers, run
 
 ```{r}
 show_cosmic_sig_profile(sig_db = "legacy")
 ```
+
+> 'legacy' is for COSMIC v2.
 
 ```{r}
 show_cosmic_sig_profile(sig_db = "SBS")
@@ -83,9 +83,18 @@ show_cosmic_sig_profile(sig_db = "SBS")
 To show the plot, specify signature shortnames to `sig_index` option.
 
 ```{r, fig.width=12}
-show_cosmic_sig_profile(sig_index = c(1, 5, 6), style = "cosmic", x_label_angle = 90)
+show_cosmic_sig_profile(sig_index = c(1, 5, 6), style = "cosmic")
 ```
 
+
+```{r, fig.width=12}
+show_cosmic_sig_profile(sig_index = c(1, 2, 3), style = "cosmic", sig_db = "DBS")
+```
+
+
+```{r, fig.width=12}
+show_cosmic_sig_profile(sig_index = c(4, 5, 6), style = "cosmic", sig_db = "ID")
+```
 
 ## Exposure Profile 
 
@@ -105,7 +114,7 @@ show_sig_exposure(sig_w, style = "cosmic")
 
 Of note:
 
-- For SBS signature, the absolute exposure is the estimated SBS count.
+- For COSMIC signatures, the absolute exposure is the estimated mutation counts.
 - For copy number signatures, the absolute exposure is the estimated copy number segments.
 
 

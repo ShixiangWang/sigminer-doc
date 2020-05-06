@@ -3,8 +3,8 @@
 Besides *de novo* signature discovery shown in previous chapters, another common task is that
 you have gotten a reference signature database (either from known database like COSMIC or *de novo* discovery step), you want to know how these signatures fit in a new sample. That's the target of `sig_fit()`.
 
-`sig_fit()` uses linear combination decomposition to compute exposure of pre-defined signatures from the total
-alteration spectrum of a (can be more) sample. Use `?` see more detail.
+`sig_fit()` uses multiple methods to compute exposure of pre-defined signatures from the total
+alteration spectrum of a (can be more) sample. Use `?sig_fit` see more detail.
 
 To show how this function works, we use a sample with maximum mutation counts as example data.
 
@@ -78,7 +78,24 @@ H_real = t(mt_tally$nmf_matrix)
 sum((H_estimate - H_real)^2)
 ```
 
-# Subtype prediction {#subtyping}
+
+## Estimate Exposure Stability by Bootstrap
+
+This feature is based on `sig_fit()`, it uses the resampling data of original input and runs `sig_fit()` multiple times to estimate the exposure. Bootstrap replicates >= 100 is recommended, here I just use 10 times for illustration.
+
+```{r}
+bt_result <- sig_fit_bootstrap(example_mat, sig = mt_sig, n = 10)
+bt_result
+```
+
+Currently, I haven't create plot method for the result, but you can plot it very easily with `boxplot()`.
+
+```{r}
+boxplot(t(bt_result$expo))
+```
+
+
+# Subtype Prediction {#subtyping}
 
 To expand the power of signatures to clinical application, based on **signature discovery** and **signature fitting** workflow, we can go further build neutral network model prediction model with **keras**. This feature is currently experimental and implemented in **sigminer**'s child package [**sigminer.prediction**](https://github.com/ShixiangWang/sigminer.prediction).
 
