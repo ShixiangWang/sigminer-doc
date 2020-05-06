@@ -1,8 +1,9 @@
 # (PART) Common Workflow  {-}
 
-# SBS Signature Identification {#sbssig}
+# COSMIC Signature Identification {#sbssig}
 
-In this chapter, we will introduce how to identify SBS signatures from SBS records of variant calling data.
+In this chapter, we will introduce how to identify COSMIC signatures from records of variant calling data.
+The COSMIC signatures include three type of signatures: SBS, DBS and ID (short for INDEL).
 
 The signature identification procedure has been divided into 3 steps:
 
@@ -70,8 +71,6 @@ mt_tally$nmf_matrix[1:5, 1:5]
 
 We use notion `left[ref>mut]right` to mark each component, e.g. `C[T>G]A` means a base T with 5' adjacent base C and 3' adjacent base A is mutated to base G.
 
-> If you have used signature extraction feature in Maftools, you may feel familiar.
-> Currently, Maftools is the backend for `read_maf()` and `sig_tally` for SBS mutation.
 
 
 ## Extract Signatures 

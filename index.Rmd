@@ -55,9 +55,11 @@ Here, we present an easy-to-use and scalable toolkit for genomic alteration sign
 This tool can help users to extract, analyze and visualize signatures from genomic alteration records,
 thus providing new insight into cancer study.
 
-Currently, **sigminer** supports two types of signature:
+Currently, **sigminer** supports four types of signature:
 
-- SBS signature in the form of 96 components.
+- SBS signature in the form of 96 (6, 24, 384, 1536 and 6144) components.
+- DBS signature in the form of 78 (186) components.
+_ ID (INDEL) signature in the form of 83 (28) components.
 - Copy number signature by the method either from @macintyre2018copy or from our group work.
 
 
@@ -66,26 +68,26 @@ Currently, **sigminer** supports two types of signature:
 The stable release version of **sigminer** package can be installed from the CRAN:
 
 ```{r, eval=FALSE}
-install.packages("sigminer")
+install.packages("sigminer", dependencies = TRUE)
 # Or
-BiocManager::install("sigminer")
+BiocManager::install("sigminer", dependencies = TRUE)
 ```
+
+> Set `dependencies = TRUE` is recommended because many packages are required for full features in **sigminer**.
 
 The development version of **sigminer** package can be installed from Github:
 
 ```{r eval=FALSE}
 # install.packages("remotes")
-remotes::install_github("ShixiangWang/sigminer")
+remotes::install_github("ShixiangWang/sigminer", dependencies = TRUE)
 ```
 
 
 ## Issues or Suggestions  
 
-Any issue can be posted on [GitHub issue](https://github.com/ShixiangWang/sigminer/issues), we will reply ASAP.
+Any issue or suggestion can be posted on [GitHub issue](https://github.com/ShixiangWang/sigminer/issues), we will reply ASAP.
 
-We have plans to extend other genomic alteration signatures (like INDEL and DBS) to **sigminer** or 
-extend reading input from other softwares, contribution is welcome.
-
+Any pull requrest is welcome.
 
 ## Preparation 
 
