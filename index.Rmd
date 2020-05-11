@@ -14,6 +14,23 @@ description: "This package helps users to extract, analyze and visualize signatu
 github-repo: ShixiangWang/sigminer-doc
 ---
 
+```{r set_root, include=FALSE, cache=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+knitr::knit_hooks$set(debug = function(before, options, envir) {
+  if (!before) {
+    envir = as.list(envir)
+    message("Objects: ", paste(names(envir), collapse = " "))
+    for (i in names(envir)) {
+      if (!startsWith(i, ".")) {
+        message(
+          i, " = ", envir[[i]]
+        )
+      }
+    }
+  }
+})
+```
+
 # Introduction {#intro}
 
 Genomic alterations including single nucleotide substitution (SBS),
@@ -27,16 +44,12 @@ alteration spectra, called **mutational signature**.
 To illustrate the biological significance of mutational signatures, we show some
 well organized figures here.
 
-```{r}
-print(getwd())
-```
-
 ```{r echo=FALSE, fig.cap="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729"}
-knitr::include_graphics(file.path(getwd(), "fig/sbs_signature_overview_nat_review.png"))
+knitr::include_graphics("fig/sbs_signature_overview_nat_review2.png")
 ```
 
 ```{r echo=FALSE, fig.cap="The illustration of SBS signature (2), fig source: https://www.nature.com/articles/s41467-018-05228-y"}
-knitr::include_graphics(file.path(getwd(), "fig/sbs_signature_overview.png"))
+knitr::include_graphics("fig/sbs_signature_overview.png")
 ```
 
 SBS signature is a famous type of mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
@@ -49,7 +62,7 @@ All reported common signatures are recorded in COSMIC (https://cancer.sanger.ac.
 
 
 ```{r echo=FALSE, fig.cap="The illustration of copy number signatures, fig source: https://www.nature.com/articles/s41588-018-0212-y"}
-knitr::include_graphics(file.path(getwd(), "fig/cn_signature_overview.png"))
+knitr::include_graphics("fig/cn_signature_overview.png")
 ```
 
 Copy number signatures are less studied and many works are still to be done. The introduction is described in Chapter \@ref(cnsig).

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 SBS Signature Conversion | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</title>
+  <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 SBS Signature Conversion | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
+  <meta name="github-repo" content="ShixiangWang/sigminer-doc" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 SBS Signature Conversion | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
+  
+  <meta name="twitter:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
+  
+
+<meta name="author" content="Shixiang Wang, ShanghaiTech University" />
+<meta name="author" content="Xue-Song Liu, ShanghaiTech University" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="datasets.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">sigminer: Signature Miner</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#biological-significance-of-mutational-signature"><i class="fa fa-check"></i><b>1.1</b> Biological Significance of Mutational Signature</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sigminer"><i class="fa fa-check"></i><b>1.2</b> Sigminer</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.3</b> Installation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#issues-or-suggestions"><i class="fa fa-check"></i><b>1.4</b> Issues or Suggestions</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#preparation"><i class="fa fa-check"></i><b>1.5</b> Preparation</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#overview-of-contents"><i class="fa fa-check"></i><b>1.6</b> Overview of Contents</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#citation-and-license"><i class="fa fa-check"></i><b>1.7</b> Citation and LICENSE</a></li>
+</ul></li>
+<li class="part"><span><b>I Common Workflow</b></span></li>
+<li class="chapter" data-level="2" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>2</b> COSMIC Signature Identification</a><ul>
+<li class="chapter" data-level="2.1" data-path="sbssig.html"><a href="sbssig.html#read-data"><i class="fa fa-check"></i><b>2.1</b> Read Data</a></li>
+<li class="chapter" data-level="2.2" data-path="sbssig.html"><a href="sbssig.html#tally-components"><i class="fa fa-check"></i><b>2.2</b> Tally Components</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="sbssig.html"><a href="sbssig.html#the-most-common-96-components"><i class="fa fa-check"></i><b>2.2.1</b> The most common 96 components</a></li>
+<li class="chapter" data-level="2.2.2" data-path="sbssig.html"><a href="sbssig.html#other-situations"><i class="fa fa-check"></i><b>2.2.2</b> Other Situations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>2.3</b> Extract Signatures</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="sbssig.html"><a href="sbssig.html#method-1-estimate-signature-number"><i class="fa fa-check"></i><b>2.3.1</b> Method 1: Estimate Signature Number</a></li>
+<li class="chapter" data-level="2.3.2" data-path="sbssig.html"><a href="sbssig.html#method-1-extract-signatures"><i class="fa fa-check"></i><b>2.3.2</b> Method 1: Extract Signatures</a></li>
+<li class="chapter" data-level="2.3.3" data-path="sbssig.html"><a href="sbssig.html#method-2-auto-extract"><i class="fa fa-check"></i><b>2.3.3</b> Method 2: Auto-extract</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="sbssig.html"><a href="sbssig.html#match-signatures"><i class="fa fa-check"></i><b>2.4</b> Match Signatures</a></li>
+<li class="chapter" data-level="2.5" data-path="sbssig.html"><a href="sbssig.html#operate-signature"><i class="fa fa-check"></i><b>2.5</b> Operate <code>Signature</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a><ul>
+<li class="chapter" data-level="3.1" data-path="cnsig.html"><a href="cnsig.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i><b>3.2</b> Read Data</a></li>
+<li class="chapter" data-level="3.3" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i><b>3.3</b> Tally Components</a></li>
+<li class="chapter" data-level="3.4" data-path="cnsig.html"><a href="cnsig.html#extract-signatures-1"><i class="fa fa-check"></i><b>3.4</b> Extract Signatures</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sigfit.html"><a href="sigfit.html"><i class="fa fa-check"></i><b>4</b> Signature Fit: Sample Signature Exposure Quantification and Analysis</a><ul>
+<li class="chapter" data-level="4.1" data-path="sigfit.html"><a href="sigfit.html#fit-signatures-from-reference-databases"><i class="fa fa-check"></i><b>4.1</b> Fit Signatures from reference databases</a></li>
+<li class="chapter" data-level="4.2" data-path="sigfit.html"><a href="sigfit.html#fit-custom-signatures"><i class="fa fa-check"></i><b>4.2</b> Fit Custom Signatures</a></li>
+<li class="chapter" data-level="4.3" data-path="sigfit.html"><a href="sigfit.html#performance-comparison"><i class="fa fa-check"></i><b>4.3</b> Performance Comparison</a></li>
+<li class="chapter" data-level="4.4" data-path="sigfit.html"><a href="sigfit.html#estimate-exposure-stability-by-bootstrap"><i class="fa fa-check"></i><b>4.4</b> Estimate Exposure Stability by Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="subtyping.html"><a href="subtyping.html"><i class="fa fa-check"></i><b>5</b> Subtype Prediction</a></li>
+<li class="part"><span><b>II Target Visualization</b></span></li>
+<li class="chapter" data-level="6" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>6</b> CopyNumber Object</a><ul>
+<li class="chapter" data-level="6.1" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i><b>6.1</b> Profile</a></li>
+<li class="chapter" data-level="6.2" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i><b>6.2</b> Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>7</b> Signature Object</a><ul>
+<li class="chapter" data-level="7.1" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i><b>7.1</b> Signature Profile</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i><b>7.1.1</b> SBS Signature profile</a></li>
+<li class="chapter" data-level="7.1.2" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i><b>7.1.2</b> Copy Number Signature Porfile</a></li>
+<li class="chapter" data-level="7.1.3" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i><b>7.1.3</b> COSMIC Signature Profile</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i><b>7.2</b> Exposure Profile</a></li>
+<li class="chapter" data-level="7.3" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i><b>7.3</b> Consensus Map</a></li>
+<li class="chapter" data-level="7.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>7.4</b> Catalogue Profile</a></li>
+</ul></li>
+<li class="part"><span><b>III Universal Analysis</b></span></li>
+<li class="chapter" data-level="8" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>8</b> Association Analysis and Visualization</a></li>
+<li class="chapter" data-level="9" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>9</b> Group Analysis and Visualization</a><ul>
+<li class="chapter" data-level="9.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>9.1</b> Group Generation</a></li>
+<li class="chapter" data-level="9.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>9.2</b> Group Comparison Analysis</a></li>
+<li class="chapter" data-level="9.3" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i><b>9.3</b> Group Visualization</a></li>
+</ul></li>
+<li class="part"><span><b>IV Useful Utilities</b></span></li>
+<li class="chapter" data-level="10" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>10</b> Datasets</a><ul>
+<li class="chapter" data-level="10.1" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i><b>10.1</b> Reference Annotation</a></li>
+<li class="chapter" data-level="10.2" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i><b>10.2</b> Copy Number components setting</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="convert.html"><a href="convert.html"><i class="fa fa-check"></i><b>11</b> SBS Signature Conversion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="convert" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> SBS Signature Conversion</h1>
+<p>Converts signatures between two representations relative to different sets of mutational opportunities. Currently, only SBS signature is supported.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="co"># Load SBS signature</span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_mutational_signature.RData&quot;</span>,</a>
+<a class="sourceLine" id="cb67-3" data-line-number="3">  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb67-4" data-line-number="4">))</a>
+<a class="sourceLine" id="cb67-5" data-line-number="5"><span class="co"># Exome-relative to Genome-relative</span></a>
+<a class="sourceLine" id="cb67-6" data-line-number="6">sig_converted &lt;-<span class="st"> </span><span class="kw">sig_convert</span>(sig2,</a>
+<a class="sourceLine" id="cb67-7" data-line-number="7">  <span class="dt">from =</span> <span class="st">&quot;human-exome&quot;</span>,</a>
+<a class="sourceLine" id="cb67-8" data-line-number="8">  <span class="dt">to =</span> <span class="st">&quot;human-genome&quot;</span></a>
+<a class="sourceLine" id="cb67-9" data-line-number="9">)</a>
+<a class="sourceLine" id="cb67-10" data-line-number="10">sig_converted</a>
+<a class="sourceLine" id="cb67-11" data-line-number="11"><span class="co">#&gt;                  Sig1          Sig2          Sig3</span></a>
+<a class="sourceLine" id="cb67-12" data-line-number="12"><span class="co">#&gt; A[C&gt;A]A  0.000000e+00  1.283652e-02 2.354578e-204</span></a>
+<a class="sourceLine" id="cb67-13" data-line-number="13"><span class="co">#&gt; A[C&gt;A]C  0.000000e+00  1.866572e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-14" data-line-number="14"><span class="co">#&gt; A[C&gt;A]G  0.000000e+00  1.618700e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-15" data-line-number="15"><span class="co">#&gt; A[C&gt;A]T  0.000000e+00  7.572233e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-16" data-line-number="16"><span class="co">#&gt; C[C&gt;A]A  0.000000e+00  1.209076e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-17" data-line-number="17"><span class="co">#&gt; C[C&gt;A]C  0.000000e+00  7.032249e-03 1.170400e-133</span></a>
+<a class="sourceLine" id="cb67-18" data-line-number="18"><span class="co">#&gt; C[C&gt;A]G  0.000000e+00  3.839313e-03 1.165310e-269</span></a>
+<a class="sourceLine" id="cb67-19" data-line-number="19"><span class="co">#&gt; C[C&gt;A]T  0.000000e+00  1.166974e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-20" data-line-number="20"><span class="co">#&gt; G[C&gt;A]A  0.000000e+00  1.025669e-02  4.089543e-15</span></a>
+<a class="sourceLine" id="cb67-21" data-line-number="21"><span class="co">#&gt; G[C&gt;A]C 2.975389e-296  4.002311e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-22" data-line-number="22"><span class="co">#&gt; G[C&gt;A]G  4.796114e-02 4.527374e-117  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-23" data-line-number="23"><span class="co">#&gt; G[C&gt;A]T  0.000000e+00  5.994876e-03 1.669814e-131</span></a>
+<a class="sourceLine" id="cb67-24" data-line-number="24"><span class="co">#&gt; T[C&gt;A]A  0.000000e+00  3.324941e-96  7.673114e-02</span></a>
+<a class="sourceLine" id="cb67-25" data-line-number="25"><span class="co">#&gt; T[C&gt;A]C  0.000000e+00  1.467589e-02 9.720402e-229</span></a>
+<a class="sourceLine" id="cb67-26" data-line-number="26"><span class="co">#&gt; T[C&gt;A]G  0.000000e+00  3.199454e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-27" data-line-number="27"><span class="co">#&gt; T[C&gt;A]T  0.000000e+00  2.338506e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-28" data-line-number="28"><span class="co">#&gt; A[C&gt;G]A  0.000000e+00  1.198076e-02 1.210238e-153</span></a>
+<a class="sourceLine" id="cb67-29" data-line-number="29"><span class="co">#&gt; A[C&gt;G]C  0.000000e+00  3.999796e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-30" data-line-number="30"><span class="co">#&gt; A[C&gt;G]G  9.976549e-02  7.184837e-58  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-31" data-line-number="31"><span class="co">#&gt; A[C&gt;G]T  0.000000e+00  7.572233e-03 9.731662e-108</span></a>
+<a class="sourceLine" id="cb67-32" data-line-number="32"><span class="co">#&gt; C[C&gt;G]A  0.000000e+00  8.732217e-03  1.472610e-34</span></a>
+<a class="sourceLine" id="cb67-33" data-line-number="33"><span class="co">#&gt; C[C&gt;G]C  0.000000e+00  1.875266e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-34" data-line-number="34"><span class="co">#&gt; C[C&gt;G]G  0.000000e+00  4.429976e-03  1.144811e-70</span></a>
+<a class="sourceLine" id="cb67-35" data-line-number="35"><span class="co">#&gt; C[C&gt;G]T  1.398527e-01  1.003533e-19  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-36" data-line-number="36"><span class="co">#&gt; G[C&gt;G]A 1.227107e-293  7.521572e-03 2.969058e-285</span></a>
+<a class="sourceLine" id="cb67-37" data-line-number="37"><span class="co">#&gt; G[C&gt;G]C  0.000000e+00  3.001734e-03 2.665595e-168</span></a>
+<a class="sourceLine" id="cb67-38" data-line-number="38"><span class="co">#&gt; G[C&gt;G]G  0.000000e+00  2.178881e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-39" data-line-number="39"><span class="co">#&gt; G[C&gt;G]T  0.000000e+00  3.996584e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-40" data-line-number="40"><span class="co">#&gt; T[C&gt;G]A  0.000000e+00  4.493267e-03 2.338585e-311</span></a>
+<a class="sourceLine" id="cb67-41" data-line-number="41"><span class="co">#&gt; T[C&gt;G]C  0.000000e+00  5.336688e-03 1.100445e-248</span></a>
+<a class="sourceLine" id="cb67-42" data-line-number="42"><span class="co">#&gt; T[C&gt;G]G  0.000000e+00  5.027714e-03 2.505791e-283</span></a>
+<a class="sourceLine" id="cb67-43" data-line-number="43"><span class="co">#&gt; T[C&gt;G]T  0.000000e+00  8.094828e-03  4.211703e-12</span></a>
+<a class="sourceLine" id="cb67-44" data-line-number="44"><span class="co">#&gt; A[C&gt;T]A  0.000000e+00  4.278842e-02 6.186711e-285</span></a>
+<a class="sourceLine" id="cb67-45" data-line-number="45"><span class="co">#&gt; A[C&gt;T]C  0.000000e+00  3.266500e-02 4.009287e-180</span></a>
+<a class="sourceLine" id="cb67-46" data-line-number="46"><span class="co">#&gt; A[C&gt;T]G  0.000000e+00  8.943317e-02 1.936180e-271</span></a>
+<a class="sourceLine" id="cb67-47" data-line-number="47"><span class="co">#&gt; A[C&gt;T]T  0.000000e+00  2.366323e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-48" data-line-number="48"><span class="co">#&gt; C[C&gt;T]A  0.000000e+00  2.552494e-02  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-49" data-line-number="49"><span class="co">#&gt; C[C&gt;T]C  0.000000e+00  1.406450e-02 1.334078e-226</span></a>
+<a class="sourceLine" id="cb67-50" data-line-number="50"><span class="co">#&gt; C[C&gt;T]G  0.000000e+00  5.463637e-02 9.737288e-158</span></a>
+<a class="sourceLine" id="cb67-51" data-line-number="51"><span class="co">#&gt; C[C&gt;T]T  0.000000e+00  3.695418e-02 4.246509e-172</span></a>
+<a class="sourceLine" id="cb67-52" data-line-number="52"><span class="co">#&gt; G[C&gt;T]A  0.000000e+00 1.550033e-134  1.379990e-01</span></a>
+<a class="sourceLine" id="cb67-53" data-line-number="53"><span class="co">#&gt; G[C&gt;T]C  0.000000e+00  2.401387e-02 9.655208e-197</span></a>
+<a class="sourceLine" id="cb67-54" data-line-number="54"><span class="co">#&gt; G[C&gt;T]G  0.000000e+00  5.665090e-02 1.322415e-193</span></a>
+<a class="sourceLine" id="cb67-55" data-line-number="55"><span class="co">#&gt; G[C&gt;T]T  0.000000e+00  3.197267e-02 1.483309e-124</span></a>
+<a class="sourceLine" id="cb67-56" data-line-number="56"><span class="co">#&gt; T[C&gt;T]A  0.000000e+00  3.504749e-02 1.602583e-125</span></a>
+<a class="sourceLine" id="cb67-57" data-line-number="57"><span class="co">#&gt; T[C&gt;T]C  0.000000e+00  2.868470e-02 2.192251e-133</span></a>
+<a class="sourceLine" id="cb67-58" data-line-number="58"><span class="co">#&gt; T[C&gt;T]G  0.000000e+00  5.607061e-45  3.725237e-01</span></a>
+<a class="sourceLine" id="cb67-59" data-line-number="59"><span class="co">#&gt; T[C&gt;T]T  0.000000e+00  2.248563e-02 5.991874e-150</span></a>
+<a class="sourceLine" id="cb67-60" data-line-number="60"><span class="co">#&gt; A[T&gt;A]A  0.000000e+00 8.169022e-163 4.909543e-207</span></a>
+<a class="sourceLine" id="cb67-61" data-line-number="61"><span class="co">#&gt; A[T&gt;A]C  0.000000e+00  9.451235e-03 9.169290e-161</span></a>
+<a class="sourceLine" id="cb67-62" data-line-number="62"><span class="co">#&gt; A[T&gt;A]G  0.000000e+00 1.860257e-209  3.781700e-02</span></a>
+<a class="sourceLine" id="cb67-63" data-line-number="63"><span class="co">#&gt; A[T&gt;A]T  0.000000e+00  3.646724e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-64" data-line-number="64"><span class="co">#&gt; C[T&gt;A]A  0.000000e+00  9.626354e-63 1.877035e-152</span></a>
+<a class="sourceLine" id="cb67-65" data-line-number="65"><span class="co">#&gt; C[T&gt;A]C  0.000000e+00  4.098575e-03  8.954807e-03</span></a>
+<a class="sourceLine" id="cb67-66" data-line-number="66"><span class="co">#&gt; C[T&gt;A]G  0.000000e+00  7.584736e-03  1.779246e-46</span></a>
+<a class="sourceLine" id="cb67-67" data-line-number="67"><span class="co">#&gt; C[T&gt;A]T  0.000000e+00  4.886651e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-68" data-line-number="68"><span class="co">#&gt; G[T&gt;A]A  0.000000e+00 1.923466e-257  1.645056e-02</span></a>
+<a class="sourceLine" id="cb67-69" data-line-number="69"><span class="co">#&gt; G[T&gt;A]C  0.000000e+00  5.990275e-03 2.816093e-138</span></a>
+<a class="sourceLine" id="cb67-70" data-line-number="70"><span class="co">#&gt; G[T&gt;A]G  0.000000e+00  2.491146e-03 5.966918e-137</span></a>
+<a class="sourceLine" id="cb67-71" data-line-number="71"><span class="co">#&gt; G[T&gt;A]T  1.780073e-01 1.470587e-107  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-72" data-line-number="72"><span class="co">#&gt; T[T&gt;A]A  0.000000e+00  0.000000e+00  1.576605e-78</span></a>
+<a class="sourceLine" id="cb67-73" data-line-number="73"><span class="co">#&gt; T[T&gt;A]C  0.000000e+00 3.652510e-193  3.025830e-02</span></a>
+<a class="sourceLine" id="cb67-74" data-line-number="74"><span class="co">#&gt; T[T&gt;A]G  0.000000e+00  0.000000e+00  3.102984e-02</span></a>
+<a class="sourceLine" id="cb67-75" data-line-number="75"><span class="co">#&gt; T[T&gt;A]T  0.000000e+00  5.570191e-03 2.661350e-186</span></a>
+<a class="sourceLine" id="cb67-76" data-line-number="76"><span class="co">#&gt; A[T&gt;C]A  0.000000e+00  3.673499e-02 2.037390e-236</span></a>
+<a class="sourceLine" id="cb67-77" data-line-number="77"><span class="co">#&gt; A[T&gt;C]C  0.000000e+00  4.875997e-80  8.069896e-02</span></a>
+<a class="sourceLine" id="cb67-78" data-line-number="78"><span class="co">#&gt; A[T&gt;C]G  0.000000e+00  2.533400e-02 4.653276e-300</span></a>
+<a class="sourceLine" id="cb67-79" data-line-number="79"><span class="co">#&gt; A[T&gt;C]T  0.000000e+00  3.403610e-02 1.137147e-235</span></a>
+<a class="sourceLine" id="cb67-80" data-line-number="80"><span class="co">#&gt; C[T&gt;C]A  0.000000e+00  7.619558e-03  1.273356e-94</span></a>
+<a class="sourceLine" id="cb67-81" data-line-number="81"><span class="co">#&gt; C[T&gt;C]C  0.000000e+00  1.116095e-02 1.501723e-122</span></a>
+<a class="sourceLine" id="cb67-82" data-line-number="82"><span class="co">#&gt; C[T&gt;C]G  0.000000e+00  9.506418e-50  9.321794e-02</span></a>
+<a class="sourceLine" id="cb67-83" data-line-number="83"><span class="co">#&gt; C[T&gt;C]T  0.000000e+00  1.172796e-02  1.679251e-87</span></a>
+<a class="sourceLine" id="cb67-84" data-line-number="84"><span class="co">#&gt; G[T&gt;C]A  0.000000e+00  4.585040e-03  5.536247e-03</span></a>
+<a class="sourceLine" id="cb67-85" data-line-number="85"><span class="co">#&gt; G[T&gt;C]C  0.000000e+00 5.073564e-255  4.133148e-02</span></a>
+<a class="sourceLine" id="cb67-86" data-line-number="86"><span class="co">#&gt; G[T&gt;C]G  0.000000e+00  6.850650e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-87" data-line-number="87"><span class="co">#&gt; G[T&gt;C]T  3.036787e-50  1.058999e-02 7.624782e-161</span></a>
+<a class="sourceLine" id="cb67-88" data-line-number="88"><span class="co">#&gt; T[T&gt;C]A  0.000000e+00 1.774320e-183  1.917769e-02</span></a>
+<a class="sourceLine" id="cb67-89" data-line-number="89"><span class="co">#&gt; T[T&gt;C]C 3.471970e-224  7.796288e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-90" data-line-number="90"><span class="co">#&gt; T[T&gt;C]G  0.000000e+00  9.993850e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-91" data-line-number="91"><span class="co">#&gt; T[T&gt;C]T  0.000000e+00  2.116673e-02 4.729625e-249</span></a>
+<a class="sourceLine" id="cb67-92" data-line-number="92"><span class="co">#&gt; A[T&gt;G]A  0.000000e+00  6.559820e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-93" data-line-number="93"><span class="co">#&gt; A[T&gt;G]C  0.000000e+00 8.576821e-159  1.467254e-02</span></a>
+<a class="sourceLine" id="cb67-94" data-line-number="94"><span class="co">#&gt; A[T&gt;G]G  0.000000e+00  1.544237e-03  3.140069e-03</span></a>
+<a class="sourceLine" id="cb67-95" data-line-number="95"><span class="co">#&gt; A[T&gt;G]T  0.000000e+00  3.646724e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-96" data-line-number="96"><span class="co">#&gt; C[T&gt;G]A  0.000000e+00  1.088508e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-97" data-line-number="97"><span class="co">#&gt; C[T&gt;G]C  0.000000e+00  5.252213e-03 5.352907e-111</span></a>
+<a class="sourceLine" id="cb67-98" data-line-number="98"><span class="co">#&gt; C[T&gt;G]G  0.000000e+00  6.320613e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-99" data-line-number="99"><span class="co">#&gt; C[T&gt;G]T  1.505897e-01  2.544085e-94 2.345935e-218</span></a>
+<a class="sourceLine" id="cb67-100" data-line-number="100"><span class="co">#&gt; G[T&gt;G]A  9.796461e-02  2.199487e-93 1.446688e-154</span></a>
+<a class="sourceLine" id="cb67-101" data-line-number="101"><span class="co">#&gt; G[T&gt;G]C  0.000000e+00  1.996758e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-102" data-line-number="102"><span class="co">#&gt; G[T&gt;G]G  0.000000e+00  3.736718e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-103" data-line-number="103"><span class="co">#&gt; G[T&gt;G]T  0.000000e+00  3.701349e-72  1.494581e-02</span></a>
+<a class="sourceLine" id="cb67-104" data-line-number="104"><span class="co">#&gt; T[T&gt;G]A  1.142049e-01 5.198170e-158  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-105" data-line-number="105"><span class="co">#&gt; T[T&gt;G]C  0.000000e+00  4.872680e-03  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-106" data-line-number="106"><span class="co">#&gt; T[T&gt;G]G  0.000000e+00  1.798724e-19  1.551492e-02</span></a>
+<a class="sourceLine" id="cb67-107" data-line-number="107"><span class="co">#&gt; T[T&gt;G]T  1.716541e-01  1.775134e-54  0.000000e+00</span></a>
+<a class="sourceLine" id="cb67-108" data-line-number="108"></a>
+<a class="sourceLine" id="cb67-109" data-line-number="109"><span class="kw">show_sig_profile</span>(sig2, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</a></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-83-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">show_sig_profile</span>(sig_converted, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</a></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-83-2.png" width="1152" style="display: block; margin: auto;" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="datasets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ShixiangWang/sigminer-doc/edit/master/06-others.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["sigminer-doc.pdf", "sigminer-doc.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

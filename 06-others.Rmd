@@ -46,7 +46,7 @@ Detail about how to generate this dataset can be viewed at <https://github.com/S
 CN.features
 ```
 
-## SBS Signature Conversion
+# SBS Signature Conversion {#convert}
 
 Converts signatures between two representations relative to different sets of mutational opportunities. Currently, only SBS signature is supported.
 
