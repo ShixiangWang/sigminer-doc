@@ -44,7 +44,7 @@ alteration spectra, called **mutational signature**.
 To illustrate the biological significance of mutational signatures, we show some
 well organized figures here.
 
-```{r echo=FALSE, fig.cap="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729"}
+```{r echo=FALSE, fig.cap="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729", out.width="80%", fig.width=10}
 knitr::include_graphics("fig/sbs_signature_overview_nat_review2.png")
 ```
 
