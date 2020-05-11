@@ -13,6 +13,17 @@ link-citations: yes
 description: "This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study."
 github-repo: ShixiangWang/sigminer-doc
 ---
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  fig.align = 'center',
+  # fig.width = 4,
+  # fig.height = 4,
+  message = TRUE,
+  collapse = TRUE,
+  comment = "#>",
+  tidy = "styler"
+)
+```
 
 # Introduction {#intro}
 
@@ -166,3 +177,115 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
+<!--chapter:end:index.Rmd-->
+
+
+# (PART) Common Workflow  {-}
+# COSMIC Signature Identification {#sbssig}
+
+Placeholder
+
+
+## Read Data 
+## Tally Components 
+### The most common 96 components
+### Other Situations
+#### Other SBS classifications
+#### DBS and ID components
+#### Take togother
+## Extract Signatures 
+### Method 1: Estimate Signature Number  
+### Method 1: Extract Signatures 
+### Method 2: Auto-extract 
+## Match Signatures  
+## Operate `Signature` 
+
+<!--chapter:end:01-COSMIC-signature-identification.Rmd-->
+
+
+# Copy Number Signature Identification {#cnsig}
+
+Placeholder
+
+
+## Introduction 
+## Read Data 
+## Tally Components 
+## Extract Signatures 
+
+<!--chapter:end:02-copy-signature-identification.Rmd-->
+
+
+# Signature Fit: Sample Signature Exposure Quantification and Analysis {#sigfit}
+
+Placeholder
+
+
+## Fit Signatures from reference databases
+## Fit Custom Signatures
+## Performance Comparison
+## Estimate Exposure Stability by Bootstrap
+
+<!--chapter:end:03-quantify-sample-exposure.Rmd-->
+
+
+# (PART) Target Visualization  {-}
+# CopyNumber Object {#cnobject}
+
+Placeholder
+
+
+## Profile 
+## Distribution 
+## Signature Profile 
+### SBS Signature profile 
+### Copy Number Signature Porfile  
+### COSMIC Signature Profile  
+## Exposure Profile 
+## Consensus Map  
+## Catalogue Profile
+
+<!--chapter:end:04-object-visualization.Rmd-->
+
+
+# (PART)  Universal Analysis {-} 
+
+Placeholder
+
+
+## Group Generation 
+## Group Comparison Analysis 
+## Group Visualization 
+
+<!--chapter:end:05-analysis-and-visualization.Rmd-->
+
+
+# (PART) Useful Utilities {-} 
+
+Placeholder
+
+
+## Reference Annotation 
+## Copy Number components setting 
+## SBS Signature Conversion
+
+<!--chapter:end:06-others.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  fig.align = 'center',
+  # fig.width = 4,
+  # fig.height = 4,
+  message = TRUE,
+  collapse = TRUE,
+  comment = "#>",
+  tidy = "styler"
+)
+```
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:07-references.Rmd-->
+

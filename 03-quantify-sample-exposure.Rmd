@@ -1,4 +1,4 @@
-# Signature Fit: Sample Exposure Quantification {#sigfit}
+# Signature Fit: Sample Signature Exposure Quantification and Analysis {#sigfit}
 
 Besides *de novo* signature discovery shown in previous chapters, another common task is that
 you have gotten a reference signature database (either from known database like COSMIC or *de novo* discovery step), you want to know how these signatures fit in a new sample. That's the target of `sig_fit()`.
