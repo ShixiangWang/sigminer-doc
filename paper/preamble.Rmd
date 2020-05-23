@@ -1,0 +1,35 @@
+---
+title: "Signature Analysis Workflows with sigminer"
+subtitle: "A clear illustration"
+author: ["Shixiang Wang", "Xue-Song Liu"]
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: leonids
+    highlight: vignette
+    toc: true
+---
+
+```{r init, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  tidy = TRUE, 
+  warning = FALSE, message = FALSE
+)
+```
+
+This vignette uses a TCGA breat mutation dataset to show how to analyze [mutational signatures](https://cancer.sanger.ac.uk/cosmic/signatures) with [{sigminer}](https://cran.r-project.org/web/packages/sigminer/index.html).
+
+## Data Import
+
+## Workflow 1: *de novo* Signatures Discovery
+
+## Workflow 2: Reference Signatures Fitting
+
+## Session
+
+```{r}
+devtools::session_info()
+```
+
