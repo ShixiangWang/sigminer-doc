@@ -125,8 +125,6 @@ mt_tally_ID <- sig_tally(
 str(mt_tally_ID$all_matrices, max.level = 1)
 ```
 
-> The `ID_186` is not implemented yet.
-
 
 #### Take togother
 

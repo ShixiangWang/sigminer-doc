@@ -1,7 +1,8 @@
 ---
 title: "Signature Analysis Workflows with sigminer"
 subtitle: "A clear illustration"
-author: ["Shixiang Wang", "Xue-Song Liu"]
+author: ["Shixiang Wang", "Tao Wu", "Ziyu Tao", "Xue-Song Liu"]
+institute: "ShanghaiTech University"
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
@@ -19,9 +20,22 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette uses a TCGA breat mutation dataset to show how to analyze [mutational signatures](https://cancer.sanger.ac.uk/cosmic/signatures) with [{sigminer}](https://cran.r-project.org/web/packages/sigminer/index.html).
+> Contact:
+>
+> Xue-Song Liu: <liuxs@shanghaitech.edu.cn>
+>
+> Shixiang Wang: <wangshx@shanghaitech.edu.cn>
+
+This vignette uses a TCGA breast mutation dataset to show how to analyze [mutational signatures](https://cancer.sanger.ac.uk/cosmic/signatures) with [{sigminer}](https://cran.r-project.org/web/packages/sigminer/index.html).
+
 
 ## Data Import
+
+```{r}
+library()
+maf <- GDCquery_Maf("CHOL", pipelines = "muse")
+```
+
 
 ## Workflow 1: *de novo* Signatures Discovery
 

@@ -221,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</h1>
 <p class="author"><em>Shixiang Wang, ShanghaiTech University</em></p>
 <p class="author"><em>Xue-Song Liu, ShanghaiTech University</em></p>
-<p class="date"><em>last revised on 2020-05-12</em></p>
+<p class="date"><em>last revised on 2020-05-23</em></p>
 </div>
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -295,21 +295,12 @@ thus providing new insight into cancer study.</p>
 <p>To reproduce the examples shown in this manual, users should load the following packages firstly.
 <strong>sigminer</strong> is requred to have version &gt;= 1.0.0.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(sigminer)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; sigminer version 1.0.5, run hello() to see usage and citation.</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">library</span>(NMF)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; 载入需要的程辑包：pkgmaker</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 载入需要的程辑包：registry</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 载入需要的程辑包：rngtools</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 载入需要的程辑包：cluster</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; NMF - BioConductor layer [OK] | Shared memory capabilities [NO: bigmemory] | Cores 7/8</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;   To enable shared memory capabilities, try: install.extras(&#39;</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; NMF</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; &#39;)</span></a></code></pre></div>
-<p>Current manual uses <strong>sigminer</strong> 1.0.5. More info about <strong>sigminer</strong> can be given as:</p>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(NMF)</a></code></pre></div>
+<p>Current manual uses <strong>sigminer</strong> 1.0.6. More info about <strong>sigminer</strong> can be given as:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">hello</span>()</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Thanks for using &#39;sigminer&#39; package!</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; =========================================================================</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Version: 1.0.5</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Version: 1.0.6</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; Run citation(&#39;sigminer&#39;) to see how to cite sigminer in publications.</span></a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; Project home : https://github.com/ShixiangWang/sigminer</span></a>
@@ -351,18 +342,17 @@ thus providing new insight into cancer study.</p>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; To cite sigminer in publications use:</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   Wang, Shixiang, et al. &quot;Copy number signature analyses in prostate cancer reveal distinct etiologies and clinical outcomes&quot; medRxiv</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   (2020).</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;   @Article{,</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;     title = {Copy number signature analyses in prostate cancer reveal distinct etiologies and clinical outcomes},</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;     author = {Shixiang Wang and Huimin Li and Minfang Song and Zaoke He and Tao Wu and Xuan Wang and Ziyu Tao and Kai Wu and Xue-Song Liu},</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;     journal = {medRxiv},</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;     year = {2020},</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;     url = {https://www.medrxiv.org/content/early/2020/04/29/2020.04.27.20082404},</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;   }</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   Wang, Shixiang, et al. &quot;Copy number signature analyses in prostate cancer reveal distinct etiologies and clinical outcomes&quot; medRxiv (2020).</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;   @Article{,</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;     title = {Copy number signature analyses in prostate cancer reveal distinct etiologies and clinical outcomes},</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;     author = {Shixiang Wang and Huimin Li and Minfang Song and Zaoke He and Tao Wu and Xuan Wang and Ziyu Tao and Kai Wu and Xue-Song Liu},</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;     journal = {medRxiv},</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;     year = {2020},</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;     url = {https://www.medrxiv.org/content/early/2020/04/29/2020.04.27.20082404},</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;   }</span></a></code></pre></div>
 <hr />
 <p>The software is made available for non commercial research purposes only
 under the <a href="https://github.com/ShixiangWang/sigminer/blob/master/LICENSE.md">MIT</a>. However, notwithstanding any provision of

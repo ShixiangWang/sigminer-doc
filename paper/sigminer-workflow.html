@@ -12,9 +12,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="author" content="Shixiang Wang" />
+<meta name="author" content="Tao Wu" />
+<meta name="author" content="Ziyu Tao" />
 <meta name="author" content="Xue-Song Liu" />
 
-<meta name="date" content="2020-05-22" />
+<meta name="date" content="2020-05-23" />
 
 <title>Signature Analysis Workflows with sigminer</title>
 
@@ -148,8 +150,10 @@ code span.er { color: #a61717; background-color: #e3d2d2; }
 <span class="author_name">Signature Analysis Workflows with sigminer</span>
 <span class="author_job">A clear illustration</span>
 <span class="author_bio mbm">Shixiang Wang</span>
+<span class="author_bio mbm">Tao Wu</span>
+<span class="author_bio mbm">Ziyu Tao</span>
 <span class="author_bio mbm">Xue-Song Liu</span>
-<span class="author_bio mbm">2020-05-22</span>
+<span class="author_bio mbm">2020-05-23</span>
 </div>
 </div>
 </div>
@@ -168,7 +172,12 @@ code span.er { color: #a61717; background-color: #e3d2d2; }
 
 <div id="post">
 <article class="post-content">
-<p>This vignette uses a TCGA breat mutation dataset to show how to analyze <a href="https://cancer.sanger.ac.uk/cosmic/signatures">mutational signatures</a> with <a href="https://cran.r-project.org/web/packages/sigminer/index.html">{sigminer}</a>.</p>
+<p>This vignette uses a TCGA breast mutation dataset to show how to analyze <a href="https://cancer.sanger.ac.uk/cosmic/signatures">mutational signatures</a> with <a href="https://cran.r-project.org/web/packages/sigminer/index.html">{sigminer}</a>.</p>
+<blockquote>
+<p>Contact:</p>
+<p>Xue-Song Liu: <a href="mailto:liuxs@shanghaitech.edu.cn" class="email">liuxs@shanghaitech.edu.cn</a></p>
+<p>Shixiang Wang: <a href="mailto:wangshx@shanghaitech.edu.cn" class="email">wangshx@shanghaitech.edu.cn</a></p>
+</blockquote>
 <div id="data-import" class="section level2">
 <h2>Data Import</h2>
 </div>
@@ -184,58 +193,63 @@ code span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; ─ Session info ───────────────────────────────────────────────────────────────</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt;  setting  value                       </span></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt;  version  R version 4.0.0 (2020-04-24)</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt;  os       macOS Catalina 10.15.4      </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt;  os       macOS High Sierra 10.13.6   </span></a>
 <a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt;  system   x86_64, darwin17.0          </span></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt;  ui       X11                         </span></a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt;  language (EN)                        </span></a>
 <a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt;  collate  zh_CN.UTF-8                 </span></a>
 <a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt;  ctype    zh_CN.UTF-8                 </span></a>
 <a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt;  tz       Asia/Shanghai               </span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt;  date     2020-05-22                  </span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt;  date     2020-05-23                  </span></a>
 <a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt; ─ Packages ───────────────────────────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt;  package     * version date       lib source        </span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt;  assertthat    0.2.1   2019-03-21 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt;  backports     1.1.6   2020-04-05 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt;  callr         3.4.3   2020-03-28 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#&gt;  cli           2.0.2   2020-02-28 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt;  crayon        1.3.4   2017-09-16 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt;  desc          1.2.0   2018-05-01 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#&gt;  devtools      2.3.0   2020-04-10 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-23" data-line-number="23"><span class="co">#&gt;  digest        0.6.25  2020-02-23 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-24" data-line-number="24"><span class="co">#&gt;  ellipsis      0.3.0   2019-09-20 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-25" data-line-number="25"><span class="co">#&gt;  evaluate      0.14    2019-05-28 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-26" data-line-number="26"><span class="co">#&gt;  fansi         0.4.1   2020-01-08 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-27" data-line-number="27"><span class="co">#&gt;  formatR       1.7     2019-06-11 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co">#&gt;  fs            1.4.1   2020-04-04 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="co">#&gt;  glue          1.4.0   2020-04-03 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-30" data-line-number="30"><span class="co">#&gt;  htmltools     0.4.0   2019-10-04 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="co">#&gt;  knitr         1.28    2020-02-06 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-32" data-line-number="32"><span class="co">#&gt;  magrittr      1.5     2014-11-22 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-33" data-line-number="33"><span class="co">#&gt;  memoise       1.1.0   2017-04-21 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-34" data-line-number="34"><span class="co">#&gt;  pkgbuild      1.0.7   2020-04-25 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-35" data-line-number="35"><span class="co">#&gt;  pkgload       1.0.2   2018-10-29 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-36" data-line-number="36"><span class="co">#&gt;  prettydoc     0.3.1   2019-11-23 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-37" data-line-number="37"><span class="co">#&gt;  prettyunits   1.1.1   2020-01-24 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-38" data-line-number="38"><span class="co">#&gt;  processx      3.4.2   2020-02-09 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-39" data-line-number="39"><span class="co">#&gt;  ps            1.3.2   2020-02-13 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-40" data-line-number="40"><span class="co">#&gt;  R6            2.4.1   2019-11-12 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-41" data-line-number="41"><span class="co">#&gt;  Rcpp          1.0.4.6 2020-04-09 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-42" data-line-number="42"><span class="co">#&gt;  remotes       2.1.1   2020-02-15 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-43" data-line-number="43"><span class="co">#&gt;  rlang         0.4.5   2020-03-01 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-44" data-line-number="44"><span class="co">#&gt;  rmarkdown     2.1     2020-01-20 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-45" data-line-number="45"><span class="co">#&gt;  rprojroot     1.3-2   2018-01-03 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-46" data-line-number="46"><span class="co">#&gt;  sessioninfo   1.1.1   2018-11-05 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-47" data-line-number="47"><span class="co">#&gt;  stringi       1.4.6   2020-02-17 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-48" data-line-number="48"><span class="co">#&gt;  stringr       1.4.0   2019-02-10 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-49" data-line-number="49"><span class="co">#&gt;  testthat      2.3.2   2020-03-02 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-50" data-line-number="50"><span class="co">#&gt;  usethis       1.6.1   2020-04-29 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-51" data-line-number="51"><span class="co">#&gt;  withr         2.2.0   2020-04-20 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-52" data-line-number="52"><span class="co">#&gt;  xfun          0.13    2020-04-13 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-53" data-line-number="53"><span class="co">#&gt;  yaml          2.2.1   2020-02-01 [1] CRAN (R 4.0.0)</span></a>
-<a class="sourceLine" id="cb1-54" data-line-number="54"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-55" data-line-number="55"><span class="co">#&gt; [1] /Users/wsx/R_Library</span></a>
-<a class="sourceLine" id="cb1-56" data-line-number="56"><span class="co">#&gt; [2] /Library/Frameworks/R.framework/Versions/4.0/Resources/library</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt;  package     * version    date       lib source                          </span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt;  assertthat    0.2.1      2019-03-21 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt;  backports     1.1.6      2020-04-05 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt;  callr         3.4.3      2020-03-28 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#&gt;  cli           2.0.2      2020-02-28 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt;  crayon        1.3.4      2017-09-16 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt;  desc          1.2.0      2018-05-01 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#&gt;  devtools      2.3.0      2020-04-10 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-23" data-line-number="23"><span class="co">#&gt;  digest        0.6.25     2020-02-23 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-24" data-line-number="24"><span class="co">#&gt;  ellipsis      0.3.0      2019-09-20 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-25" data-line-number="25"><span class="co">#&gt;  evaluate      0.14       2019-05-28 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-26" data-line-number="26"><span class="co">#&gt;  fansi         0.4.1      2020-01-08 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-27" data-line-number="27"><span class="co">#&gt;  formatR       1.7        2019-06-11 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co">#&gt;  fs            1.4.1      2020-04-04 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="co">#&gt;  glue          1.4.0      2020-04-03 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-30" data-line-number="30"><span class="co">#&gt;  htmltools     0.4.0      2019-10-04 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="co">#&gt;  knitr         1.28       2020-02-06 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-32" data-line-number="32"><span class="co">#&gt;  magrittr      1.5        2014-11-22 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-33" data-line-number="33"><span class="co">#&gt;  memoise       1.1.0      2017-04-21 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-34" data-line-number="34"><span class="co">#&gt;  pacman      * 0.5.1      2019-03-11 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-35" data-line-number="35"><span class="co">#&gt;  pkgbuild      1.0.8      2020-05-07 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-36" data-line-number="36"><span class="co">#&gt;  pkgload       1.0.2      2018-10-29 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-37" data-line-number="37"><span class="co">#&gt;  prettydoc     0.3.1      2019-11-23 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-38" data-line-number="38"><span class="co">#&gt;  prettyunits   1.1.1      2020-01-24 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-39" data-line-number="39"><span class="co">#&gt;  processx      3.4.2      2020-02-09 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-40" data-line-number="40"><span class="co">#&gt;  ps            1.3.2      2020-02-13 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-41" data-line-number="41"><span class="co">#&gt;  purrr         0.3.4      2020-04-17 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-42" data-line-number="42"><span class="co">#&gt;  R6            2.4.1      2019-11-12 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-43" data-line-number="43"><span class="co">#&gt;  Rcpp          1.0.4.6    2020-04-09 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-44" data-line-number="44"><span class="co">#&gt;  remotes       2.1.1      2020-02-15 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-45" data-line-number="45"><span class="co">#&gt;  rlang         0.4.6      2020-05-02 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-46" data-line-number="46"><span class="co">#&gt;  rmarkdown     2.1        2020-01-20 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-47" data-line-number="47"><span class="co">#&gt;  roxygen2      7.1.0      2020-03-11 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-48" data-line-number="48"><span class="co">#&gt;  roxytest    * 0.0.0.9103 2020-05-12 [1] Github (mikldk/roxytest@c1ef1f7)</span></a>
+<a class="sourceLine" id="cb1-49" data-line-number="49"><span class="co">#&gt;  rprojroot     1.3-2      2018-01-03 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-50" data-line-number="50"><span class="co">#&gt;  sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-51" data-line-number="51"><span class="co">#&gt;  stringi       1.4.6      2020-02-17 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-52" data-line-number="52"><span class="co">#&gt;  stringr       1.4.0      2019-02-10 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-53" data-line-number="53"><span class="co">#&gt;  testthat      2.3.2      2020-03-02 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-54" data-line-number="54"><span class="co">#&gt;  usethis       1.6.1      2020-04-29 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-55" data-line-number="55"><span class="co">#&gt;  withr         2.2.0      2020-04-20 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-56" data-line-number="56"><span class="co">#&gt;  xfun          0.13       2020-04-13 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-57" data-line-number="57"><span class="co">#&gt;  xml2          1.3.2      2020-04-23 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-58" data-line-number="58"><span class="co">#&gt;  yaml          2.2.1      2020-02-01 [1] CRAN (R 4.0.0)                  </span></a>
+<a class="sourceLine" id="cb1-59" data-line-number="59"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-60" data-line-number="60"><span class="co">#&gt; [1] /Users/wsx/R_library</span></a>
+<a class="sourceLine" id="cb1-61" data-line-number="61"><span class="co">#&gt; [2] /Library/Frameworks/R.framework/Versions/4.0/Resources/library</span></a></code></pre></div>
 </div>
 </article>
 </div>
