@@ -200,6 +200,19 @@ mul_sample <- sig_fit(catalogue_matrix = maf_tally$SBS_96[1:5, ] %>% t(),
 mul_sample
 ```
 
+Now, we run all samples and show the result with `show_sig_fit()`.
+
+```{r, fig.width=12}
+## Outliers are removed.
+mul_sample_all <- sig_fit(catalogue_matrix = maf_tally$SBS_96 %>% t(), 
+        sig_index = 1:30,
+        sig_db = "legacy")
+show_sig_fit(mul_sample_all, palette = NULL, add = NULL) +
+  ggpubr::rotate_x_text() +
+  ggplot2::ylim(0, 50)
+```
+
+
 Same analysis can be applied to DBS and INDEL. This dataset also has plents of INDELs, you can take a try.
 
 Firstly check valid COSMIC INDEL signature indices if you are not familiar with.
@@ -215,6 +228,12 @@ mul_sample_id <- sig_fit(catalogue_matrix = maf_tally$ID_83[1:4, ] %>% t(),
 mul_sample_id
 ```
 
+```{r}
+show_sig_fit(mul_sample_id, palette = "simpsons") +
+    ggpubr::rotate_x_text()
+```
+
+
 If you want to optimize exposures for signatures obtained from workflow 1, run the following command.
 
 ```{r}
@@ -228,7 +247,7 @@ mul_sample_custom
 ## Session
 
 ```{r}
-devtools::session_info()
+sessionInfo()
 ```
 
 ## Contact
