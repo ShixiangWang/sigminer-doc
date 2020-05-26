@@ -123,10 +123,21 @@ p_fit <- show_sig_fit(mul_sample_all, palette = NULL, add = NULL) +
   ggpubr::rotate_x_text() +
   ggplot2::ylim(0, 50)
 
-bt_res <- sig_fit_bootstrap_batch(maf_tally$SBS_96[1:100, ] %>% t(), 
+
+bt_res <- sig_fit_bootstrap_batch(maf_tally$SBS_96 %>% t(), 
                                   sig_index = c(1:3, 6:7, 10, 13, 15, 17, 22, 24),
                                   sig_db = "legacy",
                                   type = "relative",
                                   methods = c("LS", "QP"),
-                                  p_val_thresholds = c(0.05, 0.01), 
-                                  n = 100)
+                                  p_val_thresholds = c(0.01),
+                                  use_parallel = FALSE,
+                                  n = 100,
+                                  job_id = "tcga_brca",
+                                  result_dir = "paper/bootstrap")
+
+# # Pick out the most mutated sample
+# which.max(rowSums(maf_tally$SBS_96))
+show_sig_bootstrap_stability(bt_res, methods = c("LS", "QP"))
+show_sig_bootstrap_exposure(bt_res)
+show_sig_bootstrap_error(bt_res)
+# p value for this sample
