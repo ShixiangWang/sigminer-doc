@@ -118,11 +118,13 @@ maf_tally <- sig_tally(
 
 mul_sample_all <- sig_fit(catalogue_matrix = maf_tally$SBS_96 %>% t(), 
                           sig_index = 1:30,
-                          sig_db = "legacy")
+                          sig_db = "legacy", type = "relative")
 p_fit <- show_sig_fit(mul_sample_all, palette = NULL, add = NULL) +
-  ggpubr::rotate_x_text() +
-  ggplot2::ylim(0, 50)
+  ggpubr::rotate_x_text() 
+ # +
+ #  ggplot2::ylim(0, 50)
 
+p_fit
 
 bt_res <- sig_fit_bootstrap_batch(maf_tally$SBS_96 %>% t(), 
                                   sig_index = c(1:3, 6:7, 10, 13, 15, 17, 22, 24),
@@ -134,10 +136,18 @@ bt_res <- sig_fit_bootstrap_batch(maf_tally$SBS_96 %>% t(),
                                   n = 100,
                                   job_id = "tcga_brca",
                                   result_dir = "paper/bootstrap")
+save(bt_res, file = "paper/bt_res.RData")
 
+load(file = "paper/bt_res.RData")
 # # Pick out the most mutated sample
 # which.max(rowSums(maf_tally$SBS_96))
-show_sig_bootstrap_stability(bt_res, methods = c("LS", "QP"))
-show_sig_bootstrap_exposure(bt_res)
-show_sig_bootstrap_error(bt_res)
+p_stab <- show_sig_bootstrap_stability(bt_res, methods = c("LS", "QP"), add = NULL, ylab = "Signature instability (MRSE)") + ggpubr::rotate_x_text()
+p_expo <- show_sig_bootstrap_exposure(bt_res, methods = c("LS", "QP"), add.params = list(alpha = 0.1)) + ggpubr::rotate_x_text()
+p_err  <- show_sig_bootstrap_error(bt_res, methods = c("LS", "QP"), ylab = "Reconstruction error (F2 norm)")
+
+p_3 = p_fit / p_stab / (p_expo | p_err)
+ggplot2::ggsave(filename = "paper/Figure3-sig-fitting-and-bootstrap.pdf", plot = p_3, 
+                width = 8, height = 10)
+
 # p value for this sample
+bt_res$p_val[sample == "TCGA-3C-AAAU-01A-11D-A41F-09"]
