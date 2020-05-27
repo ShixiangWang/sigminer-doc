@@ -1,43 +1,45 @@
 ---
-title: "paper"
-author:
-  - name: Alice Anonymous
-    email: alice@example.com
-    address: Some Institute of Technology
-  - name: Bob Security
-    email: bob@example.com
-    address: Another University
-    corresponding_author: yes
-  - name: Cat Memes
-    email: cat@example.com
-    address: Another University
-  - name: Derek Zoolander
-    email: derek@example.com
-    address: Some Institute of Technology
-date: "2020/5/25"
-output: html_document
+title: "Sigminer: Mutational Signature Extraction, Analysis and Visualization Pipeline"
+author: ["Shixiang Wang", "Tao Wu", "Ziyu Tao", "Xue-Song Liu"]
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: vignette
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## ABSTRACT
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Mutational signature analysis has become a routine after somatic variant calling from high-throughput DNA sequencing.
+Several tools for discovering *de novo* signatures from mutation catalogues of multiple samples or fitting reference signatures based on mutation catalogues of single sample have been published, but lack of interactivity and extensibility. Here we present an R/CRAN package to provide a one-stop solution for extracting, analyzing and visualizing mutational signatures.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+**Availability and implementation**: sigminer is implemented as a CRAN package in R. The package can be downloaded either from <https://cran.r-project.org/> or <https://github.com/ShixiangWang/sigminer>. The package manual can be viewed at <https://shixiangwang.github.io/sigminer-doc/>.
 
-```{r cars}
-summary(cars)
-```
+**Contact**: <liuxs@shanghaitech.edu.cn>
 
-## Including Plots
+## 1. INTRODUCTION
 
-You can also embed plots, for example:
+To be written by Prof. Liu
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## 2. DESCRIPTION
+
+### 2.1 *De novo* signatures discovery
+
+### 2.2 Reference signatures fitting
+
+## 3. DISCUSSION
+
+
+## ACKNOWLEDGEMENT
+
+*Funding*:
+
+*Conflict of Interest*: none declared.
+
+## REFERENCES
