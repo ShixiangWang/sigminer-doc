@@ -23,7 +23,7 @@ The input requires absolute copy number profile with following information:
 - Segment chromosome.
 - Segment start.
 - Segment end.
-- **Segment value**: must be integer.
+- **Absolute copy number value for this segment**: must be integer (i.e. total copy number value in results from Sequenza or FACETS).
 - Sample ID.
 
 The input data can be result from any softwares which provides information above.
@@ -31,7 +31,7 @@ The input data can be result from any softwares which provides information above
 - For chip data/segmentation data (copy ratio is available), [ABSOLUTE](https://software.broadinstitute.org/cancer/cga/absolute) is recommended.
 - For raw sequencing data, [Sequenza](https://cran.r-project.org/web/packages/sequenza/index.html) and [FACETS](https://github.com/mskcc/facets) are recommended.
 
-The import work is done by `read_copynumber`, this function supports `data.frame` or file, and even result directory from [ABSOLUTE](https://software.broadinstitute.org/cancer/cga/absolute).
+The import work is done by `read_copynumber()`, this function supports `data.frame` or file, and even result directory from [ABSOLUTE](https://software.broadinstitute.org/cancer/cga/absolute).
 
 
 ```{r}
@@ -46,6 +46,8 @@ cn <- read_copynumber(segTabs,
 cn
 ```
 
+> Currently, you can refer to `extract_facets_cnv()` and `extract_seqz_cnv()` in <https://github.com/ShixiangWang/prad_signature/blob/master/analysis/src/99-functions.R> to
+> see how to get tidy data from a result directory of FACETS or Sequenza.
 
 ## Tally Components 
 

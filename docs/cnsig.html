@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Copy Number Signature Identification | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Copy Number Signature Identification | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
   <meta property="og:type" content="book" />
@@ -240,7 +240,7 @@ To test if the method would works, we applied it to prostate cancer and successf
 <li>Segment chromosome.</li>
 <li>Segment start.</li>
 <li>Segment end.</li>
-<li><strong>Segment value</strong>: must be integer.</li>
+<li><strong>Absolute copy number value for this segment</strong>: must be integer (i.e. total copy number value in results from Sequenza or FACETS).</li>
 <li>Sample ID.</li>
 </ul>
 <p>The input data can be result from any softwares which provides information above.</p>
@@ -248,7 +248,7 @@ To test if the method would works, we applied it to prostate cancer and successf
 <li>For chip data/segmentation data (copy ratio is available), <a href="https://software.broadinstitute.org/cancer/cga/absolute">ABSOLUTE</a> is recommended.</li>
 <li>For raw sequencing data, <a href="https://cran.r-project.org/web/packages/sequenza/index.html">Sequenza</a> and <a href="https://github.com/mskcc/facets">FACETS</a> are recommended.</li>
 </ul>
-<p>The import work is done by <code>read_copynumber</code>, this function supports <code>data.frame</code> or file, and even result directory from <a href="https://software.broadinstitute.org/cancer/cga/absolute">ABSOLUTE</a>.</p>
+<p>The import work is done by <code>read_copynumber()</code>, this function supports <code>data.frame</code> or file, and even result directory from <a href="https://software.broadinstitute.org/cancer/cga/absolute">ABSOLUTE</a>.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co"># Load toy dataset of absolute copynumber profile</span></a>
 <a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_segTab.RData&quot;</span>,</a>
 <a class="sourceLine" id="cb29-3" data-line-number="3">  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></a>
@@ -257,31 +257,31 @@ To test if the method would works, we applied it to prostate cancer and successf
 <a class="sourceLine" id="cb29-6" data-line-number="6">  <span class="dt">seg_cols =</span> <span class="kw">c</span>(<span class="st">&quot;chromosome&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;end&quot;</span>, <span class="st">&quot;segVal&quot;</span>),</a>
 <a class="sourceLine" id="cb29-7" data-line-number="7">  <span class="dt">genome_build =</span> <span class="st">&quot;hg19&quot;</span>, <span class="dt">complement =</span> <span class="ot">FALSE</span>, <span class="dt">verbose =</span> <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb29-8" data-line-number="8">)</a>
-<a class="sourceLine" id="cb29-9" data-line-number="9"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: Started.</span></a>
-<a class="sourceLine" id="cb29-10" data-line-number="10"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: Genome build  : hg19.</span></a>
-<a class="sourceLine" id="cb29-11" data-line-number="11"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: Genome measure: called.</span></a>
-<a class="sourceLine" id="cb29-12" data-line-number="12"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Chromosome size database for build obtained.</span></a>
-<a class="sourceLine" id="cb29-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: Reading input.</span></a>
-<a class="sourceLine" id="cb29-14" data-line-number="14"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: A data frame as input detected.</span></a>
-<a class="sourceLine" id="cb29-15" data-line-number="15"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Column names checked.</span></a>
-<a class="sourceLine" id="cb29-16" data-line-number="16"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Column order set.</span></a>
-<a class="sourceLine" id="cb29-17" data-line-number="17"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Chromosomes unified.</span></a>
-<a class="sourceLine" id="cb29-18" data-line-number="18"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Data imported.</span></a>
-<a class="sourceLine" id="cb29-19" data-line-number="19"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: Segments info:</span></a>
-<a class="sourceLine" id="cb29-20" data-line-number="20"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]:     Keep - 467</span></a>
-<a class="sourceLine" id="cb29-21" data-line-number="21"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]:     Drop - 0</span></a>
-<a class="sourceLine" id="cb29-22" data-line-number="22"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Adjacent segments with same copy number value joined</span></a>
-<a class="sourceLine" id="cb29-23" data-line-number="23"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Segmental table cleaned.</span></a>
-<a class="sourceLine" id="cb29-24" data-line-number="24"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: Annotating.</span></a>
+<a class="sourceLine" id="cb29-9" data-line-number="9"><span class="co">#&gt; ℹ [2020-06-22 14:31:40]: Started.</span></a>
+<a class="sourceLine" id="cb29-10" data-line-number="10"><span class="co">#&gt; ℹ [2020-06-22 14:31:40]: Genome build  : hg19.</span></a>
+<a class="sourceLine" id="cb29-11" data-line-number="11"><span class="co">#&gt; ℹ [2020-06-22 14:31:40]: Genome measure: called.</span></a>
+<a class="sourceLine" id="cb29-12" data-line-number="12"><span class="co">#&gt; ✓ [2020-06-22 14:31:40]: Chromosome size database for build obtained.</span></a>
+<a class="sourceLine" id="cb29-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-06-22 14:31:40]: Reading input.</span></a>
+<a class="sourceLine" id="cb29-14" data-line-number="14"><span class="co">#&gt; ✓ [2020-06-22 14:31:40]: A data frame as input detected.</span></a>
+<a class="sourceLine" id="cb29-15" data-line-number="15"><span class="co">#&gt; ✓ [2020-06-22 14:31:40]: Column names checked.</span></a>
+<a class="sourceLine" id="cb29-16" data-line-number="16"><span class="co">#&gt; ✓ [2020-06-22 14:31:40]: Column order set.</span></a>
+<a class="sourceLine" id="cb29-17" data-line-number="17"><span class="co">#&gt; ✓ [2020-06-22 14:31:40]: Chromosomes unified.</span></a>
+<a class="sourceLine" id="cb29-18" data-line-number="18"><span class="co">#&gt; ✓ [2020-06-22 14:31:40]: Data imported.</span></a>
+<a class="sourceLine" id="cb29-19" data-line-number="19"><span class="co">#&gt; ℹ [2020-06-22 14:31:40]: Segments info:</span></a>
+<a class="sourceLine" id="cb29-20" data-line-number="20"><span class="co">#&gt; ℹ [2020-06-22 14:31:40]:     Keep - 467</span></a>
+<a class="sourceLine" id="cb29-21" data-line-number="21"><span class="co">#&gt; ℹ [2020-06-22 14:31:40]:     Drop - 0</span></a>
+<a class="sourceLine" id="cb29-22" data-line-number="22"><span class="co">#&gt; ✓ [2020-06-22 14:31:40]: Adjacent segments with same copy number value joined</span></a>
+<a class="sourceLine" id="cb29-23" data-line-number="23"><span class="co">#&gt; ✓ [2020-06-22 14:31:41]: Segmental table cleaned.</span></a>
+<a class="sourceLine" id="cb29-24" data-line-number="24"><span class="co">#&gt; ℹ [2020-06-22 14:31:41]: Annotating.</span></a>
 <a class="sourceLine" id="cb29-25" data-line-number="25"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb29-26" data-line-number="26"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Annotation done.</span></a>
-<a class="sourceLine" id="cb29-27" data-line-number="27"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: Summarizing per sample.</span></a>
-<a class="sourceLine" id="cb29-28" data-line-number="28"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Summarized.</span></a>
-<a class="sourceLine" id="cb29-29" data-line-number="29"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: Generating CopyNumber object.</span></a>
-<a class="sourceLine" id="cb29-30" data-line-number="30"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Generated.</span></a>
-<a class="sourceLine" id="cb29-31" data-line-number="31"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: Validating object.</span></a>
-<a class="sourceLine" id="cb29-32" data-line-number="32"><span class="co">#&gt; ✓ [2020-05-23 17:20:08]: Done.</span></a>
-<a class="sourceLine" id="cb29-33" data-line-number="33"><span class="co">#&gt; ℹ [2020-05-23 17:20:08]: 0.61 secs elapsed.</span></a>
+<a class="sourceLine" id="cb29-26" data-line-number="26"><span class="co">#&gt; ✓ [2020-06-22 14:31:41]: Annotation done.</span></a>
+<a class="sourceLine" id="cb29-27" data-line-number="27"><span class="co">#&gt; ℹ [2020-06-22 14:31:41]: Summarizing per sample.</span></a>
+<a class="sourceLine" id="cb29-28" data-line-number="28"><span class="co">#&gt; ✓ [2020-06-22 14:31:41]: Summarized.</span></a>
+<a class="sourceLine" id="cb29-29" data-line-number="29"><span class="co">#&gt; ℹ [2020-06-22 14:31:41]: Generating CopyNumber object.</span></a>
+<a class="sourceLine" id="cb29-30" data-line-number="30"><span class="co">#&gt; ✓ [2020-06-22 14:31:41]: Generated.</span></a>
+<a class="sourceLine" id="cb29-31" data-line-number="31"><span class="co">#&gt; ℹ [2020-06-22 14:31:41]: Validating object.</span></a>
+<a class="sourceLine" id="cb29-32" data-line-number="32"><span class="co">#&gt; ✓ [2020-06-22 14:31:41]: Done.</span></a>
+<a class="sourceLine" id="cb29-33" data-line-number="33"><span class="co">#&gt; ℹ [2020-06-22 14:31:41]: 1.223 secs elapsed.</span></a>
 <a class="sourceLine" id="cb29-34" data-line-number="34">cn</a>
 <a class="sourceLine" id="cb29-35" data-line-number="35"><span class="co">#&gt; An object of class CopyNumber </span></a>
 <a class="sourceLine" id="cb29-36" data-line-number="36"><span class="co">#&gt; =============================</span></a>
@@ -296,6 +296,10 @@ To test if the method would works, we applied it to prostate cancer and successf
 <a class="sourceLine" id="cb29-45" data-line-number="45"><span class="co">#&gt;  8: TCGA-A5-A0G2-01A-11D-A042-01       39       21        5       16        10      0.393</span></a>
 <a class="sourceLine" id="cb29-46" data-line-number="46"><span class="co">#&gt;  9: TCGA-99-7458-01A-11D-2035-01       48       26       10       16        13      0.318</span></a>
 <a class="sourceLine" id="cb29-47" data-line-number="47"><span class="co">#&gt; 10: TCGA-05-4417-01A-22D-1854-01       52       37       33        4        17      0.654</span></a></code></pre></div>
+<blockquote>
+<p>Currently, you can refer to <code>extract_facets_cnv()</code> and <code>extract_seqz_cnv()</code> in <a href="https://github.com/ShixiangWang/prad_signature/blob/master/analysis/src/99-functions.R" class="uri">https://github.com/ShixiangWang/prad_signature/blob/master/analysis/src/99-functions.R</a> to
+see how to get tidy data from a result directory of FACETS or Sequenza.</p>
+</blockquote>
 </div>
 <div id="tally-components-1" class="section level2">
 <h2><span class="header-section-number">3.3</span> Tally Components</h2>
