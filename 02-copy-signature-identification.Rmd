@@ -33,8 +33,21 @@ The input data can be result from any softwares which provides information above
 
 The import work is done by `read_copynumber()`, this function supports `data.frame` or file, and even result directory from [ABSOLUTE](https://software.broadinstitute.org/cancer/cga/absolute).
 
+Option `sigminer.sex` is used to control the processing of sex. If you don't care the sex chromosomes (i.e. X and Y),
+you can ignore this setting after removing the X/Y segments, otherwise the `summary` in the result `cn` and tally process may be biased.
 
 ```{r}
+## Default is "female"
+## You can ignore the setting if all samples are females
+## But we recommend you set it
+options(sigminer.sex = "male")
+## For cohort contains both males and females,
+## set a data.frame with two columns, i.e.
+## options(sigminer.sex = sex_df),
+## which
+## sex_df = data.frame(sample = c("sample1", "sample2",
+##                     sex = "female", "male"))
+
 # Load toy dataset of absolute copynumber profile
 load(system.file("extdata", "toy_segTab.RData",
   package = "sigminer", mustWork = TRUE
@@ -53,10 +66,16 @@ cn
 
 Currently, there are two methods for generating sample-by-component matrix, i.e. "W" or "M".
 
-Options `sigminer.sex` and `sigminer.copynumber.max` are used to control the processing of sex and max values. Run `?sig_tally` to see more.
+Option `sigminer.copynumber.max` is used to control the processing of max copy number values. Run `?sig_tally` to see more.
 
 ```{r, eval=FALSE}
-options(sigminer.sex = "male", sigminer.copynumber.max = 10)
+## Even you set max_copynumber = 20 in read_copynumber(),
+## the segmental copy number may be greater than 20
+## because for male samples, the X/Y segmental copy number
+## values will be doubled in tally process.
+## This setting will make copy number values of all segments
+## not greater than 20.
+options(sigminer.copynumber.max = 20)
 
 # Load copy number object
 load(system.file("extdata", "toy_copynumber.RData",
@@ -69,6 +88,11 @@ cn_tally_W <- sig_tally(cn, method = "W")
 cn_tally_M <- sig_tally(cn, method = "M")
 ```
 
+> You can set `options(sigminer.sex = "male", sigminer.copynumber.max = 20)` at the top of your code
+> to avoid setting them in two places.
+>
+> **Of note**, the `sigminer.copynumber.max` option only has effect on `sig_tally()` with method "W" or "M",
+> the `sigminer.sex` option has effects on `read_copynumber()` and `sig_tally()` with method "W" or "M".
 
 ```{r, include=FALSE}
 load(system.file("extdata", "toy_copynumber_tally_W.RData",
@@ -80,7 +104,6 @@ load(system.file("extdata", "toy_copynumber_tally_M.RData",
 ))
 ```
 
-
 This step return a `list` containing information about copy number features, components and matrix for NMF etc.
 
 ## Extract Signatures 
@@ -91,7 +114,6 @@ When you get the matrix, you can just do the signature extractin as SBS signatur
 ```{r}
 cn_tally_W$nmf_matrix[1:5, 1:5]
 ```
-
 
 
 ```{r, eval=FALSE}

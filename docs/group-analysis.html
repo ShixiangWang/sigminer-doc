@@ -224,10 +224,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.1</span> Group Generation</h2>
 <p>There are multiple methods to generate groups, including ‘consensus’ (default, can be only used by result from <code>sig_extract()</code>), ‘k-means’ etc. After determining groups, <strong>sigminer</strong> will assign each group to a signature with maximum fraction. We may say a group is <code>Sig_x</code> enriched.</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">mt_grps &lt;-<span class="st"> </span><span class="kw">get_groups</span>(mt_sig, <span class="dt">method =</span> <span class="st">&quot;consensus&quot;</span>, <span class="dt">match_consensus =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="co">#&gt; ℹ [2020-06-22 14:32:13]: Started.</span></a>
-<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="co">#&gt; ✓ [2020-06-22 14:32:13]: &#39;Signature&#39; object detected.</span></a>
-<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="co">#&gt; ℹ [2020-06-22 14:32:13]: Obtaining clusters from the hierarchical clustering of the consensus matrix...</span></a>
-<a class="sourceLine" id="cb61-5" data-line-number="5"><span class="co">#&gt; ℹ [2020-06-22 14:32:13]: Finding the dominant signature of each group...</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="co">#&gt; ℹ [2020-06-22 17:32:10]: Started.</span></a>
+<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="co">#&gt; ✓ [2020-06-22 17:32:10]: &#39;Signature&#39; object detected.</span></a>
+<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="co">#&gt; ℹ [2020-06-22 17:32:10]: Obtaining clusters from the hierarchical clustering of the consensus matrix...</span></a>
+<a class="sourceLine" id="cb61-5" data-line-number="5"><span class="co">#&gt; ℹ [2020-06-22 17:32:10]: Finding the dominant signature of each group...</span></a>
 <a class="sourceLine" id="cb61-6" data-line-number="6"><span class="co">#&gt; =&gt; Generating a table of group and dominant signature:</span></a>
 <a class="sourceLine" id="cb61-7" data-line-number="7"><span class="co">#&gt;    </span></a>
 <a class="sourceLine" id="cb61-8" data-line-number="8"><span class="co">#&gt;     Sig1 Sig2 Sig3</span></a>
@@ -235,12 +235,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb61-10" data-line-number="10"><span class="co">#&gt;   2   13   11   30</span></a>
 <a class="sourceLine" id="cb61-11" data-line-number="11"><span class="co">#&gt;   3    6   14   35</span></a>
 <a class="sourceLine" id="cb61-12" data-line-number="12"><span class="co">#&gt; =&gt; Assigning a group to a signature with the maxium fraction (stored in &#39;map_table&#39; attr)...</span></a>
-<a class="sourceLine" id="cb61-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-06-22 14:32:13]: Summarizing...</span></a>
+<a class="sourceLine" id="cb61-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-06-22 17:32:10]: Summarizing...</span></a>
 <a class="sourceLine" id="cb61-14" data-line-number="14"><span class="co">#&gt;  group #1: 84 samples with Sig1 enriched.</span></a>
 <a class="sourceLine" id="cb61-15" data-line-number="15"><span class="co">#&gt;  group #2: 54 samples with Sig3 enriched.</span></a>
 <a class="sourceLine" id="cb61-16" data-line-number="16"><span class="co">#&gt;  group #3: 55 samples with Sig3 enriched.</span></a>
-<a class="sourceLine" id="cb61-17" data-line-number="17"><span class="co">#&gt; ! [2020-06-22 14:32:13]: The &#39;enrich_sig&#39; column is set to dominant signature in one group, please check and make it consistent with biological meaning (correct it by hand if necessary).</span></a>
-<a class="sourceLine" id="cb61-18" data-line-number="18"><span class="co">#&gt; ℹ [2020-06-22 14:32:13]: 0.134 secs elapsed.</span></a>
+<a class="sourceLine" id="cb61-17" data-line-number="17"><span class="co">#&gt; ! [2020-06-22 17:32:10]: The &#39;enrich_sig&#39; column is set to dominant signature in one group, please check and make it consistent with biological meaning (correct it by hand if necessary).</span></a>
+<a class="sourceLine" id="cb61-18" data-line-number="18"><span class="co">#&gt; ℹ [2020-06-22 17:32:10]: 0.158 secs elapsed.</span></a>
 <a class="sourceLine" id="cb61-19" data-line-number="19"><span class="kw">head</span>(mt_grps)</a>
 <a class="sourceLine" id="cb61-20" data-line-number="20"><span class="co">#&gt;          sample group silhouette_width enrich_sig</span></a>
 <a class="sourceLine" id="cb61-21" data-line-number="21"><span class="co">#&gt; 1: TCGA-AB-2922     1           0.1680       Sig1</span></a>
