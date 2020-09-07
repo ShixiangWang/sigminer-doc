@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Group Analysis and Visualization | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Group Analysis and Visualization | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
   <meta property="og:type" content="book" />
@@ -157,9 +157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a><ul>
 <li class="chapter" data-level="3.1" data-path="cnsig.html"><a href="cnsig.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i><b>3.2</b> Read Data</a></li>
-<li class="chapter" data-level="3.3" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i><b>3.3</b> Tally Components</a></li>
-<li class="chapter" data-level="3.4" data-path="cnsig.html"><a href="cnsig.html#extract-signatures-1"><i class="fa fa-check"></i><b>3.4</b> Extract Signatures</a></li>
+<li class="chapter" data-level="3.2" data-path="sbssig.html"><a href="sbssig.html#read-data"><i class="fa fa-check"></i><b>3.2</b> Read Data</a></li>
+<li class="chapter" data-level="3.3" data-path="sbssig.html"><a href="sbssig.html#tally-components"><i class="fa fa-check"></i><b>3.3</b> Tally Components</a></li>
+<li class="chapter" data-level="3.4" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>3.4</b> Extract Signatures</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="sigfit.html"><a href="sigfit.html"><i class="fa fa-check"></i><b>4</b> Signature Fit: Sample Signature Exposure Quantification and Analysis</a><ul>
 <li class="chapter" data-level="4.1" data-path="sigfit.html"><a href="sigfit.html#fit-signatures-from-reference-databases"><i class="fa fa-check"></i><b>4.1</b> Fit Signatures from reference databases</a></li>
@@ -169,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="subtyping.html"><a href="subtyping.html"><i class="fa fa-check"></i><b>5</b> Subtype Prediction</a></li>
 <li class="chapter" data-level="6" data-path="sigflow.html"><a href="sigflow.html"><i class="fa fa-check"></i><b>6</b> Sigflow Pipeline</a><ul>
-<li class="chapter" data-level="6.1" data-path="sigflow.html"><a href="sigflow.html#installation-1"><i class="fa fa-check"></i><b>6.1</b> Installation</a><ul>
+<li class="chapter" data-level="6.1" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>6.1</b> Installation</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="sigflow.html"><a href="sigflow.html#step-by-step-installation"><i class="fa fa-check"></i><b>6.1.1</b> Step-by-step installation</a></li>
 <li class="chapter" data-level="6.1.2" data-path="sigflow.html"><a href="sigflow.html#install-by-docker"><i class="fa fa-check"></i><b>6.1.2</b> Install by Docker</a></li>
 </ul></li>
@@ -238,10 +238,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.1</span> Group Generation</h2>
 <p>There are multiple methods to generate groups, including ‘consensus’ (default, can be only used by result from <code>sig_extract()</code>), ‘k-means’ etc. After determining groups, <strong>sigminer</strong> will assign each group to a signature with maximum fraction. We may say a group is <code>Sig_x</code> enriched.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">mt_grps &lt;-<span class="st"> </span><span class="kw">get_groups</span>(mt_sig, <span class="dt">method =</span> <span class="st">&quot;consensus&quot;</span>, <span class="dt">match_consensus =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="co">#&gt; ℹ [2020-08-10 10:32:56]: Started.</span></a>
-<a class="sourceLine" id="cb72-3" data-line-number="3"><span class="co">#&gt; ✓ [2020-08-10 10:32:56]: &#39;Signature&#39; object detected.</span></a>
-<a class="sourceLine" id="cb72-4" data-line-number="4"><span class="co">#&gt; ℹ [2020-08-10 10:32:56]: Obtaining clusters from the hierarchical clustering of the consensus matrix...</span></a>
-<a class="sourceLine" id="cb72-5" data-line-number="5"><span class="co">#&gt; ℹ [2020-08-10 10:32:56]: Finding the dominant signature of each group...</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="co">#&gt; ℹ [2020-09-07 14:12:32]: Started.</span></a>
+<a class="sourceLine" id="cb72-3" data-line-number="3"><span class="co">#&gt; ✓ [2020-09-07 14:12:32]: &#39;Signature&#39; object detected.</span></a>
+<a class="sourceLine" id="cb72-4" data-line-number="4"><span class="co">#&gt; ℹ [2020-09-07 14:12:32]: Obtaining clusters from the hierarchical clustering of the consensus matrix...</span></a>
+<a class="sourceLine" id="cb72-5" data-line-number="5"><span class="co">#&gt; ℹ [2020-09-07 14:12:32]: Finding the dominant signature of each group...</span></a>
 <a class="sourceLine" id="cb72-6" data-line-number="6"><span class="co">#&gt; =&gt; Generating a table of group and dominant signature:</span></a>
 <a class="sourceLine" id="cb72-7" data-line-number="7"><span class="co">#&gt;    </span></a>
 <a class="sourceLine" id="cb72-8" data-line-number="8"><span class="co">#&gt;     Sig1 Sig2 Sig3</span></a>
@@ -249,12 +249,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb72-10" data-line-number="10"><span class="co">#&gt;   2   13   11   30</span></a>
 <a class="sourceLine" id="cb72-11" data-line-number="11"><span class="co">#&gt;   3    6   14   35</span></a>
 <a class="sourceLine" id="cb72-12" data-line-number="12"><span class="co">#&gt; =&gt; Assigning a group to a signature with the maxium fraction (stored in &#39;map_table&#39; attr)...</span></a>
-<a class="sourceLine" id="cb72-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-08-10 10:32:56]: Summarizing...</span></a>
-<a class="sourceLine" id="cb72-14" data-line-number="14"><span class="co">#&gt;  group #1: 84 samples with Sig1 enriched.</span></a>
-<a class="sourceLine" id="cb72-15" data-line-number="15"><span class="co">#&gt;  group #2: 54 samples with Sig3 enriched.</span></a>
-<a class="sourceLine" id="cb72-16" data-line-number="16"><span class="co">#&gt;  group #3: 55 samples with Sig3 enriched.</span></a>
-<a class="sourceLine" id="cb72-17" data-line-number="17"><span class="co">#&gt; ! [2020-08-10 10:32:56]: The &#39;enrich_sig&#39; column is set to dominant signature in one group, please check and make it consistent with biological meaning (correct it by hand if necessary).</span></a>
-<a class="sourceLine" id="cb72-18" data-line-number="18"><span class="co">#&gt; ℹ [2020-08-10 10:32:56]: 0.129 secs elapsed.</span></a>
+<a class="sourceLine" id="cb72-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-09-07 14:12:32]: Summarizing...</span></a>
+<a class="sourceLine" id="cb72-14" data-line-number="14"><span class="co">#&gt; 	group #1: 84 samples with Sig1 enriched.</span></a>
+<a class="sourceLine" id="cb72-15" data-line-number="15"><span class="co">#&gt; 	group #2: 54 samples with Sig3 enriched.</span></a>
+<a class="sourceLine" id="cb72-16" data-line-number="16"><span class="co">#&gt; 	group #3: 55 samples with Sig3 enriched.</span></a>
+<a class="sourceLine" id="cb72-17" data-line-number="17"><span class="co">#&gt; ! [2020-09-07 14:12:32]: The &#39;enrich_sig&#39; column is set to dominant signature in one group, please check and make it consistent with biological meaning (correct it by hand if necessary).</span></a>
+<a class="sourceLine" id="cb72-18" data-line-number="18"><span class="co">#&gt; ℹ [2020-09-07 14:12:32]: 0.141 secs elapsed.</span></a>
 <a class="sourceLine" id="cb72-19" data-line-number="19"><span class="kw">head</span>(mt_grps)</a>
 <a class="sourceLine" id="cb72-20" data-line-number="20"><span class="co">#&gt;          sample group silhouette_width enrich_sig</span></a>
 <a class="sourceLine" id="cb72-21" data-line-number="21"><span class="co">#&gt; 1: TCGA-AB-2922     1           0.1680       Sig1</span></a>
