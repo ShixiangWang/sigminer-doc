@@ -26,8 +26,79 @@ ggplot2::ggsave(filename = "paper/Figure2-example-signature-profile.pdf", plot =
                 width = 20, height = 8)
 
 ## Figure: signature auto-extraction
+## Use BRCA data for illustration, 13 signature is detecetd in Nature paper
+sbs_sigs <- data.table::fread("paper/PCAWG/PCAWG_sigProfiler_SBS_signatures_in_samples.csv")
+table(sbs_sigs$`Cancer Types`)
+brca_sigs <- sbs_sigs[startsWith(sbs_sigs$`Cancer Types`, "Breast")]
+
+load("paper/PCAWG/lego96.PAN.SNV.091217.RData")
+colnames(lego96.SNV) <- gsub(".*__(.+)", "\\1", colnames(lego96.SNV))
+brca_lego96 <- lego96.SNV[, colnames(lego96.SNV) %in% brca_sigs$`Sample Names`]
+
+save(bbrca_sigs, brca_lego96, file = "paper/data/PCAWG_ref.RData")
+
+## 比较不同方法的重构错误
+## SomaticSignatures uses NMF and PCA methods
+
+# https://www.bioconductor.org/packages/release/bioc/vignettes/SomaticSignatures/inst/doc/SomaticSignatures-vignette.html
+# can then be chosen such that increasing the number of signatures does not yield
+# a significantly better approximation of the data,
+# i.e. that the RSS and the explained variance do not change sufficiently for more complex models.
+# The first inflection point of the RSS curve has also been proposed as a measure for the number 
+# of features in this context
+library(SomaticSignatures)
+library(MutationalPatterns)
+library(sigminer)
+
+## SomaticSignatures
+sigs_ss_nmf = identifySignatures(brca_lego96, 13, decomposition = nmfDecomposition)
+sigs_ss_pca = identifySignatures(brca_lego96, 13, decomposition = pcaDecomposition)
+
+save(sigs_ss_nmf, sigs_ss_pca, file = "paper/data/Sigs_SomaticSignatures.RData")
+
+## MutationalPatterns
+## https://bioconductor.org/packages/release/bioc/vignettes/MutationalPatterns/inst/doc/Introduction_to_MutationalPatterns.pdf
+mut_mat <- brca_lego96 + 0.0001
+library(NMF)
+sigs_mp <- extract_signatures(mut_mat, rank = 13)
+
+save(sigs_mp, file = "paper/data/Sigs_MutationalPatterns.RData")
+
+## Sigflow
+sigs_sf_nmf <- sig_extract(t(brca_lego96), n_sig = 13, nrun = 200, cores = 4, optimize = TRUE)
+sigs_sf_bayes <- sig_auto_extract(t(brca_lego96), 
+                                  nrun = 20,
+                                  cores = 4,
+                                  K0 = 20,
+                                  optimize = TRUE,
+                                  strategy = "optimal",
+                                  result_prefix = "pcawg_brca",
+                                  destdir = "paper/bayesianNMF/")
+
+mut_mat2 <- t(brca_lego96)
+comps <- colnames(mut_mat2)
+colnames(mut_mat2) <- paste0(
+  substr(comps, 3, 3),
+  "[",
+  substr(comps, 1, 1),
+  ">",
+  substr(comps, 2, 2),
+  "]",
+  substr(comps, 4, 4)
+)
+
+sigs_sf_sigprofiler <- sigprofiler_extract(
+  mut_mat2, output = "paper/sigprofiler/PCAWG_BRCA", 
+  range = 10:15, nrun = 50, cores = 4, 
+  refit = TRUE,
+  is_exome = FALSE,
+  use_conda = FALSE, py_path = "/Users/wsx/anaconda3/bin/python"
+)
 
 ## Figure: signature fitting
+
+library(deconstructSigs)
+library(MutationalPatterns)
 
 load("paper/maf.RData")
 maf = read_maf(maf)
