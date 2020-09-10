@@ -93,6 +93,18 @@ sigs_sf_bayes <- sig_auto_extract(t(brca_lego96),
 
 save(sigs_sf_nmf, sigs_sf_bayes, file = "paper/data/Sigs_Sigflow.RData")
 
+load(file = "paper/data/Sigs_Sigflow.RData")
+
+xx = sigs_sf_bayes$Signature.norm
+rownames(xx) <- comps_map[rownames(xx)]
+yy = get_sig_similarity(xx, sig_db = "SBS")
+pheatmap::pheatmap(yy$similarity, cluster_rows = FALSE,
+                   height = 5, width = 9,
+                   filename = "paper/cosine_heatmap.png")
+
+sigs_sf_bayes$Raw$summary_run
+
+readr::write_csv(sigs_sf_bayes$Raw$summary_run, "paper/data/bayes_summary_run.csv")
 # Comparison
 load("paper/data/Sigs_SomaticSignatures.RData")
 load("paper/data/Sigs_MutationalPatterns.RData")
