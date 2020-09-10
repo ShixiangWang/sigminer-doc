@@ -75,25 +75,6 @@ sigs_sf_bayes <- sig_auto_extract(t(brca_lego96),
                                   result_prefix = "pcawg_brca",
                                   destdir = "paper/bayesianNMF/")
 
-mut_mat2 <- t(brca_lego96)
-comps <- colnames(mut_mat2)
-colnames(mut_mat2) <- paste0(
-  substr(comps, 3, 3),
-  "[",
-  substr(comps, 1, 1),
-  ">",
-  substr(comps, 2, 2),
-  "]",
-  substr(comps, 4, 4)
-)
-
-sigs_sf_sigprofiler <- sigprofiler_extract(
-  mut_mat2, output = "paper/sigprofiler/PCAWG_BRCA", 
-  range = 10:15, nrun = 50, cores = 4, 
-  refit = TRUE,
-  is_exome = FALSE,
-  use_conda = FALSE, py_path = "/Users/wsx/anaconda3/bin/python"
-)
 
 ## Figure: signature fitting
 
