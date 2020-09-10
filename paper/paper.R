@@ -114,7 +114,8 @@ brca_sig_mat <- brca_sigs %>%
   dplyr::select(-c("Cancer Types", "Accuracy")) %>% 
   tibble::column_to_rownames("Sample Names") %>% 
   as.matrix()
-rec_sigprofiler <- ref_sigs[, 1:65] %*% t(brca_sig_mat)
+#rec_sigprofiler <- ref_sigs[, 1:65] %*% t(brca_sig_mat)
+rec_sigprofiler <- t(signatures.genome.cosmic.v3.may2019[1:65, ]) %*% t(brca_sig_mat)
 xx <- rownames(rec_sigprofiler)
 rownames(rec_sigprofiler) <- paste0(
   substr(xx, 3, 3),
@@ -215,6 +216,9 @@ for (i in seq_len(nrow(input_matrix))) {
 
 fit_sf <- sig_fit(catalogue_matrix = t(input_matrix),
                   sig = ref_sigs)
+
+sig_fit(catalogue_matrix = t(input_matrix["SP5381", , drop = FALSE]),
+        sig = ref_sigs, auto_reduce = TRUE)
 fit_sf <- ref_sigs %*% fit_sf
 
 fit_list_sf <- list() 
@@ -281,10 +285,26 @@ save(fit_list_ds, fit_list_mp, fit_list_sf, fit_list_sf_br,
 #   message("Error: ", fit_list_sf_nnls$error[[i]], "; Cosine similarity: ", fit_list_sf_nnls$cosine[[i]])
 # }
 
+# Speed
+fit_speed <- microbenchmark::microbenchmark(
+  dS = whichSignatures(tumor.ref = as.data.frame(input_matrix), 
+                       signatures.ref = t(ref_sigs) %>% as.data.frame(), 
+                       sample.id = rownames(input_matrix)[1], 
+                       contexts.needed = TRUE,
+                       tri.counts.method = 'genome'),
+  mP = fit_to_signatures(t(input_matrix[1, , drop = FALSE]), ref_sigs),
+  sF = sig_fit(catalogue_matrix = t(input_matrix[1, , drop = FALSE]),
+               sig = ref_sigs),
+  times = 100L
+)
+
+levels(fit_speed$expr) <- c("deconstructSigs", "MutationalPatterns", "Sigflow")
+save(fit_speed, file = "paper/data/fit_speed_comparison.RData")
 
 ## Plot extract and fit comparison
 load("paper/data/extract_comparison.RData")
 load("paper/data/fit_comparison.RData")
+load("paper/data/fit_speed_comparison.RData")
 
 res_extract <- dplyr::tibble(
   method = rep(c("SomaticSignatures:PCA", "SomaticSignatures:NMF",
@@ -304,11 +324,6 @@ res_extract <- dplyr::tibble(
 
 res_extract2 <- res_extract %>% dplyr::filter(method != "PCAWG result")
 
-library(ggpubr)
-ggboxplot(res_extract2, x = "method", y = "error") + rotate_x_text(60)
-ggboxplot(res_extract2, x = "method", y = "cosine") + rotate_x_text(60)
-
-
 # fit_list_ds, fit_list_mp, fit_list_sf, fit_list_sf_br
 res_fit <- dplyr::tibble(
   method = rep(c("deconstructSigs",
@@ -325,8 +340,24 @@ res_fit <- dplyr::tibble(
   dplyr::mutate(method = factor(method, 
                                 c("MutationalPatterns", "deconstructSigs", "Sigflow")))
 
-ggboxplot(res_fit, x = "method", y = "error") + rotate_x_text(60)
-ggboxplot(res_fit, x = "method", y = "cosine") + rotate_x_text(60)
+library(ggpubr)
+library(patchwork)
+p1 <- ggboxplot(res_extract2, x = "method", y = "error") + rotate_x_text(60) + 
+  labs(x = NULL, y = "Sum of absolute residue")
+p2 <- ggboxplot(res_extract2, x = "method", y = "cosine") + rotate_x_text(60) + 
+  labs(x = NULL, y = "Cosine similarity")
+p3 <- ggboxplot(res_fit, x = "method", y = "error") + rotate_x_text(60) +
+  labs(x = NULL, y = "Sum of absolute residue")
+p4 <- ggboxplot(res_fit, x = "method", y = "cosine") + rotate_x_text(60) +
+  labs(x = NULL, y = "Cosine similarity")
+p5 <- ggplot2::autoplot(fit_speed) + cowplot::theme_cowplot()
+
+pp <- (p1 | p2) /
+  (p3 | p4 | p5)
+
+ggplot2::ggsave(filename = "paper/method-comparison.pdf",
+                plot = pp, 
+                width = 8, height = 7)
 
 ## Figure: signature bootstrapping fitting
 
