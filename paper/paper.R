@@ -91,7 +91,29 @@ sigs_sf_bayes <- sig_auto_extract(t(brca_lego96),
                                   result_prefix = "pcawg_brca",
                                   destdir = "paper/bayesianNMF/")
 
-save(sigs_sf_nmf, sigs_sf_bayes, file = "paper/data/Sigs_Sigflow.RData")
+mut_mat2 <- t(brca_lego96)
+comps <- colnames(mut_mat2)
+colnames(mut_mat2) <- paste0(
+  substr(comps, 3, 3),
+  "[",
+  substr(comps, 1, 1),
+  ">",
+  substr(comps, 2, 2),
+  "]",
+  substr(comps, 4, 4)
+)
+sigprofiler_extract(
+  mut_mat2, output = "paper/sigprofiler/PCAWG_BRCA", 
+  range = 10:15, nrun = 50, cores = 4, 
+  refit = TRUE,
+  is_exome = FALSE,
+  use_conda = FALSE, py_path = "/Users/wsx/anaconda3/bin/python"
+)
+
+sigs_sf_sigprofiler <- sigprofiler_import("paper/sigprofiler/PCAWG_BRCA", type = "all")
+sigs_sf_sigprofiler <- sigs_sf_sigprofiler$solution_list$S13
+
+save(sigs_sf_nmf, sigs_sf_bayes, sigs_sf_sigprofiler, file = "paper/data/Sigs_Sigflow.RData")
 
 load(file = "paper/data/Sigs_Sigflow.RData")
 
@@ -105,6 +127,8 @@ pheatmap::pheatmap(yy$similarity, cluster_rows = FALSE,
 sigs_sf_bayes$Raw$summary_run
 
 readr::write_csv(sigs_sf_bayes$Raw$summary_run, "paper/data/bayes_summary_run.csv")
+
+
 # Comparison
 load("paper/data/Sigs_SomaticSignatures.RData")
 load("paper/data/Sigs_MutationalPatterns.RData")
@@ -134,6 +158,15 @@ rownames(rec_sigprofiler) <- paste0(
   substr(xx, 5, 5),
   substr(xx, 1, 1),
   substr(xx, 7, 7)
+)
+
+rec_sigprofiler2 <- sigs_sf_sigprofiler$Signature.norm %*% sigs_sf_sigprofiler$Exposure
+xx2 <- rownames(rec_sigprofiler2)
+rownames(rec_sigprofiler2) <- paste0(
+  substr(xx2, 3, 3),
+  substr(xx2, 5, 5),
+  substr(xx2, 1, 1),
+  substr(xx2, 7, 7)
 )
 
 # The ref matrix
@@ -173,8 +206,10 @@ res_sf_bayes <- get_measure(rec_sf_bayes[rownames(brca_lego96), colnames(brca_le
                             brca_lego96)
 res_sp <- get_measure(rec_sigprofiler[rownames(brca_lego96), colnames(brca_lego96)],
                             brca_lego96)
+res_sp2 <- get_measure(rec_sigprofiler2[rownames(brca_lego96), colnames(brca_lego96)],
+                      brca_lego96)
 
-save(res_ss_nmf, res_ss_pca, res_mp, res_ss_nmf, res_sf_nmf, res_sf_bayes, res_sp,
+save(res_ss_nmf, res_ss_pca, res_mp, res_ss_nmf, res_sf_nmf, res_sf_bayes, res_sp, res_sp2,
      file = "paper/data/extract_comparison.RData")
 
 ## Figure: signature fitting
@@ -321,20 +356,18 @@ load("paper/data/fit_speed_comparison.RData")
 res_extract <- dplyr::tibble(
   method = rep(c("SomaticSignatures:PCA", "SomaticSignatures:NMF",
                  "MutationalPatterns", "Sigflow:NMF", "Sigflow:BayesianNMF",
-                 "PCAWG result"), each = length(res_mp$error)),
+                 "SigProfiler"), each = length(res_mp$error)),
   sample = c(names(res_ss_pca$error), names(res_ss_nmf$error),
              names(res_mp$error), names(res_sf_nmf$error),
-             names(res_sf_bayes$error), names(res_sp$error)),
+             names(res_sf_bayes$error), names(res_sp2$error)),
   error = c(res_ss_pca$error, res_ss_nmf$error,
              res_mp$error, res_sf_nmf$error,
-             res_sf_bayes$error, res_sp$error),
+             res_sf_bayes$error, res_sp2$error),
   cosine = c(res_ss_pca$cosine, res_ss_nmf$cosine,
              res_mp$cosine, res_sf_nmf$cosine,
-             res_sf_bayes$cosine, res_sp$cosine),
+             res_sf_bayes$cosine, res_sp2$cosine),
   
 )
-
-res_extract2 <- res_extract %>% dplyr::filter(method != "PCAWG result")
 
 # fit_list_ds, fit_list_mp, fit_list_sf, fit_list_sf_br
 res_fit <- dplyr::tibble(
@@ -354,9 +387,9 @@ res_fit <- dplyr::tibble(
 
 library(ggpubr)
 library(patchwork)
-p1 <- ggboxplot(res_extract2, x = "method", y = "error") + rotate_x_text(60) + 
+p1 <- ggboxplot(res_extract, x = "method", y = "error") + rotate_x_text(60) + 
   labs(x = NULL, y = "Sum of absolute residue")
-p2 <- ggboxplot(res_extract2, x = "method", y = "cosine") + rotate_x_text(60) + 
+p2 <- ggboxplot(res_extract, x = "method", y = "cosine") + rotate_x_text(60) + 
   labs(x = NULL, y = "Cosine similarity")
 p3 <- ggboxplot(res_fit, x = "method", y = "error") + rotate_x_text(60) +
   labs(x = NULL, y = "Sum of absolute residue")
