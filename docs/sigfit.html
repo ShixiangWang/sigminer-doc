@@ -50,12 +50,21 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.15/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +73,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +91,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -169,18 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="subtyping.html"><a href="subtyping.html"><i class="fa fa-check"></i><b>5</b> Subtype Prediction</a></li>
 <li class="chapter" data-level="6" data-path="sigflow.html"><a href="sigflow.html"><i class="fa fa-check"></i><b>6</b> Sigflow Pipeline</a><ul>
-<li class="chapter" data-level="6.1" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>6.1</b> Installation</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="sigflow.html"><a href="sigflow.html#step-by-step-installation"><i class="fa fa-check"></i><b>6.1.1</b> Step-by-step installation</a></li>
-<li class="chapter" data-level="6.1.2" data-path="sigflow.html"><a href="sigflow.html#install-by-docker"><i class="fa fa-check"></i><b>6.1.2</b> Install by Docker</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="sigflow.html"><a href="sigflow.html#usage"><i class="fa fa-check"></i><b>6.2</b> Usage</a></li>
-<li class="chapter" data-level="6.3" data-path="sigflow.html"><a href="sigflow.html#suggestion-and-bug-report"><i class="fa fa-check"></i><b>6.3</b> Suggestion and bug report</a></li>
-<li class="chapter" data-level="6.4" data-path="sigflow.html"><a href="sigflow.html#examples"><i class="fa fa-check"></i><b>6.4</b> Examples</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="sigflow.html"><a href="sigflow.html#extract-command"><i class="fa fa-check"></i><b>6.4.1</b> <code>extract</code> command</a></li>
-<li class="chapter" data-level="6.4.2" data-path="sigflow.html"><a href="sigflow.html#fit-command"><i class="fa fa-check"></i><b>6.4.2</b> <code>fit</code> command</a></li>
-<li class="chapter" data-level="6.4.3" data-path="sigflow.html"><a href="sigflow.html#bt-command"><i class="fa fa-check"></i><b>6.4.3</b> <code>bt</code> command</a></li>
-<li class="chapter" data-level="6.4.4" data-path="sigflow.html"><a href="sigflow.html#how-to-use-docker-to-run-sigflow"><i class="fa fa-check"></i><b>6.4.4</b> How to use Docker to run Sigflow</a></li>
-</ul></li>
+<li class="chapter" data-level="6.1" data-path="sigflow.html"><a href="sigflow.html#cancer-type-specific-signature-index-database"><i class="fa fa-check"></i><b>6.1</b> Cancer type specific signature index database</a></li>
 </ul></li>
 <li class="part"><span><b>II Target Visualization</b></span></li>
 <li class="chapter" data-level="7" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>7</b> CopyNumber Object</a><ul>
@@ -238,264 +238,274 @@ you have gotten a reference signature database (either from known database like 
 <p><code>sig_fit()</code> uses multiple methods to compute exposure of pre-defined signatures from the total
 alteration spectrum of a (can be more) sample. Use <code>?sig_fit</code> see more detail.</p>
 <p>To show how this function works, we use a sample with maximum mutation counts as example data.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">i &lt;-<span class="st"> </span><span class="kw">which.max</span>(<span class="kw">apply</span>(mt_tally<span class="op">$</span>nmf_matrix, <span class="dv">1</span>, sum))</a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3">example_mat &lt;-<span class="st"> </span>mt_tally<span class="op">$</span>nmf_matrix[i, , drop =<span class="st"> </span><span class="ot">FALSE</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">t</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">head</span>(example_mat)</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#&gt;         TCGA-AB-3009</span></a>
-<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#&gt; A[T&gt;C]A            0</span></a>
-<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co">#&gt; C[T&gt;C]A            0</span></a>
-<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="co">#&gt; G[T&gt;C]A            0</span></a>
-<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="co">#&gt; T[T&gt;C]A            0</span></a>
-<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co">#&gt; A[C&gt;T]A            0</span></a>
-<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="co">#&gt; C[C&gt;T]A            0</span></a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="sigfit.html#cb33-1"></a>i &lt;-<span class="st"> </span><span class="kw">which.max</span>(<span class="kw">apply</span>(mt_tally<span class="op">$</span>nmf_matrix, <span class="dv">1</span>, sum))</span>
+<span id="cb33-2"><a href="sigfit.html#cb33-2"></a></span>
+<span id="cb33-3"><a href="sigfit.html#cb33-3"></a>example_mat &lt;-<span class="st"> </span>mt_tally<span class="op">$</span>nmf_matrix[i, , drop =<span class="st"> </span><span class="ot">FALSE</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">t</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="sigfit.html#cb34-1"></a><span class="kw">head</span>(example_mat)</span>
+<span id="cb34-2"><a href="sigfit.html#cb34-2"></a><span class="co">#&gt;         TCGA-AB-3009</span></span>
+<span id="cb34-3"><a href="sigfit.html#cb34-3"></a><span class="co">#&gt; A[T&gt;C]A            0</span></span>
+<span id="cb34-4"><a href="sigfit.html#cb34-4"></a><span class="co">#&gt; C[T&gt;C]A            0</span></span>
+<span id="cb34-5"><a href="sigfit.html#cb34-5"></a><span class="co">#&gt; G[T&gt;C]A            0</span></span>
+<span id="cb34-6"><a href="sigfit.html#cb34-6"></a><span class="co">#&gt; T[T&gt;C]A            0</span></span>
+<span id="cb34-7"><a href="sigfit.html#cb34-7"></a><span class="co">#&gt; A[C&gt;T]A            0</span></span>
+<span id="cb34-8"><a href="sigfit.html#cb34-8"></a><span class="co">#&gt; C[C&gt;T]A            0</span></span></code></pre></div>
 <div id="fit-signatures-from-reference-databases" class="section level2">
 <h2><span class="header-section-number">4.1</span> Fit Signatures from reference databases</h2>
 <p>For SBS signatures, users may want to directly use reference signatures from COSMIC database. This can be done by specifying the option <code>sig_index</code>.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">sig_fit</span>(example_mat, <span class="dt">sig_index =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Started.</span></a>
-<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Signature index detected.</span></a>
-<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking signature database in package.</span></a>
-<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking signature index.</span></a>
-<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Valid index for db &#39;legacy&#39;:</span></a>
-<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></a>
-<a class="sourceLine" id="cb35-8" data-line-number="8"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Database and index checked.</span></a>
-<a class="sourceLine" id="cb35-9" data-line-number="9"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Signature normalized.</span></a>
-<a class="sourceLine" id="cb35-10" data-line-number="10"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking row number for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb35-11" data-line-number="11"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Checked.</span></a>
-<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking rownames for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb35-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Matrix V and W don&#39;t have same orders. Try reordering...</span></a>
-<a class="sourceLine" id="cb35-14" data-line-number="14"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Checked.</span></a>
-<a class="sourceLine" id="cb35-15" data-line-number="15"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Method &#39;QP&#39; detected.</span></a>
-<a class="sourceLine" id="cb35-16" data-line-number="16"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Corresponding function generated.</span></a>
-<a class="sourceLine" id="cb35-17" data-line-number="17"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Calling function.</span></a>
-<a class="sourceLine" id="cb35-18" data-line-number="18"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Done.</span></a>
-<a class="sourceLine" id="cb35-19" data-line-number="19"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Generating output signature exposures.</span></a>
-<a class="sourceLine" id="cb35-20" data-line-number="20"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Done.</span></a>
-<a class="sourceLine" id="cb35-21" data-line-number="21"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: 0.041 secs elapsed.</span></a>
-<a class="sourceLine" id="cb35-22" data-line-number="22"><span class="co">#&gt;           TCGA-AB-3009</span></a>
-<a class="sourceLine" id="cb35-23" data-line-number="23"><span class="co">#&gt; COSMIC_1        20.634</span></a>
-<a class="sourceLine" id="cb35-24" data-line-number="24"><span class="co">#&gt; COSMIC_2         0.000</span></a>
-<a class="sourceLine" id="cb35-25" data-line-number="25"><span class="co">#&gt; COSMIC_3         0.000</span></a>
-<a class="sourceLine" id="cb35-26" data-line-number="26"><span class="co">#&gt; COSMIC_4         0.000</span></a>
-<a class="sourceLine" id="cb35-27" data-line-number="27"><span class="co">#&gt; COSMIC_5         0.000</span></a>
-<a class="sourceLine" id="cb35-28" data-line-number="28"><span class="co">#&gt; COSMIC_6         4.186</span></a>
-<a class="sourceLine" id="cb35-29" data-line-number="29"><span class="co">#&gt; COSMIC_7         0.000</span></a>
-<a class="sourceLine" id="cb35-30" data-line-number="30"><span class="co">#&gt; COSMIC_8         0.000</span></a>
-<a class="sourceLine" id="cb35-31" data-line-number="31"><span class="co">#&gt; COSMIC_9         0.000</span></a>
-<a class="sourceLine" id="cb35-32" data-line-number="32"><span class="co">#&gt; COSMIC_10        3.048</span></a>
-<a class="sourceLine" id="cb35-33" data-line-number="33"><span class="co">#&gt; COSMIC_11        0.000</span></a>
-<a class="sourceLine" id="cb35-34" data-line-number="34"><span class="co">#&gt; COSMIC_12        0.000</span></a>
-<a class="sourceLine" id="cb35-35" data-line-number="35"><span class="co">#&gt; COSMIC_13        0.000</span></a>
-<a class="sourceLine" id="cb35-36" data-line-number="36"><span class="co">#&gt; COSMIC_14        0.000</span></a>
-<a class="sourceLine" id="cb35-37" data-line-number="37"><span class="co">#&gt; COSMIC_15        8.131</span></a>
-<a class="sourceLine" id="cb35-38" data-line-number="38"><span class="co">#&gt; COSMIC_16        0.000</span></a>
-<a class="sourceLine" id="cb35-39" data-line-number="39"><span class="co">#&gt; COSMIC_17        0.000</span></a>
-<a class="sourceLine" id="cb35-40" data-line-number="40"><span class="co">#&gt; COSMIC_18        0.000</span></a>
-<a class="sourceLine" id="cb35-41" data-line-number="41"><span class="co">#&gt; COSMIC_19        0.000</span></a>
-<a class="sourceLine" id="cb35-42" data-line-number="42"><span class="co">#&gt; COSMIC_20        0.000</span></a>
-<a class="sourceLine" id="cb35-43" data-line-number="43"><span class="co">#&gt; COSMIC_21        0.000</span></a>
-<a class="sourceLine" id="cb35-44" data-line-number="44"><span class="co">#&gt; COSMIC_22        0.000</span></a>
-<a class="sourceLine" id="cb35-45" data-line-number="45"><span class="co">#&gt; COSMIC_23        0.000</span></a>
-<a class="sourceLine" id="cb35-46" data-line-number="46"><span class="co">#&gt; COSMIC_24        0.000</span></a>
-<a class="sourceLine" id="cb35-47" data-line-number="47"><span class="co">#&gt; COSMIC_25        0.000</span></a>
-<a class="sourceLine" id="cb35-48" data-line-number="48"><span class="co">#&gt; COSMIC_26        0.000</span></a>
-<a class="sourceLine" id="cb35-49" data-line-number="49"><span class="co">#&gt; COSMIC_27        0.000</span></a>
-<a class="sourceLine" id="cb35-50" data-line-number="50"><span class="co">#&gt; COSMIC_28        0.000</span></a>
-<a class="sourceLine" id="cb35-51" data-line-number="51"><span class="co">#&gt; COSMIC_29        0.000</span></a>
-<a class="sourceLine" id="cb35-52" data-line-number="52"><span class="co">#&gt; COSMIC_30        0.000</span></a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="sigfit.html#cb35-1"></a><span class="kw">sig_fit</span>(example_mat, <span class="dt">sig_index =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)</span>
+<span id="cb35-2"><a href="sigfit.html#cb35-2"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Started.</span></span>
+<span id="cb35-3"><a href="sigfit.html#cb35-3"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Signature index detected.</span></span>
+<span id="cb35-4"><a href="sigfit.html#cb35-4"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking signature database in package.</span></span>
+<span id="cb35-5"><a href="sigfit.html#cb35-5"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking signature index.</span></span>
+<span id="cb35-6"><a href="sigfit.html#cb35-6"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Valid index for db &#39;legacy&#39;:</span></span>
+<span id="cb35-7"><a href="sigfit.html#cb35-7"></a><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></span>
+<span id="cb35-8"><a href="sigfit.html#cb35-8"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Database and index checked.</span></span>
+<span id="cb35-9"><a href="sigfit.html#cb35-9"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Signature normalized.</span></span>
+<span id="cb35-10"><a href="sigfit.html#cb35-10"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb35-11"><a href="sigfit.html#cb35-11"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Checked.</span></span>
+<span id="cb35-12"><a href="sigfit.html#cb35-12"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb35-13"><a href="sigfit.html#cb35-13"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Matrix V and W don&#39;t have same orders. Try reordering...</span></span>
+<span id="cb35-14"><a href="sigfit.html#cb35-14"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Checked.</span></span>
+<span id="cb35-15"><a href="sigfit.html#cb35-15"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb35-16"><a href="sigfit.html#cb35-16"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Corresponding function generated.</span></span>
+<span id="cb35-17"><a href="sigfit.html#cb35-17"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Calling function.</span></span>
+<span id="cb35-18"><a href="sigfit.html#cb35-18"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Done.</span></span>
+<span id="cb35-19"><a href="sigfit.html#cb35-19"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Generating output signature exposures.</span></span>
+<span id="cb35-20"><a href="sigfit.html#cb35-20"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Done.</span></span>
+<span id="cb35-21"><a href="sigfit.html#cb35-21"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: 0.038 secs elapsed.</span></span>
+<span id="cb35-22"><a href="sigfit.html#cb35-22"></a><span class="co">#&gt;           TCGA-AB-3009</span></span>
+<span id="cb35-23"><a href="sigfit.html#cb35-23"></a><span class="co">#&gt; COSMIC_1     20.634415</span></span>
+<span id="cb35-24"><a href="sigfit.html#cb35-24"></a><span class="co">#&gt; COSMIC_2      0.000000</span></span>
+<span id="cb35-25"><a href="sigfit.html#cb35-25"></a><span class="co">#&gt; COSMIC_3      0.000000</span></span>
+<span id="cb35-26"><a href="sigfit.html#cb35-26"></a><span class="co">#&gt; COSMIC_4      0.000000</span></span>
+<span id="cb35-27"><a href="sigfit.html#cb35-27"></a><span class="co">#&gt; COSMIC_5      0.000000</span></span>
+<span id="cb35-28"><a href="sigfit.html#cb35-28"></a><span class="co">#&gt; COSMIC_6      4.186277</span></span>
+<span id="cb35-29"><a href="sigfit.html#cb35-29"></a><span class="co">#&gt; COSMIC_7      0.000000</span></span>
+<span id="cb35-30"><a href="sigfit.html#cb35-30"></a><span class="co">#&gt; COSMIC_8      0.000000</span></span>
+<span id="cb35-31"><a href="sigfit.html#cb35-31"></a><span class="co">#&gt; COSMIC_9      0.000000</span></span>
+<span id="cb35-32"><a href="sigfit.html#cb35-32"></a><span class="co">#&gt; COSMIC_10     3.047894</span></span>
+<span id="cb35-33"><a href="sigfit.html#cb35-33"></a><span class="co">#&gt; COSMIC_11     0.000000</span></span>
+<span id="cb35-34"><a href="sigfit.html#cb35-34"></a><span class="co">#&gt; COSMIC_12     0.000000</span></span>
+<span id="cb35-35"><a href="sigfit.html#cb35-35"></a><span class="co">#&gt; COSMIC_13     0.000000</span></span>
+<span id="cb35-36"><a href="sigfit.html#cb35-36"></a><span class="co">#&gt; COSMIC_14     0.000000</span></span>
+<span id="cb35-37"><a href="sigfit.html#cb35-37"></a><span class="co">#&gt; COSMIC_15     8.131414</span></span>
+<span id="cb35-38"><a href="sigfit.html#cb35-38"></a><span class="co">#&gt; COSMIC_16     0.000000</span></span>
+<span id="cb35-39"><a href="sigfit.html#cb35-39"></a><span class="co">#&gt; COSMIC_17     0.000000</span></span>
+<span id="cb35-40"><a href="sigfit.html#cb35-40"></a><span class="co">#&gt; COSMIC_18     0.000000</span></span>
+<span id="cb35-41"><a href="sigfit.html#cb35-41"></a><span class="co">#&gt; COSMIC_19     0.000000</span></span>
+<span id="cb35-42"><a href="sigfit.html#cb35-42"></a><span class="co">#&gt; COSMIC_20     0.000000</span></span>
+<span id="cb35-43"><a href="sigfit.html#cb35-43"></a><span class="co">#&gt; COSMIC_21     0.000000</span></span>
+<span id="cb35-44"><a href="sigfit.html#cb35-44"></a><span class="co">#&gt; COSMIC_22     0.000000</span></span>
+<span id="cb35-45"><a href="sigfit.html#cb35-45"></a><span class="co">#&gt; COSMIC_23     0.000000</span></span>
+<span id="cb35-46"><a href="sigfit.html#cb35-46"></a><span class="co">#&gt; COSMIC_24     0.000000</span></span>
+<span id="cb35-47"><a href="sigfit.html#cb35-47"></a><span class="co">#&gt; COSMIC_25     0.000000</span></span>
+<span id="cb35-48"><a href="sigfit.html#cb35-48"></a><span class="co">#&gt; COSMIC_26     0.000000</span></span>
+<span id="cb35-49"><a href="sigfit.html#cb35-49"></a><span class="co">#&gt; COSMIC_27     0.000000</span></span>
+<span id="cb35-50"><a href="sigfit.html#cb35-50"></a><span class="co">#&gt; COSMIC_28     0.000000</span></span>
+<span id="cb35-51"><a href="sigfit.html#cb35-51"></a><span class="co">#&gt; COSMIC_29     0.000000</span></span>
+<span id="cb35-52"><a href="sigfit.html#cb35-52"></a><span class="co">#&gt; COSMIC_30     0.000000</span></span></code></pre></div>
 <p>That’s it!</p>
-<p>You can set <code>type = &quot;relative&quot;</code> for getting relative exposure.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">sig_fit</span>(example_mat, <span class="dt">sig_index =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">type =</span> <span class="st">&quot;relative&quot;</span>)</a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Started.</span></a>
-<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Signature index detected.</span></a>
-<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking signature database in package.</span></a>
-<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking signature index.</span></a>
-<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Valid index for db &#39;legacy&#39;:</span></a>
-<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></a>
-<a class="sourceLine" id="cb36-8" data-line-number="8"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Database and index checked.</span></a>
-<a class="sourceLine" id="cb36-9" data-line-number="9"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Signature normalized.</span></a>
-<a class="sourceLine" id="cb36-10" data-line-number="10"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking row number for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb36-11" data-line-number="11"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Checked.</span></a>
-<a class="sourceLine" id="cb36-12" data-line-number="12"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking rownames for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb36-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Matrix V and W don&#39;t have same orders. Try reordering...</span></a>
-<a class="sourceLine" id="cb36-14" data-line-number="14"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Checked.</span></a>
-<a class="sourceLine" id="cb36-15" data-line-number="15"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Method &#39;QP&#39; detected.</span></a>
-<a class="sourceLine" id="cb36-16" data-line-number="16"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Corresponding function generated.</span></a>
-<a class="sourceLine" id="cb36-17" data-line-number="17"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Calling function.</span></a>
-<a class="sourceLine" id="cb36-18" data-line-number="18"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Done.</span></a>
-<a class="sourceLine" id="cb36-19" data-line-number="19"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Generating output signature exposures.</span></a>
-<a class="sourceLine" id="cb36-20" data-line-number="20"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Done.</span></a>
-<a class="sourceLine" id="cb36-21" data-line-number="21"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: 0.039 secs elapsed.</span></a>
-<a class="sourceLine" id="cb36-22" data-line-number="22"><span class="co">#&gt;           TCGA-AB-3009</span></a>
-<a class="sourceLine" id="cb36-23" data-line-number="23"><span class="co">#&gt; COSMIC_1         0.573</span></a>
-<a class="sourceLine" id="cb36-24" data-line-number="24"><span class="co">#&gt; COSMIC_2         0.000</span></a>
-<a class="sourceLine" id="cb36-25" data-line-number="25"><span class="co">#&gt; COSMIC_3         0.000</span></a>
-<a class="sourceLine" id="cb36-26" data-line-number="26"><span class="co">#&gt; COSMIC_4         0.000</span></a>
-<a class="sourceLine" id="cb36-27" data-line-number="27"><span class="co">#&gt; COSMIC_5         0.000</span></a>
-<a class="sourceLine" id="cb36-28" data-line-number="28"><span class="co">#&gt; COSMIC_6         0.116</span></a>
-<a class="sourceLine" id="cb36-29" data-line-number="29"><span class="co">#&gt; COSMIC_7         0.000</span></a>
-<a class="sourceLine" id="cb36-30" data-line-number="30"><span class="co">#&gt; COSMIC_8         0.000</span></a>
-<a class="sourceLine" id="cb36-31" data-line-number="31"><span class="co">#&gt; COSMIC_9         0.000</span></a>
-<a class="sourceLine" id="cb36-32" data-line-number="32"><span class="co">#&gt; COSMIC_10        0.085</span></a>
-<a class="sourceLine" id="cb36-33" data-line-number="33"><span class="co">#&gt; COSMIC_11        0.000</span></a>
-<a class="sourceLine" id="cb36-34" data-line-number="34"><span class="co">#&gt; COSMIC_12        0.000</span></a>
-<a class="sourceLine" id="cb36-35" data-line-number="35"><span class="co">#&gt; COSMIC_13        0.000</span></a>
-<a class="sourceLine" id="cb36-36" data-line-number="36"><span class="co">#&gt; COSMIC_14        0.000</span></a>
-<a class="sourceLine" id="cb36-37" data-line-number="37"><span class="co">#&gt; COSMIC_15        0.226</span></a>
-<a class="sourceLine" id="cb36-38" data-line-number="38"><span class="co">#&gt; COSMIC_16        0.000</span></a>
-<a class="sourceLine" id="cb36-39" data-line-number="39"><span class="co">#&gt; COSMIC_17        0.000</span></a>
-<a class="sourceLine" id="cb36-40" data-line-number="40"><span class="co">#&gt; COSMIC_18        0.000</span></a>
-<a class="sourceLine" id="cb36-41" data-line-number="41"><span class="co">#&gt; COSMIC_19        0.000</span></a>
-<a class="sourceLine" id="cb36-42" data-line-number="42"><span class="co">#&gt; COSMIC_20        0.000</span></a>
-<a class="sourceLine" id="cb36-43" data-line-number="43"><span class="co">#&gt; COSMIC_21        0.000</span></a>
-<a class="sourceLine" id="cb36-44" data-line-number="44"><span class="co">#&gt; COSMIC_22        0.000</span></a>
-<a class="sourceLine" id="cb36-45" data-line-number="45"><span class="co">#&gt; COSMIC_23        0.000</span></a>
-<a class="sourceLine" id="cb36-46" data-line-number="46"><span class="co">#&gt; COSMIC_24        0.000</span></a>
-<a class="sourceLine" id="cb36-47" data-line-number="47"><span class="co">#&gt; COSMIC_25        0.000</span></a>
-<a class="sourceLine" id="cb36-48" data-line-number="48"><span class="co">#&gt; COSMIC_26        0.000</span></a>
-<a class="sourceLine" id="cb36-49" data-line-number="49"><span class="co">#&gt; COSMIC_27        0.000</span></a>
-<a class="sourceLine" id="cb36-50" data-line-number="50"><span class="co">#&gt; COSMIC_28        0.000</span></a>
-<a class="sourceLine" id="cb36-51" data-line-number="51"><span class="co">#&gt; COSMIC_29        0.000</span></a>
-<a class="sourceLine" id="cb36-52" data-line-number="52"><span class="co">#&gt; COSMIC_30        0.000</span></a></code></pre></div>
+<p>You can set <code>type = "relative"</code> for getting relative exposure.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="sigfit.html#cb36-1"></a><span class="kw">sig_fit</span>(example_mat, <span class="dt">sig_index =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">type =</span> <span class="st">&quot;relative&quot;</span>)</span>
+<span id="cb36-2"><a href="sigfit.html#cb36-2"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Started.</span></span>
+<span id="cb36-3"><a href="sigfit.html#cb36-3"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Signature index detected.</span></span>
+<span id="cb36-4"><a href="sigfit.html#cb36-4"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking signature database in package.</span></span>
+<span id="cb36-5"><a href="sigfit.html#cb36-5"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking signature index.</span></span>
+<span id="cb36-6"><a href="sigfit.html#cb36-6"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Valid index for db &#39;legacy&#39;:</span></span>
+<span id="cb36-7"><a href="sigfit.html#cb36-7"></a><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></span>
+<span id="cb36-8"><a href="sigfit.html#cb36-8"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Database and index checked.</span></span>
+<span id="cb36-9"><a href="sigfit.html#cb36-9"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Signature normalized.</span></span>
+<span id="cb36-10"><a href="sigfit.html#cb36-10"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb36-11"><a href="sigfit.html#cb36-11"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Checked.</span></span>
+<span id="cb36-12"><a href="sigfit.html#cb36-12"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb36-13"><a href="sigfit.html#cb36-13"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Matrix V and W don&#39;t have same orders. Try reordering...</span></span>
+<span id="cb36-14"><a href="sigfit.html#cb36-14"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Checked.</span></span>
+<span id="cb36-15"><a href="sigfit.html#cb36-15"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb36-16"><a href="sigfit.html#cb36-16"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Corresponding function generated.</span></span>
+<span id="cb36-17"><a href="sigfit.html#cb36-17"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Calling function.</span></span>
+<span id="cb36-18"><a href="sigfit.html#cb36-18"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Done.</span></span>
+<span id="cb36-19"><a href="sigfit.html#cb36-19"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Generating output signature exposures.</span></span>
+<span id="cb36-20"><a href="sigfit.html#cb36-20"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Done.</span></span>
+<span id="cb36-21"><a href="sigfit.html#cb36-21"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: 0.037 secs elapsed.</span></span>
+<span id="cb36-22"><a href="sigfit.html#cb36-22"></a><span class="co">#&gt;           TCGA-AB-3009</span></span>
+<span id="cb36-23"><a href="sigfit.html#cb36-23"></a><span class="co">#&gt; COSMIC_1      0.573178</span></span>
+<span id="cb36-24"><a href="sigfit.html#cb36-24"></a><span class="co">#&gt; COSMIC_2      0.000000</span></span>
+<span id="cb36-25"><a href="sigfit.html#cb36-25"></a><span class="co">#&gt; COSMIC_3      0.000000</span></span>
+<span id="cb36-26"><a href="sigfit.html#cb36-26"></a><span class="co">#&gt; COSMIC_4      0.000000</span></span>
+<span id="cb36-27"><a href="sigfit.html#cb36-27"></a><span class="co">#&gt; COSMIC_5      0.000000</span></span>
+<span id="cb36-28"><a href="sigfit.html#cb36-28"></a><span class="co">#&gt; COSMIC_6      0.116285</span></span>
+<span id="cb36-29"><a href="sigfit.html#cb36-29"></a><span class="co">#&gt; COSMIC_7      0.000000</span></span>
+<span id="cb36-30"><a href="sigfit.html#cb36-30"></a><span class="co">#&gt; COSMIC_8      0.000000</span></span>
+<span id="cb36-31"><a href="sigfit.html#cb36-31"></a><span class="co">#&gt; COSMIC_9      0.000000</span></span>
+<span id="cb36-32"><a href="sigfit.html#cb36-32"></a><span class="co">#&gt; COSMIC_10     0.084664</span></span>
+<span id="cb36-33"><a href="sigfit.html#cb36-33"></a><span class="co">#&gt; COSMIC_11     0.000000</span></span>
+<span id="cb36-34"><a href="sigfit.html#cb36-34"></a><span class="co">#&gt; COSMIC_12     0.000000</span></span>
+<span id="cb36-35"><a href="sigfit.html#cb36-35"></a><span class="co">#&gt; COSMIC_13     0.000000</span></span>
+<span id="cb36-36"><a href="sigfit.html#cb36-36"></a><span class="co">#&gt; COSMIC_14     0.000000</span></span>
+<span id="cb36-37"><a href="sigfit.html#cb36-37"></a><span class="co">#&gt; COSMIC_15     0.225873</span></span>
+<span id="cb36-38"><a href="sigfit.html#cb36-38"></a><span class="co">#&gt; COSMIC_16     0.000000</span></span>
+<span id="cb36-39"><a href="sigfit.html#cb36-39"></a><span class="co">#&gt; COSMIC_17     0.000000</span></span>
+<span id="cb36-40"><a href="sigfit.html#cb36-40"></a><span class="co">#&gt; COSMIC_18     0.000000</span></span>
+<span id="cb36-41"><a href="sigfit.html#cb36-41"></a><span class="co">#&gt; COSMIC_19     0.000000</span></span>
+<span id="cb36-42"><a href="sigfit.html#cb36-42"></a><span class="co">#&gt; COSMIC_20     0.000000</span></span>
+<span id="cb36-43"><a href="sigfit.html#cb36-43"></a><span class="co">#&gt; COSMIC_21     0.000000</span></span>
+<span id="cb36-44"><a href="sigfit.html#cb36-44"></a><span class="co">#&gt; COSMIC_22     0.000000</span></span>
+<span id="cb36-45"><a href="sigfit.html#cb36-45"></a><span class="co">#&gt; COSMIC_23     0.000000</span></span>
+<span id="cb36-46"><a href="sigfit.html#cb36-46"></a><span class="co">#&gt; COSMIC_24     0.000000</span></span>
+<span id="cb36-47"><a href="sigfit.html#cb36-47"></a><span class="co">#&gt; COSMIC_25     0.000000</span></span>
+<span id="cb36-48"><a href="sigfit.html#cb36-48"></a><span class="co">#&gt; COSMIC_26     0.000000</span></span>
+<span id="cb36-49"><a href="sigfit.html#cb36-49"></a><span class="co">#&gt; COSMIC_27     0.000000</span></span>
+<span id="cb36-50"><a href="sigfit.html#cb36-50"></a><span class="co">#&gt; COSMIC_28     0.000000</span></span>
+<span id="cb36-51"><a href="sigfit.html#cb36-51"></a><span class="co">#&gt; COSMIC_29     0.000000</span></span>
+<span id="cb36-52"><a href="sigfit.html#cb36-52"></a><span class="co">#&gt; COSMIC_30     0.000000</span></span></code></pre></div>
 <p>For multiple samples, you can return a <code>data.table</code>, it can be easier to integrate with other information in R.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">sig_fit</span>(<span class="kw">t</span>(mt_tally<span class="op">$</span>nmf_matrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, ]), <span class="dt">sig_index =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">return_class =</span> <span class="st">&quot;data.table&quot;</span>, <span class="dt">rel_threshold =</span> <span class="fl">0.05</span>)</a>
-<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Started.</span></a>
-<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Signature index detected.</span></a>
-<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking signature database in package.</span></a>
-<a class="sourceLine" id="cb37-5" data-line-number="5"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking signature index.</span></a>
-<a class="sourceLine" id="cb37-6" data-line-number="6"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Valid index for db &#39;legacy&#39;:</span></a>
-<a class="sourceLine" id="cb37-7" data-line-number="7"><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></a>
-<a class="sourceLine" id="cb37-8" data-line-number="8"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Database and index checked.</span></a>
-<a class="sourceLine" id="cb37-9" data-line-number="9"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Signature normalized.</span></a>
-<a class="sourceLine" id="cb37-10" data-line-number="10"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking row number for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb37-11" data-line-number="11"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Checked.</span></a>
-<a class="sourceLine" id="cb37-12" data-line-number="12"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking rownames for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb37-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Matrix V and W don&#39;t have same orders. Try reordering...</span></a>
-<a class="sourceLine" id="cb37-14" data-line-number="14"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Checked.</span></a>
-<a class="sourceLine" id="cb37-15" data-line-number="15"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Method &#39;QP&#39; detected.</span></a>
-<a class="sourceLine" id="cb37-16" data-line-number="16"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Corresponding function generated.</span></a>
-<a class="sourceLine" id="cb37-17" data-line-number="17"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Calling function.</span></a>
-<a class="sourceLine" id="cb37-18" data-line-number="18"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Done.</span></a>
-<a class="sourceLine" id="cb37-19" data-line-number="19"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Generating output signature exposures.</span></a>
-<a class="sourceLine" id="cb37-20" data-line-number="20"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Done.</span></a>
-<a class="sourceLine" id="cb37-21" data-line-number="21"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: 0.055 secs elapsed.</span></a>
-<a class="sourceLine" id="cb37-22" data-line-number="22"><span class="co">#&gt;          sample COSMIC_1 COSMIC_2 COSMIC_3 COSMIC_4 COSMIC_5 COSMIC_6 COSMIC_7 COSMIC_8 COSMIC_9 COSMIC_10 COSMIC_11</span></a>
-<a class="sourceLine" id="cb37-23" data-line-number="23"><span class="co">#&gt; 1: TCGA-AB-2802    3.129    0.895        0    0.000        0    1.088        0        0        0         0         0</span></a>
-<a class="sourceLine" id="cb37-24" data-line-number="24"><span class="co">#&gt; 2: TCGA-AB-2803   10.003    0.000        0    1.717        0    0.000        0        0        0         0         0</span></a>
-<a class="sourceLine" id="cb37-25" data-line-number="25"><span class="co">#&gt; 3: TCGA-AB-2804    7.000    0.000        0    0.000        0    0.000        0        0        0         0         0</span></a>
-<a class="sourceLine" id="cb37-26" data-line-number="26"><span class="co">#&gt; 4: TCGA-AB-2805   13.628    0.000        0    0.000        0    0.000        0        0        0         0         0</span></a>
-<a class="sourceLine" id="cb37-27" data-line-number="27"><span class="co">#&gt; 5: TCGA-AB-2806   10.825    0.000        0    0.000        0    0.000        0        0        0         0         0</span></a>
-<a class="sourceLine" id="cb37-28" data-line-number="28"><span class="co">#&gt;    COSMIC_12 COSMIC_13 COSMIC_14 COSMIC_15 COSMIC_16 COSMIC_17 COSMIC_18 COSMIC_19 COSMIC_20 COSMIC_21 COSMIC_22 COSMIC_23</span></a>
-<a class="sourceLine" id="cb37-29" data-line-number="29"><span class="co">#&gt; 1:         0         0         0     0.000         0         0     0.000     2.833         0         0     2.056         0</span></a>
-<a class="sourceLine" id="cb37-30" data-line-number="30"><span class="co">#&gt; 2:         0         0         0     0.000         0         0     0.000     2.280         0         0     0.000         0</span></a>
-<a class="sourceLine" id="cb37-31" data-line-number="31"><span class="co">#&gt; 3:         0         0         0     0.000         0         0     0.000     0.000         0         0     0.000         0</span></a>
-<a class="sourceLine" id="cb37-32" data-line-number="32"><span class="co">#&gt; 4:         0         0         0     0.000         0         0     0.000     0.000         0         0     0.000         0</span></a>
-<a class="sourceLine" id="cb37-33" data-line-number="33"><span class="co">#&gt; 5:         0         0         0     1.799         0         0     2.376     0.000         0         0     0.000         0</span></a>
-<a class="sourceLine" id="cb37-34" data-line-number="34"><span class="co">#&gt;    COSMIC_24 COSMIC_25 COSMIC_26 COSMIC_27 COSMIC_28 COSMIC_29 COSMIC_30</span></a>
-<a class="sourceLine" id="cb37-35" data-line-number="35"><span class="co">#&gt; 1:         0         0         0         0         0         0         0</span></a>
-<a class="sourceLine" id="cb37-36" data-line-number="36"><span class="co">#&gt; 2:         0         0         0         0         0         0         0</span></a>
-<a class="sourceLine" id="cb37-37" data-line-number="37"><span class="co">#&gt; 3:         0         0         0         0         0         0         0</span></a>
-<a class="sourceLine" id="cb37-38" data-line-number="38"><span class="co">#&gt; 4:         0         0         0         0         0         0         0</span></a>
-<a class="sourceLine" id="cb37-39" data-line-number="39"><span class="co">#&gt; 5:         0         0         0         0         0         0         0</span></a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="sigfit.html#cb37-1"></a><span class="kw">sig_fit</span>(<span class="kw">t</span>(mt_tally<span class="op">$</span>nmf_matrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, ]), <span class="dt">sig_index =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dt">return_class =</span> <span class="st">&quot;data.table&quot;</span>, <span class="dt">rel_threshold =</span> <span class="fl">0.05</span>)</span>
+<span id="cb37-2"><a href="sigfit.html#cb37-2"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Started.</span></span>
+<span id="cb37-3"><a href="sigfit.html#cb37-3"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Signature index detected.</span></span>
+<span id="cb37-4"><a href="sigfit.html#cb37-4"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking signature database in package.</span></span>
+<span id="cb37-5"><a href="sigfit.html#cb37-5"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking signature index.</span></span>
+<span id="cb37-6"><a href="sigfit.html#cb37-6"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Valid index for db &#39;legacy&#39;:</span></span>
+<span id="cb37-7"><a href="sigfit.html#cb37-7"></a><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></span>
+<span id="cb37-8"><a href="sigfit.html#cb37-8"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Database and index checked.</span></span>
+<span id="cb37-9"><a href="sigfit.html#cb37-9"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Signature normalized.</span></span>
+<span id="cb37-10"><a href="sigfit.html#cb37-10"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb37-11"><a href="sigfit.html#cb37-11"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Checked.</span></span>
+<span id="cb37-12"><a href="sigfit.html#cb37-12"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb37-13"><a href="sigfit.html#cb37-13"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Matrix V and W don&#39;t have same orders. Try reordering...</span></span>
+<span id="cb37-14"><a href="sigfit.html#cb37-14"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Checked.</span></span>
+<span id="cb37-15"><a href="sigfit.html#cb37-15"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb37-16"><a href="sigfit.html#cb37-16"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Corresponding function generated.</span></span>
+<span id="cb37-17"><a href="sigfit.html#cb37-17"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Calling function.</span></span>
+<span id="cb37-18"><a href="sigfit.html#cb37-18"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:24]: Done.</span></span>
+<span id="cb37-19"><a href="sigfit.html#cb37-19"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:24]: Generating output signature exposures.</span></span>
+<span id="cb37-20"><a href="sigfit.html#cb37-20"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Done.</span></span>
+<span id="cb37-21"><a href="sigfit.html#cb37-21"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: 0.047 secs elapsed.</span></span>
+<span id="cb37-22"><a href="sigfit.html#cb37-22"></a><span class="co">#&gt;          sample  COSMIC_1 COSMIC_2 COSMIC_3 COSMIC_4 COSMIC_5 COSMIC_6 COSMIC_7 COSMIC_8 COSMIC_9</span></span>
+<span id="cb37-23"><a href="sigfit.html#cb37-23"></a><span class="co">#&gt; 1: TCGA-AB-2802  3.128915 0.894638        0 0.000000        0 1.087562        0        0        0</span></span>
+<span id="cb37-24"><a href="sigfit.html#cb37-24"></a><span class="co">#&gt; 2: TCGA-AB-2803 10.003001 0.000000        0 1.717432        0 0.000000        0        0        0</span></span>
+<span id="cb37-25"><a href="sigfit.html#cb37-25"></a><span class="co">#&gt; 3: TCGA-AB-2804  7.000000 0.000000        0 0.000000        0 0.000000        0        0        0</span></span>
+<span id="cb37-26"><a href="sigfit.html#cb37-26"></a><span class="co">#&gt; 4: TCGA-AB-2805 13.627942 0.000000        0 0.000000        0 0.000000        0        0        0</span></span>
+<span id="cb37-27"><a href="sigfit.html#cb37-27"></a><span class="co">#&gt; 5: TCGA-AB-2806 10.824663 0.000000        0 0.000000        0 0.000000        0        0        0</span></span>
+<span id="cb37-28"><a href="sigfit.html#cb37-28"></a><span class="co">#&gt;    COSMIC_10 COSMIC_11 COSMIC_12 COSMIC_13 COSMIC_14 COSMIC_15 COSMIC_16 COSMIC_17 COSMIC_18 COSMIC_19</span></span>
+<span id="cb37-29"><a href="sigfit.html#cb37-29"></a><span class="co">#&gt; 1:         0         0         0         0         0  0.000000         0         0  0.000000  2.832959</span></span>
+<span id="cb37-30"><a href="sigfit.html#cb37-30"></a><span class="co">#&gt; 2:         0         0         0         0         0  0.000000         0         0  0.000000  2.279568</span></span>
+<span id="cb37-31"><a href="sigfit.html#cb37-31"></a><span class="co">#&gt; 3:         0         0         0         0         0  0.000000         0         0  0.000000  0.000000</span></span>
+<span id="cb37-32"><a href="sigfit.html#cb37-32"></a><span class="co">#&gt; 4:         0         0         0         0         0  0.000000         0         0  0.000000  0.000000</span></span>
+<span id="cb37-33"><a href="sigfit.html#cb37-33"></a><span class="co">#&gt; 5:         0         0         0         0         0  1.799328         0         0  2.376009  0.000000</span></span>
+<span id="cb37-34"><a href="sigfit.html#cb37-34"></a><span class="co">#&gt;    COSMIC_20 COSMIC_21 COSMIC_22 COSMIC_23 COSMIC_24 COSMIC_25 COSMIC_26 COSMIC_27 COSMIC_28 COSMIC_29</span></span>
+<span id="cb37-35"><a href="sigfit.html#cb37-35"></a><span class="co">#&gt; 1:         0         0  2.055926         0         0         0         0         0         0         0</span></span>
+<span id="cb37-36"><a href="sigfit.html#cb37-36"></a><span class="co">#&gt; 2:         0         0  0.000000         0         0         0         0         0         0         0</span></span>
+<span id="cb37-37"><a href="sigfit.html#cb37-37"></a><span class="co">#&gt; 3:         0         0  0.000000         0         0         0         0         0         0         0</span></span>
+<span id="cb37-38"><a href="sigfit.html#cb37-38"></a><span class="co">#&gt; 4:         0         0  0.000000         0         0         0         0         0         0         0</span></span>
+<span id="cb37-39"><a href="sigfit.html#cb37-39"></a><span class="co">#&gt; 5:         0         0  0.000000         0         0         0         0         0         0         0</span></span>
+<span id="cb37-40"><a href="sigfit.html#cb37-40"></a><span class="co">#&gt;    COSMIC_30</span></span>
+<span id="cb37-41"><a href="sigfit.html#cb37-41"></a><span class="co">#&gt; 1:         0</span></span>
+<span id="cb37-42"><a href="sigfit.html#cb37-42"></a><span class="co">#&gt; 2:         0</span></span>
+<span id="cb37-43"><a href="sigfit.html#cb37-43"></a><span class="co">#&gt; 3:         0</span></span>
+<span id="cb37-44"><a href="sigfit.html#cb37-44"></a><span class="co">#&gt; 4:         0</span></span>
+<span id="cb37-45"><a href="sigfit.html#cb37-45"></a><span class="co">#&gt; 5:         0</span></span></code></pre></div>
 <p>When you set multiple signatures, we recommend setting <code>rel_threshold</code> option, which will set exposure of a signature to <code>0</code> if its relative exposure in a sample less than the <code>rel_threshold</code>.</p>
 </div>
 <div id="fit-custom-signatures" class="section level2">
 <h2><span class="header-section-number">4.2</span> Fit Custom Signatures</h2>
 <p>We have already determined the SBS signatures before. Here we can set them to <code>sig</code> option.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">sig_fit</span>(example_mat, <span class="dt">sig =</span> mt_sig)</a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Started.</span></a>
-<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Signature index not detected.</span></a>
-<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Signature object detected.</span></a>
-<a class="sourceLine" id="cb38-5" data-line-number="5"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Database and index checked.</span></a>
-<a class="sourceLine" id="cb38-6" data-line-number="6"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Signature normalized.</span></a>
-<a class="sourceLine" id="cb38-7" data-line-number="7"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking row number for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb38-8" data-line-number="8"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Checked.</span></a>
-<a class="sourceLine" id="cb38-9" data-line-number="9"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Checking rownames for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb38-10" data-line-number="10"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Checked.</span></a>
-<a class="sourceLine" id="cb38-11" data-line-number="11"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Method &#39;QP&#39; detected.</span></a>
-<a class="sourceLine" id="cb38-12" data-line-number="12"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Corresponding function generated.</span></a>
-<a class="sourceLine" id="cb38-13" data-line-number="13"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Calling function.</span></a>
-<a class="sourceLine" id="cb38-14" data-line-number="14"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Done.</span></a>
-<a class="sourceLine" id="cb38-15" data-line-number="15"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: Generating output signature exposures.</span></a>
-<a class="sourceLine" id="cb38-16" data-line-number="16"><span class="co">#&gt; ✓ [2020-09-07 14:12:08]: Done.</span></a>
-<a class="sourceLine" id="cb38-17" data-line-number="17"><span class="co">#&gt; ℹ [2020-09-07 14:12:08]: 0.033 secs elapsed.</span></a>
-<a class="sourceLine" id="cb38-18" data-line-number="18"><span class="co">#&gt;      TCGA-AB-3009</span></a>
-<a class="sourceLine" id="cb38-19" data-line-number="19"><span class="co">#&gt; Sig1        6.614</span></a>
-<a class="sourceLine" id="cb38-20" data-line-number="20"><span class="co">#&gt; Sig2        5.734</span></a>
-<a class="sourceLine" id="cb38-21" data-line-number="21"><span class="co">#&gt; Sig3       23.653</span></a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="sigfit.html#cb38-1"></a><span class="kw">sig_fit</span>(example_mat, <span class="dt">sig =</span> mt_sig)</span>
+<span id="cb38-2"><a href="sigfit.html#cb38-2"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Started.</span></span>
+<span id="cb38-3"><a href="sigfit.html#cb38-3"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Signature index not detected.</span></span>
+<span id="cb38-4"><a href="sigfit.html#cb38-4"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Signature object detected.</span></span>
+<span id="cb38-5"><a href="sigfit.html#cb38-5"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Database and index checked.</span></span>
+<span id="cb38-6"><a href="sigfit.html#cb38-6"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Signature normalized.</span></span>
+<span id="cb38-7"><a href="sigfit.html#cb38-7"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb38-8"><a href="sigfit.html#cb38-8"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Checked.</span></span>
+<span id="cb38-9"><a href="sigfit.html#cb38-9"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb38-10"><a href="sigfit.html#cb38-10"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Checked.</span></span>
+<span id="cb38-11"><a href="sigfit.html#cb38-11"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb38-12"><a href="sigfit.html#cb38-12"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Corresponding function generated.</span></span>
+<span id="cb38-13"><a href="sigfit.html#cb38-13"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Calling function.</span></span>
+<span id="cb38-14"><a href="sigfit.html#cb38-14"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Done.</span></span>
+<span id="cb38-15"><a href="sigfit.html#cb38-15"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Generating output signature exposures.</span></span>
+<span id="cb38-16"><a href="sigfit.html#cb38-16"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Done.</span></span>
+<span id="cb38-17"><a href="sigfit.html#cb38-17"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: 0.027 secs elapsed.</span></span>
+<span id="cb38-18"><a href="sigfit.html#cb38-18"></a><span class="co">#&gt;      TCGA-AB-3009</span></span>
+<span id="cb38-19"><a href="sigfit.html#cb38-19"></a><span class="co">#&gt; Sig1     6.613842</span></span>
+<span id="cb38-20"><a href="sigfit.html#cb38-20"></a><span class="co">#&gt; Sig2     5.733641</span></span>
+<span id="cb38-21"><a href="sigfit.html#cb38-21"></a><span class="co">#&gt; Sig3    23.652517</span></span></code></pre></div>
 </div>
 <div id="performance-comparison" class="section level2">
 <h2><span class="header-section-number">4.3</span> Performance Comparison</h2>
 <p>Now that we can use <code>sig_fit</code> for getting optimal exposures, we can compare the RSS between <strong>raw matrix</strong> and the <strong>reconstructed matrix</strong> either by NMF and <code>sig_fit()</code>.</p>
-<p>i.e.</p>
+<p>i.e. </p>
 <p><span class="math display">\[
 RSS = \sum(\hat H - H)^2
 \]</span></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co">## Exposure got from NMF</span></a>
-<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="kw">sum</span>((<span class="kw">apply</span>(mt_sig<span class="op">$</span>Signature, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x)) <span class="op">%*%</span><span class="st"> </span>mt_sig<span class="op">$</span>Exposure <span class="op">-</span><span class="st"> </span><span class="kw">t</span>(mt_tally<span class="op">$</span>nmf_matrix))<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="co">#&gt; [1] 1868.616</span></a></code></pre></div>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="co">## Exposure optimized by sig_fit</span></a>
-<a class="sourceLine" id="cb40-2" data-line-number="2">H_estimate &lt;-<span class="st"> </span><span class="kw">apply</span>(mt_sig<span class="op">$</span>Signature, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x)) <span class="op">%*%</span><span class="st"> </span><span class="kw">sig_fit</span>(<span class="kw">t</span>(mt_tally<span class="op">$</span>nmf_matrix), <span class="dt">sig =</span> mt_sig)</a>
-<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: Started.</span></a>
-<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: Signature index not detected.</span></a>
-<a class="sourceLine" id="cb40-5" data-line-number="5"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Signature object detected.</span></a>
-<a class="sourceLine" id="cb40-6" data-line-number="6"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Database and index checked.</span></a>
-<a class="sourceLine" id="cb40-7" data-line-number="7"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Signature normalized.</span></a>
-<a class="sourceLine" id="cb40-8" data-line-number="8"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: Checking row number for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb40-9" data-line-number="9"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Checked.</span></a>
-<a class="sourceLine" id="cb40-10" data-line-number="10"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: Checking rownames for catalog matrix and signature matrix.</span></a>
-<a class="sourceLine" id="cb40-11" data-line-number="11"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Checked.</span></a>
-<a class="sourceLine" id="cb40-12" data-line-number="12"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Method &#39;QP&#39; detected.</span></a>
-<a class="sourceLine" id="cb40-13" data-line-number="13"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Corresponding function generated.</span></a>
-<a class="sourceLine" id="cb40-14" data-line-number="14"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: Calling function.</span></a>
-<a class="sourceLine" id="cb40-15" data-line-number="15"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Done.</span></a>
-<a class="sourceLine" id="cb40-16" data-line-number="16"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: Generating output signature exposures.</span></a>
-<a class="sourceLine" id="cb40-17" data-line-number="17"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Done.</span></a>
-<a class="sourceLine" id="cb40-18" data-line-number="18"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: 0.047 secs elapsed.</span></a>
-<a class="sourceLine" id="cb40-19" data-line-number="19">H_estimate &lt;-<span class="st"> </span><span class="kw">apply</span>(H_estimate, <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="kw">ifelse</span>(<span class="kw">is.nan</span>(x), <span class="dv">0</span>, x))</a>
-<a class="sourceLine" id="cb40-20" data-line-number="20">H_real &lt;-<span class="st"> </span><span class="kw">t</span>(mt_tally<span class="op">$</span>nmf_matrix)</a>
-<a class="sourceLine" id="cb40-21" data-line-number="21"><span class="kw">sum</span>((H_estimate <span class="op">-</span><span class="st"> </span>H_real)<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb40-22" data-line-number="22"><span class="co">#&gt; [1] 1772.987</span></a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="sigfit.html#cb39-1"></a><span class="co">## Exposure got from NMF</span></span>
+<span id="cb39-2"><a href="sigfit.html#cb39-2"></a><span class="kw">sum</span>((<span class="kw">apply</span>(mt_sig<span class="op">$</span>Signature, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x)) <span class="op">%*%</span><span class="st"> </span>mt_sig<span class="op">$</span>Exposure <span class="op">-</span><span class="st"> </span><span class="kw">t</span>(mt_tally<span class="op">$</span>nmf_matrix))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb39-3"><a href="sigfit.html#cb39-3"></a><span class="co">#&gt; [1] 1868.616</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="sigfit.html#cb40-1"></a><span class="co">## Exposure optimized by sig_fit</span></span>
+<span id="cb40-2"><a href="sigfit.html#cb40-2"></a>H_estimate &lt;-<span class="st"> </span><span class="kw">apply</span>(mt_sig<span class="op">$</span>Signature, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x)) <span class="op">%*%</span><span class="st"> </span><span class="kw">sig_fit</span>(<span class="kw">t</span>(mt_tally<span class="op">$</span>nmf_matrix), <span class="dt">sig =</span> mt_sig)</span>
+<span id="cb40-3"><a href="sigfit.html#cb40-3"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Started.</span></span>
+<span id="cb40-4"><a href="sigfit.html#cb40-4"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Signature index not detected.</span></span>
+<span id="cb40-5"><a href="sigfit.html#cb40-5"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Signature object detected.</span></span>
+<span id="cb40-6"><a href="sigfit.html#cb40-6"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Database and index checked.</span></span>
+<span id="cb40-7"><a href="sigfit.html#cb40-7"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Signature normalized.</span></span>
+<span id="cb40-8"><a href="sigfit.html#cb40-8"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb40-9"><a href="sigfit.html#cb40-9"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Checked.</span></span>
+<span id="cb40-10"><a href="sigfit.html#cb40-10"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb40-11"><a href="sigfit.html#cb40-11"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Checked.</span></span>
+<span id="cb40-12"><a href="sigfit.html#cb40-12"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb40-13"><a href="sigfit.html#cb40-13"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Corresponding function generated.</span></span>
+<span id="cb40-14"><a href="sigfit.html#cb40-14"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Calling function.</span></span>
+<span id="cb40-15"><a href="sigfit.html#cb40-15"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Done.</span></span>
+<span id="cb40-16"><a href="sigfit.html#cb40-16"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Generating output signature exposures.</span></span>
+<span id="cb40-17"><a href="sigfit.html#cb40-17"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Done.</span></span>
+<span id="cb40-18"><a href="sigfit.html#cb40-18"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: 0.047 secs elapsed.</span></span>
+<span id="cb40-19"><a href="sigfit.html#cb40-19"></a>H_estimate &lt;-<span class="st"> </span><span class="kw">apply</span>(H_estimate, <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="kw">ifelse</span>(<span class="kw">is.nan</span>(x), <span class="dv">0</span>, x))</span>
+<span id="cb40-20"><a href="sigfit.html#cb40-20"></a>H_real &lt;-<span class="st"> </span><span class="kw">t</span>(mt_tally<span class="op">$</span>nmf_matrix)</span>
+<span id="cb40-21"><a href="sigfit.html#cb40-21"></a><span class="kw">sum</span>((H_estimate <span class="op">-</span><span class="st"> </span>H_real)<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb40-22"><a href="sigfit.html#cb40-22"></a><span class="co">#&gt; [1] 1772.987</span></span></code></pre></div>
 </div>
 <div id="estimate-exposure-stability-by-bootstrap" class="section level2">
 <h2><span class="header-section-number">4.4</span> Estimate Exposure Stability by Bootstrap</h2>
 <p>This feature is based on <code>sig_fit()</code>, it uses the resampling data of original input and runs <code>sig_fit()</code> multiple times to estimate the exposure. Bootstrap replicates &gt;= 100 is recommended, here I just use 10 times for illustration.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">bt_result &lt;-<span class="st"> </span><span class="kw">sig_fit_bootstrap</span>(example_mat, <span class="dt">sig =</span> mt_sig, <span class="dt">n =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: Started.</span></a>
-<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: Checking catalog.</span></a>
-<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Done.</span></a>
-<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: About to start bootstrap.</span></a>
-<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb41-7" data-line-number="7">→ Bootstrapping <span class="dv">10</span> times.</a>
-<a class="sourceLine" id="cb41-8" data-line-number="8">→ Total <span class="dv">10</span> times, starting no.<span class="fl">1.</span></a>
-<a class="sourceLine" id="cb41-9" data-line-number="9">→ Total <span class="dv">10</span> times, starting no.<span class="fl">2.</span></a>
-<a class="sourceLine" id="cb41-10" data-line-number="10">→ Total <span class="dv">10</span> times, starting no.<span class="fl">3.</span></a>
-<a class="sourceLine" id="cb41-11" data-line-number="11">→ Total <span class="dv">10</span> times, starting no.<span class="fl">4.</span></a>
-<a class="sourceLine" id="cb41-12" data-line-number="12">→ Total <span class="dv">10</span> times, starting no.<span class="fl">5.</span></a>
-<a class="sourceLine" id="cb41-13" data-line-number="13">→ Total <span class="dv">10</span> times, starting no.<span class="fl">6.</span></a>
-<a class="sourceLine" id="cb41-14" data-line-number="14">→ Total <span class="dv">10</span> times, starting no.<span class="fl">7.</span></a>
-<a class="sourceLine" id="cb41-15" data-line-number="15">→ Total <span class="dv">10</span> times, starting no.<span class="fl">8.</span></a>
-<a class="sourceLine" id="cb41-16" data-line-number="16">→ Total <span class="dv">10</span> times, starting no.<span class="fl">9.</span></a>
-<a class="sourceLine" id="cb41-17" data-line-number="17">→ Total <span class="dv">10</span> times, starting no.<span class="fl">10.</span></a>
-<a class="sourceLine" id="cb41-18" data-line-number="18">                                  </a>
-<a class="sourceLine" id="cb41-19" data-line-number="19">✓ [<span class="dv">2020-09-07</span> <span class="dv">14</span><span class="op">:</span><span class="dv">12</span><span class="op">:</span><span class="dv">09</span>]<span class="op">:</span><span class="st"> </span>Bootstrap done.</a>
-<a class="sourceLine" id="cb41-20" data-line-number="20"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Signature exposures collected.</span></a>
-<a class="sourceLine" id="cb41-21" data-line-number="21"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Errors collected.</span></a>
-<a class="sourceLine" id="cb41-22" data-line-number="22"><span class="co">#&gt; ✓ [2020-09-07 14:12:09]: Done.</span></a>
-<a class="sourceLine" id="cb41-23" data-line-number="23"><span class="co">#&gt; ℹ [2020-09-07 14:12:09]: 0.621 secs elapsed.</span></a>
-<a class="sourceLine" id="cb41-24" data-line-number="24">bt_result</a>
-<a class="sourceLine" id="cb41-25" data-line-number="25"><span class="co">#&gt; $expo</span></a>
-<a class="sourceLine" id="cb41-26" data-line-number="26"><span class="co">#&gt;       Rep_1  Rep_2  Rep_3  Rep_4  Rep_5  Rep_6  Rep_7  Rep_8 Rep_9 Rep_10</span></a>
-<a class="sourceLine" id="cb41-27" data-line-number="27"><span class="co">#&gt; Sig1  1.894  5.347  1.578  2.320 17.550 13.962  7.696  7.106     0  2.498</span></a>
-<a class="sourceLine" id="cb41-28" data-line-number="28"><span class="co">#&gt; Sig2  1.236  7.750  8.777  7.498  3.702  8.458  7.490  6.845     0  6.778</span></a>
-<a class="sourceLine" id="cb41-29" data-line-number="29"><span class="co">#&gt; Sig3 32.870 22.903 25.646 26.183 14.748 13.580 20.814 22.049    36 26.724</span></a>
-<a class="sourceLine" id="cb41-30" data-line-number="30"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb41-31" data-line-number="31"><span class="co">#&gt; $errors</span></a>
-<a class="sourceLine" id="cb41-32" data-line-number="32"><span class="co">#&gt;  Rep_1  Rep_2  Rep_3  Rep_4  Rep_5  Rep_6  Rep_7  Rep_8  Rep_9 Rep_10 </span></a>
-<a class="sourceLine" id="cb41-33" data-line-number="33"><span class="co">#&gt;  7.491  7.221  7.259  7.252  7.543  7.548  7.241  7.222  7.705  7.256</span></a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="sigfit.html#cb41-1"></a>bt_result &lt;-<span class="st"> </span><span class="kw">sig_fit_bootstrap</span>(example_mat, <span class="dt">sig =</span> mt_sig, <span class="dt">n =</span> <span class="dv">10</span>)</span>
+<span id="cb41-2"><a href="sigfit.html#cb41-2"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Started.</span></span>
+<span id="cb41-3"><a href="sigfit.html#cb41-3"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: Checking catalog.</span></span>
+<span id="cb41-4"><a href="sigfit.html#cb41-4"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:25]: Done.</span></span>
+<span id="cb41-5"><a href="sigfit.html#cb41-5"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:25]: About to start bootstrap.</span></span>
+<span id="cb41-6"><a href="sigfit.html#cb41-6"></a><span class="co">#&gt; </span></span>
+<span id="cb41-7"><a href="sigfit.html#cb41-7"></a>→ Bootstrapping <span class="dv">10</span> times.</span>
+<span id="cb41-8"><a href="sigfit.html#cb41-8"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">1.</span></span>
+<span id="cb41-9"><a href="sigfit.html#cb41-9"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">2.</span></span>
+<span id="cb41-10"><a href="sigfit.html#cb41-10"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">3.</span></span>
+<span id="cb41-11"><a href="sigfit.html#cb41-11"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">4.</span></span>
+<span id="cb41-12"><a href="sigfit.html#cb41-12"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">5.</span></span>
+<span id="cb41-13"><a href="sigfit.html#cb41-13"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">6.</span></span>
+<span id="cb41-14"><a href="sigfit.html#cb41-14"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">7.</span></span>
+<span id="cb41-15"><a href="sigfit.html#cb41-15"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">8.</span></span>
+<span id="cb41-16"><a href="sigfit.html#cb41-16"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">9.</span></span>
+<span id="cb41-17"><a href="sigfit.html#cb41-17"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">10.</span></span>
+<span id="cb41-18"><a href="sigfit.html#cb41-18"></a>                                 </span>
+<span id="cb41-19"><a href="sigfit.html#cb41-19"></a>✓ [<span class="dv">2020-09-11</span> <span class="dv">15</span><span class="op">:</span><span class="dv">24</span><span class="op">:</span><span class="dv">26</span>]<span class="op">:</span><span class="st"> </span>Bootstrap done.</span>
+<span id="cb41-20"><a href="sigfit.html#cb41-20"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:26]: Signature exposures collected.</span></span>
+<span id="cb41-21"><a href="sigfit.html#cb41-21"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:26]: Errors and similarity collected.</span></span>
+<span id="cb41-22"><a href="sigfit.html#cb41-22"></a><span class="co">#&gt; ✓ [2020-09-11 15:24:26]: Done.</span></span>
+<span id="cb41-23"><a href="sigfit.html#cb41-23"></a><span class="co">#&gt; ℹ [2020-09-11 15:24:26]: 0.558 secs elapsed.</span></span>
+<span id="cb41-24"><a href="sigfit.html#cb41-24"></a>bt_result</span>
+<span id="cb41-25"><a href="sigfit.html#cb41-25"></a><span class="co">#&gt; $expo</span></span>
+<span id="cb41-26"><a href="sigfit.html#cb41-26"></a><span class="co">#&gt;          Rep_1 Rep_2    Rep_3     Rep_4     Rep_5     Rep_6 Rep_7     Rep_8     Rep_9    Rep_10</span></span>
+<span id="cb41-27"><a href="sigfit.html#cb41-27"></a><span class="co">#&gt; Sig1  0.000000     0  0.00000 16.175228  5.479576  8.771076     0  7.941554  4.870899  2.752603</span></span>
+<span id="cb41-28"><a href="sigfit.html#cb41-28"></a><span class="co">#&gt; Sig2  8.442578     0  8.06163  8.535291  1.157980  5.005952     0  3.681621  3.232758 12.176962</span></span>
+<span id="cb41-29"><a href="sigfit.html#cb41-29"></a><span class="co">#&gt; Sig3 27.557422    36 27.93837 11.289481 29.362445 22.222972    36 24.376825 27.896343 21.070435</span></span>
+<span id="cb41-30"><a href="sigfit.html#cb41-30"></a><span class="co">#&gt; </span></span>
+<span id="cb41-31"><a href="sigfit.html#cb41-31"></a><span class="co">#&gt; $errors</span></span>
+<span id="cb41-32"><a href="sigfit.html#cb41-32"></a><span class="co">#&gt;  Rep_1  Rep_2  Rep_3  Rep_4  Rep_5  Rep_6  Rep_7  Rep_8  Rep_9 Rep_10 </span></span>
+<span id="cb41-33"><a href="sigfit.html#cb41-33"></a><span class="co">#&gt;  7.304  7.705  7.311  7.717  7.331  7.224  7.705  7.221  7.274  7.296 </span></span>
+<span id="cb41-34"><a href="sigfit.html#cb41-34"></a><span class="co">#&gt; </span></span>
+<span id="cb41-35"><a href="sigfit.html#cb41-35"></a><span class="co">#&gt; $cosine</span></span>
+<span id="cb41-36"><a href="sigfit.html#cb41-36"></a><span class="co">#&gt;    Rep_1    Rep_2    Rep_3    Rep_4    Rep_5    Rep_6    Rep_7    Rep_8    Rep_9   Rep_10 </span></span>
+<span id="cb41-37"><a href="sigfit.html#cb41-37"></a><span class="co">#&gt; 0.763273 0.799748 0.760113 0.787352 0.809971 0.736554 0.830693 0.753609 0.721674 0.714459</span></span></code></pre></div>
 <p>Currently, I haven’t create plot method for the result, but you can plot it very easily with <code>boxplot()</code>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">boxplot</span>(<span class="kw">t</span>(bt_result<span class="op">$</span>expo))</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="sigfit.html#cb42-1"></a><span class="kw">boxplot</span>(<span class="kw">t</span>(bt_result<span class="op">$</span>expo))</span></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-55-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
