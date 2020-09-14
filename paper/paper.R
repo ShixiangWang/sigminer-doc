@@ -110,12 +110,15 @@ sigprofiler_extract(
   use_conda = FALSE, py_path = "/Users/wsx/anaconda3/bin/python"
 )
 
-sigs_sf_sigprofiler <- sigprofiler_import("paper/sigprofiler/PCAWG_BRCA", type = "all")
+sigs_sf_sigprofiler <- sigprofiler_import("paper/sigprofiler/PCAWG_BRCA",
+                                          type = "all")
 sigs_sf_sigprofiler <- sigs_sf_sigprofiler$solution_list$S13
 
 save(sigs_sf_nmf, sigs_sf_bayes, sigs_sf_sigprofiler, file = "paper/data/Sigs_Sigflow.RData")
 
 load(file = "paper/data/Sigs_Sigflow.RData")
+load(file = "paper/data/comps_map.RData")
+library(sigminer)
 
 xx = sigs_sf_bayes$Signature.norm
 rownames(xx) <- comps_map[rownames(xx)]
@@ -123,6 +126,12 @@ yy = get_sig_similarity(xx, sig_db = "SBS")
 pheatmap::pheatmap(yy$similarity, cluster_rows = FALSE,
                    height = 5, width = 9,
                    filename = "paper/cosine_heatmap.png")
+
+yy2 = yy$similarity[, paste0("SBS", c(1, 2, 3, 5, 8, 9, 13, "17a", "17b", 18, 37, 40, 41))]
+pheatmap::pheatmap(yy2, cluster_rows = FALSE, cluster_cols = FALSE)
+
+yy3 = get_sig_similarity(xx, sigs_sf_sigprofiler)
+pheatmap::pheatmap(yy3$similarity, cluster_rows = FALSE, cluster_cols = FALSE)
 
 sigs_sf_bayes$Raw$summary_run
 
