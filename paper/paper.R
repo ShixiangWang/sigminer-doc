@@ -125,10 +125,22 @@ rownames(xx) <- comps_map[rownames(xx)]
 
 yy = get_sig_similarity(xx, sig_db = "SBS")
 yy = yy$similarity[, paste0("SBS", c(1, 2, 3, 5, 8, 9, 13, "17a", "17b", 18, 37, 40, 41))]
-pheatmap::pheatmap(yy, cluster_rows = FALSE, cluster_cols = FALSE, 
-                   display_numbers = TRUE, 
+
+
+pheatmap::pheatmap(yy,
+                   cluster_rows = FALSE, cluster_cols = FALSE, 
+                   display_numbers = TRUE,
                    height = 5, width = 7,
                    filename = "paper/cosine_heatmap.png")
+
+pheatmap::pheatmap(yy[paste0("Sig", c(4, 2, 5, 9, 3, 7, 1, 10, 12, 8, 11, 6, 13)), ],
+                   cluster_rows = FALSE, cluster_cols = FALSE, 
+                   display_numbers = TRUE)
+pheatmap::pheatmap(yy[paste0("Sig", c(4, 2, 5, 9, 3, 7, 1, 10, 12, 8, 11, 6, 13)), ],
+                   cluster_rows = FALSE, cluster_cols = FALSE, 
+                   display_numbers = TRUE,
+                   height = 5, width = 7,
+                   filename = "paper/cosine_heatmap2.png")
 
 sigs_sf_bayes$Raw$summary_run
 
