@@ -122,6 +122,9 @@ library(sigminer)
 
 xx = sigs_sf_bayes$Signature.norm
 rownames(xx) <- comps_map[rownames(xx)]
+xx2 = sigs_sf_nmf$Signature.norm
+rownames(xx2) <- comps_map[rownames(xx2)]
+
 yy = get_sig_similarity(xx, sig_db = "SBS")
 pheatmap::pheatmap(yy$similarity, cluster_rows = FALSE,
                    height = 5, width = 9,
@@ -132,6 +135,14 @@ pheatmap::pheatmap(yy2, cluster_rows = FALSE, cluster_cols = FALSE)
 
 yy3 = get_sig_similarity(xx, sigs_sf_sigprofiler)
 pheatmap::pheatmap(yy3$similarity, cluster_rows = FALSE, cluster_cols = FALSE)
+
+yy4 = get_sig_similarity(sigs_sf_sigprofiler, sig_db = "SBS")
+yy4 = yy4$similarity[, paste0("SBS", c(1, 2, 3, 5, 8, 9, 13, "17a", "17b", 18, 37, 40, 41))]
+pheatmap::pheatmap(yy4, cluster_rows = FALSE, cluster_cols = FALSE)
+
+yy5 = get_sig_similarity(xx2, sig_db = "SBS")
+yy5 = yy5$similarity[, paste0("SBS", c(1, 2, 3, 5, 8, 9, 13, "17a", "17b", 18, 37, 40, 41))]
+pheatmap::pheatmap(yy5, cluster_rows = FALSE, cluster_cols = FALSE, display_numbers = TRUE)
 
 sigs_sf_bayes$Raw$summary_run
 
