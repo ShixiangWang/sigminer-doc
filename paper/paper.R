@@ -35,7 +35,7 @@ load("paper/PCAWG/lego96.PAN.SNV.091217.RData")
 colnames(lego96.SNV) <- gsub(".*__(.+)", "\\1", colnames(lego96.SNV))
 brca_lego96 <- lego96.SNV[, colnames(lego96.SNV) %in% brca_sigs$`Sample Names`]
 
-save(bbrca_sigs, brca_lego96, file = "paper/data/PCAWG_ref.RData")
+save(brca_sigs, brca_lego96, file = "paper/data/PCAWG_ref.RData")
 
 comps <- colnames(t(brca_lego96))
 comps_map <- paste0(
@@ -120,29 +120,15 @@ load(file = "paper/data/Sigs_Sigflow.RData")
 load(file = "paper/data/comps_map.RData")
 library(sigminer)
 
-xx = sigs_sf_bayes$Signature.norm
+xx = sigs_sf_nmf$Signature.norm
 rownames(xx) <- comps_map[rownames(xx)]
-xx2 = sigs_sf_nmf$Signature.norm
-rownames(xx2) <- comps_map[rownames(xx2)]
 
 yy = get_sig_similarity(xx, sig_db = "SBS")
-pheatmap::pheatmap(yy$similarity, cluster_rows = FALSE,
-                   height = 5, width = 9,
+yy = yy$similarity[, paste0("SBS", c(1, 2, 3, 5, 8, 9, 13, "17a", "17b", 18, 37, 40, 41))]
+pheatmap::pheatmap(yy, cluster_rows = FALSE, cluster_cols = FALSE, 
+                   display_numbers = TRUE, 
+                   height = 5, width = 7,
                    filename = "paper/cosine_heatmap.png")
-
-yy2 = yy$similarity[, paste0("SBS", c(1, 2, 3, 5, 8, 9, 13, "17a", "17b", 18, 37, 40, 41))]
-pheatmap::pheatmap(yy2, cluster_rows = FALSE, cluster_cols = FALSE)
-
-yy3 = get_sig_similarity(xx, sigs_sf_sigprofiler)
-pheatmap::pheatmap(yy3$similarity, cluster_rows = FALSE, cluster_cols = FALSE)
-
-yy4 = get_sig_similarity(sigs_sf_sigprofiler, sig_db = "SBS")
-yy4 = yy4$similarity[, paste0("SBS", c(1, 2, 3, 5, 8, 9, 13, "17a", "17b", 18, 37, 40, 41))]
-pheatmap::pheatmap(yy4, cluster_rows = FALSE, cluster_cols = FALSE)
-
-yy5 = get_sig_similarity(xx2, sig_db = "SBS")
-yy5 = yy5$similarity[, paste0("SBS", c(1, 2, 3, 5, 8, 9, 13, "17a", "17b", 18, 37, 40, 41))]
-pheatmap::pheatmap(yy5, cluster_rows = FALSE, cluster_cols = FALSE, display_numbers = TRUE)
 
 sigs_sf_bayes$Raw$summary_run
 
@@ -435,7 +421,7 @@ bt_res <- suppressMessages(
                           methods = "QP",
                           p_val_thresholds = c(0.01, 0.05),
                           use_parallel = TRUE,
-                          n = 100,
+                          n = 1000,
                           job_id = "pcawg_brca",
                           result_dir = "paper/bootstrap")
 )
@@ -452,9 +438,12 @@ p_expo <- show_sig_bootstrap_exposure(bt_res, methods = c("QP"), sample = s, hig
                                       highlight_size = 1,
                                       add.params = list(alpha = 0.1)) + ggpubr::rotate_x_text() + 
   ggplot2::theme(legend.position = "none")
+
+input_matrix[s, ] %>% sum()
+bt_res$error$errors = bt_res$error$errors / 1203
 p_err  <- show_sig_bootstrap_error(bt_res, methods = c("QP"), 
                                    sample = s,
-                                   ylab = "Reconstruction error (F2 norm)")
+                                   ylab = "Unexplained mutation fraction")
 
 p_bt = p_stab / (p_expo + p_err + patchwork::plot_layout(widths = c(3, 1)))
 ggplot2::ggsave(filename = "paper/sig-bootstrap.pdf", plot = p_bt, 
