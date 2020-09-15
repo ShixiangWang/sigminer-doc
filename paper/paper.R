@@ -123,28 +123,37 @@ library(sigminer)
 xx = sigs_sf_nmf$Signature.norm
 rownames(xx) <- comps_map[rownames(xx)]
 
+xx2 = sigs_sf_sigprofiler$Signature.norm
+
 yy = get_sig_similarity(xx, sig_db = "SBS")
 yy = yy$similarity[, paste0("SBS", c(1, 2, 3, 5, 8, 9, 13, "17a", "17b", 18, 37, 40, 41))]
 
-
-pheatmap::pheatmap(yy,
-                   cluster_rows = FALSE, cluster_cols = FALSE, 
-                   display_numbers = TRUE,
-                   height = 5, width = 7,
-                   filename = "paper/cosine_heatmap.png")
-
-pheatmap::pheatmap(yy[paste0("Sig", c(4, 2, 5, 9, 3, 7, 1, 10, 12, 8, 11, 6, 13)), ],
+rownames(yy) <- paste0("Sigflow-", rownames(yy))
+pheatmap::pheatmap(yy[paste0("Sigflow-Sig", c(4, 2, 5, 9, 3, 7, 1, 10, 12, 8, 11, 6, 13)), ],
                    cluster_rows = FALSE, cluster_cols = FALSE, 
                    display_numbers = TRUE)
-pheatmap::pheatmap(yy[paste0("Sig", c(4, 2, 5, 9, 3, 7, 1, 10, 12, 8, 11, 6, 13)), ],
+pheatmap::pheatmap(yy[paste0("Sigflow-Sig", c(4, 2, 5, 9, 3, 7, 1, 10, 12, 8, 11, 6, 13)), ],
                    cluster_rows = FALSE, cluster_cols = FALSE, 
                    display_numbers = TRUE,
                    height = 5, width = 7,
                    filename = "paper/cosine_heatmap2.png")
 
+s13_sim <- get_sig_similarity(xx, xx2)$similarity
+rownames(s13_sim) <- paste0("Sigflow-", rownames(s13_sim))
+colnames(s13_sim) <- paste0("SigProfiler-", colnames(s13_sim))
+pheatmap::pheatmap(s13_sim[, paste0("SigProfiler-Sig", c(2,1,4,5,3,10,6,8,9,7,11,13,12))],
+                   cluster_cols = F, cluster_rows = F, display_numbers = TRUE,
+                   height = 5, width = 7,
+                   filename = "paper/sigflow-and-sigprofiler-cosine_heatmap.png")
+
 sigs_sf_bayes$Raw$summary_run
 
 readr::write_csv(sigs_sf_bayes$Raw$summary_run, "paper/data/bayes_summary_run.csv")
+
+get_sig_exposure(sigs_sf_nmf, type = "relative") %>% 
+  tidyr::pivot_longer(cols = dplyr::starts_with("Sig"), values_to = "exposure") %>% 
+  ggplot2::ggplot(ggplot2::aes(x = name, y = exposure)) +
+  ggplot2::geom_boxplot()
 
 
 # Comparison
@@ -440,6 +449,7 @@ bt_res <- suppressMessages(
 save(bt_res, file = "paper/data/bt_res.RData")
 
 load(file = "paper/data/bt_res.RData")
+s = "SP117933"
 # # Pick out the most mutated sample
 # which.max(rowSums(maf_tally$SBS_96))
 p_stab <- show_sig_bootstrap_stability(bt_res, methods = c("QP"),
@@ -450,6 +460,10 @@ p_expo <- show_sig_bootstrap_exposure(bt_res, methods = c("QP"), sample = s, hig
                                       highlight_size = 1,
                                       add.params = list(alpha = 0.1)) + ggpubr::rotate_x_text() + 
   ggplot2::theme(legend.position = "none")
+
+p_bt = p_stab / p_expo
+ggplot2::ggsave(filename = "paper/sig-bootstrap2.pdf", plot = p_bt, 
+                width = 16, height = 6)
 
 input_matrix[s, ] %>% sum()
 bt_res$error$errors = bt_res$error$errors / 1203
