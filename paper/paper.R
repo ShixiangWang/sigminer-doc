@@ -453,7 +453,7 @@ s = "SP117933"
 # # Pick out the most mutated sample
 # which.max(rowSums(maf_tally$SBS_96))
 p_stab <- show_sig_bootstrap_stability(bt_res, methods = c("QP"),
-                                       add = NULL, ylab = "Signature instability (MRSE)") + 
+                                       add = NULL, ylab = "Signature instability (RMSE)") + 
   ggpubr::rotate_x_text() +
   ggplot2::theme(legend.position = "none")
 p_expo <- show_sig_bootstrap_exposure(bt_res, methods = c("QP"), sample = s, highlight = "gold",
