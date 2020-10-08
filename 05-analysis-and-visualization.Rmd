@@ -2,9 +2,48 @@
 
 # Association Analysis and Visualization {#association-analysis}
 
+## General numeric association
+
+For general numeric association, you can use `show_cor()` function.
+
+```{r}
+data("mtcars")
+p1 <- show_cor(mtcars)
+p2 <- show_cor(mtcars,
+               x_vars = colnames(mtcars)[1:4],
+               y_vars = colnames(mtcars)[5:8])
+p3 <- show_cor(mtcars, vis_method = "circle", p_adj = "fdr")
+p1
+p1$cor
+p2
+p3
+```
+
+## Comprehensive association
+
+For comprehensive association analysis including both continuous and categorical variables,
+there are several functions available in **sigminer**:
+
+- `get_sig_feature_association()`.
+- `get_tidy_association()`.
+- `show_sig_feature_corrplot()`.
+
+Currently, I haven't provided a proper example dataset for showing usage of all functions above (please read their documentation), here only the tidy dataset from our study [@WangSX2020] is given to show the plot function.
+
+```{r, error=TRUE, fig.height=7, fig.width=6}
+# The data is generated from Wang, Shixiang et al.
+load(system.file("extdata", "asso_data.RData",
+  package = "sigminer", mustWork = TRUE
+))
+
+p <- show_sig_feature_corrplot(tidy_data.seqz.feature, p_val = 0.05)
+p
+```
+
+
 # Group Analysis and Visualization {#group-analysis}
 
-Group analysis is a common task in cancer study. **sigminer** supports dividing samples into multiple groups and comparing genotype/phenotype feature measures.
+Group analysis is a common task in cancer study. **Sigminer** supports dividing samples into multiple groups and comparing genotype/phenotype feature measures.
 
 ## Group Generation 
 
@@ -32,4 +71,40 @@ attr(mt_grps, "map_table")
 
 ## Group Comparison Analysis 
 
+```{r}
+load(system.file("extdata", "toy_copynumber_signature_by_M.RData",
+  package = "sigminer", mustWork = TRUE
+))
+
+# Assign samples to clusters
+groups <- get_groups(sig, method = "k-means")
+
+set.seed(1234)
+
+groups$prob <- rnorm(10)
+groups$new_group <- sample(c("1", "2", "3", "4", NA), size = nrow(groups), replace = TRUE)
+
+# Compare groups (filter NAs for categorical coloumns)
+groups.cmp <- get_group_comparison(groups[, -1],
+  col_group = "group",
+  cols_to_compare = c("prob", "new_group"),
+  type = c("co", "ca"), verbose = TRUE
+)
+
+# Compare groups (Set NAs of categorical columns to 'Rest')
+groups.cmp2 <- get_group_comparison(groups[, -1],
+  col_group = "group",
+  cols_to_compare = c("prob", "new_group"),
+  type = c("co", "ca"), NAs = "Rest", verbose = TRUE
+)
+```
+
+
 ## Group Visualization 
+
+```{r}
+ggcomp <- show_group_comparison(groups.cmp2)
+ggcomp$co_comb
+ggcomp$ca_comb
+```
+

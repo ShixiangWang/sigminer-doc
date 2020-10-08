@@ -201,7 +201,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>8.4</b> Catalogue Profile</a></li>
 </ul></li>
 <li class="part"><span><b>III Universal Analysis</b></span></li>
-<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis and Visualization</a></li>
+<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis and Visualization</a><ul>
+<li class="chapter" data-level="9.1" data-path="association-analysis.html"><a href="association-analysis.html#general-numeric-association"><i class="fa fa-check"></i><b>9.1</b> General numeric association</a></li>
+<li class="chapter" data-level="9.2" data-path="association-analysis.html"><a href="association-analysis.html#comprehensive-association"><i class="fa fa-check"></i><b>9.2</b> Comprehensive association</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>10</b> Group Analysis and Visualization</a><ul>
 <li class="chapter" data-level="10.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>10.1</b> Group Generation</a></li>
 <li class="chapter" data-level="10.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>10.2</b> Group Comparison Analysis</a></li>
@@ -236,6 +239,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="association-analysis" class="section level1">
 <h1><span class="header-section-number">Chapter 9</span> Association Analysis and Visualization</h1>
+<div id="general-numeric-association" class="section level2">
+<h2><span class="header-section-number">9.1</span> General numeric association</h2>
+<p>For general numeric association, you can use <code>show_cor()</code> function.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="association-analysis.html#cb76-1"></a><span class="kw">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb76-2"><a href="association-analysis.html#cb76-2"></a>p1 &lt;-<span class="st"> </span><span class="kw">show_cor</span>(mtcars)</span>
+<span id="cb76-3"><a href="association-analysis.html#cb76-3"></a>p2 &lt;-<span class="st"> </span><span class="kw">show_cor</span>(mtcars,</span>
+<span id="cb76-4"><a href="association-analysis.html#cb76-4"></a>  <span class="dt">x_vars =</span> <span class="kw">colnames</span>(mtcars)[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>],</span>
+<span id="cb76-5"><a href="association-analysis.html#cb76-5"></a>  <span class="dt">y_vars =</span> <span class="kw">colnames</span>(mtcars)[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]</span>
+<span id="cb76-6"><a href="association-analysis.html#cb76-6"></a>)</span>
+<span id="cb76-7"><a href="association-analysis.html#cb76-7"></a>p3 &lt;-<span class="st"> </span><span class="kw">show_cor</span>(mtcars, <span class="dt">vis_method =</span> <span class="st">&quot;circle&quot;</span>, <span class="dt">p_adj =</span> <span class="st">&quot;fdr&quot;</span>)</span>
+<span id="cb76-8"><a href="association-analysis.html#cb76-8"></a>p1</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-90-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="association-analysis.html#cb77-1"></a>p1<span class="op">$</span>cor</span>
+<span id="cb77-2"><a href="association-analysis.html#cb77-2"></a><span class="co">#&gt; $cor_mat</span></span>
+<span id="cb77-3"><a href="association-analysis.html#cb77-3"></a><span class="co">#&gt;        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb77-4"><a href="association-analysis.html#cb77-4"></a><span class="co">#&gt; mpg   1.00 -0.91 -0.91 -0.89  0.65 -0.89  0.47  0.71  0.56  0.54 -0.66</span></span>
+<span id="cb77-5"><a href="association-analysis.html#cb77-5"></a><span class="co">#&gt; cyl  -0.91  1.00  0.93  0.90 -0.68  0.86 -0.57 -0.81 -0.52 -0.56  0.58</span></span>
+<span id="cb77-6"><a href="association-analysis.html#cb77-6"></a><span class="co">#&gt; disp -0.91  0.93  1.00  0.85 -0.68  0.90 -0.46 -0.72 -0.62 -0.59  0.54</span></span>
+<span id="cb77-7"><a href="association-analysis.html#cb77-7"></a><span class="co">#&gt; hp   -0.89  0.90  0.85  1.00 -0.52  0.77 -0.67 -0.75 -0.36 -0.33  0.73</span></span>
+<span id="cb77-8"><a href="association-analysis.html#cb77-8"></a><span class="co">#&gt; drat  0.65 -0.68 -0.68 -0.52  1.00 -0.75  0.09  0.45  0.69  0.74 -0.13</span></span>
+<span id="cb77-9"><a href="association-analysis.html#cb77-9"></a><span class="co">#&gt; wt   -0.89  0.86  0.90  0.77 -0.75  1.00 -0.23 -0.59 -0.74 -0.68  0.50</span></span>
+<span id="cb77-10"><a href="association-analysis.html#cb77-10"></a><span class="co">#&gt; qsec  0.47 -0.57 -0.46 -0.67  0.09 -0.23  1.00  0.79 -0.20 -0.15 -0.66</span></span>
+<span id="cb77-11"><a href="association-analysis.html#cb77-11"></a><span class="co">#&gt; vs    0.71 -0.81 -0.72 -0.75  0.45 -0.59  0.79  1.00  0.17  0.28 -0.63</span></span>
+<span id="cb77-12"><a href="association-analysis.html#cb77-12"></a><span class="co">#&gt; am    0.56 -0.52 -0.62 -0.36  0.69 -0.74 -0.20  0.17  1.00  0.81 -0.06</span></span>
+<span id="cb77-13"><a href="association-analysis.html#cb77-13"></a><span class="co">#&gt; gear  0.54 -0.56 -0.59 -0.33  0.74 -0.68 -0.15  0.28  0.81  1.00  0.11</span></span>
+<span id="cb77-14"><a href="association-analysis.html#cb77-14"></a><span class="co">#&gt; carb -0.66  0.58  0.54  0.73 -0.13  0.50 -0.66 -0.63 -0.06  0.11  1.00</span></span>
+<span id="cb77-15"><a href="association-analysis.html#cb77-15"></a><span class="co">#&gt; </span></span>
+<span id="cb77-16"><a href="association-analysis.html#cb77-16"></a><span class="co">#&gt; $p_mat</span></span>
+<span id="cb77-17"><a href="association-analysis.html#cb77-17"></a><span class="co">#&gt;               mpg          cyl         disp           hp         drat           wt         qsec</span></span>
+<span id="cb77-18"><a href="association-analysis.html#cb77-18"></a><span class="co">#&gt; mpg  0.000000e+00 6.112687e-10 9.380327e-10 1.787835e-07 1.776240e-05 1.293959e-10 1.708199e-02</span></span>
+<span id="cb77-19"><a href="association-analysis.html#cb77-19"></a><span class="co">#&gt; cyl  6.112687e-10 0.000000e+00 1.802838e-12 3.477861e-09 8.244636e-06 1.217567e-07 3.660533e-04</span></span>
+<span id="cb77-20"><a href="association-analysis.html#cb77-20"></a><span class="co">#&gt; disp 9.380327e-10 1.802838e-12 0.000000e+00 7.142679e-08 5.282022e-06 1.222320e-11 1.314404e-02</span></span>
+<span id="cb77-21"><a href="association-analysis.html#cb77-21"></a><span class="co">#&gt; hp   1.787835e-07 3.477861e-09 7.142679e-08 0.000000e+00 9.988772e-03 4.145827e-05 5.766253e-06</span></span>
+<span id="cb77-22"><a href="association-analysis.html#cb77-22"></a><span class="co">#&gt; drat 1.776240e-05 8.244636e-06 5.282022e-06 9.988772e-03 0.000000e+00 4.784260e-06 6.195826e-01</span></span>
+<span id="cb77-23"><a href="association-analysis.html#cb77-23"></a><span class="co">#&gt; wt   1.293959e-10 1.217567e-07 1.222320e-11 4.145827e-05 4.784260e-06 0.000000e+00 3.388683e-01</span></span>
+<span id="cb77-24"><a href="association-analysis.html#cb77-24"></a><span class="co">#&gt; qsec 1.708199e-02 3.660533e-04 1.314404e-02 5.766253e-06 6.195826e-01 3.388683e-01 0.000000e+00</span></span>
+<span id="cb77-25"><a href="association-analysis.html#cb77-25"></a><span class="co">#&gt; vs   3.415937e-05 1.843018e-08 5.235012e-06 2.940896e-06 1.167553e-02 9.798492e-04 1.029669e-06</span></span>
+<span id="cb77-26"><a href="association-analysis.html#cb77-26"></a><span class="co">#&gt; am   2.850207e-04 2.151207e-03 3.662114e-04 1.798309e-01 4.726790e-06 1.125440e-05 2.056621e-01</span></span>
+<span id="cb77-27"><a href="association-analysis.html#cb77-27"></a><span class="co">#&gt; gear 5.400948e-03 4.173297e-03 9.635921e-04 4.930119e-01 8.360110e-06 4.586601e-04 2.425344e-01</span></span>
+<span id="cb77-28"><a href="association-analysis.html#cb77-28"></a><span class="co">#&gt; carb 1.084446e-03 1.942340e-03 2.526789e-02 7.827810e-07 6.211834e-01 1.463861e-02 4.536949e-05</span></span>
+<span id="cb77-29"><a href="association-analysis.html#cb77-29"></a><span class="co">#&gt;                vs           am         gear         carb</span></span>
+<span id="cb77-30"><a href="association-analysis.html#cb77-30"></a><span class="co">#&gt; mpg  3.415937e-05 2.850207e-04 5.400948e-03 1.084446e-03</span></span>
+<span id="cb77-31"><a href="association-analysis.html#cb77-31"></a><span class="co">#&gt; cyl  1.843018e-08 2.151207e-03 4.173297e-03 1.942340e-03</span></span>
+<span id="cb77-32"><a href="association-analysis.html#cb77-32"></a><span class="co">#&gt; disp 5.235012e-06 3.662114e-04 9.635921e-04 2.526789e-02</span></span>
+<span id="cb77-33"><a href="association-analysis.html#cb77-33"></a><span class="co">#&gt; hp   2.940896e-06 1.798309e-01 4.930119e-01 7.827810e-07</span></span>
+<span id="cb77-34"><a href="association-analysis.html#cb77-34"></a><span class="co">#&gt; drat 1.167553e-02 4.726790e-06 8.360110e-06 6.211834e-01</span></span>
+<span id="cb77-35"><a href="association-analysis.html#cb77-35"></a><span class="co">#&gt; wt   9.798492e-04 1.125440e-05 4.586601e-04 1.463861e-02</span></span>
+<span id="cb77-36"><a href="association-analysis.html#cb77-36"></a><span class="co">#&gt; qsec 1.029669e-06 2.056621e-01 2.425344e-01 4.536949e-05</span></span>
+<span id="cb77-37"><a href="association-analysis.html#cb77-37"></a><span class="co">#&gt; vs   0.000000e+00 3.570439e-01 2.579439e-01 6.670496e-04</span></span>
+<span id="cb77-38"><a href="association-analysis.html#cb77-38"></a><span class="co">#&gt; am   3.570439e-01 0.000000e+00 5.834043e-08 7.544526e-01</span></span>
+<span id="cb77-39"><a href="association-analysis.html#cb77-39"></a><span class="co">#&gt; gear 2.579439e-01 5.834043e-08 0.000000e+00 1.290291e-01</span></span>
+<span id="cb77-40"><a href="association-analysis.html#cb77-40"></a><span class="co">#&gt; carb 6.670496e-04 7.544526e-01 1.290291e-01 0.000000e+00</span></span>
+<span id="cb77-41"><a href="association-analysis.html#cb77-41"></a>p2</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-90-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="association-analysis.html#cb78-1"></a>p3</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-90-3.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="comprehensive-association" class="section level2">
+<h2><span class="header-section-number">9.2</span> Comprehensive association</h2>
+<p>For comprehensive association analysis including both continuous and categorical variables,
+there are several functions available in <strong>sigminer</strong>:</p>
+<ul>
+<li><code>get_sig_feature_association()</code>.</li>
+<li><code>get_tidy_association()</code>.</li>
+<li><code>show_sig_feature_corrplot()</code>.</li>
+</ul>
+<p>Currently, I haven’t provided a proper example dataset for showing usage of all functions above (please read their documentation), here only the tidy dataset from our study <span class="citation">(Wang et al. <a href="#ref-WangSX2020" role="doc-biblioref">2020</a>)</span> is given to show the plot function.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="association-analysis.html#cb79-1"></a><span class="co"># The data is generated from Wang, Shixiang et al.</span></span>
+<span id="cb79-2"><a href="association-analysis.html#cb79-2"></a><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;asso_data.RData&quot;</span>,</span>
+<span id="cb79-3"><a href="association-analysis.html#cb79-3"></a>  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
+<span id="cb79-4"><a href="association-analysis.html#cb79-4"></a>))</span>
+<span id="cb79-5"><a href="association-analysis.html#cb79-5"></a></span>
+<span id="cb79-6"><a href="association-analysis.html#cb79-6"></a>p &lt;-<span class="st"> </span><span class="kw">show_sig_feature_corrplot</span>(tidy_data.seqz.feature, <span class="dt">p_val =</span> <span class="fl">0.05</span>)</span>
+<span id="cb79-7"><a href="association-analysis.html#cb79-7"></a><span class="co">#&gt; Warning: Problem with `mutate()` input `gg`.</span></span>
+<span id="cb79-8"><a href="association-analysis.html#cb79-8"></a><span class="co">#&gt; ℹ Using size for a discrete variable is not advised.</span></span>
+<span id="cb79-9"><a href="association-analysis.html#cb79-9"></a><span class="co">#&gt; ℹ Input `gg` is `purrr::map2(.data$data, .data$type, .plot_cor)`.</span></span>
+<span id="cb79-10"><a href="association-analysis.html#cb79-10"></a><span class="co">#&gt; ℹ The error occurred in group 1: type = &quot;ca&quot;.</span></span>
+<span id="cb79-11"><a href="association-analysis.html#cb79-11"></a><span class="co">#&gt; Warning: Using size for a discrete variable is not advised.</span></span>
+<span id="cb79-12"><a href="association-analysis.html#cb79-12"></a><span class="co">#&gt; Warning: Problem with `mutate()` input `gg`.</span></span>
+<span id="cb79-13"><a href="association-analysis.html#cb79-13"></a><span class="co">#&gt; ℹ Using size for a discrete variable is not advised.</span></span>
+<span id="cb79-14"><a href="association-analysis.html#cb79-14"></a><span class="co">#&gt; ℹ Input `gg` is `purrr::map2(.data$data, .data$type, .plot_cor)`.</span></span>
+<span id="cb79-15"><a href="association-analysis.html#cb79-15"></a><span class="co">#&gt; ℹ The error occurred in group 2: type = &quot;co&quot;.</span></span>
+<span id="cb79-16"><a href="association-analysis.html#cb79-16"></a><span class="co">#&gt; Warning: Using size for a discrete variable is not advised.</span></span>
+<span id="cb79-17"><a href="association-analysis.html#cb79-17"></a>p</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-91-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-WangSX2020">
+<p>Wang, Shixiang, Huimin Li, Minfang Song, Zaoke He, Tao Wu, Xuan Wang, Ziyu Tao, Kai Wu, and Xue-Song Liu. 2020. “Copy Number Signature Analyses in Prostate Cancer Reveal Distinct Etiologies and Clinical Outcomes.” <em>medRxiv</em>. <a href="https://doi.org/10.1101/2020.04.27.20082404">https://doi.org/10.1101/2020.04.27.20082404</a>.</p>
+</div>
 </div>
             </section>
 

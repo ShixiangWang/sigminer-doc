@@ -201,7 +201,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>8.4</b> Catalogue Profile</a></li>
 </ul></li>
 <li class="part"><span><b>III Universal Analysis</b></span></li>
-<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis and Visualization</a></li>
+<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis and Visualization</a><ul>
+<li class="chapter" data-level="9.1" data-path="association-analysis.html"><a href="association-analysis.html#general-numeric-association"><i class="fa fa-check"></i><b>9.1</b> General numeric association</a></li>
+<li class="chapter" data-level="9.2" data-path="association-analysis.html"><a href="association-analysis.html#comprehensive-association"><i class="fa fa-check"></i><b>9.2</b> Comprehensive association</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>10</b> Group Analysis and Visualization</a><ul>
 <li class="chapter" data-level="10.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>10.1</b> Group Generation</a></li>
 <li class="chapter" data-level="10.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>10.2</b> Group Comparison Analysis</a></li>
@@ -270,7 +273,7 @@ The COSMIC signatures include three type of signatures: SBS, DBS and ID (short f
 <span id="cb6-10"><a href="sbssig.html#cb6-10"></a><span class="co">#&gt; -Summarizing</span></span>
 <span id="cb6-11"><a href="sbssig.html#cb6-11"></a><span class="co">#&gt; -Processing clinical data</span></span>
 <span id="cb6-12"><a href="sbssig.html#cb6-12"></a><span class="co">#&gt; --Missing clinical data</span></span>
-<span id="cb6-13"><a href="sbssig.html#cb6-13"></a><span class="co">#&gt; -Finished in 0.056s elapsed (0.036s cpu)</span></span>
+<span id="cb6-13"><a href="sbssig.html#cb6-13"></a><span class="co">#&gt; -Finished in 0.100s elapsed (0.046s cpu)</span></span>
 <span id="cb6-14"><a href="sbssig.html#cb6-14"></a>maf &lt;-<span class="st"> </span><span class="kw">read_vcf</span>(vcfs, <span class="dt">keep_only_pass =</span> <span class="ot">FALSE</span>)</span>
 <span id="cb6-15"><a href="sbssig.html#cb6-15"></a><span class="co">#&gt; Reading file(s): /Users/wsx/Library/R/sigminer/extdata/test1.vcf, /Users/wsx/Library/R/sigminer/extdata/test2.vcf, /Users/wsx/Library/R/sigminer/extdata/test3.vcf</span></span>
 <span id="cb6-16"><a href="sbssig.html#cb6-16"></a><span class="co">#&gt; Annotating Variant Type...</span></span>
@@ -282,7 +285,7 @@ The COSMIC signatures include three type of signatures: SBS, DBS and ID (short f
 <span id="cb6-22"><a href="sbssig.html#cb6-22"></a><span class="co">#&gt; -Summarizing</span></span>
 <span id="cb6-23"><a href="sbssig.html#cb6-23"></a><span class="co">#&gt; -Processing clinical data</span></span>
 <span id="cb6-24"><a href="sbssig.html#cb6-24"></a><span class="co">#&gt; --Missing clinical data</span></span>
-<span id="cb6-25"><a href="sbssig.html#cb6-25"></a><span class="co">#&gt; -Finished in 0.035s elapsed (0.033s cpu)</span></span></code></pre></div>
+<span id="cb6-25"><a href="sbssig.html#cb6-25"></a><span class="co">#&gt; -Finished in 0.119s elapsed (0.064s cpu)</span></span></code></pre></div>
 </div>
 <div id="maf-as-input" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> MAF as input</h3>
@@ -302,7 +305,7 @@ The COSMIC signatures include three type of signatures: SBS, DBS and ID (short f
 <span id="cb7-6"><a href="sbssig.html#cb7-6"></a><span class="co">#&gt; -Summarizing</span></span>
 <span id="cb7-7"><a href="sbssig.html#cb7-7"></a><span class="co">#&gt; -Processing clinical data</span></span>
 <span id="cb7-8"><a href="sbssig.html#cb7-8"></a><span class="co">#&gt; --Missing clinical data</span></span>
-<span id="cb7-9"><a href="sbssig.html#cb7-9"></a><span class="co">#&gt; -Finished in 0.656s elapsed (0.346s cpu)</span></span>
+<span id="cb7-9"><a href="sbssig.html#cb7-9"></a><span class="co">#&gt; -Finished in 0.730s elapsed (0.312s cpu)</span></span>
 <span id="cb7-10"><a href="sbssig.html#cb7-10"></a>laml</span>
 <span id="cb7-11"><a href="sbssig.html#cb7-11"></a><span class="co">#&gt; An object of class  MAF </span></span>
 <span id="cb7-12"><a href="sbssig.html#cb7-12"></a><span class="co">#&gt;                    ID          summary  Mean Median</span></span>
@@ -619,7 +622,7 @@ Here I will load the TCGA BRCA cohort and create a sub-cohort with 100 tumors.</
 <blockquote>
 <p>This classification is based the six substitution subtypes: C&gt;A, C&gt;G, C&gt;T, T&gt;A, T&gt;C, and T&gt;G (all substitutions are referred to by the pyrimidine of the mutated Watson—Crick base pair). Further, each of the substitutions is examined by incorporating information on the bases immediately 5’ and 3’ to each mutated base generating 96 possible mutation types (6 types of substitution x 4 types of 5’ base x 4 types of 3’ base).</p>
 </blockquote>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
 <img src="fig/MutationTypes_v3.jpg" alt="The illustration of 96 components, fig source: https://en.wikipedia.org/wiki/Mutational_signatures" width="400" />
 <p class="caption">
 Figure 2.1: The illustration of 96 components, fig source: <a href="https://en.wikipedia.org/wiki/Mutational_signatures" class="uri">https://en.wikipedia.org/wiki/Mutational_signatures</a>
@@ -631,27 +634,27 @@ Figure 2.1: The illustration of 96 components, fig source: <a href="https://en.w
 <span id="cb13-3"><a href="sbssig.html#cb13-3"></a>  <span class="dt">ref_genome =</span> <span class="st">&quot;BSgenome.Hsapiens.UCSC.hg19&quot;</span>,</span>
 <span id="cb13-4"><a href="sbssig.html#cb13-4"></a>  <span class="dt">useSyn =</span> <span class="ot">TRUE</span></span>
 <span id="cb13-5"><a href="sbssig.html#cb13-5"></a>)</span>
-<span id="cb13-6"><a href="sbssig.html#cb13-6"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:49]: Started.</span></span>
-<span id="cb13-7"><a href="sbssig.html#cb13-7"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:49]: Reference genome loaded.</span></span>
-<span id="cb13-8"><a href="sbssig.html#cb13-8"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:49]: Variants from MAF object queried.</span></span>
-<span id="cb13-9"><a href="sbssig.html#cb13-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:50]: Chromosome names checked.</span></span>
-<span id="cb13-10"><a href="sbssig.html#cb13-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:50]: Sex chromosomes properly handled.</span></span>
-<span id="cb13-11"><a href="sbssig.html#cb13-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:50]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
-<span id="cb13-12"><a href="sbssig.html#cb13-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:50]: Variant start and end position checked.</span></span>
-<span id="cb13-13"><a href="sbssig.html#cb13-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:50]: Variant data for matrix generation preprocessed.</span></span>
-<span id="cb13-14"><a href="sbssig.html#cb13-14"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:50]: SBS matrix generation - start.</span></span>
-<span id="cb13-15"><a href="sbssig.html#cb13-15"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:50]: Extracting 5&#39; and 3&#39; adjacent bases.</span></span>
-<span id="cb13-16"><a href="sbssig.html#cb13-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:53]: Extracting +/- 20bp around mutated bases for background C&gt;T estimation.</span></span>
-<span id="cb13-17"><a href="sbssig.html#cb13-17"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:53]: Estimating APOBEC enrichment scores.</span></span>
-<span id="cb13-18"><a href="sbssig.html#cb13-18"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:53]: Performing one-way Fisher&#39;s test for APOBEC enrichment.</span></span>
-<span id="cb13-19"><a href="sbssig.html#cb13-19"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:53]: APOBEC related mutations are enriched in 28% of samples (APOBEC enrichment score &gt; 2; 28 of 100 samples)</span></span>
-<span id="cb13-20"><a href="sbssig.html#cb13-20"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:53]: Creating SBS sample-by-component matrices.</span></span>
-<span id="cb13-21"><a href="sbssig.html#cb13-21"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:53]: SBS-6 matrix created.</span></span>
-<span id="cb13-22"><a href="sbssig.html#cb13-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:53]: SBS-96 matrix created.</span></span>
-<span id="cb13-23"><a href="sbssig.html#cb13-23"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:53]: SBS-1536 matrix created.</span></span>
-<span id="cb13-24"><a href="sbssig.html#cb13-24"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:53]: Return SBS-96 as major matrix.</span></span>
-<span id="cb13-25"><a href="sbssig.html#cb13-25"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:53]: Done.</span></span>
-<span id="cb13-26"><a href="sbssig.html#cb13-26"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:53]: 3.932 secs elapsed.</span></span></code></pre></div>
+<span id="cb13-6"><a href="sbssig.html#cb13-6"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:12]: Started.</span></span>
+<span id="cb13-7"><a href="sbssig.html#cb13-7"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:12]: Reference genome loaded.</span></span>
+<span id="cb13-8"><a href="sbssig.html#cb13-8"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:12]: Variants from MAF object queried.</span></span>
+<span id="cb13-9"><a href="sbssig.html#cb13-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:12]: Chromosome names checked.</span></span>
+<span id="cb13-10"><a href="sbssig.html#cb13-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:13]: Sex chromosomes properly handled.</span></span>
+<span id="cb13-11"><a href="sbssig.html#cb13-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:13]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
+<span id="cb13-12"><a href="sbssig.html#cb13-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:13]: Variant start and end position checked.</span></span>
+<span id="cb13-13"><a href="sbssig.html#cb13-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:13]: Variant data for matrix generation preprocessed.</span></span>
+<span id="cb13-14"><a href="sbssig.html#cb13-14"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:13]: SBS matrix generation - start.</span></span>
+<span id="cb13-15"><a href="sbssig.html#cb13-15"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:13]: Extracting 5&#39; and 3&#39; adjacent bases.</span></span>
+<span id="cb13-16"><a href="sbssig.html#cb13-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:15]: Extracting +/- 20bp around mutated bases for background C&gt;T estimation.</span></span>
+<span id="cb13-17"><a href="sbssig.html#cb13-17"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:15]: Estimating APOBEC enrichment scores.</span></span>
+<span id="cb13-18"><a href="sbssig.html#cb13-18"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:15]: Performing one-way Fisher&#39;s test for APOBEC enrichment.</span></span>
+<span id="cb13-19"><a href="sbssig.html#cb13-19"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:15]: APOBEC related mutations are enriched in 28% of samples (APOBEC enrichment score &gt; 2; 28 of 100 samples)</span></span>
+<span id="cb13-20"><a href="sbssig.html#cb13-20"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:15]: Creating SBS sample-by-component matrices.</span></span>
+<span id="cb13-21"><a href="sbssig.html#cb13-21"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:15]: SBS-6 matrix created.</span></span>
+<span id="cb13-22"><a href="sbssig.html#cb13-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:15]: SBS-96 matrix created.</span></span>
+<span id="cb13-23"><a href="sbssig.html#cb13-23"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:15]: SBS-1536 matrix created.</span></span>
+<span id="cb13-24"><a href="sbssig.html#cb13-24"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:15]: Return SBS-96 as major matrix.</span></span>
+<span id="cb13-25"><a href="sbssig.html#cb13-25"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:15]: Done.</span></span>
+<span id="cb13-26"><a href="sbssig.html#cb13-26"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:15]: 3.024 secs elapsed.</span></span></code></pre></div>
 <blockquote>
 <p>Here set <code>useSyn = TRUE</code> to include all variant records in MAF object to generate sample matrix.</p>
 </blockquote>
@@ -684,30 +687,30 @@ Figure 2.1: The illustration of 96 components, fig source: <a href="https://en.w
 <span id="cb16-3"><a href="sbssig.html#cb16-3"></a>  <span class="dt">ref_genome =</span> <span class="st">&quot;BSgenome.Hsapiens.UCSC.hg19&quot;</span>,</span>
 <span id="cb16-4"><a href="sbssig.html#cb16-4"></a>  <span class="dt">useSyn =</span> <span class="ot">TRUE</span>, <span class="dt">add_trans_bias =</span> <span class="ot">TRUE</span></span>
 <span id="cb16-5"><a href="sbssig.html#cb16-5"></a>)</span>
-<span id="cb16-6"><a href="sbssig.html#cb16-6"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:53]: Started.</span></span>
-<span id="cb16-7"><a href="sbssig.html#cb16-7"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:53]: Reference genome loaded.</span></span>
-<span id="cb16-8"><a href="sbssig.html#cb16-8"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:53]: Variants from MAF object queried.</span></span>
-<span id="cb16-9"><a href="sbssig.html#cb16-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:53]: Chromosome names checked.</span></span>
-<span id="cb16-10"><a href="sbssig.html#cb16-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:54]: Sex chromosomes properly handled.</span></span>
-<span id="cb16-11"><a href="sbssig.html#cb16-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:54]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
-<span id="cb16-12"><a href="sbssig.html#cb16-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:54]: Variant start and end position checked.</span></span>
-<span id="cb16-13"><a href="sbssig.html#cb16-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:54]: Variant data for matrix generation preprocessed.</span></span>
-<span id="cb16-14"><a href="sbssig.html#cb16-14"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:54]: SBS matrix generation - start.</span></span>
-<span id="cb16-15"><a href="sbssig.html#cb16-15"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:54]: Extracting 5&#39; and 3&#39; adjacent bases.</span></span>
-<span id="cb16-16"><a href="sbssig.html#cb16-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:54]: Extracting +/- 20bp around mutated bases for background C&gt;T estimation.</span></span>
-<span id="cb16-17"><a href="sbssig.html#cb16-17"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:55]: Estimating APOBEC enrichment scores.</span></span>
-<span id="cb16-18"><a href="sbssig.html#cb16-18"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:55]: Performing one-way Fisher&#39;s test for APOBEC enrichment.</span></span>
-<span id="cb16-19"><a href="sbssig.html#cb16-19"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: APOBEC related mutations are enriched in 28% of samples (APOBEC enrichment score &gt; 2; 28 of 100 samples)</span></span>
-<span id="cb16-20"><a href="sbssig.html#cb16-20"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:55]: Creating SBS sample-by-component matrices.</span></span>
-<span id="cb16-21"><a href="sbssig.html#cb16-21"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: SBS-6 matrix created.</span></span>
-<span id="cb16-22"><a href="sbssig.html#cb16-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: SBS-96 matrix created.</span></span>
-<span id="cb16-23"><a href="sbssig.html#cb16-23"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: SBS-1536 matrix created.</span></span>
-<span id="cb16-24"><a href="sbssig.html#cb16-24"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: SBS-24 (6x4) matrix created.</span></span>
-<span id="cb16-25"><a href="sbssig.html#cb16-25"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: SBS-384 (96x4) matrix created.</span></span>
-<span id="cb16-26"><a href="sbssig.html#cb16-26"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: SBS-6144 (1536x4) matrix created.</span></span>
-<span id="cb16-27"><a href="sbssig.html#cb16-27"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:55]: Return SBS-384 as major matrix.</span></span>
-<span id="cb16-28"><a href="sbssig.html#cb16-28"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: Done.</span></span>
-<span id="cb16-29"><a href="sbssig.html#cb16-29"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:55]: 1.755 secs elapsed.</span></span>
+<span id="cb16-6"><a href="sbssig.html#cb16-6"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:16]: Started.</span></span>
+<span id="cb16-7"><a href="sbssig.html#cb16-7"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:16]: Reference genome loaded.</span></span>
+<span id="cb16-8"><a href="sbssig.html#cb16-8"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:16]: Variants from MAF object queried.</span></span>
+<span id="cb16-9"><a href="sbssig.html#cb16-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:16]: Chromosome names checked.</span></span>
+<span id="cb16-10"><a href="sbssig.html#cb16-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:16]: Sex chromosomes properly handled.</span></span>
+<span id="cb16-11"><a href="sbssig.html#cb16-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:16]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
+<span id="cb16-12"><a href="sbssig.html#cb16-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:16]: Variant start and end position checked.</span></span>
+<span id="cb16-13"><a href="sbssig.html#cb16-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:16]: Variant data for matrix generation preprocessed.</span></span>
+<span id="cb16-14"><a href="sbssig.html#cb16-14"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:16]: SBS matrix generation - start.</span></span>
+<span id="cb16-15"><a href="sbssig.html#cb16-15"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:16]: Extracting 5&#39; and 3&#39; adjacent bases.</span></span>
+<span id="cb16-16"><a href="sbssig.html#cb16-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:16]: Extracting +/- 20bp around mutated bases for background C&gt;T estimation.</span></span>
+<span id="cb16-17"><a href="sbssig.html#cb16-17"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:17]: Estimating APOBEC enrichment scores.</span></span>
+<span id="cb16-18"><a href="sbssig.html#cb16-18"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:17]: Performing one-way Fisher&#39;s test for APOBEC enrichment.</span></span>
+<span id="cb16-19"><a href="sbssig.html#cb16-19"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:17]: APOBEC related mutations are enriched in 28% of samples (APOBEC enrichment score &gt; 2; 28 of 100 samples)</span></span>
+<span id="cb16-20"><a href="sbssig.html#cb16-20"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:17]: Creating SBS sample-by-component matrices.</span></span>
+<span id="cb16-21"><a href="sbssig.html#cb16-21"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:17]: SBS-6 matrix created.</span></span>
+<span id="cb16-22"><a href="sbssig.html#cb16-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:17]: SBS-96 matrix created.</span></span>
+<span id="cb16-23"><a href="sbssig.html#cb16-23"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:17]: SBS-1536 matrix created.</span></span>
+<span id="cb16-24"><a href="sbssig.html#cb16-24"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:17]: SBS-24 (6x4) matrix created.</span></span>
+<span id="cb16-25"><a href="sbssig.html#cb16-25"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:17]: SBS-384 (96x4) matrix created.</span></span>
+<span id="cb16-26"><a href="sbssig.html#cb16-26"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:17]: SBS-6144 (1536x4) matrix created.</span></span>
+<span id="cb16-27"><a href="sbssig.html#cb16-27"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:17]: Return SBS-384 as major matrix.</span></span>
+<span id="cb16-28"><a href="sbssig.html#cb16-28"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:17]: Done.</span></span>
+<span id="cb16-29"><a href="sbssig.html#cb16-29"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:17]: 1.793 secs elapsed.</span></span>
 <span id="cb16-30"><a href="sbssig.html#cb16-30"></a></span>
 <span id="cb16-31"><a href="sbssig.html#cb16-31"></a><span class="kw">str</span>(mt_tally2<span class="op">$</span>all_matrices, <span class="dt">max.level =</span> <span class="dv">1</span>)</span>
 <span id="cb16-32"><a href="sbssig.html#cb16-32"></a><span class="co">#&gt; List of 6</span></span>
@@ -734,24 +737,24 @@ Figure 2.1: The illustration of 96 components, fig source: <a href="https://en.w
 <span id="cb17-5"><a href="sbssig.html#cb17-5"></a>  <span class="dt">mode =</span> <span class="st">&quot;DBS&quot;</span>,</span>
 <span id="cb17-6"><a href="sbssig.html#cb17-6"></a>  <span class="dt">add_trans_bias =</span> <span class="ot">TRUE</span></span>
 <span id="cb17-7"><a href="sbssig.html#cb17-7"></a>)</span>
-<span id="cb17-8"><a href="sbssig.html#cb17-8"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:55]: Started.</span></span>
-<span id="cb17-9"><a href="sbssig.html#cb17-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: Reference genome loaded.</span></span>
-<span id="cb17-10"><a href="sbssig.html#cb17-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: Variants from MAF object queried.</span></span>
-<span id="cb17-11"><a href="sbssig.html#cb17-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: Chromosome names checked.</span></span>
-<span id="cb17-12"><a href="sbssig.html#cb17-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: Sex chromosomes properly handled.</span></span>
-<span id="cb17-13"><a href="sbssig.html#cb17-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
-<span id="cb17-14"><a href="sbssig.html#cb17-14"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: Variant start and end position checked.</span></span>
-<span id="cb17-15"><a href="sbssig.html#cb17-15"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:55]: Variant data for matrix generation preprocessed.</span></span>
-<span id="cb17-16"><a href="sbssig.html#cb17-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:55]: DBS matrix generation - start.</span></span>
-<span id="cb17-17"><a href="sbssig.html#cb17-17"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:55]: Searching DBS records...</span></span>
-<span id="cb17-18"><a href="sbssig.html#cb17-18"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:56]: Done.</span></span>
-<span id="cb17-19"><a href="sbssig.html#cb17-19"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: Reference sequences queried from genome.</span></span>
-<span id="cb17-20"><a href="sbssig.html#cb17-20"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: DBS-78 matrix created.</span></span>
-<span id="cb17-21"><a href="sbssig.html#cb17-21"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: DBS-1248 matrix created.</span></span>
-<span id="cb17-22"><a href="sbssig.html#cb17-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: DBS-186 matrix created.</span></span>
-<span id="cb17-23"><a href="sbssig.html#cb17-23"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:57]: Return DBS-186 as major matrix.</span></span>
-<span id="cb17-24"><a href="sbssig.html#cb17-24"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: Done.</span></span>
-<span id="cb17-25"><a href="sbssig.html#cb17-25"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:57]: 1.711 secs elapsed.</span></span>
+<span id="cb17-8"><a href="sbssig.html#cb17-8"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:18]: Started.</span></span>
+<span id="cb17-9"><a href="sbssig.html#cb17-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:18]: Reference genome loaded.</span></span>
+<span id="cb17-10"><a href="sbssig.html#cb17-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:18]: Variants from MAF object queried.</span></span>
+<span id="cb17-11"><a href="sbssig.html#cb17-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:18]: Chromosome names checked.</span></span>
+<span id="cb17-12"><a href="sbssig.html#cb17-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:18]: Sex chromosomes properly handled.</span></span>
+<span id="cb17-13"><a href="sbssig.html#cb17-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:18]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
+<span id="cb17-14"><a href="sbssig.html#cb17-14"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:18]: Variant start and end position checked.</span></span>
+<span id="cb17-15"><a href="sbssig.html#cb17-15"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:18]: Variant data for matrix generation preprocessed.</span></span>
+<span id="cb17-16"><a href="sbssig.html#cb17-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:18]: DBS matrix generation - start.</span></span>
+<span id="cb17-17"><a href="sbssig.html#cb17-17"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:18]: Searching DBS records...</span></span>
+<span id="cb17-18"><a href="sbssig.html#cb17-18"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:19]: Done.</span></span>
+<span id="cb17-19"><a href="sbssig.html#cb17-19"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:19]: Reference sequences queried from genome.</span></span>
+<span id="cb17-20"><a href="sbssig.html#cb17-20"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:19]: DBS-78 matrix created.</span></span>
+<span id="cb17-21"><a href="sbssig.html#cb17-21"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:19]: DBS-1248 matrix created.</span></span>
+<span id="cb17-22"><a href="sbssig.html#cb17-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:19]: DBS-186 matrix created.</span></span>
+<span id="cb17-23"><a href="sbssig.html#cb17-23"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:20]: Return DBS-186 as major matrix.</span></span>
+<span id="cb17-24"><a href="sbssig.html#cb17-24"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:20]: Done.</span></span>
+<span id="cb17-25"><a href="sbssig.html#cb17-25"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:20]: 2.07 secs elapsed.</span></span>
 <span id="cb17-26"><a href="sbssig.html#cb17-26"></a></span>
 <span id="cb17-27"><a href="sbssig.html#cb17-27"></a><span class="kw">str</span>(mt_tally_DBS<span class="op">$</span>all_matrices, <span class="dt">max.level =</span> <span class="dv">1</span>)</span>
 <span id="cb17-28"><a href="sbssig.html#cb17-28"></a><span class="co">#&gt; List of 3</span></span>
@@ -772,26 +775,26 @@ Figure 2.1: The illustration of 96 components, fig source: <a href="https://en.w
 <span id="cb18-5"><a href="sbssig.html#cb18-5"></a>  <span class="dt">mode =</span> <span class="st">&quot;ID&quot;</span>,</span>
 <span id="cb18-6"><a href="sbssig.html#cb18-6"></a>  <span class="dt">add_trans_bias =</span> <span class="ot">TRUE</span></span>
 <span id="cb18-7"><a href="sbssig.html#cb18-7"></a>)</span>
-<span id="cb18-8"><a href="sbssig.html#cb18-8"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:57]: Started.</span></span>
-<span id="cb18-9"><a href="sbssig.html#cb18-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: Reference genome loaded.</span></span>
-<span id="cb18-10"><a href="sbssig.html#cb18-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: Variants from MAF object queried.</span></span>
-<span id="cb18-11"><a href="sbssig.html#cb18-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: Chromosome names checked.</span></span>
-<span id="cb18-12"><a href="sbssig.html#cb18-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: Sex chromosomes properly handled.</span></span>
-<span id="cb18-13"><a href="sbssig.html#cb18-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
-<span id="cb18-14"><a href="sbssig.html#cb18-14"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: Variant start and end position checked.</span></span>
-<span id="cb18-15"><a href="sbssig.html#cb18-15"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:57]: Variant data for matrix generation preprocessed.</span></span>
-<span id="cb18-16"><a href="sbssig.html#cb18-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:00:57]: INDEL matrix generation - start.</span></span>
-<span id="cb18-17"><a href="sbssig.html#cb18-17"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:59]: Reference sequences queried from genome.</span></span>
-<span id="cb18-18"><a href="sbssig.html#cb18-18"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:59]: INDEL length extracted.</span></span>
-<span id="cb18-19"><a href="sbssig.html#cb18-19"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:00:59]: Adjacent copies counted.</span></span>
-<span id="cb18-20"><a href="sbssig.html#cb18-20"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:28]: Microhomology size calculated.</span></span>
-<span id="cb18-21"><a href="sbssig.html#cb18-21"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:28]: INDEL records classified into different components (types).</span></span>
-<span id="cb18-22"><a href="sbssig.html#cb18-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:28]: ID-28 matrix created.</span></span>
-<span id="cb18-23"><a href="sbssig.html#cb18-23"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:28]: ID-83 matrix created.</span></span>
-<span id="cb18-24"><a href="sbssig.html#cb18-24"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:28]: ID-415 matrix created.</span></span>
-<span id="cb18-25"><a href="sbssig.html#cb18-25"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:28]: Return ID-415 as major matrix.</span></span>
-<span id="cb18-26"><a href="sbssig.html#cb18-26"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:28]: Done.</span></span>
-<span id="cb18-27"><a href="sbssig.html#cb18-27"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:28]: 30.983 secs elapsed.</span></span>
+<span id="cb18-8"><a href="sbssig.html#cb18-8"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:20]: Started.</span></span>
+<span id="cb18-9"><a href="sbssig.html#cb18-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:20]: Reference genome loaded.</span></span>
+<span id="cb18-10"><a href="sbssig.html#cb18-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:20]: Variants from MAF object queried.</span></span>
+<span id="cb18-11"><a href="sbssig.html#cb18-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:20]: Chromosome names checked.</span></span>
+<span id="cb18-12"><a href="sbssig.html#cb18-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:20]: Sex chromosomes properly handled.</span></span>
+<span id="cb18-13"><a href="sbssig.html#cb18-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:20]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
+<span id="cb18-14"><a href="sbssig.html#cb18-14"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:20]: Variant start and end position checked.</span></span>
+<span id="cb18-15"><a href="sbssig.html#cb18-15"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:20]: Variant data for matrix generation preprocessed.</span></span>
+<span id="cb18-16"><a href="sbssig.html#cb18-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:20]: INDEL matrix generation - start.</span></span>
+<span id="cb18-17"><a href="sbssig.html#cb18-17"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:21]: Reference sequences queried from genome.</span></span>
+<span id="cb18-18"><a href="sbssig.html#cb18-18"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:21]: INDEL length extracted.</span></span>
+<span id="cb18-19"><a href="sbssig.html#cb18-19"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:21]: Adjacent copies counted.</span></span>
+<span id="cb18-20"><a href="sbssig.html#cb18-20"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: Microhomology size calculated.</span></span>
+<span id="cb18-21"><a href="sbssig.html#cb18-21"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: INDEL records classified into different components (types).</span></span>
+<span id="cb18-22"><a href="sbssig.html#cb18-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: ID-28 matrix created.</span></span>
+<span id="cb18-23"><a href="sbssig.html#cb18-23"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: ID-83 matrix created.</span></span>
+<span id="cb18-24"><a href="sbssig.html#cb18-24"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: ID-415 matrix created.</span></span>
+<span id="cb18-25"><a href="sbssig.html#cb18-25"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:45]: Return ID-415 as major matrix.</span></span>
+<span id="cb18-26"><a href="sbssig.html#cb18-26"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: Done.</span></span>
+<span id="cb18-27"><a href="sbssig.html#cb18-27"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:45]: 25.428 secs elapsed.</span></span>
 <span id="cb18-28"><a href="sbssig.html#cb18-28"></a></span>
 <span id="cb18-29"><a href="sbssig.html#cb18-29"></a><span class="kw">str</span>(mt_tally_ID<span class="op">$</span>all_matrices, <span class="dt">max.level =</span> <span class="dv">1</span>)</span>
 <span id="cb18-30"><a href="sbssig.html#cb18-30"></a><span class="co">#&gt; List of 3</span></span>
@@ -812,50 +815,50 @@ Just set <code>mode='ALL'</code>, <strong>sigminer</strong> will do it for you!<
 <span id="cb19-5"><a href="sbssig.html#cb19-5"></a>  <span class="dt">mode =</span> <span class="st">&quot;ALL&quot;</span>,</span>
 <span id="cb19-6"><a href="sbssig.html#cb19-6"></a>  <span class="dt">add_trans_bias =</span> <span class="ot">TRUE</span></span>
 <span id="cb19-7"><a href="sbssig.html#cb19-7"></a>)</span>
-<span id="cb19-8"><a href="sbssig.html#cb19-8"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:28]: Started.</span></span>
-<span id="cb19-9"><a href="sbssig.html#cb19-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:28]: Reference genome loaded.</span></span>
-<span id="cb19-10"><a href="sbssig.html#cb19-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:28]: Variants from MAF object queried.</span></span>
-<span id="cb19-11"><a href="sbssig.html#cb19-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:29]: Chromosome names checked.</span></span>
-<span id="cb19-12"><a href="sbssig.html#cb19-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:29]: Sex chromosomes properly handled.</span></span>
-<span id="cb19-13"><a href="sbssig.html#cb19-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:29]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
-<span id="cb19-14"><a href="sbssig.html#cb19-14"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:29]: Variant start and end position checked.</span></span>
-<span id="cb19-15"><a href="sbssig.html#cb19-15"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:29]: Variant data for matrix generation preprocessed.</span></span>
-<span id="cb19-16"><a href="sbssig.html#cb19-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:29]: All types of matrices generation - start.</span></span>
-<span id="cb19-17"><a href="sbssig.html#cb19-17"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:29]: SBS matrix generation - start.</span></span>
-<span id="cb19-18"><a href="sbssig.html#cb19-18"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:29]: Extracting 5&#39; and 3&#39; adjacent bases.</span></span>
-<span id="cb19-19"><a href="sbssig.html#cb19-19"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:31]: Extracting +/- 20bp around mutated bases for background C&gt;T estimation.</span></span>
-<span id="cb19-20"><a href="sbssig.html#cb19-20"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:32]: Estimating APOBEC enrichment scores.</span></span>
-<span id="cb19-21"><a href="sbssig.html#cb19-21"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:32]: Performing one-way Fisher&#39;s test for APOBEC enrichment.</span></span>
-<span id="cb19-22"><a href="sbssig.html#cb19-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:32]: APOBEC related mutations are enriched in 28% of samples (APOBEC enrichment score &gt; 2; 28 of 100 samples)</span></span>
-<span id="cb19-23"><a href="sbssig.html#cb19-23"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:32]: Creating SBS sample-by-component matrices.</span></span>
-<span id="cb19-24"><a href="sbssig.html#cb19-24"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:32]: SBS-6 matrix created.</span></span>
-<span id="cb19-25"><a href="sbssig.html#cb19-25"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:32]: SBS-96 matrix created.</span></span>
-<span id="cb19-26"><a href="sbssig.html#cb19-26"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:32]: SBS-1536 matrix created.</span></span>
-<span id="cb19-27"><a href="sbssig.html#cb19-27"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:33]: SBS-24 (6x4) matrix created.</span></span>
-<span id="cb19-28"><a href="sbssig.html#cb19-28"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:33]: SBS-384 (96x4) matrix created.</span></span>
-<span id="cb19-29"><a href="sbssig.html#cb19-29"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:33]: SBS-6144 (1536x4) matrix created.</span></span>
-<span id="cb19-30"><a href="sbssig.html#cb19-30"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:33]: Return SBS-384 as major matrix.</span></span>
-<span id="cb19-31"><a href="sbssig.html#cb19-31"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:33]: DBS matrix generation - start.</span></span>
-<span id="cb19-32"><a href="sbssig.html#cb19-32"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:33]: Searching DBS records...</span></span>
-<span id="cb19-33"><a href="sbssig.html#cb19-33"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:34]: Done.</span></span>
-<span id="cb19-34"><a href="sbssig.html#cb19-34"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:35]: Reference sequences queried from genome.</span></span>
-<span id="cb19-35"><a href="sbssig.html#cb19-35"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:35]: DBS-78 matrix created.</span></span>
-<span id="cb19-36"><a href="sbssig.html#cb19-36"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:35]: DBS-1248 matrix created.</span></span>
-<span id="cb19-37"><a href="sbssig.html#cb19-37"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:35]: DBS-186 matrix created.</span></span>
-<span id="cb19-38"><a href="sbssig.html#cb19-38"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:35]: Return DBS-186 as major matrix.</span></span>
-<span id="cb19-39"><a href="sbssig.html#cb19-39"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:01:35]: INDEL matrix generation - start.</span></span>
-<span id="cb19-40"><a href="sbssig.html#cb19-40"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:37]: Reference sequences queried from genome.</span></span>
-<span id="cb19-41"><a href="sbssig.html#cb19-41"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:37]: INDEL length extracted.</span></span>
-<span id="cb19-42"><a href="sbssig.html#cb19-42"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:01:37]: Adjacent copies counted.</span></span>
-<span id="cb19-43"><a href="sbssig.html#cb19-43"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:04]: Microhomology size calculated.</span></span>
-<span id="cb19-44"><a href="sbssig.html#cb19-44"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:04]: INDEL records classified into different components (types).</span></span>
-<span id="cb19-45"><a href="sbssig.html#cb19-45"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:04]: ID-28 matrix created.</span></span>
-<span id="cb19-46"><a href="sbssig.html#cb19-46"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:04]: ID-83 matrix created.</span></span>
-<span id="cb19-47"><a href="sbssig.html#cb19-47"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:04]: ID-415 matrix created.</span></span>
-<span id="cb19-48"><a href="sbssig.html#cb19-48"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:04]: Return ID-415 as major matrix.</span></span>
-<span id="cb19-49"><a href="sbssig.html#cb19-49"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:04]: All types of matrices generation (APOBEC scores included) - end.</span></span>
-<span id="cb19-50"><a href="sbssig.html#cb19-50"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:04]: Done.</span></span>
-<span id="cb19-51"><a href="sbssig.html#cb19-51"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:04]: 35.948 secs elapsed.</span></span>
+<span id="cb19-8"><a href="sbssig.html#cb19-8"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:45]: Started.</span></span>
+<span id="cb19-9"><a href="sbssig.html#cb19-9"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: Reference genome loaded.</span></span>
+<span id="cb19-10"><a href="sbssig.html#cb19-10"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: Variants from MAF object queried.</span></span>
+<span id="cb19-11"><a href="sbssig.html#cb19-11"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: Chromosome names checked.</span></span>
+<span id="cb19-12"><a href="sbssig.html#cb19-12"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: Sex chromosomes properly handled.</span></span>
+<span id="cb19-13"><a href="sbssig.html#cb19-13"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: Only variants located in standard chromosomes (1:22, X, Y, M/MT) are kept.</span></span>
+<span id="cb19-14"><a href="sbssig.html#cb19-14"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: Variant start and end position checked.</span></span>
+<span id="cb19-15"><a href="sbssig.html#cb19-15"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:45]: Variant data for matrix generation preprocessed.</span></span>
+<span id="cb19-16"><a href="sbssig.html#cb19-16"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:45]: All types of matrices generation - start.</span></span>
+<span id="cb19-17"><a href="sbssig.html#cb19-17"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:45]: SBS matrix generation - start.</span></span>
+<span id="cb19-18"><a href="sbssig.html#cb19-18"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:45]: Extracting 5&#39; and 3&#39; adjacent bases.</span></span>
+<span id="cb19-19"><a href="sbssig.html#cb19-19"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:47]: Extracting +/- 20bp around mutated bases for background C&gt;T estimation.</span></span>
+<span id="cb19-20"><a href="sbssig.html#cb19-20"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:47]: Estimating APOBEC enrichment scores.</span></span>
+<span id="cb19-21"><a href="sbssig.html#cb19-21"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:47]: Performing one-way Fisher&#39;s test for APOBEC enrichment.</span></span>
+<span id="cb19-22"><a href="sbssig.html#cb19-22"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:48]: APOBEC related mutations are enriched in 28% of samples (APOBEC enrichment score &gt; 2; 28 of 100 samples)</span></span>
+<span id="cb19-23"><a href="sbssig.html#cb19-23"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:48]: Creating SBS sample-by-component matrices.</span></span>
+<span id="cb19-24"><a href="sbssig.html#cb19-24"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:48]: SBS-6 matrix created.</span></span>
+<span id="cb19-25"><a href="sbssig.html#cb19-25"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:48]: SBS-96 matrix created.</span></span>
+<span id="cb19-26"><a href="sbssig.html#cb19-26"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:48]: SBS-1536 matrix created.</span></span>
+<span id="cb19-27"><a href="sbssig.html#cb19-27"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:48]: SBS-24 (6x4) matrix created.</span></span>
+<span id="cb19-28"><a href="sbssig.html#cb19-28"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:48]: SBS-384 (96x4) matrix created.</span></span>
+<span id="cb19-29"><a href="sbssig.html#cb19-29"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:49]: SBS-6144 (1536x4) matrix created.</span></span>
+<span id="cb19-30"><a href="sbssig.html#cb19-30"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:49]: Return SBS-384 as major matrix.</span></span>
+<span id="cb19-31"><a href="sbssig.html#cb19-31"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:49]: DBS matrix generation - start.</span></span>
+<span id="cb19-32"><a href="sbssig.html#cb19-32"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:49]: Searching DBS records...</span></span>
+<span id="cb19-33"><a href="sbssig.html#cb19-33"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:49]: Done.</span></span>
+<span id="cb19-34"><a href="sbssig.html#cb19-34"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:50]: Reference sequences queried from genome.</span></span>
+<span id="cb19-35"><a href="sbssig.html#cb19-35"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:50]: DBS-78 matrix created.</span></span>
+<span id="cb19-36"><a href="sbssig.html#cb19-36"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:50]: DBS-1248 matrix created.</span></span>
+<span id="cb19-37"><a href="sbssig.html#cb19-37"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:50]: DBS-186 matrix created.</span></span>
+<span id="cb19-38"><a href="sbssig.html#cb19-38"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:50]: Return DBS-186 as major matrix.</span></span>
+<span id="cb19-39"><a href="sbssig.html#cb19-39"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:02:50]: INDEL matrix generation - start.</span></span>
+<span id="cb19-40"><a href="sbssig.html#cb19-40"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:51]: Reference sequences queried from genome.</span></span>
+<span id="cb19-41"><a href="sbssig.html#cb19-41"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:52]: INDEL length extracted.</span></span>
+<span id="cb19-42"><a href="sbssig.html#cb19-42"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:02:52]: Adjacent copies counted.</span></span>
+<span id="cb19-43"><a href="sbssig.html#cb19-43"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:15]: Microhomology size calculated.</span></span>
+<span id="cb19-44"><a href="sbssig.html#cb19-44"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:15]: INDEL records classified into different components (types).</span></span>
+<span id="cb19-45"><a href="sbssig.html#cb19-45"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:15]: ID-28 matrix created.</span></span>
+<span id="cb19-46"><a href="sbssig.html#cb19-46"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:15]: ID-83 matrix created.</span></span>
+<span id="cb19-47"><a href="sbssig.html#cb19-47"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:15]: ID-415 matrix created.</span></span>
+<span id="cb19-48"><a href="sbssig.html#cb19-48"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:15]: Return ID-415 as major matrix.</span></span>
+<span id="cb19-49"><a href="sbssig.html#cb19-49"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:15]: All types of matrices generation (APOBEC scores included) - end.</span></span>
+<span id="cb19-50"><a href="sbssig.html#cb19-50"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:15]: Done.</span></span>
+<span id="cb19-51"><a href="sbssig.html#cb19-51"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:15]: 29.808 secs elapsed.</span></span>
 <span id="cb19-52"><a href="sbssig.html#cb19-52"></a></span>
 <span id="cb19-53"><a href="sbssig.html#cb19-53"></a><span class="kw">str</span>(mt_tally_all, <span class="dt">max.level =</span> <span class="dv">1</span>)</span>
 <span id="cb19-54"><a href="sbssig.html#cb19-54"></a><span class="co">#&gt; List of 13</span></span>
@@ -918,17 +921,17 @@ Just set <code>mode='ALL'</code>, <strong>sigminer</strong> will do it for you!<
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="sbssig.html#cb21-1"></a><span class="co">## You can also select the measures to show</span></span>
 <span id="cb21-2"><a href="sbssig.html#cb21-2"></a><span class="co">## by &#39;what&#39; option</span></span>
 <span id="cb21-3"><a href="sbssig.html#cb21-3"></a><span class="kw">show_sig_number_survey2</span>(mt_est<span class="op">$</span>survey)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
 &gt; For the details of all the measures above, please read <span class="citation">Gaujoux and Seoighe (<a href="#ref-gaujoux2010flexible" role="doc-biblioref">2010</a>)</span> and <a href="https://cran.r-project.org/web/packages/NMF/vignettes/">vignette</a> of R package <strong>NMF</strong>.</p>
 <p>The measures either provide stability (<code>cophenetic</code>) or how well can be reconstructed (<code>rss</code>).</p>
 <p>Typically, measure <strong>cophenetic</strong> is used for determining the signature number. We can easily generate an elbow plot
 with function <code>show_sig_number_survey()</code>.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="sbssig.html#cb22-1"></a><span class="kw">show_sig_number_survey</span>(mt_est<span class="op">$</span>survey, <span class="dt">right_y =</span> <span class="ot">NULL</span>)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
 &gt; The most common approach is to use the cophenetic correlation coefficient. Brunet et al. suggested choosing the smallest value of r for which this coefficient starts decreasing. <span class="citation">(Gaujoux and Seoighe <a href="#ref-gaujoux2010flexible" role="doc-biblioref">2010</a>)</span></p>
 <p>Cophenetic value (range from 0-1) indicates the robustness of consensus matrix clustering. In this situation, 3 is good. However, we can found that the cophenetic values are all &gt;=0.9 from 2 to 5. So the more suitable way is considering both stability and reconstruction error at the same time, it can be easily done by <code>show_sig_number_survey()</code>.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="sbssig.html#cb23-1"></a><span class="kw">show_sig_number_survey</span>(mt_est<span class="op">$</span>survey)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" />
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
 &gt; This function is very flexible, you can pick up any measure to the left/right axis. However, the default setting is the most recommended way.</p>
 <p>We can see that we get a minimal RSS in signature number, and when this value goes from 5 to 6, the RSS increase! So we should not choose signature number more than 5 here because 6 is overfitting.</p>
 <p><strong>NOTE</strong>: There are no gold standard to determine the signature number. Sometimes, you should consider multiple measures. Remember, the most important thing is that <strong>you should have a good biological explanation for each signature</strong>.
@@ -1044,190 +1047,208 @@ The bayesian NMF will starts from a larger signature number and reduce it to a p
 </table>
 <p>The <code>mt_sig2</code> has similar structure as <code>mut_sig</code>.</p>
 </div>
+<div id="method-2-sigprofiler" class="section level4">
+<h4><span class="header-section-number">2.3.3.2</span> Method 2: SigProfiler</h4>
+<p><strong>Sigminer</strong> provides two functions <code>sigprofiler_extract()</code> and <code>sigprofiler_import()</code> to install, use SigProfiler and import <a href="https://github.com/AlexandrovLab/SigProfilerExtractor">SigProfiler</a> results into R as a <code>Signature</code> object like other extraction methods mentioned above.</p>
+<p>An (not running) example is given below (see <code>?sigprofiler</code> for more info).</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="sbssig.html#cb27-1"></a><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_copynumber_tally_M.RData&quot;</span>,</span>
+<span id="cb27-2"><a href="sbssig.html#cb27-2"></a>  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
+<span id="cb27-3"><a href="sbssig.html#cb27-3"></a>))</span>
+<span id="cb27-4"><a href="sbssig.html#cb27-4"></a></span>
+<span id="cb27-5"><a href="sbssig.html#cb27-5"></a>reticulate<span class="op">::</span><span class="kw">conda_list</span>()</span>
+<span id="cb27-6"><a href="sbssig.html#cb27-6"></a></span>
+<span id="cb27-7"><a href="sbssig.html#cb27-7"></a><span class="kw">sigprofiler_extract</span>(cn_tally_M<span class="op">$</span>nmf_matrix, <span class="st">&quot;~/test/test_sigminer&quot;</span>,</span>
+<span id="cb27-8"><a href="sbssig.html#cb27-8"></a>  <span class="dt">use_conda =</span> <span class="ot">TRUE</span></span>
+<span id="cb27-9"><a href="sbssig.html#cb27-9"></a>)</span>
+<span id="cb27-10"><a href="sbssig.html#cb27-10"></a></span>
+<span id="cb27-11"><a href="sbssig.html#cb27-11"></a><span class="kw">sigprofiler_extract</span>(cn_tally_M<span class="op">$</span>nmf_matrix, <span class="st">&quot;~/test/test_sigminer&quot;</span>,</span>
+<span id="cb27-12"><a href="sbssig.html#cb27-12"></a>  <span class="dt">use_conda =</span> <span class="ot">FALSE</span>, <span class="dt">py_path =</span> <span class="st">&quot;/Users/wsx/anaconda3/bin/python&quot;</span></span>
+<span id="cb27-13"><a href="sbssig.html#cb27-13"></a>)</span></code></pre></div>
+</div>
 </div>
 </div>
 <div id="match-signatures" class="section level2">
 <h2><span class="header-section-number">2.4</span> Match Signatures</h2>
 <p>After extracting signatures, we need to know their etiologies. This can be done by comparing the identified signatures and reference signatures from COSMIC database.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="sbssig.html#cb27-1"></a>sim &lt;-<span class="st"> </span><span class="kw">get_sig_similarity</span>(mt_sig2)</span>
-<span id="cb27-2"><a href="sbssig.html#cb27-2"></a><span class="co">#&gt; -Comparing against COSMIC signatures</span></span>
-<span id="cb27-3"><a href="sbssig.html#cb27-3"></a><span class="co">#&gt; ------------------------------------</span></span>
-<span id="cb27-4"><a href="sbssig.html#cb27-4"></a><span class="co">#&gt; --Found Sig1 most similar to COSMIC_3</span></span>
-<span id="cb27-5"><a href="sbssig.html#cb27-5"></a><span class="co">#&gt;    Aetiology: defects in DNA-DSB repair by HR [similarity: 0.82]</span></span>
-<span id="cb27-6"><a href="sbssig.html#cb27-6"></a><span class="co">#&gt; --Found Sig2 most similar to COSMIC_1</span></span>
-<span id="cb27-7"><a href="sbssig.html#cb27-7"></a><span class="co">#&gt;    Aetiology: spontaneous deamination of 5-methylcytosine [similarity: 0.942]</span></span>
-<span id="cb27-8"><a href="sbssig.html#cb27-8"></a><span class="co">#&gt; --Found Sig3 most similar to COSMIC_2</span></span>
-<span id="cb27-9"><a href="sbssig.html#cb27-9"></a><span class="co">#&gt;    Aetiology: APOBEC Cytidine Deaminase (C&gt;T) [similarity: 0.84]</span></span>
-<span id="cb27-10"><a href="sbssig.html#cb27-10"></a><span class="co">#&gt; ------------------------------------</span></span>
-<span id="cb27-11"><a href="sbssig.html#cb27-11"></a><span class="co">#&gt; Return result invisiblely.</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="sbssig.html#cb28-1"></a>sim &lt;-<span class="st"> </span><span class="kw">get_sig_similarity</span>(mt_sig2)</span>
+<span id="cb28-2"><a href="sbssig.html#cb28-2"></a><span class="co">#&gt; -Comparing against COSMIC signatures</span></span>
+<span id="cb28-3"><a href="sbssig.html#cb28-3"></a><span class="co">#&gt; ------------------------------------</span></span>
+<span id="cb28-4"><a href="sbssig.html#cb28-4"></a><span class="co">#&gt; --Found Sig1 most similar to COSMIC_3</span></span>
+<span id="cb28-5"><a href="sbssig.html#cb28-5"></a><span class="co">#&gt;    Aetiology: defects in DNA-DSB repair by HR [similarity: 0.82]</span></span>
+<span id="cb28-6"><a href="sbssig.html#cb28-6"></a><span class="co">#&gt; --Found Sig2 most similar to COSMIC_1</span></span>
+<span id="cb28-7"><a href="sbssig.html#cb28-7"></a><span class="co">#&gt;    Aetiology: spontaneous deamination of 5-methylcytosine [similarity: 0.942]</span></span>
+<span id="cb28-8"><a href="sbssig.html#cb28-8"></a><span class="co">#&gt; --Found Sig3 most similar to COSMIC_2</span></span>
+<span id="cb28-9"><a href="sbssig.html#cb28-9"></a><span class="co">#&gt;    Aetiology: APOBEC Cytidine Deaminase (C&gt;T) [similarity: 0.84]</span></span>
+<span id="cb28-10"><a href="sbssig.html#cb28-10"></a><span class="co">#&gt; ------------------------------------</span></span>
+<span id="cb28-11"><a href="sbssig.html#cb28-11"></a><span class="co">#&gt; Return result invisiblely.</span></span></code></pre></div>
 <p>The result object <code>sim</code> is a list.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="sbssig.html#cb28-1"></a><span class="kw">str</span>(sim)</span>
-<span id="cb28-2"><a href="sbssig.html#cb28-2"></a><span class="co">#&gt; List of 4</span></span>
-<span id="cb28-3"><a href="sbssig.html#cb28-3"></a><span class="co">#&gt;  $ similarity  : num [1:3, 1:30] 0.82 0.264 0.373 0.581 0.942 0.165 0.085 0.256 0.84 0.714 ...</span></span>
-<span id="cb28-4"><a href="sbssig.html#cb28-4"></a><span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
-<span id="cb28-5"><a href="sbssig.html#cb28-5"></a><span class="co">#&gt;   .. ..$ : chr [1:3] &quot;Sig1&quot; &quot;Sig2&quot; &quot;Sig3&quot;</span></span>
-<span id="cb28-6"><a href="sbssig.html#cb28-6"></a><span class="co">#&gt;   .. ..$ : chr [1:30] &quot;COSMIC_3&quot; &quot;COSMIC_1&quot; &quot;COSMIC_2&quot; &quot;COSMIC_4&quot; ...</span></span>
-<span id="cb28-7"><a href="sbssig.html#cb28-7"></a><span class="co">#&gt;  $ aetiology_db:List of 1</span></span>
-<span id="cb28-8"><a href="sbssig.html#cb28-8"></a><span class="co">#&gt;   ..$ : chr [1:30] &quot;spontaneous deamination of 5-methylcytosine&quot; &quot;APOBEC Cytidine Deaminase (C&gt;T)&quot; &quot;defects in DNA-DSB repair by HR&quot; &quot;exposure to tobacco (smoking) mutagens&quot; ...</span></span>
-<span id="cb28-9"><a href="sbssig.html#cb28-9"></a><span class="co">#&gt;  $ best_match  :List of 3</span></span>
-<span id="cb28-10"><a href="sbssig.html#cb28-10"></a><span class="co">#&gt;   ..$ Sig1:List of 2</span></span>
-<span id="cb28-11"><a href="sbssig.html#cb28-11"></a><span class="co">#&gt;   .. ..$ aetiology : chr &quot;defects in DNA-DSB repair by HR&quot;</span></span>
-<span id="cb28-12"><a href="sbssig.html#cb28-12"></a><span class="co">#&gt;   .. ..$ best_match: chr &quot;Best match: COSMIC_3 [similarity: 0.82]&quot;</span></span>
-<span id="cb28-13"><a href="sbssig.html#cb28-13"></a><span class="co">#&gt;   ..$ Sig2:List of 2</span></span>
-<span id="cb28-14"><a href="sbssig.html#cb28-14"></a><span class="co">#&gt;   .. ..$ aetiology : chr &quot;spontaneous deamination of 5-methylcytosine&quot;</span></span>
-<span id="cb28-15"><a href="sbssig.html#cb28-15"></a><span class="co">#&gt;   .. ..$ best_match: chr &quot;Best match: COSMIC_1 [similarity: 0.942]&quot;</span></span>
-<span id="cb28-16"><a href="sbssig.html#cb28-16"></a><span class="co">#&gt;   ..$ Sig3:List of 2</span></span>
-<span id="cb28-17"><a href="sbssig.html#cb28-17"></a><span class="co">#&gt;   .. ..$ aetiology : chr &quot;APOBEC Cytidine Deaminase (C&gt;T)&quot;</span></span>
-<span id="cb28-18"><a href="sbssig.html#cb28-18"></a><span class="co">#&gt;   .. ..$ best_match: chr &quot;Best match: COSMIC_2 [similarity: 0.84]&quot;</span></span>
-<span id="cb28-19"><a href="sbssig.html#cb28-19"></a><span class="co">#&gt;  $ rss         : num [1:3, 1:30] 0.04166 0.00711 0.14698 0.2492 0.24257 ...</span></span>
-<span id="cb28-20"><a href="sbssig.html#cb28-20"></a><span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
-<span id="cb28-21"><a href="sbssig.html#cb28-21"></a><span class="co">#&gt;   .. ..$ : chr [1:3] &quot;Sig1&quot; &quot;Sig2&quot; &quot;Sig3&quot;</span></span>
-<span id="cb28-22"><a href="sbssig.html#cb28-22"></a><span class="co">#&gt;   .. ..$ : chr [1:30] &quot;COSMIC_1&quot; &quot;COSMIC_2&quot; &quot;COSMIC_3&quot; &quot;COSMIC_4&quot; ...</span></span>
-<span id="cb28-23"><a href="sbssig.html#cb28-23"></a><span class="co">#&gt;  - attr(*, &quot;class&quot;)= chr [1:2] &quot;similarity&quot; &quot;list&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="sbssig.html#cb29-1"></a><span class="kw">str</span>(sim)</span>
+<span id="cb29-2"><a href="sbssig.html#cb29-2"></a><span class="co">#&gt; List of 4</span></span>
+<span id="cb29-3"><a href="sbssig.html#cb29-3"></a><span class="co">#&gt;  $ similarity  : num [1:3, 1:30] 0.82 0.264 0.373 0.581 0.942 0.165 0.085 0.256 0.84 0.714 ...</span></span>
+<span id="cb29-4"><a href="sbssig.html#cb29-4"></a><span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
+<span id="cb29-5"><a href="sbssig.html#cb29-5"></a><span class="co">#&gt;   .. ..$ : chr [1:3] &quot;Sig1&quot; &quot;Sig2&quot; &quot;Sig3&quot;</span></span>
+<span id="cb29-6"><a href="sbssig.html#cb29-6"></a><span class="co">#&gt;   .. ..$ : chr [1:30] &quot;COSMIC_3&quot; &quot;COSMIC_1&quot; &quot;COSMIC_2&quot; &quot;COSMIC_4&quot; ...</span></span>
+<span id="cb29-7"><a href="sbssig.html#cb29-7"></a><span class="co">#&gt;  $ aetiology_db:List of 1</span></span>
+<span id="cb29-8"><a href="sbssig.html#cb29-8"></a><span class="co">#&gt;   ..$ : chr [1:30] &quot;spontaneous deamination of 5-methylcytosine&quot; &quot;APOBEC Cytidine Deaminase (C&gt;T)&quot; &quot;defects in DNA-DSB repair by HR&quot; &quot;exposure to tobacco (smoking) mutagens&quot; ...</span></span>
+<span id="cb29-9"><a href="sbssig.html#cb29-9"></a><span class="co">#&gt;  $ best_match  :List of 3</span></span>
+<span id="cb29-10"><a href="sbssig.html#cb29-10"></a><span class="co">#&gt;   ..$ Sig1:List of 2</span></span>
+<span id="cb29-11"><a href="sbssig.html#cb29-11"></a><span class="co">#&gt;   .. ..$ aetiology : chr &quot;defects in DNA-DSB repair by HR&quot;</span></span>
+<span id="cb29-12"><a href="sbssig.html#cb29-12"></a><span class="co">#&gt;   .. ..$ best_match: chr &quot;Best match: COSMIC_3 [similarity: 0.82]&quot;</span></span>
+<span id="cb29-13"><a href="sbssig.html#cb29-13"></a><span class="co">#&gt;   ..$ Sig2:List of 2</span></span>
+<span id="cb29-14"><a href="sbssig.html#cb29-14"></a><span class="co">#&gt;   .. ..$ aetiology : chr &quot;spontaneous deamination of 5-methylcytosine&quot;</span></span>
+<span id="cb29-15"><a href="sbssig.html#cb29-15"></a><span class="co">#&gt;   .. ..$ best_match: chr &quot;Best match: COSMIC_1 [similarity: 0.942]&quot;</span></span>
+<span id="cb29-16"><a href="sbssig.html#cb29-16"></a><span class="co">#&gt;   ..$ Sig3:List of 2</span></span>
+<span id="cb29-17"><a href="sbssig.html#cb29-17"></a><span class="co">#&gt;   .. ..$ aetiology : chr &quot;APOBEC Cytidine Deaminase (C&gt;T)&quot;</span></span>
+<span id="cb29-18"><a href="sbssig.html#cb29-18"></a><span class="co">#&gt;   .. ..$ best_match: chr &quot;Best match: COSMIC_2 [similarity: 0.84]&quot;</span></span>
+<span id="cb29-19"><a href="sbssig.html#cb29-19"></a><span class="co">#&gt;  $ rss         : num [1:3, 1:30] 0.04166 0.00711 0.14698 0.2492 0.24257 ...</span></span>
+<span id="cb29-20"><a href="sbssig.html#cb29-20"></a><span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
+<span id="cb29-21"><a href="sbssig.html#cb29-21"></a><span class="co">#&gt;   .. ..$ : chr [1:3] &quot;Sig1&quot; &quot;Sig2&quot; &quot;Sig3&quot;</span></span>
+<span id="cb29-22"><a href="sbssig.html#cb29-22"></a><span class="co">#&gt;   .. ..$ : chr [1:30] &quot;COSMIC_1&quot; &quot;COSMIC_2&quot; &quot;COSMIC_3&quot; &quot;COSMIC_4&quot; ...</span></span>
+<span id="cb29-23"><a href="sbssig.html#cb29-23"></a><span class="co">#&gt;  - attr(*, &quot;class&quot;)= chr [1:2] &quot;similarity&quot; &quot;list&quot;</span></span></code></pre></div>
 <p>From the result we can see that three signatures are properly matched to COSMIC reference signatures. If you find unknown signatures in your study, you should explore the etiologies by other analyses and even experiments.</p>
 <p>The similarity matrix can be plotted.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="sbssig.html#cb29-1"></a>pheatmap<span class="op">::</span><span class="kw">pheatmap</span>(sim<span class="op">$</span>similarity)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="sbssig.html#cb30-1"></a>pheatmap<span class="op">::</span><span class="kw">pheatmap</span>(sim<span class="op">$</span>similarity)</span></code></pre></div>
 <p><img src="sigminer-doc_files/figure-html/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>You can also try the COSMIC signature database V3 with:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="sbssig.html#cb30-1"></a>sim_v3 &lt;-<span class="st"> </span><span class="kw">get_sig_similarity</span>(mt_sig2, <span class="dt">sig_db =</span> <span class="st">&quot;SBS&quot;</span>)</span>
-<span id="cb30-2"><a href="sbssig.html#cb30-2"></a><span class="co">#&gt; -Comparing against COSMIC signatures</span></span>
-<span id="cb30-3"><a href="sbssig.html#cb30-3"></a><span class="co">#&gt; ------------------------------------</span></span>
-<span id="cb30-4"><a href="sbssig.html#cb30-4"></a><span class="co">#&gt; --Found Sig1 most similar to SBS3</span></span>
-<span id="cb30-5"><a href="sbssig.html#cb30-5"></a><span class="co">#&gt;    Aetiology: Defects in DNA-DSB repair by HR [similarity: 0.821]</span></span>
-<span id="cb30-6"><a href="sbssig.html#cb30-6"></a><span class="co">#&gt; --Found Sig2 most similar to SBS1</span></span>
-<span id="cb30-7"><a href="sbssig.html#cb30-7"></a><span class="co">#&gt;    Aetiology: spontaneous or enzymatic deamination of 5-methylcytosine [similarity: 0.876]</span></span>
-<span id="cb30-8"><a href="sbssig.html#cb30-8"></a><span class="co">#&gt; --Found Sig3 most similar to SBS2</span></span>
-<span id="cb30-9"><a href="sbssig.html#cb30-9"></a><span class="co">#&gt;    Aetiology: APOBEC Cytidine Deaminase (C&gt;T) [similarity: 0.748]</span></span>
-<span id="cb30-10"><a href="sbssig.html#cb30-10"></a><span class="co">#&gt; ------------------------------------</span></span>
-<span id="cb30-11"><a href="sbssig.html#cb30-11"></a><span class="co">#&gt; Return result invisiblely.</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="sbssig.html#cb31-1"></a>sim_v3 &lt;-<span class="st"> </span><span class="kw">get_sig_similarity</span>(mt_sig2, <span class="dt">sig_db =</span> <span class="st">&quot;SBS&quot;</span>)</span>
+<span id="cb31-2"><a href="sbssig.html#cb31-2"></a><span class="co">#&gt; -Comparing against COSMIC signatures</span></span>
+<span id="cb31-3"><a href="sbssig.html#cb31-3"></a><span class="co">#&gt; ------------------------------------</span></span>
+<span id="cb31-4"><a href="sbssig.html#cb31-4"></a><span class="co">#&gt; --Found Sig1 most similar to SBS3</span></span>
+<span id="cb31-5"><a href="sbssig.html#cb31-5"></a><span class="co">#&gt;    Aetiology: Defects in DNA-DSB repair by HR [similarity: 0.821]</span></span>
+<span id="cb31-6"><a href="sbssig.html#cb31-6"></a><span class="co">#&gt; --Found Sig2 most similar to SBS1</span></span>
+<span id="cb31-7"><a href="sbssig.html#cb31-7"></a><span class="co">#&gt;    Aetiology: spontaneous or enzymatic deamination of 5-methylcytosine [similarity: 0.876]</span></span>
+<span id="cb31-8"><a href="sbssig.html#cb31-8"></a><span class="co">#&gt; --Found Sig3 most similar to SBS2</span></span>
+<span id="cb31-9"><a href="sbssig.html#cb31-9"></a><span class="co">#&gt;    Aetiology: APOBEC Cytidine Deaminase (C&gt;T) [similarity: 0.748]</span></span>
+<span id="cb31-10"><a href="sbssig.html#cb31-10"></a><span class="co">#&gt; ------------------------------------</span></span>
+<span id="cb31-11"><a href="sbssig.html#cb31-11"></a><span class="co">#&gt; Return result invisiblely.</span></span></code></pre></div>
 </div>
 <div id="operate-signature" class="section level2">
 <h2><span class="header-section-number">2.5</span> Operate <code>Signature</code></h2>
 <p>The result of <code>sig_extract()</code> or <code>sig_auto_extract()</code> is a <code>list</code> with <code>Signature</code> class. You can use <code>$</code> or use operation function to obtain the data stored in it.</p>
 <p>To get the signature matrix:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="sbssig.html#cb31-1"></a><span class="co"># Or mt_sig2$Signature</span></span>
-<span id="cb31-2"><a href="sbssig.html#cb31-2"></a><span class="kw">sig_signature</span>(mt_sig2)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, ]</span>
-<span id="cb31-3"><a href="sbssig.html#cb31-3"></a><span class="co">#&gt;                Sig1        Sig2         Sig3</span></span>
-<span id="cb31-4"><a href="sbssig.html#cb31-4"></a><span class="co">#&gt; A[T&gt;C]A 0.008982565 0.012815512 0.0027641452</span></span>
-<span id="cb31-5"><a href="sbssig.html#cb31-5"></a><span class="co">#&gt; C[T&gt;C]A 0.006295256 0.006378091 0.0008926155</span></span>
-<span id="cb31-6"><a href="sbssig.html#cb31-6"></a><span class="co">#&gt; G[T&gt;C]A 0.013961272 0.002795088 0.0010525932</span></span>
-<span id="cb31-7"><a href="sbssig.html#cb31-7"></a><span class="co">#&gt; T[T&gt;C]A 0.004574805 0.004748670 0.0012218410</span></span>
-<span id="cb31-8"><a href="sbssig.html#cb31-8"></a><span class="co">#&gt; A[C&gt;T]A 0.004672896 0.018070168 0.0063343170</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="sbssig.html#cb32-1"></a><span class="co"># Or mt_sig2$Signature</span></span>
+<span id="cb32-2"><a href="sbssig.html#cb32-2"></a><span class="kw">sig_signature</span>(mt_sig2)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, ]</span>
+<span id="cb32-3"><a href="sbssig.html#cb32-3"></a><span class="co">#&gt;                Sig1        Sig2         Sig3</span></span>
+<span id="cb32-4"><a href="sbssig.html#cb32-4"></a><span class="co">#&gt; A[T&gt;C]A 0.008982565 0.012815512 0.0027641452</span></span>
+<span id="cb32-5"><a href="sbssig.html#cb32-5"></a><span class="co">#&gt; C[T&gt;C]A 0.006295256 0.006378091 0.0008926155</span></span>
+<span id="cb32-6"><a href="sbssig.html#cb32-6"></a><span class="co">#&gt; G[T&gt;C]A 0.013961272 0.002795088 0.0010525932</span></span>
+<span id="cb32-7"><a href="sbssig.html#cb32-7"></a><span class="co">#&gt; T[T&gt;C]A 0.004574805 0.004748670 0.0012218410</span></span>
+<span id="cb32-8"><a href="sbssig.html#cb32-8"></a><span class="co">#&gt; A[C&gt;T]A 0.004672896 0.018070168 0.0063343170</span></span></code></pre></div>
 <p>To get signature exposure matrix:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="sbssig.html#cb32-1"></a><span class="co"># Or mt_sig$Exposure</span></span>
-<span id="cb32-2"><a href="sbssig.html#cb32-2"></a><span class="kw">sig_exposure</span>(mt_sig2)[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
-<span id="cb32-3"><a href="sbssig.html#cb32-3"></a><span class="co">#&gt;      TCGA-A1-A0SH-01A-11D-A099-09 TCGA-A2-A04N-01A-11D-A10Y-09 TCGA-A2-A0CP-01A-11W-A050-09</span></span>
-<span id="cb32-4"><a href="sbssig.html#cb32-4"></a><span class="co">#&gt; Sig1                     32.15907                    15.839732                    22.947414</span></span>
-<span id="cb32-5"><a href="sbssig.html#cb32-5"></a><span class="co">#&gt; Sig2                     16.59291                    32.478516                    22.476482</span></span>
-<span id="cb32-6"><a href="sbssig.html#cb32-6"></a><span class="co">#&gt; Sig3                     87.05947                     3.137845                     4.608987</span></span>
-<span id="cb32-7"><a href="sbssig.html#cb32-7"></a><span class="co">#&gt;      TCGA-A2-A0EP-01A-52D-A22X-09 TCGA-A2-A0EV-01A-11W-A050-09</span></span>
-<span id="cb32-8"><a href="sbssig.html#cb32-8"></a><span class="co">#&gt; Sig1                   14.4657384                     35.25795</span></span>
-<span id="cb32-9"><a href="sbssig.html#cb32-9"></a><span class="co">#&gt; Sig2                    0.4796753                     25.49099</span></span>
-<span id="cb32-10"><a href="sbssig.html#cb32-10"></a><span class="co">#&gt; Sig3                    6.9200983                     17.57883</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="sbssig.html#cb33-1"></a><span class="co"># Or mt_sig$Exposure</span></span>
+<span id="cb33-2"><a href="sbssig.html#cb33-2"></a><span class="kw">sig_exposure</span>(mt_sig2)[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb33-3"><a href="sbssig.html#cb33-3"></a><span class="co">#&gt;      TCGA-A1-A0SH-01A-11D-A099-09 TCGA-A2-A04N-01A-11D-A10Y-09 TCGA-A2-A0CP-01A-11W-A050-09</span></span>
+<span id="cb33-4"><a href="sbssig.html#cb33-4"></a><span class="co">#&gt; Sig1                     32.15907                    15.839732                    22.947414</span></span>
+<span id="cb33-5"><a href="sbssig.html#cb33-5"></a><span class="co">#&gt; Sig2                     16.59291                    32.478516                    22.476482</span></span>
+<span id="cb33-6"><a href="sbssig.html#cb33-6"></a><span class="co">#&gt; Sig3                     87.05947                     3.137845                     4.608987</span></span>
+<span id="cb33-7"><a href="sbssig.html#cb33-7"></a><span class="co">#&gt;      TCGA-A2-A0EP-01A-52D-A22X-09 TCGA-A2-A0EV-01A-11W-A050-09</span></span>
+<span id="cb33-8"><a href="sbssig.html#cb33-8"></a><span class="co">#&gt; Sig1                   14.4657384                     35.25795</span></span>
+<span id="cb33-9"><a href="sbssig.html#cb33-9"></a><span class="co">#&gt; Sig2                    0.4796753                     25.49099</span></span>
+<span id="cb33-10"><a href="sbssig.html#cb33-10"></a><span class="co">#&gt; Sig3                    6.9200983                     17.57883</span></span></code></pre></div>
 <p><code>get_sig_exposure()</code> may be more useful, it can be used to return a <code>data.frame</code> and set an exposure threshold.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="sbssig.html#cb33-1"></a><span class="kw">get_sig_exposure</span>(mt_sig2)</span>
-<span id="cb33-2"><a href="sbssig.html#cb33-2"></a><span class="co">#&gt;                            sample          Sig1          Sig2          Sig3</span></span>
-<span id="cb33-3"><a href="sbssig.html#cb33-3"></a><span class="co">#&gt;   1: TCGA-A1-A0SH-01A-11D-A099-09  3.215907e+01  1.659291e+01  8.705947e+01</span></span>
-<span id="cb33-4"><a href="sbssig.html#cb33-4"></a><span class="co">#&gt;   2: TCGA-A2-A04N-01A-11D-A10Y-09  1.583973e+01  3.247852e+01  3.137845e+00</span></span>
-<span id="cb33-5"><a href="sbssig.html#cb33-5"></a><span class="co">#&gt;   3: TCGA-A2-A0CP-01A-11W-A050-09  2.294741e+01  2.247648e+01  4.608987e+00</span></span>
-<span id="cb33-6"><a href="sbssig.html#cb33-6"></a><span class="co">#&gt;   4: TCGA-A2-A0EP-01A-52D-A22X-09  1.446574e+01  4.796753e-01  6.920098e+00</span></span>
-<span id="cb33-7"><a href="sbssig.html#cb33-7"></a><span class="co">#&gt;   5: TCGA-A2-A0EV-01A-11W-A050-09  3.525795e+01  2.549099e+01  1.757883e+01</span></span>
-<span id="cb33-8"><a href="sbssig.html#cb33-8"></a><span class="co">#&gt;   6: TCGA-A2-A0SX-01A-12D-A099-09  1.890198e+01  1.190887e+01  9.765504e+00</span></span>
-<span id="cb33-9"><a href="sbssig.html#cb33-9"></a><span class="co">#&gt;   7: TCGA-A2-A0T7-01A-21D-A099-09  7.058436e+00  2.206062e+01  2.063678e-01</span></span>
-<span id="cb33-10"><a href="sbssig.html#cb33-10"></a><span class="co">#&gt;   8: TCGA-A2-A0YF-01A-21D-A10G-09  1.308864e+01  2.872085e+01 3.276018e-121</span></span>
-<span id="cb33-11"><a href="sbssig.html#cb33-11"></a><span class="co">#&gt;   9: TCGA-A2-A25F-01A-11D-A167-09  8.956460e+00 2.075076e-322  0.000000e+00</span></span>
-<span id="cb33-12"><a href="sbssig.html#cb33-12"></a><span class="co">#&gt;  10: TCGA-A2-A3XW-01A-11D-A23C-09  1.022872e+01  7.998442e+00  6.307634e-01</span></span>
-<span id="cb33-13"><a href="sbssig.html#cb33-13"></a><span class="co">#&gt;  11: TCGA-A2-A4S1-01A-21D-A25Q-09  7.051307e+01  2.151502e+01  4.647996e+00</span></span>
-<span id="cb33-14"><a href="sbssig.html#cb33-14"></a><span class="co">#&gt;  12: TCGA-A7-A0D9-01A-31W-A071-09  2.911793e+01  1.460116e+01  1.642104e+01</span></span>
-<span id="cb33-15"><a href="sbssig.html#cb33-15"></a><span class="co">#&gt;  13: TCGA-A7-A13F-01A-11D-A12Q-09  1.445889e-99  7.200445e+01  1.005387e+01</span></span>
-<span id="cb33-16"><a href="sbssig.html#cb33-16"></a><span class="co">#&gt;  14: TCGA-A7-A5ZV-01A-11D-A28B-09  1.744084e+02  3.859699e+01  3.691587e+01</span></span>
-<span id="cb33-17"><a href="sbssig.html#cb33-17"></a><span class="co">#&gt;  15: TCGA-A8-A06P-01A-11W-A019-09  2.224565e+01  1.850442e+01  3.520406e+00</span></span>
-<span id="cb33-18"><a href="sbssig.html#cb33-18"></a><span class="co">#&gt;  16: TCGA-A8-A076-01A-21W-A019-09  3.334543e+01  4.665212e+01  1.243664e+01</span></span>
-<span id="cb33-19"><a href="sbssig.html#cb33-19"></a><span class="co">#&gt;  17: TCGA-A8-A07W-01A-11W-A019-09  1.027996e+02  4.510342e+01  2.145630e+01</span></span>
-<span id="cb33-20"><a href="sbssig.html#cb33-20"></a><span class="co">#&gt;  18: TCGA-A8-A084-01A-21W-A019-09  1.875160e+01  3.524792e+01  2.879974e+01</span></span>
-<span id="cb33-21"><a href="sbssig.html#cb33-21"></a><span class="co">#&gt;  19: TCGA-A8-A08S-01A-11W-A050-09  1.735008e+01  4.659754e+01  1.427450e-05</span></span>
-<span id="cb33-22"><a href="sbssig.html#cb33-22"></a><span class="co">#&gt;  20: TCGA-A8-A09G-01A-21W-A019-09  2.720241e-49  1.598340e+01  3.015537e+02</span></span>
-<span id="cb33-23"><a href="sbssig.html#cb33-23"></a><span class="co">#&gt;  21: TCGA-A8-A0A4-01A-11W-A019-09  1.301530e+01  2.414905e+01  9.673844e-01</span></span>
-<span id="cb33-24"><a href="sbssig.html#cb33-24"></a><span class="co">#&gt;  22: TCGA-A8-A0AB-01A-11W-A050-09  2.224326e+01  1.070162e+01  4.625000e+00</span></span>
-<span id="cb33-25"><a href="sbssig.html#cb33-25"></a><span class="co">#&gt;  23: TCGA-AC-A2B8-01A-11D-A17D-09  4.581254e-74  2.077930e+01  1.039934e+02</span></span>
-<span id="cb33-26"><a href="sbssig.html#cb33-26"></a><span class="co">#&gt;  24: TCGA-AC-A2FO-01A-11D-A17W-09  8.224234e+00  6.022061e+00  1.457732e+01</span></span>
-<span id="cb33-27"><a href="sbssig.html#cb33-27"></a><span class="co">#&gt;  25: TCGA-AC-A3YI-01A-21D-A23C-09  1.181688e+01  8.021717e+00 4.392543e-188</span></span>
-<span id="cb33-28"><a href="sbssig.html#cb33-28"></a><span class="co">#&gt;  26: TCGA-AC-A8OS-01A-12D-A41F-09  3.481344e+01  2.558226e+01  1.892168e+01</span></span>
-<span id="cb33-29"><a href="sbssig.html#cb33-29"></a><span class="co">#&gt;  27: TCGA-AN-A0FK-01A-11W-A050-09  2.057755e-97  5.410512e+01 6.931546e-201</span></span>
-<span id="cb33-30"><a href="sbssig.html#cb33-30"></a><span class="co">#&gt;  28: TCGA-AN-A0FT-01A-11W-A050-09  2.445782e+01  6.250409e+01  3.692872e+01</span></span>
-<span id="cb33-31"><a href="sbssig.html#cb33-31"></a><span class="co">#&gt;  29: TCGA-AN-A0XO-01A-11D-A10G-09  1.852324e+01  1.228874e+01  1.174155e+01</span></span>
-<span id="cb33-32"><a href="sbssig.html#cb33-32"></a><span class="co">#&gt;  30: TCGA-AO-A1KS-01A-11D-A13L-09  4.164234e+00  3.175461e+01  1.956542e+01</span></span>
-<span id="cb33-33"><a href="sbssig.html#cb33-33"></a><span class="co">#&gt;  31: TCGA-AQ-A54O-01A-11D-A25Q-09  3.055399e-28  2.459937e+01  5.953473e-01</span></span>
-<span id="cb33-34"><a href="sbssig.html#cb33-34"></a><span class="co">#&gt;  32: TCGA-AQ-A7U7-01A-22D-A351-09  1.358585e+01  1.441648e+01  7.330881e+01</span></span>
-<span id="cb33-35"><a href="sbssig.html#cb33-35"></a><span class="co">#&gt;  33: TCGA-AR-A0TP-01A-11D-A099-09  5.768672e+01  6.630986e+00  5.803076e+00</span></span>
-<span id="cb33-36"><a href="sbssig.html#cb33-36"></a><span class="co">#&gt;  34: TCGA-AR-A0U3-01A-11D-A10G-09  1.733324e+01  2.281135e+01 3.013800e-322</span></span>
-<span id="cb33-37"><a href="sbssig.html#cb33-37"></a><span class="co">#&gt;  35: TCGA-AR-A1AH-01A-11D-A12B-09  9.496609e+01  1.443596e+01  8.395297e+00</span></span>
-<span id="cb33-38"><a href="sbssig.html#cb33-38"></a><span class="co">#&gt;  36: TCGA-AR-A1AJ-01A-21D-A12Q-09  7.534377e+00  2.369358e+01  2.277121e+01</span></span>
-<span id="cb33-39"><a href="sbssig.html#cb33-39"></a><span class="co">#&gt;  37: TCGA-AR-A1AN-01A-11D-A12Q-09  6.529774e+00  2.102345e+01  5.820990e+00</span></span>
-<span id="cb33-40"><a href="sbssig.html#cb33-40"></a><span class="co">#&gt;  38: TCGA-AR-A24N-01A-11D-A167-09  2.004502e+01  2.261256e+01  4.435549e+00</span></span>
-<span id="cb33-41"><a href="sbssig.html#cb33-41"></a><span class="co">#&gt;  39: TCGA-AR-A252-01A-11D-A167-09  6.130705e+00  1.263644e+01 3.556170e-312</span></span>
-<span id="cb33-42"><a href="sbssig.html#cb33-42"></a><span class="co">#&gt;  40: TCGA-AR-A2LL-01A-11D-A17W-09  1.503319e+01  2.218907e+01 8.682292e-233</span></span>
-<span id="cb33-43"><a href="sbssig.html#cb33-43"></a><span class="co">#&gt;  41: TCGA-AR-A2LO-01A-31D-A18P-09  1.413060e+01  2.481548e+00  3.266687e+00</span></span>
-<span id="cb33-44"><a href="sbssig.html#cb33-44"></a><span class="co">#&gt;  42: TCGA-B6-A0IE-01A-11W-A050-09  2.018322e+01  1.947366e+01  2.614518e+00</span></span>
-<span id="cb33-45"><a href="sbssig.html#cb33-45"></a><span class="co">#&gt;  43: TCGA-B6-A0IM-01A-11W-A050-09  2.162813e+01  1.865495e+01  3.521674e-57</span></span>
-<span id="cb33-46"><a href="sbssig.html#cb33-46"></a><span class="co">#&gt;  44: TCGA-B6-A0IP-01A-11D-A045-09  1.442865e+01  3.592925e+01  8.112508e-01</span></span>
-<span id="cb33-47"><a href="sbssig.html#cb33-47"></a><span class="co">#&gt;  45: TCGA-B6-A0RV-01A-11D-A099-09 1.560069e-177  1.750629e+01  4.905081e+01</span></span>
-<span id="cb33-48"><a href="sbssig.html#cb33-48"></a><span class="co">#&gt;  46: TCGA-B6-A0WZ-01A-11D-A10G-09  6.958489e+00  6.417496e+00  8.073838e+01</span></span>
-<span id="cb33-49"><a href="sbssig.html#cb33-49"></a><span class="co">#&gt;  47: TCGA-B6-A0X1-01A-11D-A10G-09  4.814384e+01  2.024595e+01  2.160594e+01</span></span>
-<span id="cb33-50"><a href="sbssig.html#cb33-50"></a><span class="co">#&gt;  48: TCGA-B6-A1KC-01B-11D-A159-09  1.272953e+01  2.179920e+01  7.508081e-01</span></span>
-<span id="cb33-51"><a href="sbssig.html#cb33-51"></a><span class="co">#&gt;  49: TCGA-B6-A401-01A-11D-A23C-09  1.081423e+01  1.941480e+01  2.059546e-01</span></span>
-<span id="cb33-52"><a href="sbssig.html#cb33-52"></a><span class="co">#&gt;  50: TCGA-B6-A40C-01A-11D-A23C-09  1.830003e+01  3.154423e+01  2.647047e+00</span></span>
-<span id="cb33-53"><a href="sbssig.html#cb33-53"></a><span class="co">#&gt;  51: TCGA-BH-A0AV-01A-31D-A10Y-09  6.587096e+01  2.929251e+00  1.572687e+01</span></span>
-<span id="cb33-54"><a href="sbssig.html#cb33-54"></a><span class="co">#&gt;  52: TCGA-BH-A0BT-01A-11D-A12Q-09  6.568456e+00  3.775611e+01  2.752085e+00</span></span>
-<span id="cb33-55"><a href="sbssig.html#cb33-55"></a><span class="co">#&gt;  53: TCGA-BH-A0DL-01A-11D-A10Y-09  2.910845e+01  6.775503e+01  2.920173e+01</span></span>
-<span id="cb33-56"><a href="sbssig.html#cb33-56"></a><span class="co">#&gt;  54: TCGA-BH-A0DO-01B-11D-A12B-09  1.010194e+01  1.427067e+01  5.289001e+00</span></span>
-<span id="cb33-57"><a href="sbssig.html#cb33-57"></a><span class="co">#&gt;  55: TCGA-BH-A0DT-01A-21D-A12B-09  3.335864e+00  1.048536e+01  2.024691e+00</span></span>
-<span id="cb33-58"><a href="sbssig.html#cb33-58"></a><span class="co">#&gt;  56: TCGA-BH-A0GY-01A-11W-A071-09  1.586565e+01  2.609193e+01 7.451332e-171</span></span>
-<span id="cb33-59"><a href="sbssig.html#cb33-59"></a><span class="co">#&gt;  57: TCGA-BH-A0H6-01A-21W-A071-09  1.075555e+01  1.584751e+01 6.033999e-182</span></span>
-<span id="cb33-60"><a href="sbssig.html#cb33-60"></a><span class="co">#&gt;  58: TCGA-BH-A18K-01A-11D-A12B-09  2.201843e+01  1.341495e+01  3.649113e+01</span></span>
-<span id="cb33-61"><a href="sbssig.html#cb33-61"></a><span class="co">#&gt;  59: TCGA-BH-A1FU-01A-11D-A14G-09  6.503440e+01  2.615015e+01  2.435476e+01</span></span>
-<span id="cb33-62"><a href="sbssig.html#cb33-62"></a><span class="co">#&gt;  60: TCGA-BH-A202-01A-11D-A14K-09  9.499339e+00  1.718580e+01  8.725869e-01</span></span>
-<span id="cb33-63"><a href="sbssig.html#cb33-63"></a><span class="co">#&gt;  61: TCGA-BH-A5IZ-01A-11D-A27P-09  1.272274e+02  1.895424e+01  3.599703e+01</span></span>
-<span id="cb33-64"><a href="sbssig.html#cb33-64"></a><span class="co">#&gt;  62: TCGA-BH-A6R8-01A-21D-A33E-09  1.333218e+01  2.247599e+01  5.410627e+00</span></span>
-<span id="cb33-65"><a href="sbssig.html#cb33-65"></a><span class="co">#&gt;  63: TCGA-BH-A8G0-01A-11D-A351-09  5.329473e-61  2.044391e+01  0.000000e+00</span></span>
-<span id="cb33-66"><a href="sbssig.html#cb33-66"></a><span class="co">#&gt;  64: TCGA-C8-A131-01A-11D-A10Y-09  2.892229e+01  4.000734e+01  4.478124e+00</span></span>
-<span id="cb33-67"><a href="sbssig.html#cb33-67"></a><span class="co">#&gt;  65: TCGA-D8-A147-01A-11D-A10Y-09  1.170598e+02  3.708374e+00  7.345449e+01</span></span>
-<span id="cb33-68"><a href="sbssig.html#cb33-68"></a><span class="co">#&gt;  66: TCGA-D8-A1JG-01B-11D-A13L-09  8.510523e+01  6.270187e+01  2.084379e+01</span></span>
-<span id="cb33-69"><a href="sbssig.html#cb33-69"></a><span class="co">#&gt;  67: TCGA-D8-A1JH-01A-11D-A188-09  1.123474e+01  1.153185e+01  9.875530e-01</span></span>
-<span id="cb33-70"><a href="sbssig.html#cb33-70"></a><span class="co">#&gt;  68: TCGA-D8-A1JJ-01A-31D-A14K-09  1.266815e+01  3.477698e+01  5.170826e+01</span></span>
-<span id="cb33-71"><a href="sbssig.html#cb33-71"></a><span class="co">#&gt;  69: TCGA-D8-A1JT-01A-31D-A13L-09  2.184767e+01  2.034265e+01  0.000000e+00</span></span>
-<span id="cb33-72"><a href="sbssig.html#cb33-72"></a><span class="co">#&gt;  70: TCGA-D8-A1JU-01A-11D-A13L-09  9.975756e+00  9.782078e+00  6.083460e-02</span></span>
-<span id="cb33-73"><a href="sbssig.html#cb33-73"></a><span class="co">#&gt;  71: TCGA-D8-A1X7-01A-11D-A14K-09  1.298671e+01  1.517123e+01  3.439192e+00</span></span>
-<span id="cb33-74"><a href="sbssig.html#cb33-74"></a><span class="co">#&gt;  72: TCGA-D8-A1X8-01A-11D-A14K-09  1.460678e+01  1.557185e+01  2.380506e+00</span></span>
-<span id="cb33-75"><a href="sbssig.html#cb33-75"></a><span class="co">#&gt;  73: TCGA-D8-A1XL-01A-11D-A14K-09  7.763404e+01  2.055349e+01  7.951866e+00</span></span>
-<span id="cb33-76"><a href="sbssig.html#cb33-76"></a><span class="co">#&gt;  74: TCGA-D8-A27V-01A-12D-A17D-09  3.443723e-45  3.089542e+01  1.885408e+02</span></span>
-<span id="cb33-77"><a href="sbssig.html#cb33-77"></a><span class="co">#&gt;  75: TCGA-E2-A108-01A-13D-A10M-09  3.697383e+01  1.205971e+01  1.342740e+02</span></span>
-<span id="cb33-78"><a href="sbssig.html#cb33-78"></a><span class="co">#&gt;  76: TCGA-E2-A10F-01A-11D-A10M-09 1.114497e-181  2.407471e+01  5.142756e+00</span></span>
-<span id="cb33-79"><a href="sbssig.html#cb33-79"></a><span class="co">#&gt;  77: TCGA-E2-A14T-01A-11D-A10Y-09  1.818548e+01  1.757560e+01  7.623413e+00</span></span>
-<span id="cb33-80"><a href="sbssig.html#cb33-80"></a><span class="co">#&gt;  78: TCGA-E2-A152-01A-11D-A12B-09  3.004158e-05  1.904189e+01  1.453822e+02</span></span>
-<span id="cb33-81"><a href="sbssig.html#cb33-81"></a><span class="co">#&gt;  79: TCGA-E2-A15D-01A-11D-A10Y-09  1.239561e+01  2.367115e+01  1.043255e-01</span></span>
-<span id="cb33-82"><a href="sbssig.html#cb33-82"></a><span class="co">#&gt;  80: TCGA-E2-A15L-01A-11D-A12B-09 8.316254e-163  3.696156e+01  7.198468e+00</span></span>
-<span id="cb33-83"><a href="sbssig.html#cb33-83"></a><span class="co">#&gt;  81: TCGA-E2-A1BD-01A-11D-A12Q-09  1.325256e+01  2.837122e+01  2.099082e-01</span></span>
-<span id="cb33-84"><a href="sbssig.html#cb33-84"></a><span class="co">#&gt;  82: TCGA-E2-A1IH-01A-11D-A188-09  1.809753e+01  2.554536e+01  4.060186e+01</span></span>
-<span id="cb33-85"><a href="sbssig.html#cb33-85"></a><span class="co">#&gt;  83: TCGA-E2-A1II-01A-11D-A142-09  3.354037e+01  8.480730e-01 3.013800e-322</span></span>
-<span id="cb33-86"><a href="sbssig.html#cb33-86"></a><span class="co">#&gt;  84: TCGA-E2-A1IJ-01A-11D-A142-09  6.756677e+00  1.299390e+01 2.269978e-182</span></span>
-<span id="cb33-87"><a href="sbssig.html#cb33-87"></a><span class="co">#&gt;  85: TCGA-E2-A1L6-01A-11D-A13L-09  3.756995e+00  2.424052e+01  2.129975e-01</span></span>
-<span id="cb33-88"><a href="sbssig.html#cb33-88"></a><span class="co">#&gt;  86: TCGA-E2-A9RU-01A-11D-A41F-09  2.127087e+01  6.202103e+01  2.115210e+01</span></span>
-<span id="cb33-89"><a href="sbssig.html#cb33-89"></a><span class="co">#&gt;  87: TCGA-E9-A1NE-01A-21D-A14K-09  5.089464e+01  3.340837e+00  6.326526e+00</span></span>
-<span id="cb33-90"><a href="sbssig.html#cb33-90"></a><span class="co">#&gt;  88: TCGA-E9-A22A-01A-11D-A159-09  1.977296e+01  6.638223e+00  1.027258e+01</span></span>
-<span id="cb33-91"><a href="sbssig.html#cb33-91"></a><span class="co">#&gt;  89: TCGA-E9-A22E-01A-11D-A159-09  9.379149e+01  8.398077e+00  4.506802e+01</span></span>
-<span id="cb33-92"><a href="sbssig.html#cb33-92"></a><span class="co">#&gt;  90: TCGA-E9-A3QA-01A-61D-A228-09  3.295112e+01  3.947921e+00  2.814997e+01</span></span>
-<span id="cb33-93"><a href="sbssig.html#cb33-93"></a><span class="co">#&gt;  91: TCGA-E9-A5FL-01A-11D-A27P-09  9.173188e+01  1.165295e+01  2.949295e+01</span></span>
-<span id="cb33-94"><a href="sbssig.html#cb33-94"></a><span class="co">#&gt;  92: TCGA-EW-A1PA-01A-11D-A142-09  2.061895e+01  1.721686e+01  4.530208e+00</span></span>
-<span id="cb33-95"><a href="sbssig.html#cb33-95"></a><span class="co">#&gt;  93: TCGA-EW-A1PH-01A-11D-A14K-09  2.609288e+01  3.002828e+01  8.280088e+00</span></span>
-<span id="cb33-96"><a href="sbssig.html#cb33-96"></a><span class="co">#&gt;  94: TCGA-GM-A2DB-01A-31D-A19Y-09  8.511084e+01  2.993667e+01  1.374699e+01</span></span>
-<span id="cb33-97"><a href="sbssig.html#cb33-97"></a><span class="co">#&gt;  95: TCGA-LD-A9QF-01A-32D-A41F-09  1.531207e+01  2.246112e+01  1.427438e+00</span></span>
-<span id="cb33-98"><a href="sbssig.html#cb33-98"></a><span class="co">#&gt;  96: TCGA-LL-A5YP-01A-21D-A28B-09  7.894136e+01  6.635690e+00  2.079587e+01</span></span>
-<span id="cb33-99"><a href="sbssig.html#cb33-99"></a><span class="co">#&gt;  97: TCGA-LL-A73Z-01A-11D-A32I-09  2.442986e+01  2.675728e+01  2.533581e+00</span></span>
-<span id="cb33-100"><a href="sbssig.html#cb33-100"></a><span class="co">#&gt;  98: TCGA-OL-A5RY-01A-21D-A28B-09  7.440440e+00  7.048267e+00  1.414288e+00</span></span>
-<span id="cb33-101"><a href="sbssig.html#cb33-101"></a><span class="co">#&gt;  99: TCGA-PE-A5DD-01A-12D-A27P-09  5.246539e+00  3.625459e+01  4.294177e+01</span></span>
-<span id="cb33-102"><a href="sbssig.html#cb33-102"></a><span class="co">#&gt; 100: TCGA-S3-AA17-01A-11D-A41F-09  9.522553e+01  2.687635e+01  2.082856e+01</span></span>
-<span id="cb33-103"><a href="sbssig.html#cb33-103"></a><span class="co">#&gt;                            sample          Sig1          Sig2          Sig3</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="sbssig.html#cb34-1"></a><span class="kw">get_sig_exposure</span>(mt_sig2)</span>
+<span id="cb34-2"><a href="sbssig.html#cb34-2"></a><span class="co">#&gt;                            sample          Sig1          Sig2          Sig3</span></span>
+<span id="cb34-3"><a href="sbssig.html#cb34-3"></a><span class="co">#&gt;   1: TCGA-A1-A0SH-01A-11D-A099-09  3.215907e+01  1.659291e+01  8.705947e+01</span></span>
+<span id="cb34-4"><a href="sbssig.html#cb34-4"></a><span class="co">#&gt;   2: TCGA-A2-A04N-01A-11D-A10Y-09  1.583973e+01  3.247852e+01  3.137845e+00</span></span>
+<span id="cb34-5"><a href="sbssig.html#cb34-5"></a><span class="co">#&gt;   3: TCGA-A2-A0CP-01A-11W-A050-09  2.294741e+01  2.247648e+01  4.608987e+00</span></span>
+<span id="cb34-6"><a href="sbssig.html#cb34-6"></a><span class="co">#&gt;   4: TCGA-A2-A0EP-01A-52D-A22X-09  1.446574e+01  4.796753e-01  6.920098e+00</span></span>
+<span id="cb34-7"><a href="sbssig.html#cb34-7"></a><span class="co">#&gt;   5: TCGA-A2-A0EV-01A-11W-A050-09  3.525795e+01  2.549099e+01  1.757883e+01</span></span>
+<span id="cb34-8"><a href="sbssig.html#cb34-8"></a><span class="co">#&gt;   6: TCGA-A2-A0SX-01A-12D-A099-09  1.890198e+01  1.190887e+01  9.765504e+00</span></span>
+<span id="cb34-9"><a href="sbssig.html#cb34-9"></a><span class="co">#&gt;   7: TCGA-A2-A0T7-01A-21D-A099-09  7.058436e+00  2.206062e+01  2.063678e-01</span></span>
+<span id="cb34-10"><a href="sbssig.html#cb34-10"></a><span class="co">#&gt;   8: TCGA-A2-A0YF-01A-21D-A10G-09  1.308864e+01  2.872085e+01 3.276018e-121</span></span>
+<span id="cb34-11"><a href="sbssig.html#cb34-11"></a><span class="co">#&gt;   9: TCGA-A2-A25F-01A-11D-A167-09  8.956460e+00 2.075076e-322  0.000000e+00</span></span>
+<span id="cb34-12"><a href="sbssig.html#cb34-12"></a><span class="co">#&gt;  10: TCGA-A2-A3XW-01A-11D-A23C-09  1.022872e+01  7.998442e+00  6.307634e-01</span></span>
+<span id="cb34-13"><a href="sbssig.html#cb34-13"></a><span class="co">#&gt;  11: TCGA-A2-A4S1-01A-21D-A25Q-09  7.051307e+01  2.151502e+01  4.647996e+00</span></span>
+<span id="cb34-14"><a href="sbssig.html#cb34-14"></a><span class="co">#&gt;  12: TCGA-A7-A0D9-01A-31W-A071-09  2.911793e+01  1.460116e+01  1.642104e+01</span></span>
+<span id="cb34-15"><a href="sbssig.html#cb34-15"></a><span class="co">#&gt;  13: TCGA-A7-A13F-01A-11D-A12Q-09  1.445889e-99  7.200445e+01  1.005387e+01</span></span>
+<span id="cb34-16"><a href="sbssig.html#cb34-16"></a><span class="co">#&gt;  14: TCGA-A7-A5ZV-01A-11D-A28B-09  1.744084e+02  3.859699e+01  3.691587e+01</span></span>
+<span id="cb34-17"><a href="sbssig.html#cb34-17"></a><span class="co">#&gt;  15: TCGA-A8-A06P-01A-11W-A019-09  2.224565e+01  1.850442e+01  3.520406e+00</span></span>
+<span id="cb34-18"><a href="sbssig.html#cb34-18"></a><span class="co">#&gt;  16: TCGA-A8-A076-01A-21W-A019-09  3.334543e+01  4.665212e+01  1.243664e+01</span></span>
+<span id="cb34-19"><a href="sbssig.html#cb34-19"></a><span class="co">#&gt;  17: TCGA-A8-A07W-01A-11W-A019-09  1.027996e+02  4.510342e+01  2.145630e+01</span></span>
+<span id="cb34-20"><a href="sbssig.html#cb34-20"></a><span class="co">#&gt;  18: TCGA-A8-A084-01A-21W-A019-09  1.875160e+01  3.524792e+01  2.879974e+01</span></span>
+<span id="cb34-21"><a href="sbssig.html#cb34-21"></a><span class="co">#&gt;  19: TCGA-A8-A08S-01A-11W-A050-09  1.735008e+01  4.659754e+01  1.427450e-05</span></span>
+<span id="cb34-22"><a href="sbssig.html#cb34-22"></a><span class="co">#&gt;  20: TCGA-A8-A09G-01A-21W-A019-09  2.720241e-49  1.598340e+01  3.015537e+02</span></span>
+<span id="cb34-23"><a href="sbssig.html#cb34-23"></a><span class="co">#&gt;  21: TCGA-A8-A0A4-01A-11W-A019-09  1.301530e+01  2.414905e+01  9.673844e-01</span></span>
+<span id="cb34-24"><a href="sbssig.html#cb34-24"></a><span class="co">#&gt;  22: TCGA-A8-A0AB-01A-11W-A050-09  2.224326e+01  1.070162e+01  4.625000e+00</span></span>
+<span id="cb34-25"><a href="sbssig.html#cb34-25"></a><span class="co">#&gt;  23: TCGA-AC-A2B8-01A-11D-A17D-09  4.581254e-74  2.077930e+01  1.039934e+02</span></span>
+<span id="cb34-26"><a href="sbssig.html#cb34-26"></a><span class="co">#&gt;  24: TCGA-AC-A2FO-01A-11D-A17W-09  8.224234e+00  6.022061e+00  1.457732e+01</span></span>
+<span id="cb34-27"><a href="sbssig.html#cb34-27"></a><span class="co">#&gt;  25: TCGA-AC-A3YI-01A-21D-A23C-09  1.181688e+01  8.021717e+00 4.392543e-188</span></span>
+<span id="cb34-28"><a href="sbssig.html#cb34-28"></a><span class="co">#&gt;  26: TCGA-AC-A8OS-01A-12D-A41F-09  3.481344e+01  2.558226e+01  1.892168e+01</span></span>
+<span id="cb34-29"><a href="sbssig.html#cb34-29"></a><span class="co">#&gt;  27: TCGA-AN-A0FK-01A-11W-A050-09  2.057755e-97  5.410512e+01 6.931546e-201</span></span>
+<span id="cb34-30"><a href="sbssig.html#cb34-30"></a><span class="co">#&gt;  28: TCGA-AN-A0FT-01A-11W-A050-09  2.445782e+01  6.250409e+01  3.692872e+01</span></span>
+<span id="cb34-31"><a href="sbssig.html#cb34-31"></a><span class="co">#&gt;  29: TCGA-AN-A0XO-01A-11D-A10G-09  1.852324e+01  1.228874e+01  1.174155e+01</span></span>
+<span id="cb34-32"><a href="sbssig.html#cb34-32"></a><span class="co">#&gt;  30: TCGA-AO-A1KS-01A-11D-A13L-09  4.164234e+00  3.175461e+01  1.956542e+01</span></span>
+<span id="cb34-33"><a href="sbssig.html#cb34-33"></a><span class="co">#&gt;  31: TCGA-AQ-A54O-01A-11D-A25Q-09  3.055399e-28  2.459937e+01  5.953473e-01</span></span>
+<span id="cb34-34"><a href="sbssig.html#cb34-34"></a><span class="co">#&gt;  32: TCGA-AQ-A7U7-01A-22D-A351-09  1.358585e+01  1.441648e+01  7.330881e+01</span></span>
+<span id="cb34-35"><a href="sbssig.html#cb34-35"></a><span class="co">#&gt;  33: TCGA-AR-A0TP-01A-11D-A099-09  5.768672e+01  6.630986e+00  5.803076e+00</span></span>
+<span id="cb34-36"><a href="sbssig.html#cb34-36"></a><span class="co">#&gt;  34: TCGA-AR-A0U3-01A-11D-A10G-09  1.733324e+01  2.281135e+01 3.013800e-322</span></span>
+<span id="cb34-37"><a href="sbssig.html#cb34-37"></a><span class="co">#&gt;  35: TCGA-AR-A1AH-01A-11D-A12B-09  9.496609e+01  1.443596e+01  8.395297e+00</span></span>
+<span id="cb34-38"><a href="sbssig.html#cb34-38"></a><span class="co">#&gt;  36: TCGA-AR-A1AJ-01A-21D-A12Q-09  7.534377e+00  2.369358e+01  2.277121e+01</span></span>
+<span id="cb34-39"><a href="sbssig.html#cb34-39"></a><span class="co">#&gt;  37: TCGA-AR-A1AN-01A-11D-A12Q-09  6.529774e+00  2.102345e+01  5.820990e+00</span></span>
+<span id="cb34-40"><a href="sbssig.html#cb34-40"></a><span class="co">#&gt;  38: TCGA-AR-A24N-01A-11D-A167-09  2.004502e+01  2.261256e+01  4.435549e+00</span></span>
+<span id="cb34-41"><a href="sbssig.html#cb34-41"></a><span class="co">#&gt;  39: TCGA-AR-A252-01A-11D-A167-09  6.130705e+00  1.263644e+01 3.556170e-312</span></span>
+<span id="cb34-42"><a href="sbssig.html#cb34-42"></a><span class="co">#&gt;  40: TCGA-AR-A2LL-01A-11D-A17W-09  1.503319e+01  2.218907e+01 8.682292e-233</span></span>
+<span id="cb34-43"><a href="sbssig.html#cb34-43"></a><span class="co">#&gt;  41: TCGA-AR-A2LO-01A-31D-A18P-09  1.413060e+01  2.481548e+00  3.266687e+00</span></span>
+<span id="cb34-44"><a href="sbssig.html#cb34-44"></a><span class="co">#&gt;  42: TCGA-B6-A0IE-01A-11W-A050-09  2.018322e+01  1.947366e+01  2.614518e+00</span></span>
+<span id="cb34-45"><a href="sbssig.html#cb34-45"></a><span class="co">#&gt;  43: TCGA-B6-A0IM-01A-11W-A050-09  2.162813e+01  1.865495e+01  3.521674e-57</span></span>
+<span id="cb34-46"><a href="sbssig.html#cb34-46"></a><span class="co">#&gt;  44: TCGA-B6-A0IP-01A-11D-A045-09  1.442865e+01  3.592925e+01  8.112508e-01</span></span>
+<span id="cb34-47"><a href="sbssig.html#cb34-47"></a><span class="co">#&gt;  45: TCGA-B6-A0RV-01A-11D-A099-09 1.560069e-177  1.750629e+01  4.905081e+01</span></span>
+<span id="cb34-48"><a href="sbssig.html#cb34-48"></a><span class="co">#&gt;  46: TCGA-B6-A0WZ-01A-11D-A10G-09  6.958489e+00  6.417496e+00  8.073838e+01</span></span>
+<span id="cb34-49"><a href="sbssig.html#cb34-49"></a><span class="co">#&gt;  47: TCGA-B6-A0X1-01A-11D-A10G-09  4.814384e+01  2.024595e+01  2.160594e+01</span></span>
+<span id="cb34-50"><a href="sbssig.html#cb34-50"></a><span class="co">#&gt;  48: TCGA-B6-A1KC-01B-11D-A159-09  1.272953e+01  2.179920e+01  7.508081e-01</span></span>
+<span id="cb34-51"><a href="sbssig.html#cb34-51"></a><span class="co">#&gt;  49: TCGA-B6-A401-01A-11D-A23C-09  1.081423e+01  1.941480e+01  2.059546e-01</span></span>
+<span id="cb34-52"><a href="sbssig.html#cb34-52"></a><span class="co">#&gt;  50: TCGA-B6-A40C-01A-11D-A23C-09  1.830003e+01  3.154423e+01  2.647047e+00</span></span>
+<span id="cb34-53"><a href="sbssig.html#cb34-53"></a><span class="co">#&gt;  51: TCGA-BH-A0AV-01A-31D-A10Y-09  6.587096e+01  2.929251e+00  1.572687e+01</span></span>
+<span id="cb34-54"><a href="sbssig.html#cb34-54"></a><span class="co">#&gt;  52: TCGA-BH-A0BT-01A-11D-A12Q-09  6.568456e+00  3.775611e+01  2.752085e+00</span></span>
+<span id="cb34-55"><a href="sbssig.html#cb34-55"></a><span class="co">#&gt;  53: TCGA-BH-A0DL-01A-11D-A10Y-09  2.910845e+01  6.775503e+01  2.920173e+01</span></span>
+<span id="cb34-56"><a href="sbssig.html#cb34-56"></a><span class="co">#&gt;  54: TCGA-BH-A0DO-01B-11D-A12B-09  1.010194e+01  1.427067e+01  5.289001e+00</span></span>
+<span id="cb34-57"><a href="sbssig.html#cb34-57"></a><span class="co">#&gt;  55: TCGA-BH-A0DT-01A-21D-A12B-09  3.335864e+00  1.048536e+01  2.024691e+00</span></span>
+<span id="cb34-58"><a href="sbssig.html#cb34-58"></a><span class="co">#&gt;  56: TCGA-BH-A0GY-01A-11W-A071-09  1.586565e+01  2.609193e+01 7.451332e-171</span></span>
+<span id="cb34-59"><a href="sbssig.html#cb34-59"></a><span class="co">#&gt;  57: TCGA-BH-A0H6-01A-21W-A071-09  1.075555e+01  1.584751e+01 6.033999e-182</span></span>
+<span id="cb34-60"><a href="sbssig.html#cb34-60"></a><span class="co">#&gt;  58: TCGA-BH-A18K-01A-11D-A12B-09  2.201843e+01  1.341495e+01  3.649113e+01</span></span>
+<span id="cb34-61"><a href="sbssig.html#cb34-61"></a><span class="co">#&gt;  59: TCGA-BH-A1FU-01A-11D-A14G-09  6.503440e+01  2.615015e+01  2.435476e+01</span></span>
+<span id="cb34-62"><a href="sbssig.html#cb34-62"></a><span class="co">#&gt;  60: TCGA-BH-A202-01A-11D-A14K-09  9.499339e+00  1.718580e+01  8.725869e-01</span></span>
+<span id="cb34-63"><a href="sbssig.html#cb34-63"></a><span class="co">#&gt;  61: TCGA-BH-A5IZ-01A-11D-A27P-09  1.272274e+02  1.895424e+01  3.599703e+01</span></span>
+<span id="cb34-64"><a href="sbssig.html#cb34-64"></a><span class="co">#&gt;  62: TCGA-BH-A6R8-01A-21D-A33E-09  1.333218e+01  2.247599e+01  5.410627e+00</span></span>
+<span id="cb34-65"><a href="sbssig.html#cb34-65"></a><span class="co">#&gt;  63: TCGA-BH-A8G0-01A-11D-A351-09  5.329473e-61  2.044391e+01  0.000000e+00</span></span>
+<span id="cb34-66"><a href="sbssig.html#cb34-66"></a><span class="co">#&gt;  64: TCGA-C8-A131-01A-11D-A10Y-09  2.892229e+01  4.000734e+01  4.478124e+00</span></span>
+<span id="cb34-67"><a href="sbssig.html#cb34-67"></a><span class="co">#&gt;  65: TCGA-D8-A147-01A-11D-A10Y-09  1.170598e+02  3.708374e+00  7.345449e+01</span></span>
+<span id="cb34-68"><a href="sbssig.html#cb34-68"></a><span class="co">#&gt;  66: TCGA-D8-A1JG-01B-11D-A13L-09  8.510523e+01  6.270187e+01  2.084379e+01</span></span>
+<span id="cb34-69"><a href="sbssig.html#cb34-69"></a><span class="co">#&gt;  67: TCGA-D8-A1JH-01A-11D-A188-09  1.123474e+01  1.153185e+01  9.875530e-01</span></span>
+<span id="cb34-70"><a href="sbssig.html#cb34-70"></a><span class="co">#&gt;  68: TCGA-D8-A1JJ-01A-31D-A14K-09  1.266815e+01  3.477698e+01  5.170826e+01</span></span>
+<span id="cb34-71"><a href="sbssig.html#cb34-71"></a><span class="co">#&gt;  69: TCGA-D8-A1JT-01A-31D-A13L-09  2.184767e+01  2.034265e+01  0.000000e+00</span></span>
+<span id="cb34-72"><a href="sbssig.html#cb34-72"></a><span class="co">#&gt;  70: TCGA-D8-A1JU-01A-11D-A13L-09  9.975756e+00  9.782078e+00  6.083460e-02</span></span>
+<span id="cb34-73"><a href="sbssig.html#cb34-73"></a><span class="co">#&gt;  71: TCGA-D8-A1X7-01A-11D-A14K-09  1.298671e+01  1.517123e+01  3.439192e+00</span></span>
+<span id="cb34-74"><a href="sbssig.html#cb34-74"></a><span class="co">#&gt;  72: TCGA-D8-A1X8-01A-11D-A14K-09  1.460678e+01  1.557185e+01  2.380506e+00</span></span>
+<span id="cb34-75"><a href="sbssig.html#cb34-75"></a><span class="co">#&gt;  73: TCGA-D8-A1XL-01A-11D-A14K-09  7.763404e+01  2.055349e+01  7.951866e+00</span></span>
+<span id="cb34-76"><a href="sbssig.html#cb34-76"></a><span class="co">#&gt;  74: TCGA-D8-A27V-01A-12D-A17D-09  3.443723e-45  3.089542e+01  1.885408e+02</span></span>
+<span id="cb34-77"><a href="sbssig.html#cb34-77"></a><span class="co">#&gt;  75: TCGA-E2-A108-01A-13D-A10M-09  3.697383e+01  1.205971e+01  1.342740e+02</span></span>
+<span id="cb34-78"><a href="sbssig.html#cb34-78"></a><span class="co">#&gt;  76: TCGA-E2-A10F-01A-11D-A10M-09 1.114497e-181  2.407471e+01  5.142756e+00</span></span>
+<span id="cb34-79"><a href="sbssig.html#cb34-79"></a><span class="co">#&gt;  77: TCGA-E2-A14T-01A-11D-A10Y-09  1.818548e+01  1.757560e+01  7.623413e+00</span></span>
+<span id="cb34-80"><a href="sbssig.html#cb34-80"></a><span class="co">#&gt;  78: TCGA-E2-A152-01A-11D-A12B-09  3.004158e-05  1.904189e+01  1.453822e+02</span></span>
+<span id="cb34-81"><a href="sbssig.html#cb34-81"></a><span class="co">#&gt;  79: TCGA-E2-A15D-01A-11D-A10Y-09  1.239561e+01  2.367115e+01  1.043255e-01</span></span>
+<span id="cb34-82"><a href="sbssig.html#cb34-82"></a><span class="co">#&gt;  80: TCGA-E2-A15L-01A-11D-A12B-09 8.316254e-163  3.696156e+01  7.198468e+00</span></span>
+<span id="cb34-83"><a href="sbssig.html#cb34-83"></a><span class="co">#&gt;  81: TCGA-E2-A1BD-01A-11D-A12Q-09  1.325256e+01  2.837122e+01  2.099082e-01</span></span>
+<span id="cb34-84"><a href="sbssig.html#cb34-84"></a><span class="co">#&gt;  82: TCGA-E2-A1IH-01A-11D-A188-09  1.809753e+01  2.554536e+01  4.060186e+01</span></span>
+<span id="cb34-85"><a href="sbssig.html#cb34-85"></a><span class="co">#&gt;  83: TCGA-E2-A1II-01A-11D-A142-09  3.354037e+01  8.480730e-01 3.013800e-322</span></span>
+<span id="cb34-86"><a href="sbssig.html#cb34-86"></a><span class="co">#&gt;  84: TCGA-E2-A1IJ-01A-11D-A142-09  6.756677e+00  1.299390e+01 2.269978e-182</span></span>
+<span id="cb34-87"><a href="sbssig.html#cb34-87"></a><span class="co">#&gt;  85: TCGA-E2-A1L6-01A-11D-A13L-09  3.756995e+00  2.424052e+01  2.129975e-01</span></span>
+<span id="cb34-88"><a href="sbssig.html#cb34-88"></a><span class="co">#&gt;  86: TCGA-E2-A9RU-01A-11D-A41F-09  2.127087e+01  6.202103e+01  2.115210e+01</span></span>
+<span id="cb34-89"><a href="sbssig.html#cb34-89"></a><span class="co">#&gt;  87: TCGA-E9-A1NE-01A-21D-A14K-09  5.089464e+01  3.340837e+00  6.326526e+00</span></span>
+<span id="cb34-90"><a href="sbssig.html#cb34-90"></a><span class="co">#&gt;  88: TCGA-E9-A22A-01A-11D-A159-09  1.977296e+01  6.638223e+00  1.027258e+01</span></span>
+<span id="cb34-91"><a href="sbssig.html#cb34-91"></a><span class="co">#&gt;  89: TCGA-E9-A22E-01A-11D-A159-09  9.379149e+01  8.398077e+00  4.506802e+01</span></span>
+<span id="cb34-92"><a href="sbssig.html#cb34-92"></a><span class="co">#&gt;  90: TCGA-E9-A3QA-01A-61D-A228-09  3.295112e+01  3.947921e+00  2.814997e+01</span></span>
+<span id="cb34-93"><a href="sbssig.html#cb34-93"></a><span class="co">#&gt;  91: TCGA-E9-A5FL-01A-11D-A27P-09  9.173188e+01  1.165295e+01  2.949295e+01</span></span>
+<span id="cb34-94"><a href="sbssig.html#cb34-94"></a><span class="co">#&gt;  92: TCGA-EW-A1PA-01A-11D-A142-09  2.061895e+01  1.721686e+01  4.530208e+00</span></span>
+<span id="cb34-95"><a href="sbssig.html#cb34-95"></a><span class="co">#&gt;  93: TCGA-EW-A1PH-01A-11D-A14K-09  2.609288e+01  3.002828e+01  8.280088e+00</span></span>
+<span id="cb34-96"><a href="sbssig.html#cb34-96"></a><span class="co">#&gt;  94: TCGA-GM-A2DB-01A-31D-A19Y-09  8.511084e+01  2.993667e+01  1.374699e+01</span></span>
+<span id="cb34-97"><a href="sbssig.html#cb34-97"></a><span class="co">#&gt;  95: TCGA-LD-A9QF-01A-32D-A41F-09  1.531207e+01  2.246112e+01  1.427438e+00</span></span>
+<span id="cb34-98"><a href="sbssig.html#cb34-98"></a><span class="co">#&gt;  96: TCGA-LL-A5YP-01A-21D-A28B-09  7.894136e+01  6.635690e+00  2.079587e+01</span></span>
+<span id="cb34-99"><a href="sbssig.html#cb34-99"></a><span class="co">#&gt;  97: TCGA-LL-A73Z-01A-11D-A32I-09  2.442986e+01  2.675728e+01  2.533581e+00</span></span>
+<span id="cb34-100"><a href="sbssig.html#cb34-100"></a><span class="co">#&gt;  98: TCGA-OL-A5RY-01A-21D-A28B-09  7.440440e+00  7.048267e+00  1.414288e+00</span></span>
+<span id="cb34-101"><a href="sbssig.html#cb34-101"></a><span class="co">#&gt;  99: TCGA-PE-A5DD-01A-12D-A27P-09  5.246539e+00  3.625459e+01  4.294177e+01</span></span>
+<span id="cb34-102"><a href="sbssig.html#cb34-102"></a><span class="co">#&gt; 100: TCGA-S3-AA17-01A-11D-A41F-09  9.522553e+01  2.687635e+01  2.082856e+01</span></span>
+<span id="cb34-103"><a href="sbssig.html#cb34-103"></a><span class="co">#&gt;                            sample          Sig1          Sig2          Sig3</span></span></code></pre></div>
 <p>For plotting signature profile and exposure profile, please go to chapter <a href="sigobject.html#sigobject">8</a>.</p>
 <p>For optimizing signature exposure, please use <code>sig_fit()</code>.</p>
 

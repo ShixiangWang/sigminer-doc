@@ -112,6 +112,18 @@ show_sig_exposure(mt_sig, style = "cosmic")
 show_sig_exposure(sig_w, style = "cosmic")
 ```
 
+You can put group labels in the exposure profile.
+
+```{r}
+grp <- get_groups(sig_w)
+grp_label <- grp$group
+names(grp_label) <- grp$sample
+```
+
+```{r, fig.width=12}
+show_sig_exposure(sig_w, style = "cosmic", groups = grp_label)
+```
+
 Of note:
 
 - For COSMIC signatures, the absolute exposure is the estimated mutation counts.

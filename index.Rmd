@@ -145,6 +145,8 @@ The contents of this manual have been divided into 4 sections:
   - group analysis.
 - Other utilities.
 
+**All functions are well organized and documented at <https://shixiangwang.github.io/sigminer/reference/index.html> (For Chinese users, you can also read it at <https://shixiangwang.gitee.io/sigminer/reference/index.html>). For usage of a specific function fun, run `?fun` in your R console to see its documentation.**
+
 ## Citation and LICENSE  
 
 ```{r}

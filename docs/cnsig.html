@@ -201,7 +201,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>8.4</b> Catalogue Profile</a></li>
 </ul></li>
 <li class="part"><span><b>III Universal Analysis</b></span></li>
-<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis and Visualization</a></li>
+<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis and Visualization</a><ul>
+<li class="chapter" data-level="9.1" data-path="association-analysis.html"><a href="association-analysis.html#general-numeric-association"><i class="fa fa-check"></i><b>9.1</b> General numeric association</a></li>
+<li class="chapter" data-level="9.2" data-path="association-analysis.html"><a href="association-analysis.html#comprehensive-association"><i class="fa fa-check"></i><b>9.2</b> Comprehensive association</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>10</b> Group Analysis and Visualization</a><ul>
 <li class="chapter" data-level="10.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>10.1</b> Group Generation</a></li>
 <li class="chapter" data-level="10.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>10.2</b> Group Comparison Analysis</a></li>
@@ -272,65 +275,65 @@ To test if the method would works, we applied it to prostate cancer and successf
 <p>The import work is done by <code>read_copynumber()</code>, which supports <code>data.frame</code> or file, and even result directory from <strong>ABSOLUTE</strong>.</p>
 <p>Option <code>sigminer.sex</code> is used to control the processing of sex. If you don’t care the sex chromosomes (i.e. X and Y),
 you can ignore this setting after removing the X/Y segments, otherwise the <code>summary</code> in the result <code>cn</code> and tally process may be biased.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="cnsig.html#cb34-1"></a><span class="co">## Default is &quot;female&quot;</span></span>
-<span id="cb34-2"><a href="cnsig.html#cb34-2"></a><span class="co">## You can ignore the setting if all samples are females</span></span>
-<span id="cb34-3"><a href="cnsig.html#cb34-3"></a><span class="co">## But we recommend you set it</span></span>
-<span id="cb34-4"><a href="cnsig.html#cb34-4"></a><span class="kw">options</span>(<span class="dt">sigminer.sex =</span> <span class="st">&quot;male&quot;</span>)</span>
-<span id="cb34-5"><a href="cnsig.html#cb34-5"></a><span class="co">## For cohort contains both males and females,</span></span>
-<span id="cb34-6"><a href="cnsig.html#cb34-6"></a><span class="co">## set a data.frame with two columns, i.e.</span></span>
-<span id="cb34-7"><a href="cnsig.html#cb34-7"></a><span class="co">## options(sigminer.sex = sex_df),</span></span>
-<span id="cb34-8"><a href="cnsig.html#cb34-8"></a><span class="co">## which</span></span>
-<span id="cb34-9"><a href="cnsig.html#cb34-9"></a><span class="co">## sex_df = data.frame(sample = c(&quot;sample1&quot;, &quot;sample2&quot;,</span></span>
-<span id="cb34-10"><a href="cnsig.html#cb34-10"></a><span class="co">##                     sex = &quot;female&quot;, &quot;male&quot;))</span></span>
-<span id="cb34-11"><a href="cnsig.html#cb34-11"></a></span>
-<span id="cb34-12"><a href="cnsig.html#cb34-12"></a><span class="co"># Load toy dataset of absolute copynumber profile</span></span>
-<span id="cb34-13"><a href="cnsig.html#cb34-13"></a><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_segTab.RData&quot;</span>,</span>
-<span id="cb34-14"><a href="cnsig.html#cb34-14"></a>  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
-<span id="cb34-15"><a href="cnsig.html#cb34-15"></a>))</span>
-<span id="cb34-16"><a href="cnsig.html#cb34-16"></a>cn &lt;-<span class="st"> </span><span class="kw">read_copynumber</span>(segTabs,</span>
-<span id="cb34-17"><a href="cnsig.html#cb34-17"></a>  <span class="dt">seg_cols =</span> <span class="kw">c</span>(<span class="st">&quot;chromosome&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;end&quot;</span>, <span class="st">&quot;segVal&quot;</span>),</span>
-<span id="cb34-18"><a href="cnsig.html#cb34-18"></a>  <span class="dt">genome_build =</span> <span class="st">&quot;hg19&quot;</span>, <span class="dt">complement =</span> <span class="ot">FALSE</span>, <span class="dt">verbose =</span> <span class="ot">TRUE</span></span>
-<span id="cb34-19"><a href="cnsig.html#cb34-19"></a>)</span>
-<span id="cb34-20"><a href="cnsig.html#cb34-20"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:08]: Started.</span></span>
-<span id="cb34-21"><a href="cnsig.html#cb34-21"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:08]: Genome build  : hg19.</span></span>
-<span id="cb34-22"><a href="cnsig.html#cb34-22"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:08]: Genome measure: called.</span></span>
-<span id="cb34-23"><a href="cnsig.html#cb34-23"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:08]: Chromosome size database for build obtained.</span></span>
-<span id="cb34-24"><a href="cnsig.html#cb34-24"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:08]: Reading input.</span></span>
-<span id="cb34-25"><a href="cnsig.html#cb34-25"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:08]: A data frame as input detected.</span></span>
-<span id="cb34-26"><a href="cnsig.html#cb34-26"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:08]: Column names checked.</span></span>
-<span id="cb34-27"><a href="cnsig.html#cb34-27"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:08]: Column order set.</span></span>
-<span id="cb34-28"><a href="cnsig.html#cb34-28"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:08]: Chromosomes unified.</span></span>
-<span id="cb34-29"><a href="cnsig.html#cb34-29"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:08]: Data imported.</span></span>
-<span id="cb34-30"><a href="cnsig.html#cb34-30"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:08]: Segments info:</span></span>
-<span id="cb34-31"><a href="cnsig.html#cb34-31"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:08]:     Keep - 467</span></span>
-<span id="cb34-32"><a href="cnsig.html#cb34-32"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:08]:     Drop - 0</span></span>
-<span id="cb34-33"><a href="cnsig.html#cb34-33"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:08]: Segments sorted.</span></span>
-<span id="cb34-34"><a href="cnsig.html#cb34-34"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:08]: Joining adjacent segments with same copy number value. Be patient...</span></span>
-<span id="cb34-35"><a href="cnsig.html#cb34-35"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:09]: 400 segments left after joining.</span></span>
-<span id="cb34-36"><a href="cnsig.html#cb34-36"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:09]: Segmental table cleaned.</span></span>
-<span id="cb34-37"><a href="cnsig.html#cb34-37"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:09]: Annotating.</span></span>
-<span id="cb34-38"><a href="cnsig.html#cb34-38"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:09]: Annotation done.</span></span>
-<span id="cb34-39"><a href="cnsig.html#cb34-39"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:09]: Summarizing per sample.</span></span>
-<span id="cb34-40"><a href="cnsig.html#cb34-40"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:09]: Summarized.</span></span>
-<span id="cb34-41"><a href="cnsig.html#cb34-41"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:09]: Generating CopyNumber object.</span></span>
-<span id="cb34-42"><a href="cnsig.html#cb34-42"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:09]: Generated.</span></span>
-<span id="cb34-43"><a href="cnsig.html#cb34-43"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:09]: Validating object.</span></span>
-<span id="cb34-44"><a href="cnsig.html#cb34-44"></a><span class="co">#&gt; [32m✓[39m [2020-10-08 18:02:09]: Done.</span></span>
-<span id="cb34-45"><a href="cnsig.html#cb34-45"></a><span class="co">#&gt; [36mℹ[39m [2020-10-08 18:02:09]: 0.233 secs elapsed.</span></span>
-<span id="cb34-46"><a href="cnsig.html#cb34-46"></a>cn</span>
-<span id="cb34-47"><a href="cnsig.html#cb34-47"></a><span class="co">#&gt; An object of class CopyNumber </span></span>
-<span id="cb34-48"><a href="cnsig.html#cb34-48"></a><span class="co">#&gt; =============================</span></span>
-<span id="cb34-49"><a href="cnsig.html#cb34-49"></a><span class="co">#&gt;                           sample n_of_seg n_of_cnv n_of_amp n_of_del n_of_vchr cna_burden</span></span>
-<span id="cb34-50"><a href="cnsig.html#cb34-50"></a><span class="co">#&gt;  1: TCGA-DF-A2KN-01A-11D-A17U-01       33        6        5        1         4      0.000</span></span>
-<span id="cb34-51"><a href="cnsig.html#cb34-51"></a><span class="co">#&gt;  2: TCGA-19-2621-01B-01D-0911-01       33        8        5        3         5      0.099</span></span>
-<span id="cb34-52"><a href="cnsig.html#cb34-52"></a><span class="co">#&gt;  3: TCGA-B6-A0X5-01A-21D-A107-01       28        8        4        4         2      0.087</span></span>
-<span id="cb34-53"><a href="cnsig.html#cb34-53"></a><span class="co">#&gt;  4: TCGA-A8-A07S-01A-11D-A036-01       38       11        2        9         4      0.112</span></span>
-<span id="cb34-54"><a href="cnsig.html#cb34-54"></a><span class="co">#&gt;  5: TCGA-26-6174-01A-21D-1842-01       43       13        8        5         8      0.119</span></span>
-<span id="cb34-55"><a href="cnsig.html#cb34-55"></a><span class="co">#&gt;  6: TCGA-CV-7432-01A-11D-2128-01       40       16        7        9         9      0.198</span></span>
-<span id="cb34-56"><a href="cnsig.html#cb34-56"></a><span class="co">#&gt;  7: TCGA-06-0644-01A-02D-0310-01       46       19        5       14         8      0.165</span></span>
-<span id="cb34-57"><a href="cnsig.html#cb34-57"></a><span class="co">#&gt;  8: TCGA-A5-A0G2-01A-11D-A042-01       39       21        5       16        10      0.393</span></span>
-<span id="cb34-58"><a href="cnsig.html#cb34-58"></a><span class="co">#&gt;  9: TCGA-99-7458-01A-11D-2035-01       48       26       10       16        13      0.318</span></span>
-<span id="cb34-59"><a href="cnsig.html#cb34-59"></a><span class="co">#&gt; 10: TCGA-05-4417-01A-22D-1854-01       52       37       33        4        17      0.654</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="cnsig.html#cb35-1"></a><span class="co">## Default is &quot;female&quot;</span></span>
+<span id="cb35-2"><a href="cnsig.html#cb35-2"></a><span class="co">## You can ignore the setting if all samples are females</span></span>
+<span id="cb35-3"><a href="cnsig.html#cb35-3"></a><span class="co">## But we recommend you set it</span></span>
+<span id="cb35-4"><a href="cnsig.html#cb35-4"></a><span class="kw">options</span>(<span class="dt">sigminer.sex =</span> <span class="st">&quot;male&quot;</span>)</span>
+<span id="cb35-5"><a href="cnsig.html#cb35-5"></a><span class="co">## For cohort contains both males and females,</span></span>
+<span id="cb35-6"><a href="cnsig.html#cb35-6"></a><span class="co">## set a data.frame with two columns, i.e.</span></span>
+<span id="cb35-7"><a href="cnsig.html#cb35-7"></a><span class="co">## options(sigminer.sex = sex_df),</span></span>
+<span id="cb35-8"><a href="cnsig.html#cb35-8"></a><span class="co">## which</span></span>
+<span id="cb35-9"><a href="cnsig.html#cb35-9"></a><span class="co">## sex_df = data.frame(sample = c(&quot;sample1&quot;, &quot;sample2&quot;,</span></span>
+<span id="cb35-10"><a href="cnsig.html#cb35-10"></a><span class="co">##                     sex = &quot;female&quot;, &quot;male&quot;))</span></span>
+<span id="cb35-11"><a href="cnsig.html#cb35-11"></a></span>
+<span id="cb35-12"><a href="cnsig.html#cb35-12"></a><span class="co"># Load toy dataset of absolute copynumber profile</span></span>
+<span id="cb35-13"><a href="cnsig.html#cb35-13"></a><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_segTab.RData&quot;</span>,</span>
+<span id="cb35-14"><a href="cnsig.html#cb35-14"></a>  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
+<span id="cb35-15"><a href="cnsig.html#cb35-15"></a>))</span>
+<span id="cb35-16"><a href="cnsig.html#cb35-16"></a>cn &lt;-<span class="st"> </span><span class="kw">read_copynumber</span>(segTabs,</span>
+<span id="cb35-17"><a href="cnsig.html#cb35-17"></a>  <span class="dt">seg_cols =</span> <span class="kw">c</span>(<span class="st">&quot;chromosome&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;end&quot;</span>, <span class="st">&quot;segVal&quot;</span>),</span>
+<span id="cb35-18"><a href="cnsig.html#cb35-18"></a>  <span class="dt">genome_build =</span> <span class="st">&quot;hg19&quot;</span>, <span class="dt">complement =</span> <span class="ot">FALSE</span>, <span class="dt">verbose =</span> <span class="ot">TRUE</span></span>
+<span id="cb35-19"><a href="cnsig.html#cb35-19"></a>)</span>
+<span id="cb35-20"><a href="cnsig.html#cb35-20"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Started.</span></span>
+<span id="cb35-21"><a href="cnsig.html#cb35-21"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Genome build  : hg19.</span></span>
+<span id="cb35-22"><a href="cnsig.html#cb35-22"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Genome measure: called.</span></span>
+<span id="cb35-23"><a href="cnsig.html#cb35-23"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Chromosome size database for build obtained.</span></span>
+<span id="cb35-24"><a href="cnsig.html#cb35-24"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Reading input.</span></span>
+<span id="cb35-25"><a href="cnsig.html#cb35-25"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: A data frame as input detected.</span></span>
+<span id="cb35-26"><a href="cnsig.html#cb35-26"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Column names checked.</span></span>
+<span id="cb35-27"><a href="cnsig.html#cb35-27"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Column order set.</span></span>
+<span id="cb35-28"><a href="cnsig.html#cb35-28"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Chromosomes unified.</span></span>
+<span id="cb35-29"><a href="cnsig.html#cb35-29"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Data imported.</span></span>
+<span id="cb35-30"><a href="cnsig.html#cb35-30"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Segments info:</span></span>
+<span id="cb35-31"><a href="cnsig.html#cb35-31"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]:     Keep - 467</span></span>
+<span id="cb35-32"><a href="cnsig.html#cb35-32"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]:     Drop - 0</span></span>
+<span id="cb35-33"><a href="cnsig.html#cb35-33"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Segments sorted.</span></span>
+<span id="cb35-34"><a href="cnsig.html#cb35-34"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Joining adjacent segments with same copy number value. Be patient...</span></span>
+<span id="cb35-35"><a href="cnsig.html#cb35-35"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: 400 segments left after joining.</span></span>
+<span id="cb35-36"><a href="cnsig.html#cb35-36"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Segmental table cleaned.</span></span>
+<span id="cb35-37"><a href="cnsig.html#cb35-37"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Annotating.</span></span>
+<span id="cb35-38"><a href="cnsig.html#cb35-38"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Annotation done.</span></span>
+<span id="cb35-39"><a href="cnsig.html#cb35-39"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Summarizing per sample.</span></span>
+<span id="cb35-40"><a href="cnsig.html#cb35-40"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Summarized.</span></span>
+<span id="cb35-41"><a href="cnsig.html#cb35-41"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Generating CopyNumber object.</span></span>
+<span id="cb35-42"><a href="cnsig.html#cb35-42"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Generated.</span></span>
+<span id="cb35-43"><a href="cnsig.html#cb35-43"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: Validating object.</span></span>
+<span id="cb35-44"><a href="cnsig.html#cb35-44"></a><span class="co">#&gt; [32m✓[39m [2020-10-09 00:03:18]: Done.</span></span>
+<span id="cb35-45"><a href="cnsig.html#cb35-45"></a><span class="co">#&gt; [36mℹ[39m [2020-10-09 00:03:18]: 0.215 secs elapsed.</span></span>
+<span id="cb35-46"><a href="cnsig.html#cb35-46"></a>cn</span>
+<span id="cb35-47"><a href="cnsig.html#cb35-47"></a><span class="co">#&gt; An object of class CopyNumber </span></span>
+<span id="cb35-48"><a href="cnsig.html#cb35-48"></a><span class="co">#&gt; =============================</span></span>
+<span id="cb35-49"><a href="cnsig.html#cb35-49"></a><span class="co">#&gt;                           sample n_of_seg n_of_cnv n_of_amp n_of_del n_of_vchr cna_burden</span></span>
+<span id="cb35-50"><a href="cnsig.html#cb35-50"></a><span class="co">#&gt;  1: TCGA-DF-A2KN-01A-11D-A17U-01       33        6        5        1         4      0.000</span></span>
+<span id="cb35-51"><a href="cnsig.html#cb35-51"></a><span class="co">#&gt;  2: TCGA-19-2621-01B-01D-0911-01       33        8        5        3         5      0.099</span></span>
+<span id="cb35-52"><a href="cnsig.html#cb35-52"></a><span class="co">#&gt;  3: TCGA-B6-A0X5-01A-21D-A107-01       28        8        4        4         2      0.087</span></span>
+<span id="cb35-53"><a href="cnsig.html#cb35-53"></a><span class="co">#&gt;  4: TCGA-A8-A07S-01A-11D-A036-01       38       11        2        9         4      0.112</span></span>
+<span id="cb35-54"><a href="cnsig.html#cb35-54"></a><span class="co">#&gt;  5: TCGA-26-6174-01A-21D-1842-01       43       13        8        5         8      0.119</span></span>
+<span id="cb35-55"><a href="cnsig.html#cb35-55"></a><span class="co">#&gt;  6: TCGA-CV-7432-01A-11D-2128-01       40       16        7        9         9      0.198</span></span>
+<span id="cb35-56"><a href="cnsig.html#cb35-56"></a><span class="co">#&gt;  7: TCGA-06-0644-01A-02D-0310-01       46       19        5       14         8      0.165</span></span>
+<span id="cb35-57"><a href="cnsig.html#cb35-57"></a><span class="co">#&gt;  8: TCGA-A5-A0G2-01A-11D-A042-01       39       21        5       16        10      0.393</span></span>
+<span id="cb35-58"><a href="cnsig.html#cb35-58"></a><span class="co">#&gt;  9: TCGA-99-7458-01A-11D-2035-01       48       26       10       16        13      0.318</span></span>
+<span id="cb35-59"><a href="cnsig.html#cb35-59"></a><span class="co">#&gt; 10: TCGA-05-4417-01A-22D-1854-01       52       37       33        4        17      0.654</span></span></code></pre></div>
 <blockquote>
 <p>Currently, you can refer to <code>extract_facets_cnv()</code> and <code>extract_seqz_cnv()</code> in <a href="https://github.com/ShixiangWang/prad_signature/blob/master/analysis/src/99-functions.R" class="uri">https://github.com/ShixiangWang/prad_signature/blob/master/analysis/src/99-functions.R</a> to
 see how to get tidy data from a result directory of FACETS or Sequenza.</p>
@@ -340,23 +343,23 @@ see how to get tidy data from a result directory of FACETS or Sequenza.</p>
 <h2><span class="header-section-number">3.3</span> Tally Components</h2>
 <p>Currently, there are two methods for generating sample-by-component matrix, i.e. “W” or “M”.</p>
 <p>Option <code>sigminer.copynumber.max</code> is used to control the processing of max copy number values. Run <code>?sig_tally</code> to see more.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="cnsig.html#cb35-1"></a><span class="co">## Even you set max_copynumber = 20 in read_copynumber(),</span></span>
-<span id="cb35-2"><a href="cnsig.html#cb35-2"></a><span class="co">## the segmental copy number may be greater than 20</span></span>
-<span id="cb35-3"><a href="cnsig.html#cb35-3"></a><span class="co">## because for male samples, the X/Y segmental copy number</span></span>
-<span id="cb35-4"><a href="cnsig.html#cb35-4"></a><span class="co">## values will be doubled in tally process.</span></span>
-<span id="cb35-5"><a href="cnsig.html#cb35-5"></a><span class="co">## This setting will make copy number values of all segments</span></span>
-<span id="cb35-6"><a href="cnsig.html#cb35-6"></a><span class="co">## not greater than 20.</span></span>
-<span id="cb35-7"><a href="cnsig.html#cb35-7"></a><span class="kw">options</span>(<span class="dt">sigminer.copynumber.max =</span> <span class="dv">20</span>)</span>
-<span id="cb35-8"><a href="cnsig.html#cb35-8"></a></span>
-<span id="cb35-9"><a href="cnsig.html#cb35-9"></a><span class="co"># Load copy number object</span></span>
-<span id="cb35-10"><a href="cnsig.html#cb35-10"></a><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_copynumber.RData&quot;</span>,</span>
-<span id="cb35-11"><a href="cnsig.html#cb35-11"></a>  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
-<span id="cb35-12"><a href="cnsig.html#cb35-12"></a>))</span>
-<span id="cb35-13"><a href="cnsig.html#cb35-13"></a></span>
-<span id="cb35-14"><a href="cnsig.html#cb35-14"></a><span class="co"># Use method designed by Wang, Shixiang et al.</span></span>
-<span id="cb35-15"><a href="cnsig.html#cb35-15"></a>cn_tally_W &lt;-<span class="st"> </span><span class="kw">sig_tally</span>(cn, <span class="dt">method =</span> <span class="st">&quot;W&quot;</span>)</span>
-<span id="cb35-16"><a href="cnsig.html#cb35-16"></a><span class="co"># Use method designed by Macintyre et al.</span></span>
-<span id="cb35-17"><a href="cnsig.html#cb35-17"></a>cn_tally_M &lt;-<span class="st"> </span><span class="kw">sig_tally</span>(cn, <span class="dt">method =</span> <span class="st">&quot;M&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cnsig.html#cb36-1"></a><span class="co">## Even you set max_copynumber = 20 in read_copynumber(),</span></span>
+<span id="cb36-2"><a href="cnsig.html#cb36-2"></a><span class="co">## the segmental copy number may be greater than 20</span></span>
+<span id="cb36-3"><a href="cnsig.html#cb36-3"></a><span class="co">## because for male samples, the X/Y segmental copy number</span></span>
+<span id="cb36-4"><a href="cnsig.html#cb36-4"></a><span class="co">## values will be doubled in tally process.</span></span>
+<span id="cb36-5"><a href="cnsig.html#cb36-5"></a><span class="co">## This setting will make copy number values of all segments</span></span>
+<span id="cb36-6"><a href="cnsig.html#cb36-6"></a><span class="co">## not greater than 20.</span></span>
+<span id="cb36-7"><a href="cnsig.html#cb36-7"></a><span class="kw">options</span>(<span class="dt">sigminer.copynumber.max =</span> <span class="dv">20</span>)</span>
+<span id="cb36-8"><a href="cnsig.html#cb36-8"></a></span>
+<span id="cb36-9"><a href="cnsig.html#cb36-9"></a><span class="co"># Load copy number object</span></span>
+<span id="cb36-10"><a href="cnsig.html#cb36-10"></a><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_copynumber.RData&quot;</span>,</span>
+<span id="cb36-11"><a href="cnsig.html#cb36-11"></a>  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
+<span id="cb36-12"><a href="cnsig.html#cb36-12"></a>))</span>
+<span id="cb36-13"><a href="cnsig.html#cb36-13"></a></span>
+<span id="cb36-14"><a href="cnsig.html#cb36-14"></a><span class="co"># Use method designed by Wang, Shixiang et al.</span></span>
+<span id="cb36-15"><a href="cnsig.html#cb36-15"></a>cn_tally_W &lt;-<span class="st"> </span><span class="kw">sig_tally</span>(cn, <span class="dt">method =</span> <span class="st">&quot;W&quot;</span>)</span>
+<span id="cb36-16"><a href="cnsig.html#cb36-16"></a><span class="co"># Use method designed by Macintyre et al.</span></span>
+<span id="cb36-17"><a href="cnsig.html#cb36-17"></a>cn_tally_M &lt;-<span class="st"> </span><span class="kw">sig_tally</span>(cn, <span class="dt">method =</span> <span class="st">&quot;M&quot;</span>)</span></code></pre></div>
 <blockquote>
 <p>You can set <code>options(sigminer.sex = "male", sigminer.copynumber.max = 20)</code> at the top of your code
 to avoid setting them in two places.</p>
@@ -368,15 +371,15 @@ the <code>sigminer.sex</code> option has effects on <code>read_copynumber()</cod
 <div id="extract-signatures" class="section level2">
 <h2><span class="header-section-number">3.4</span> Extract Signatures</h2>
 <p>When you get the matrix, you can just do the signature extraction as SBS signatures (see chapter Chapter <a href="sbssig.html#sbssig">2</a>). So here we won’t talk much.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cnsig.html#cb36-1"></a>cn_tally_W<span class="op">$</span>nmf_matrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
-<span id="cb36-2"><a href="cnsig.html#cb36-2"></a><span class="co">#&gt;                              BP10MB[0] BP10MB[1] BP10MB[2] BP10MB[3] BP10MB[4]</span></span>
-<span id="cb36-3"><a href="cnsig.html#cb36-3"></a><span class="co">#&gt; TCGA-05-4417-01A-22D-1854-01       275        20         5         0         0</span></span>
-<span id="cb36-4"><a href="cnsig.html#cb36-4"></a><span class="co">#&gt; TCGA-06-0644-01A-02D-0310-01       289         5         4         0         1</span></span>
-<span id="cb36-5"><a href="cnsig.html#cb36-5"></a><span class="co">#&gt; TCGA-19-2621-01B-01D-0911-01       294         2         3         1         0</span></span>
-<span id="cb36-6"><a href="cnsig.html#cb36-6"></a><span class="co">#&gt; TCGA-26-6174-01A-21D-1842-01       288         4         7         1         0</span></span>
-<span id="cb36-7"><a href="cnsig.html#cb36-7"></a><span class="co">#&gt; TCGA-99-7458-01A-11D-2035-01       284         9         5         1         1</span></span></code></pre></div>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="cnsig.html#cb37-1"></a><span class="co"># library(NMF)</span></span>
-<span id="cb37-2"><a href="cnsig.html#cb37-2"></a>sig_w &lt;-<span class="st"> </span><span class="kw">sig_extract</span>(cn_tally_W<span class="op">$</span>nmf_matrix, <span class="dt">n_sig =</span> <span class="dv">2</span>, <span class="dt">pConstant =</span> <span class="fl">1e-13</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="cnsig.html#cb37-1"></a>cn_tally_W<span class="op">$</span>nmf_matrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb37-2"><a href="cnsig.html#cb37-2"></a><span class="co">#&gt;                              BP10MB[0] BP10MB[1] BP10MB[2] BP10MB[3] BP10MB[4]</span></span>
+<span id="cb37-3"><a href="cnsig.html#cb37-3"></a><span class="co">#&gt; TCGA-05-4417-01A-22D-1854-01       275        20         5         0         0</span></span>
+<span id="cb37-4"><a href="cnsig.html#cb37-4"></a><span class="co">#&gt; TCGA-06-0644-01A-02D-0310-01       289         5         4         0         1</span></span>
+<span id="cb37-5"><a href="cnsig.html#cb37-5"></a><span class="co">#&gt; TCGA-19-2621-01B-01D-0911-01       294         2         3         1         0</span></span>
+<span id="cb37-6"><a href="cnsig.html#cb37-6"></a><span class="co">#&gt; TCGA-26-6174-01A-21D-1842-01       288         4         7         1         0</span></span>
+<span id="cb37-7"><a href="cnsig.html#cb37-7"></a><span class="co">#&gt; TCGA-99-7458-01A-11D-2035-01       284         9         5         1         1</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="cnsig.html#cb38-1"></a><span class="co"># library(NMF)</span></span>
+<span id="cb38-2"><a href="cnsig.html#cb38-2"></a>sig_w &lt;-<span class="st"> </span><span class="kw">sig_extract</span>(cn_tally_W<span class="op">$</span>nmf_matrix, <span class="dt">n_sig =</span> <span class="dv">2</span>, <span class="dt">pConstant =</span> <span class="fl">1e-13</span>)</span></code></pre></div>
 
 </div>
 </div>

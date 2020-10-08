@@ -201,7 +201,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>8.4</b> Catalogue Profile</a></li>
 </ul></li>
 <li class="part"><span><b>III Universal Analysis</b></span></li>
-<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis and Visualization</a></li>
+<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis and Visualization</a><ul>
+<li class="chapter" data-level="9.1" data-path="association-analysis.html"><a href="association-analysis.html#general-numeric-association"><i class="fa fa-check"></i><b>9.1</b> General numeric association</a></li>
+<li class="chapter" data-level="9.2" data-path="association-analysis.html"><a href="association-analysis.html#comprehensive-association"><i class="fa fa-check"></i><b>9.2</b> Comprehensive association</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>10</b> Group Analysis and Visualization</a><ul>
 <li class="chapter" data-level="10.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>10.1</b> Group Generation</a></li>
 <li class="chapter" data-level="10.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>10.2</b> Group Comparison Analysis</a></li>
@@ -237,118 +240,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="convert" class="section level1">
 <h1><span class="header-section-number">Chapter 12</span> SBS Signature Conversion</h1>
 <p>Converts signatures between two representations relative to different sets of mutational opportunities. Currently, only SBS signature is supported.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="convert.html#cb79-1"></a><span class="co"># Load SBS signature</span></span>
-<span id="cb79-2"><a href="convert.html#cb79-2"></a><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_mutational_signature.RData&quot;</span>,</span>
-<span id="cb79-3"><a href="convert.html#cb79-3"></a>  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
-<span id="cb79-4"><a href="convert.html#cb79-4"></a>))</span>
-<span id="cb79-5"><a href="convert.html#cb79-5"></a><span class="co"># Exome-relative to Genome-relative</span></span>
-<span id="cb79-6"><a href="convert.html#cb79-6"></a>sig_converted &lt;-<span class="st"> </span><span class="kw">sig_convert</span>(sig2,</span>
-<span id="cb79-7"><a href="convert.html#cb79-7"></a>  <span class="dt">from =</span> <span class="st">&quot;human-exome&quot;</span>,</span>
-<span id="cb79-8"><a href="convert.html#cb79-8"></a>  <span class="dt">to =</span> <span class="st">&quot;human-genome&quot;</span></span>
-<span id="cb79-9"><a href="convert.html#cb79-9"></a>)</span>
-<span id="cb79-10"><a href="convert.html#cb79-10"></a>sig_converted</span>
-<span id="cb79-11"><a href="convert.html#cb79-11"></a><span class="co">#&gt;                  Sig1          Sig2          Sig3</span></span>
-<span id="cb79-12"><a href="convert.html#cb79-12"></a><span class="co">#&gt; A[C&gt;A]A  0.000000e+00  1.283652e-02 2.354578e-204</span></span>
-<span id="cb79-13"><a href="convert.html#cb79-13"></a><span class="co">#&gt; A[C&gt;A]C  0.000000e+00  1.866572e-02  0.000000e+00</span></span>
-<span id="cb79-14"><a href="convert.html#cb79-14"></a><span class="co">#&gt; A[C&gt;A]G  0.000000e+00  1.618700e-03  0.000000e+00</span></span>
-<span id="cb79-15"><a href="convert.html#cb79-15"></a><span class="co">#&gt; A[C&gt;A]T  0.000000e+00  7.572233e-03  0.000000e+00</span></span>
-<span id="cb79-16"><a href="convert.html#cb79-16"></a><span class="co">#&gt; C[C&gt;A]A  0.000000e+00  1.209076e-02  0.000000e+00</span></span>
-<span id="cb79-17"><a href="convert.html#cb79-17"></a><span class="co">#&gt; C[C&gt;A]C  0.000000e+00  7.032249e-03 1.170400e-133</span></span>
-<span id="cb79-18"><a href="convert.html#cb79-18"></a><span class="co">#&gt; C[C&gt;A]G  0.000000e+00  3.839313e-03 1.165310e-269</span></span>
-<span id="cb79-19"><a href="convert.html#cb79-19"></a><span class="co">#&gt; C[C&gt;A]T  0.000000e+00  1.166974e-02  0.000000e+00</span></span>
-<span id="cb79-20"><a href="convert.html#cb79-20"></a><span class="co">#&gt; G[C&gt;A]A  0.000000e+00  1.025669e-02  4.089543e-15</span></span>
-<span id="cb79-21"><a href="convert.html#cb79-21"></a><span class="co">#&gt; G[C&gt;A]C 2.975389e-296  4.002311e-03  0.000000e+00</span></span>
-<span id="cb79-22"><a href="convert.html#cb79-22"></a><span class="co">#&gt; G[C&gt;A]G  4.796114e-02 4.527374e-117  0.000000e+00</span></span>
-<span id="cb79-23"><a href="convert.html#cb79-23"></a><span class="co">#&gt; G[C&gt;A]T  0.000000e+00  5.994876e-03 1.669814e-131</span></span>
-<span id="cb79-24"><a href="convert.html#cb79-24"></a><span class="co">#&gt; T[C&gt;A]A  0.000000e+00  3.324941e-96  7.673114e-02</span></span>
-<span id="cb79-25"><a href="convert.html#cb79-25"></a><span class="co">#&gt; T[C&gt;A]C  0.000000e+00  1.467589e-02 9.720402e-229</span></span>
-<span id="cb79-26"><a href="convert.html#cb79-26"></a><span class="co">#&gt; T[C&gt;A]G  0.000000e+00  3.199454e-03  0.000000e+00</span></span>
-<span id="cb79-27"><a href="convert.html#cb79-27"></a><span class="co">#&gt; T[C&gt;A]T  0.000000e+00  2.338506e-02  0.000000e+00</span></span>
-<span id="cb79-28"><a href="convert.html#cb79-28"></a><span class="co">#&gt; A[C&gt;G]A  0.000000e+00  1.198076e-02 1.210238e-153</span></span>
-<span id="cb79-29"><a href="convert.html#cb79-29"></a><span class="co">#&gt; A[C&gt;G]C  0.000000e+00  3.999796e-03  0.000000e+00</span></span>
-<span id="cb79-30"><a href="convert.html#cb79-30"></a><span class="co">#&gt; A[C&gt;G]G  9.976549e-02  7.184837e-58  0.000000e+00</span></span>
-<span id="cb79-31"><a href="convert.html#cb79-31"></a><span class="co">#&gt; A[C&gt;G]T  0.000000e+00  7.572233e-03 9.731662e-108</span></span>
-<span id="cb79-32"><a href="convert.html#cb79-32"></a><span class="co">#&gt; C[C&gt;G]A  0.000000e+00  8.732217e-03  1.472610e-34</span></span>
-<span id="cb79-33"><a href="convert.html#cb79-33"></a><span class="co">#&gt; C[C&gt;G]C  0.000000e+00  1.875266e-03  0.000000e+00</span></span>
-<span id="cb79-34"><a href="convert.html#cb79-34"></a><span class="co">#&gt; C[C&gt;G]G  0.000000e+00  4.429976e-03  1.144811e-70</span></span>
-<span id="cb79-35"><a href="convert.html#cb79-35"></a><span class="co">#&gt; C[C&gt;G]T  1.398527e-01  1.003533e-19  0.000000e+00</span></span>
-<span id="cb79-36"><a href="convert.html#cb79-36"></a><span class="co">#&gt; G[C&gt;G]A 1.227107e-293  7.521572e-03 2.969058e-285</span></span>
-<span id="cb79-37"><a href="convert.html#cb79-37"></a><span class="co">#&gt; G[C&gt;G]C  0.000000e+00  3.001734e-03 2.665595e-168</span></span>
-<span id="cb79-38"><a href="convert.html#cb79-38"></a><span class="co">#&gt; G[C&gt;G]G  0.000000e+00  2.178881e-03  0.000000e+00</span></span>
-<span id="cb79-39"><a href="convert.html#cb79-39"></a><span class="co">#&gt; G[C&gt;G]T  0.000000e+00  3.996584e-03  0.000000e+00</span></span>
-<span id="cb79-40"><a href="convert.html#cb79-40"></a><span class="co">#&gt; T[C&gt;G]A  0.000000e+00  4.493267e-03 2.338585e-311</span></span>
-<span id="cb79-41"><a href="convert.html#cb79-41"></a><span class="co">#&gt; T[C&gt;G]C  0.000000e+00  5.336688e-03 1.100445e-248</span></span>
-<span id="cb79-42"><a href="convert.html#cb79-42"></a><span class="co">#&gt; T[C&gt;G]G  0.000000e+00  5.027714e-03 2.505791e-283</span></span>
-<span id="cb79-43"><a href="convert.html#cb79-43"></a><span class="co">#&gt; T[C&gt;G]T  0.000000e+00  8.094828e-03  4.211703e-12</span></span>
-<span id="cb79-44"><a href="convert.html#cb79-44"></a><span class="co">#&gt; A[C&gt;T]A  0.000000e+00  4.278842e-02 6.186711e-285</span></span>
-<span id="cb79-45"><a href="convert.html#cb79-45"></a><span class="co">#&gt; A[C&gt;T]C  0.000000e+00  3.266500e-02 4.009287e-180</span></span>
-<span id="cb79-46"><a href="convert.html#cb79-46"></a><span class="co">#&gt; A[C&gt;T]G  0.000000e+00  8.943317e-02 1.936180e-271</span></span>
-<span id="cb79-47"><a href="convert.html#cb79-47"></a><span class="co">#&gt; A[C&gt;T]T  0.000000e+00  2.366323e-02  0.000000e+00</span></span>
-<span id="cb79-48"><a href="convert.html#cb79-48"></a><span class="co">#&gt; C[C&gt;T]A  0.000000e+00  2.552494e-02  0.000000e+00</span></span>
-<span id="cb79-49"><a href="convert.html#cb79-49"></a><span class="co">#&gt; C[C&gt;T]C  0.000000e+00  1.406450e-02 1.334078e-226</span></span>
-<span id="cb79-50"><a href="convert.html#cb79-50"></a><span class="co">#&gt; C[C&gt;T]G  0.000000e+00  5.463637e-02 9.737288e-158</span></span>
-<span id="cb79-51"><a href="convert.html#cb79-51"></a><span class="co">#&gt; C[C&gt;T]T  0.000000e+00  3.695418e-02 4.246509e-172</span></span>
-<span id="cb79-52"><a href="convert.html#cb79-52"></a><span class="co">#&gt; G[C&gt;T]A  0.000000e+00 1.550033e-134  1.379990e-01</span></span>
-<span id="cb79-53"><a href="convert.html#cb79-53"></a><span class="co">#&gt; G[C&gt;T]C  0.000000e+00  2.401387e-02 9.655208e-197</span></span>
-<span id="cb79-54"><a href="convert.html#cb79-54"></a><span class="co">#&gt; G[C&gt;T]G  0.000000e+00  5.665090e-02 1.322415e-193</span></span>
-<span id="cb79-55"><a href="convert.html#cb79-55"></a><span class="co">#&gt; G[C&gt;T]T  0.000000e+00  3.197267e-02 1.483309e-124</span></span>
-<span id="cb79-56"><a href="convert.html#cb79-56"></a><span class="co">#&gt; T[C&gt;T]A  0.000000e+00  3.504749e-02 1.602583e-125</span></span>
-<span id="cb79-57"><a href="convert.html#cb79-57"></a><span class="co">#&gt; T[C&gt;T]C  0.000000e+00  2.868470e-02 2.192251e-133</span></span>
-<span id="cb79-58"><a href="convert.html#cb79-58"></a><span class="co">#&gt; T[C&gt;T]G  0.000000e+00  5.607061e-45  3.725237e-01</span></span>
-<span id="cb79-59"><a href="convert.html#cb79-59"></a><span class="co">#&gt; T[C&gt;T]T  0.000000e+00  2.248563e-02 5.991874e-150</span></span>
-<span id="cb79-60"><a href="convert.html#cb79-60"></a><span class="co">#&gt; A[T&gt;A]A  0.000000e+00 8.169022e-163 4.909543e-207</span></span>
-<span id="cb79-61"><a href="convert.html#cb79-61"></a><span class="co">#&gt; A[T&gt;A]C  0.000000e+00  9.451235e-03 9.169290e-161</span></span>
-<span id="cb79-62"><a href="convert.html#cb79-62"></a><span class="co">#&gt; A[T&gt;A]G  0.000000e+00 1.860257e-209  3.781700e-02</span></span>
-<span id="cb79-63"><a href="convert.html#cb79-63"></a><span class="co">#&gt; A[T&gt;A]T  0.000000e+00  3.646724e-03  0.000000e+00</span></span>
-<span id="cb79-64"><a href="convert.html#cb79-64"></a><span class="co">#&gt; C[T&gt;A]A  0.000000e+00  9.626354e-63 1.877035e-152</span></span>
-<span id="cb79-65"><a href="convert.html#cb79-65"></a><span class="co">#&gt; C[T&gt;A]C  0.000000e+00  4.098575e-03  8.954807e-03</span></span>
-<span id="cb79-66"><a href="convert.html#cb79-66"></a><span class="co">#&gt; C[T&gt;A]G  0.000000e+00  7.584736e-03  1.779246e-46</span></span>
-<span id="cb79-67"><a href="convert.html#cb79-67"></a><span class="co">#&gt; C[T&gt;A]T  0.000000e+00  4.886651e-03  0.000000e+00</span></span>
-<span id="cb79-68"><a href="convert.html#cb79-68"></a><span class="co">#&gt; G[T&gt;A]A  0.000000e+00 1.923466e-257  1.645056e-02</span></span>
-<span id="cb79-69"><a href="convert.html#cb79-69"></a><span class="co">#&gt; G[T&gt;A]C  0.000000e+00  5.990275e-03 2.816093e-138</span></span>
-<span id="cb79-70"><a href="convert.html#cb79-70"></a><span class="co">#&gt; G[T&gt;A]G  0.000000e+00  2.491146e-03 5.966918e-137</span></span>
-<span id="cb79-71"><a href="convert.html#cb79-71"></a><span class="co">#&gt; G[T&gt;A]T  1.780073e-01 1.470587e-107  0.000000e+00</span></span>
-<span id="cb79-72"><a href="convert.html#cb79-72"></a><span class="co">#&gt; T[T&gt;A]A  0.000000e+00  0.000000e+00  1.576605e-78</span></span>
-<span id="cb79-73"><a href="convert.html#cb79-73"></a><span class="co">#&gt; T[T&gt;A]C  0.000000e+00 3.652510e-193  3.025830e-02</span></span>
-<span id="cb79-74"><a href="convert.html#cb79-74"></a><span class="co">#&gt; T[T&gt;A]G  0.000000e+00  0.000000e+00  3.102984e-02</span></span>
-<span id="cb79-75"><a href="convert.html#cb79-75"></a><span class="co">#&gt; T[T&gt;A]T  0.000000e+00  5.570191e-03 2.661350e-186</span></span>
-<span id="cb79-76"><a href="convert.html#cb79-76"></a><span class="co">#&gt; A[T&gt;C]A  0.000000e+00  3.673499e-02 2.037390e-236</span></span>
-<span id="cb79-77"><a href="convert.html#cb79-77"></a><span class="co">#&gt; A[T&gt;C]C  0.000000e+00  4.875997e-80  8.069896e-02</span></span>
-<span id="cb79-78"><a href="convert.html#cb79-78"></a><span class="co">#&gt; A[T&gt;C]G  0.000000e+00  2.533400e-02 4.653276e-300</span></span>
-<span id="cb79-79"><a href="convert.html#cb79-79"></a><span class="co">#&gt; A[T&gt;C]T  0.000000e+00  3.403610e-02 1.137147e-235</span></span>
-<span id="cb79-80"><a href="convert.html#cb79-80"></a><span class="co">#&gt; C[T&gt;C]A  0.000000e+00  7.619558e-03  1.273356e-94</span></span>
-<span id="cb79-81"><a href="convert.html#cb79-81"></a><span class="co">#&gt; C[T&gt;C]C  0.000000e+00  1.116095e-02 1.501723e-122</span></span>
-<span id="cb79-82"><a href="convert.html#cb79-82"></a><span class="co">#&gt; C[T&gt;C]G  0.000000e+00  9.506418e-50  9.321794e-02</span></span>
-<span id="cb79-83"><a href="convert.html#cb79-83"></a><span class="co">#&gt; C[T&gt;C]T  0.000000e+00  1.172796e-02  1.679251e-87</span></span>
-<span id="cb79-84"><a href="convert.html#cb79-84"></a><span class="co">#&gt; G[T&gt;C]A  0.000000e+00  4.585040e-03  5.536247e-03</span></span>
-<span id="cb79-85"><a href="convert.html#cb79-85"></a><span class="co">#&gt; G[T&gt;C]C  0.000000e+00 5.073564e-255  4.133148e-02</span></span>
-<span id="cb79-86"><a href="convert.html#cb79-86"></a><span class="co">#&gt; G[T&gt;C]G  0.000000e+00  6.850650e-03  0.000000e+00</span></span>
-<span id="cb79-87"><a href="convert.html#cb79-87"></a><span class="co">#&gt; G[T&gt;C]T  3.036787e-50  1.058999e-02 7.624782e-161</span></span>
-<span id="cb79-88"><a href="convert.html#cb79-88"></a><span class="co">#&gt; T[T&gt;C]A  0.000000e+00 1.774320e-183  1.917769e-02</span></span>
-<span id="cb79-89"><a href="convert.html#cb79-89"></a><span class="co">#&gt; T[T&gt;C]C 3.471970e-224  7.796288e-03  0.000000e+00</span></span>
-<span id="cb79-90"><a href="convert.html#cb79-90"></a><span class="co">#&gt; T[T&gt;C]G  0.000000e+00  9.993850e-03  0.000000e+00</span></span>
-<span id="cb79-91"><a href="convert.html#cb79-91"></a><span class="co">#&gt; T[T&gt;C]T  0.000000e+00  2.116673e-02 4.729625e-249</span></span>
-<span id="cb79-92"><a href="convert.html#cb79-92"></a><span class="co">#&gt; A[T&gt;G]A  0.000000e+00  6.559820e-03  0.000000e+00</span></span>
-<span id="cb79-93"><a href="convert.html#cb79-93"></a><span class="co">#&gt; A[T&gt;G]C  0.000000e+00 8.576821e-159  1.467254e-02</span></span>
-<span id="cb79-94"><a href="convert.html#cb79-94"></a><span class="co">#&gt; A[T&gt;G]G  0.000000e+00  1.544237e-03  3.140069e-03</span></span>
-<span id="cb79-95"><a href="convert.html#cb79-95"></a><span class="co">#&gt; A[T&gt;G]T  0.000000e+00  3.646724e-03  0.000000e+00</span></span>
-<span id="cb79-96"><a href="convert.html#cb79-96"></a><span class="co">#&gt; C[T&gt;G]A  0.000000e+00  1.088508e-03  0.000000e+00</span></span>
-<span id="cb79-97"><a href="convert.html#cb79-97"></a><span class="co">#&gt; C[T&gt;G]C  0.000000e+00  5.252213e-03 5.352907e-111</span></span>
-<span id="cb79-98"><a href="convert.html#cb79-98"></a><span class="co">#&gt; C[T&gt;G]G  0.000000e+00  6.320613e-03  0.000000e+00</span></span>
-<span id="cb79-99"><a href="convert.html#cb79-99"></a><span class="co">#&gt; C[T&gt;G]T  1.505897e-01  2.544085e-94 2.345935e-218</span></span>
-<span id="cb79-100"><a href="convert.html#cb79-100"></a><span class="co">#&gt; G[T&gt;G]A  9.796461e-02  2.199487e-93 1.446688e-154</span></span>
-<span id="cb79-101"><a href="convert.html#cb79-101"></a><span class="co">#&gt; G[T&gt;G]C  0.000000e+00  1.996758e-03  0.000000e+00</span></span>
-<span id="cb79-102"><a href="convert.html#cb79-102"></a><span class="co">#&gt; G[T&gt;G]G  0.000000e+00  3.736718e-03  0.000000e+00</span></span>
-<span id="cb79-103"><a href="convert.html#cb79-103"></a><span class="co">#&gt; G[T&gt;G]T  0.000000e+00  3.701349e-72  1.494581e-02</span></span>
-<span id="cb79-104"><a href="convert.html#cb79-104"></a><span class="co">#&gt; T[T&gt;G]A  1.142049e-01 5.198170e-158  0.000000e+00</span></span>
-<span id="cb79-105"><a href="convert.html#cb79-105"></a><span class="co">#&gt; T[T&gt;G]C  0.000000e+00  4.872680e-03  0.000000e+00</span></span>
-<span id="cb79-106"><a href="convert.html#cb79-106"></a><span class="co">#&gt; T[T&gt;G]G  0.000000e+00  1.798724e-19  1.551492e-02</span></span>
-<span id="cb79-107"><a href="convert.html#cb79-107"></a><span class="co">#&gt; T[T&gt;G]T  1.716541e-01  1.775134e-54  0.000000e+00</span></span>
-<span id="cb79-108"><a href="convert.html#cb79-108"></a></span>
-<span id="cb79-109"><a href="convert.html#cb79-109"></a><span class="kw">show_sig_profile</span>(sig2, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-95-1.png" width="1152" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="convert.html#cb80-1"></a><span class="kw">show_sig_profile</span>(sig_converted, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
-<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-95-2.png" width="1152" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="convert.html#cb89-1"></a><span class="co"># Load SBS signature</span></span>
+<span id="cb89-2"><a href="convert.html#cb89-2"></a><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;toy_mutational_signature.RData&quot;</span>,</span>
+<span id="cb89-3"><a href="convert.html#cb89-3"></a>  <span class="dt">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
+<span id="cb89-4"><a href="convert.html#cb89-4"></a>))</span>
+<span id="cb89-5"><a href="convert.html#cb89-5"></a><span class="co"># Exome-relative to Genome-relative</span></span>
+<span id="cb89-6"><a href="convert.html#cb89-6"></a>sig_converted &lt;-<span class="st"> </span><span class="kw">sig_convert</span>(sig2,</span>
+<span id="cb89-7"><a href="convert.html#cb89-7"></a>  <span class="dt">from =</span> <span class="st">&quot;human-exome&quot;</span>,</span>
+<span id="cb89-8"><a href="convert.html#cb89-8"></a>  <span class="dt">to =</span> <span class="st">&quot;human-genome&quot;</span></span>
+<span id="cb89-9"><a href="convert.html#cb89-9"></a>)</span>
+<span id="cb89-10"><a href="convert.html#cb89-10"></a>sig_converted</span>
+<span id="cb89-11"><a href="convert.html#cb89-11"></a><span class="co">#&gt;                  Sig1          Sig2          Sig3</span></span>
+<span id="cb89-12"><a href="convert.html#cb89-12"></a><span class="co">#&gt; A[C&gt;A]A  0.000000e+00  1.283652e-02 2.354578e-204</span></span>
+<span id="cb89-13"><a href="convert.html#cb89-13"></a><span class="co">#&gt; A[C&gt;A]C  0.000000e+00  1.866572e-02  0.000000e+00</span></span>
+<span id="cb89-14"><a href="convert.html#cb89-14"></a><span class="co">#&gt; A[C&gt;A]G  0.000000e+00  1.618700e-03  0.000000e+00</span></span>
+<span id="cb89-15"><a href="convert.html#cb89-15"></a><span class="co">#&gt; A[C&gt;A]T  0.000000e+00  7.572233e-03  0.000000e+00</span></span>
+<span id="cb89-16"><a href="convert.html#cb89-16"></a><span class="co">#&gt; C[C&gt;A]A  0.000000e+00  1.209076e-02  0.000000e+00</span></span>
+<span id="cb89-17"><a href="convert.html#cb89-17"></a><span class="co">#&gt; C[C&gt;A]C  0.000000e+00  7.032249e-03 1.170400e-133</span></span>
+<span id="cb89-18"><a href="convert.html#cb89-18"></a><span class="co">#&gt; C[C&gt;A]G  0.000000e+00  3.839313e-03 1.165310e-269</span></span>
+<span id="cb89-19"><a href="convert.html#cb89-19"></a><span class="co">#&gt; C[C&gt;A]T  0.000000e+00  1.166974e-02  0.000000e+00</span></span>
+<span id="cb89-20"><a href="convert.html#cb89-20"></a><span class="co">#&gt; G[C&gt;A]A  0.000000e+00  1.025669e-02  4.089543e-15</span></span>
+<span id="cb89-21"><a href="convert.html#cb89-21"></a><span class="co">#&gt; G[C&gt;A]C 2.975389e-296  4.002311e-03  0.000000e+00</span></span>
+<span id="cb89-22"><a href="convert.html#cb89-22"></a><span class="co">#&gt; G[C&gt;A]G  4.796114e-02 4.527374e-117  0.000000e+00</span></span>
+<span id="cb89-23"><a href="convert.html#cb89-23"></a><span class="co">#&gt; G[C&gt;A]T  0.000000e+00  5.994876e-03 1.669814e-131</span></span>
+<span id="cb89-24"><a href="convert.html#cb89-24"></a><span class="co">#&gt; T[C&gt;A]A  0.000000e+00  3.324941e-96  7.673114e-02</span></span>
+<span id="cb89-25"><a href="convert.html#cb89-25"></a><span class="co">#&gt; T[C&gt;A]C  0.000000e+00  1.467589e-02 9.720402e-229</span></span>
+<span id="cb89-26"><a href="convert.html#cb89-26"></a><span class="co">#&gt; T[C&gt;A]G  0.000000e+00  3.199454e-03  0.000000e+00</span></span>
+<span id="cb89-27"><a href="convert.html#cb89-27"></a><span class="co">#&gt; T[C&gt;A]T  0.000000e+00  2.338506e-02  0.000000e+00</span></span>
+<span id="cb89-28"><a href="convert.html#cb89-28"></a><span class="co">#&gt; A[C&gt;G]A  0.000000e+00  1.198076e-02 1.210238e-153</span></span>
+<span id="cb89-29"><a href="convert.html#cb89-29"></a><span class="co">#&gt; A[C&gt;G]C  0.000000e+00  3.999796e-03  0.000000e+00</span></span>
+<span id="cb89-30"><a href="convert.html#cb89-30"></a><span class="co">#&gt; A[C&gt;G]G  9.976549e-02  7.184837e-58  0.000000e+00</span></span>
+<span id="cb89-31"><a href="convert.html#cb89-31"></a><span class="co">#&gt; A[C&gt;G]T  0.000000e+00  7.572233e-03 9.731662e-108</span></span>
+<span id="cb89-32"><a href="convert.html#cb89-32"></a><span class="co">#&gt; C[C&gt;G]A  0.000000e+00  8.732217e-03  1.472610e-34</span></span>
+<span id="cb89-33"><a href="convert.html#cb89-33"></a><span class="co">#&gt; C[C&gt;G]C  0.000000e+00  1.875266e-03  0.000000e+00</span></span>
+<span id="cb89-34"><a href="convert.html#cb89-34"></a><span class="co">#&gt; C[C&gt;G]G  0.000000e+00  4.429976e-03  1.144811e-70</span></span>
+<span id="cb89-35"><a href="convert.html#cb89-35"></a><span class="co">#&gt; C[C&gt;G]T  1.398527e-01  1.003533e-19  0.000000e+00</span></span>
+<span id="cb89-36"><a href="convert.html#cb89-36"></a><span class="co">#&gt; G[C&gt;G]A 1.227107e-293  7.521572e-03 2.969058e-285</span></span>
+<span id="cb89-37"><a href="convert.html#cb89-37"></a><span class="co">#&gt; G[C&gt;G]C  0.000000e+00  3.001734e-03 2.665595e-168</span></span>
+<span id="cb89-38"><a href="convert.html#cb89-38"></a><span class="co">#&gt; G[C&gt;G]G  0.000000e+00  2.178881e-03  0.000000e+00</span></span>
+<span id="cb89-39"><a href="convert.html#cb89-39"></a><span class="co">#&gt; G[C&gt;G]T  0.000000e+00  3.996584e-03  0.000000e+00</span></span>
+<span id="cb89-40"><a href="convert.html#cb89-40"></a><span class="co">#&gt; T[C&gt;G]A  0.000000e+00  4.493267e-03 2.338585e-311</span></span>
+<span id="cb89-41"><a href="convert.html#cb89-41"></a><span class="co">#&gt; T[C&gt;G]C  0.000000e+00  5.336688e-03 1.100445e-248</span></span>
+<span id="cb89-42"><a href="convert.html#cb89-42"></a><span class="co">#&gt; T[C&gt;G]G  0.000000e+00  5.027714e-03 2.505791e-283</span></span>
+<span id="cb89-43"><a href="convert.html#cb89-43"></a><span class="co">#&gt; T[C&gt;G]T  0.000000e+00  8.094828e-03  4.211703e-12</span></span>
+<span id="cb89-44"><a href="convert.html#cb89-44"></a><span class="co">#&gt; A[C&gt;T]A  0.000000e+00  4.278842e-02 6.186711e-285</span></span>
+<span id="cb89-45"><a href="convert.html#cb89-45"></a><span class="co">#&gt; A[C&gt;T]C  0.000000e+00  3.266500e-02 4.009287e-180</span></span>
+<span id="cb89-46"><a href="convert.html#cb89-46"></a><span class="co">#&gt; A[C&gt;T]G  0.000000e+00  8.943317e-02 1.936180e-271</span></span>
+<span id="cb89-47"><a href="convert.html#cb89-47"></a><span class="co">#&gt; A[C&gt;T]T  0.000000e+00  2.366323e-02  0.000000e+00</span></span>
+<span id="cb89-48"><a href="convert.html#cb89-48"></a><span class="co">#&gt; C[C&gt;T]A  0.000000e+00  2.552494e-02  0.000000e+00</span></span>
+<span id="cb89-49"><a href="convert.html#cb89-49"></a><span class="co">#&gt; C[C&gt;T]C  0.000000e+00  1.406450e-02 1.334078e-226</span></span>
+<span id="cb89-50"><a href="convert.html#cb89-50"></a><span class="co">#&gt; C[C&gt;T]G  0.000000e+00  5.463637e-02 9.737288e-158</span></span>
+<span id="cb89-51"><a href="convert.html#cb89-51"></a><span class="co">#&gt; C[C&gt;T]T  0.000000e+00  3.695418e-02 4.246509e-172</span></span>
+<span id="cb89-52"><a href="convert.html#cb89-52"></a><span class="co">#&gt; G[C&gt;T]A  0.000000e+00 1.550033e-134  1.379990e-01</span></span>
+<span id="cb89-53"><a href="convert.html#cb89-53"></a><span class="co">#&gt; G[C&gt;T]C  0.000000e+00  2.401387e-02 9.655208e-197</span></span>
+<span id="cb89-54"><a href="convert.html#cb89-54"></a><span class="co">#&gt; G[C&gt;T]G  0.000000e+00  5.665090e-02 1.322415e-193</span></span>
+<span id="cb89-55"><a href="convert.html#cb89-55"></a><span class="co">#&gt; G[C&gt;T]T  0.000000e+00  3.197267e-02 1.483309e-124</span></span>
+<span id="cb89-56"><a href="convert.html#cb89-56"></a><span class="co">#&gt; T[C&gt;T]A  0.000000e+00  3.504749e-02 1.602583e-125</span></span>
+<span id="cb89-57"><a href="convert.html#cb89-57"></a><span class="co">#&gt; T[C&gt;T]C  0.000000e+00  2.868470e-02 2.192251e-133</span></span>
+<span id="cb89-58"><a href="convert.html#cb89-58"></a><span class="co">#&gt; T[C&gt;T]G  0.000000e+00  5.607061e-45  3.725237e-01</span></span>
+<span id="cb89-59"><a href="convert.html#cb89-59"></a><span class="co">#&gt; T[C&gt;T]T  0.000000e+00  2.248563e-02 5.991874e-150</span></span>
+<span id="cb89-60"><a href="convert.html#cb89-60"></a><span class="co">#&gt; A[T&gt;A]A  0.000000e+00 8.169022e-163 4.909543e-207</span></span>
+<span id="cb89-61"><a href="convert.html#cb89-61"></a><span class="co">#&gt; A[T&gt;A]C  0.000000e+00  9.451235e-03 9.169290e-161</span></span>
+<span id="cb89-62"><a href="convert.html#cb89-62"></a><span class="co">#&gt; A[T&gt;A]G  0.000000e+00 1.860257e-209  3.781700e-02</span></span>
+<span id="cb89-63"><a href="convert.html#cb89-63"></a><span class="co">#&gt; A[T&gt;A]T  0.000000e+00  3.646724e-03  0.000000e+00</span></span>
+<span id="cb89-64"><a href="convert.html#cb89-64"></a><span class="co">#&gt; C[T&gt;A]A  0.000000e+00  9.626354e-63 1.877035e-152</span></span>
+<span id="cb89-65"><a href="convert.html#cb89-65"></a><span class="co">#&gt; C[T&gt;A]C  0.000000e+00  4.098575e-03  8.954807e-03</span></span>
+<span id="cb89-66"><a href="convert.html#cb89-66"></a><span class="co">#&gt; C[T&gt;A]G  0.000000e+00  7.584736e-03  1.779246e-46</span></span>
+<span id="cb89-67"><a href="convert.html#cb89-67"></a><span class="co">#&gt; C[T&gt;A]T  0.000000e+00  4.886651e-03  0.000000e+00</span></span>
+<span id="cb89-68"><a href="convert.html#cb89-68"></a><span class="co">#&gt; G[T&gt;A]A  0.000000e+00 1.923466e-257  1.645056e-02</span></span>
+<span id="cb89-69"><a href="convert.html#cb89-69"></a><span class="co">#&gt; G[T&gt;A]C  0.000000e+00  5.990275e-03 2.816093e-138</span></span>
+<span id="cb89-70"><a href="convert.html#cb89-70"></a><span class="co">#&gt; G[T&gt;A]G  0.000000e+00  2.491146e-03 5.966918e-137</span></span>
+<span id="cb89-71"><a href="convert.html#cb89-71"></a><span class="co">#&gt; G[T&gt;A]T  1.780073e-01 1.470587e-107  0.000000e+00</span></span>
+<span id="cb89-72"><a href="convert.html#cb89-72"></a><span class="co">#&gt; T[T&gt;A]A  0.000000e+00  0.000000e+00  1.576605e-78</span></span>
+<span id="cb89-73"><a href="convert.html#cb89-73"></a><span class="co">#&gt; T[T&gt;A]C  0.000000e+00 3.652510e-193  3.025830e-02</span></span>
+<span id="cb89-74"><a href="convert.html#cb89-74"></a><span class="co">#&gt; T[T&gt;A]G  0.000000e+00  0.000000e+00  3.102984e-02</span></span>
+<span id="cb89-75"><a href="convert.html#cb89-75"></a><span class="co">#&gt; T[T&gt;A]T  0.000000e+00  5.570191e-03 2.661350e-186</span></span>
+<span id="cb89-76"><a href="convert.html#cb89-76"></a><span class="co">#&gt; A[T&gt;C]A  0.000000e+00  3.673499e-02 2.037390e-236</span></span>
+<span id="cb89-77"><a href="convert.html#cb89-77"></a><span class="co">#&gt; A[T&gt;C]C  0.000000e+00  4.875997e-80  8.069896e-02</span></span>
+<span id="cb89-78"><a href="convert.html#cb89-78"></a><span class="co">#&gt; A[T&gt;C]G  0.000000e+00  2.533400e-02 4.653276e-300</span></span>
+<span id="cb89-79"><a href="convert.html#cb89-79"></a><span class="co">#&gt; A[T&gt;C]T  0.000000e+00  3.403610e-02 1.137147e-235</span></span>
+<span id="cb89-80"><a href="convert.html#cb89-80"></a><span class="co">#&gt; C[T&gt;C]A  0.000000e+00  7.619558e-03  1.273356e-94</span></span>
+<span id="cb89-81"><a href="convert.html#cb89-81"></a><span class="co">#&gt; C[T&gt;C]C  0.000000e+00  1.116095e-02 1.501723e-122</span></span>
+<span id="cb89-82"><a href="convert.html#cb89-82"></a><span class="co">#&gt; C[T&gt;C]G  0.000000e+00  9.506418e-50  9.321794e-02</span></span>
+<span id="cb89-83"><a href="convert.html#cb89-83"></a><span class="co">#&gt; C[T&gt;C]T  0.000000e+00  1.172796e-02  1.679251e-87</span></span>
+<span id="cb89-84"><a href="convert.html#cb89-84"></a><span class="co">#&gt; G[T&gt;C]A  0.000000e+00  4.585040e-03  5.536247e-03</span></span>
+<span id="cb89-85"><a href="convert.html#cb89-85"></a><span class="co">#&gt; G[T&gt;C]C  0.000000e+00 5.073564e-255  4.133148e-02</span></span>
+<span id="cb89-86"><a href="convert.html#cb89-86"></a><span class="co">#&gt; G[T&gt;C]G  0.000000e+00  6.850650e-03  0.000000e+00</span></span>
+<span id="cb89-87"><a href="convert.html#cb89-87"></a><span class="co">#&gt; G[T&gt;C]T  3.036787e-50  1.058999e-02 7.624782e-161</span></span>
+<span id="cb89-88"><a href="convert.html#cb89-88"></a><span class="co">#&gt; T[T&gt;C]A  0.000000e+00 1.774320e-183  1.917769e-02</span></span>
+<span id="cb89-89"><a href="convert.html#cb89-89"></a><span class="co">#&gt; T[T&gt;C]C 3.471970e-224  7.796288e-03  0.000000e+00</span></span>
+<span id="cb89-90"><a href="convert.html#cb89-90"></a><span class="co">#&gt; T[T&gt;C]G  0.000000e+00  9.993850e-03  0.000000e+00</span></span>
+<span id="cb89-91"><a href="convert.html#cb89-91"></a><span class="co">#&gt; T[T&gt;C]T  0.000000e+00  2.116673e-02 4.729625e-249</span></span>
+<span id="cb89-92"><a href="convert.html#cb89-92"></a><span class="co">#&gt; A[T&gt;G]A  0.000000e+00  6.559820e-03  0.000000e+00</span></span>
+<span id="cb89-93"><a href="convert.html#cb89-93"></a><span class="co">#&gt; A[T&gt;G]C  0.000000e+00 8.576821e-159  1.467254e-02</span></span>
+<span id="cb89-94"><a href="convert.html#cb89-94"></a><span class="co">#&gt; A[T&gt;G]G  0.000000e+00  1.544237e-03  3.140069e-03</span></span>
+<span id="cb89-95"><a href="convert.html#cb89-95"></a><span class="co">#&gt; A[T&gt;G]T  0.000000e+00  3.646724e-03  0.000000e+00</span></span>
+<span id="cb89-96"><a href="convert.html#cb89-96"></a><span class="co">#&gt; C[T&gt;G]A  0.000000e+00  1.088508e-03  0.000000e+00</span></span>
+<span id="cb89-97"><a href="convert.html#cb89-97"></a><span class="co">#&gt; C[T&gt;G]C  0.000000e+00  5.252213e-03 5.352907e-111</span></span>
+<span id="cb89-98"><a href="convert.html#cb89-98"></a><span class="co">#&gt; C[T&gt;G]G  0.000000e+00  6.320613e-03  0.000000e+00</span></span>
+<span id="cb89-99"><a href="convert.html#cb89-99"></a><span class="co">#&gt; C[T&gt;G]T  1.505897e-01  2.544085e-94 2.345935e-218</span></span>
+<span id="cb89-100"><a href="convert.html#cb89-100"></a><span class="co">#&gt; G[T&gt;G]A  9.796461e-02  2.199487e-93 1.446688e-154</span></span>
+<span id="cb89-101"><a href="convert.html#cb89-101"></a><span class="co">#&gt; G[T&gt;G]C  0.000000e+00  1.996758e-03  0.000000e+00</span></span>
+<span id="cb89-102"><a href="convert.html#cb89-102"></a><span class="co">#&gt; G[T&gt;G]G  0.000000e+00  3.736718e-03  0.000000e+00</span></span>
+<span id="cb89-103"><a href="convert.html#cb89-103"></a><span class="co">#&gt; G[T&gt;G]T  0.000000e+00  3.701349e-72  1.494581e-02</span></span>
+<span id="cb89-104"><a href="convert.html#cb89-104"></a><span class="co">#&gt; T[T&gt;G]A  1.142049e-01 5.198170e-158  0.000000e+00</span></span>
+<span id="cb89-105"><a href="convert.html#cb89-105"></a><span class="co">#&gt; T[T&gt;G]C  0.000000e+00  4.872680e-03  0.000000e+00</span></span>
+<span id="cb89-106"><a href="convert.html#cb89-106"></a><span class="co">#&gt; T[T&gt;G]G  0.000000e+00  1.798724e-19  1.551492e-02</span></span>
+<span id="cb89-107"><a href="convert.html#cb89-107"></a><span class="co">#&gt; T[T&gt;G]T  1.716541e-01  1.775134e-54  0.000000e+00</span></span>
+<span id="cb89-108"><a href="convert.html#cb89-108"></a></span>
+<span id="cb89-109"><a href="convert.html#cb89-109"></a><span class="kw">show_sig_profile</span>(sig2, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-101-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="convert.html#cb90-1"></a><span class="kw">show_sig_profile</span>(sig_converted, <span class="dt">style =</span> <span class="st">&quot;cosmic&quot;</span>)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-101-2.png" width="1152" style="display: block; margin: auto;" /></p>
 
 </div>
             </section>

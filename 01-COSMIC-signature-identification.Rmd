@@ -314,6 +314,29 @@ knitr::kable(mt_sig2$Raw$summary_run)
 
 The `mt_sig2` has similar structure as `mut_sig`.
 
+#### Method 2: SigProfiler
+
+**Sigminer** provides two functions `sigprofiler_extract()` and `sigprofiler_import()` to install, use SigProfiler and import [SigProfiler](https://github.com/AlexandrovLab/SigProfilerExtractor) results into R as a `Signature` object like other extraction methods mentioned above.
+
+An (not running) example is given below (see `?sigprofiler` for more info).
+
+```{r, eval=FALSE}
+load(system.file("extdata", "toy_copynumber_tally_M.RData",
+                 package = "sigminer", mustWork = TRUE
+))
+
+reticulate::conda_list()
+
+sigprofiler_extract(cn_tally_M$nmf_matrix, "~/test/test_sigminer",
+                    use_conda = TRUE
+)
+
+sigprofiler_extract(cn_tally_M$nmf_matrix, "~/test/test_sigminer",
+                    use_conda = FALSE, py_path = "/Users/wsx/anaconda3/bin/python"
+)
+```
+
+
 ## Match Signatures  
 
 After extracting signatures, we need to know their etiologies. This can be done by comparing the identified signatures and reference signatures from COSMIC database.
