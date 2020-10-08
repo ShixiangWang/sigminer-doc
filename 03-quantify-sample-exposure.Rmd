@@ -1,10 +1,9 @@
 # Signature Fit: Sample Signature Exposure Quantification and Analysis {#sigfit}
 
 Besides *de novo* signature discovery shown in previous chapters, another common task is that
-you have gotten a reference signature database (either from known database like COSMIC or *de novo* discovery step), you want to know how these signatures fit in a new sample. That's the target of `sig_fit()`.
+you have gotten some reference signatures (either from known database like COSMIC or *de novo* discovery step), you want to know how these signatures contribute (fit) in a sample. That's the target of `sig_fit()`.
 
-`sig_fit()` uses multiple methods to compute exposure of pre-defined signatures from the total
-alteration spectrum of a (can be more) sample. Use `?sig_fit` see more detail.
+`sig_fit()` uses multiple methods to compute exposure of pre-defined signatures from the spectrum of a (can be more) sample. Use `?sig_fit` see more detail.
 
 To show how this function works, we use a sample with maximum mutation counts as example data.
 
@@ -21,13 +20,12 @@ head(example_mat)
 
 ## Fit Signatures from reference databases
 
-For SBS signatures, users may want to directly use reference signatures from COSMIC database. This can be done by specifying the option `sig_index`.
-
-
+For SBS signatures, users may want to directly use reference signatures from COSMIC database.
 
 ```{r}
 sig_fit(example_mat, sig_index = 1:30)
 ```
+> At default, COSMIC v2 signature database with 30 reference signatures is used (i.e. `sig_db = "legacy"`). Set `sig_db = "SBS"` for COSMIC v3 signature database.
 
 That's it!
 
@@ -51,7 +49,7 @@ When you set multiple signatures, we recommend setting `rel_threshold` option, w
 We have already determined the SBS signatures before. Here we can set them to `sig` option.
 
 ```{r}
-sig_fit(example_mat, sig = mt_sig)
+sig_fit(example_mat, sig = mt_sig2)
 ```
 
 ## Performance Comparison
@@ -67,12 +65,12 @@ $$
 
 ```{r}
 ## Exposure got from NMF
-sum((apply(mt_sig$Signature, 2, function(x) x/sum(x)) %*% mt_sig$Exposure - t(mt_tally$nmf_matrix))^2)
+sum((apply(mt_sig2$Signature, 2, function(x) x/sum(x)) %*% mt_sig2$Exposure - t(mt_tally$nmf_matrix))^2)
 ```
 
 ```{r}
 ## Exposure optimized by sig_fit
-H_estimate = apply(mt_sig$Signature, 2, function(x) x/sum(x)) %*% sig_fit(t(mt_tally$nmf_matrix), sig = mt_sig)
+H_estimate = apply(mt_sig2$Signature, 2, function(x) x/sum(x)) %*% sig_fit(t(mt_tally$nmf_matrix), sig = mt_sig2)
 H_estimate = apply(H_estimate, 2, function(x) ifelse(is.nan(x), 0, x))
 H_real = t(mt_tally$nmf_matrix)
 sum((H_estimate - H_real)^2)
@@ -84,20 +82,24 @@ sum((H_estimate - H_real)^2)
 This feature is based on `sig_fit()`, it uses the resampling data of original input and runs `sig_fit()` multiple times to estimate the exposure. Bootstrap replicates >= 100 is recommended, here I just use 10 times for illustration.
 
 ```{r}
-bt_result <- sig_fit_bootstrap(example_mat, sig = mt_sig, n = 10)
+bt_result <- sig_fit_bootstrap_batch(example_mat, sig = mt_sig2, n = 10)
 bt_result
 ```
 
-Currently, I haven't create plot method for the result, but you can plot it very easily with `boxplot()`.
+You can plot the result very easily with functions provided by **sigminer**.
 
 ```{r}
-boxplot(t(bt_result$expo))
+show_sig_bootstrap_exposure(bt_result, sample = "TCGA-A8-A09G-01A-21W-A019-09")
+show_sig_bootstrap_error(bt_result, sample = "TCGA-A8-A09G-01A-21W-A019-09")
+show_sig_bootstrap_stability(bt_result)
 ```
+P values have been calculated under specified relative exposure cutoff (0.05 at default).
 
+The result indicates `Sig3` is very stable.
 
 # Subtype Prediction {#subtyping}
 
-To expand the power of signatures to clinical application, based on **signature discovery** and **signature fitting** workflow, we can go further build neutral network model prediction model with **keras**. This feature is currently experimental and implemented in **sigminer**'s child package [**sigminer.prediction**](https://github.com/ShixiangWang/sigminer.prediction).
+To expand the power of signatures to clinical application, based on **signature discovery** and **signature fitting** workflows, we can go further build neutral network model prediction model with **keras**. This feature is currently experimental and implemented in **sigminer**'s child package [**sigminer.prediction**](https://github.com/ShixiangWang/sigminer.prediction).
 
 # Sigflow Pipeline {#sigflow}
 

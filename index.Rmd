@@ -33,11 +33,7 @@ knitr::knit_hooks$set(debug = function(before, options, envir) {
 
 # Introduction {#intro}
 
-Genomic alterations including single nucleotide substitution (SBS),
-copy number alteration (CNA), etc. are the major force for cancer
-initialization and development. Due to the specificity of molecular
-lesions caused by genomic alterations, we can generate characteristic
-alteration spectra, called **mutational signature**. 
+Underlying cancer hallmarks are genome instability, which generates the genetic diversity that expedites their acquisition, and inflammation, which fosters multiple hallmark functions [@hanahanHallmarksCancerNext2011]. Cancer genomes typically harbors more than 1,000 mutations in small (e.g., point mutations, short insertions and deletions) and large scale (e.g., copy number variations, rearrangements). Genomic contexts where mutation may accumulate in response to both endogenous processes and exogeneous exposures. In recent years, computational approaches (typically non-negative matrix factorization (NMF)) have been applied to the mutation catalog analysis of human/mouse tumors to detect characteristic mutational patterns, also known as **"mutational signatures"**.
 
 ## Biological Significance of Mutational Signature
 
@@ -52,12 +48,12 @@ knitr::include_graphics("fig/sbs_signature_overview_nat_review2.png")
 knitr::include_graphics("fig/sbs_signature_overview.png")
 ```
 
-SBS signature is a famous type of mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
+SBS (short for single base substitution) signature is a famous type of mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
 Common etiologies contain aging, defective DNA mismatch repair, smoking, ultraviolet light exposure and [APOBEC](https://en.wikipedia.org/wiki/APOBEC).
 
 Currently, all SBS signatures are summarized in COSMIC database, including two versions: [v2](https://cancer.sanger.ac.uk/cosmic/signatures_v2) and [v3](https://cancer.sanger.ac.uk/cosmic/signatures/SBS/).
 
-Recently, @alexandrov2020repertoire extends the concept of mutational signature to three types of alteration: SBS, DBS and INDEL.
+Recently, @alexandrov2020repertoire extends the concept of mutational signature to three types of alteration: SBS, DBS (short for doublet base substitution) and INDEL (short for short insertion and deletion).
 All reported common signatures are recorded in COSMIC (https://cancer.sanger.ac.uk/cosmic/signatures/), so we usually call them **COSMIC signatures**.
 
 
@@ -66,6 +62,10 @@ knitr::include_graphics("fig/cn_signature_overview.png")
 ```
 
 Copy number signatures are less studied and many works are still to be done. The introduction is described in Chapter \@ref(cnsig).
+
+> Genome rearrangement signatures are limited to whole genome sequencing data and also less studied, the implementation is not available in current version of Sigminer. We are happy to accept a PR if you are interested in create an extension function to Sigminer.
+
+More details about mutational signatures you can read the [wiki page](https://en.wikipedia.org/wiki/Mutational_signatures).
 
 ## Sigminer
 
@@ -78,8 +78,9 @@ Currently, **sigminer** supports four types of signature:
 - SBS signature in the form of 96 (6, 24, 384, 1536 and 6144) components.
 - DBS signature in the form of 78 (186) components.
 - ID (INDEL) signature in the form of 83 (28) components.
-- Copy number signature by the method either from @macintyre2018copy or from our group work.
+- Copy number signature by the method either from @macintyre2018copy or from our group work [@WangSX2020].
 
+> Component here refer to a classification for a record (e.g. a mutation), in some papers mutation type or just type means the same thing. We use 'component' to represent a more broad concept.
 
 ## Installation 
 
@@ -129,7 +130,7 @@ hello()
 The contents of this manual have been divided into 4 sections:
 
 - Common workflow.
-  - de novo signature discovery.
+  - *de novo* signature discovery.
   - single sample exposure quantification.
   - subtype prediction.
 - Target visualization.

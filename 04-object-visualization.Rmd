@@ -131,14 +131,14 @@ show_sig_consensusmap(mt_sig)
 
 Based on plot method for signature, we can plot raw catalogue profile.
 
-```{r, fig.width=12}
+```{r, fig.width=12, fig.height=2.5}
 show_catalogue(t(mt_tally$nmf_matrix), style = "cosmic", x_label_angle = 90)
 ```
 
 At default, the function sums all samples. Users can specify sample ID.
 
 
-```{r, fig.width=12}
-show_catalogue(t(mt_tally$nmf_matrix), style = "cosmic", samples = "TCGA-AB-3009", x_label_angle = 90)
+```{r, fig.width=12, fig.height=2.5}
+show_catalogue(t(mt_tally$nmf_matrix), style = "cosmic", samples = "TCGA-E9-A22E-01A-11D-A159-09", x_label_angle = 90)
 ```
 
