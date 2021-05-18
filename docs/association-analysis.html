@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</title>
+  <title>Chapter 9 Association Analysis and Visualization | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
+  <meta property="og:title" content="Chapter 9 Association Analysis and Visualization | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ShixiangWang/sigminer-doc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
+  <meta name="twitter:title" content="Chapter 9 Association Analysis and Visualization | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
   
   <meta name="twitter:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="sbssig.html"/>
+<link rel="prev" href="sigobject.html"/>
+<link rel="next" href="group-analysis.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -250,171 +250,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</h1>
-<p class="author"><em>Shixiang Wang, ShanghaiTech University</em></p>
-<p class="author"><em>Xue-Song Liu, ShanghaiTech University</em></p>
-<p class="date"><em>last revised on 2021-05-18</em></p>
+<div id="association-analysis" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Association Analysis and Visualization</h1>
+<div id="general-numeric-association" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> General numeric association</h2>
+<p>For general numeric association, you can use <code>show_cor()</code> function.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="association-analysis.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb75-2"><a href="association-analysis.html#cb75-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">show_cor</span>(mtcars)</span>
+<span id="cb75-3"><a href="association-analysis.html#cb75-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">show_cor</span>(mtcars,</span>
+<span id="cb75-4"><a href="association-analysis.html#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_vars =</span> <span class="fu">colnames</span>(mtcars)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
+<span id="cb75-5"><a href="association-analysis.html#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_vars =</span> <span class="fu">colnames</span>(mtcars)[<span class="dv">5</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb75-6"><a href="association-analysis.html#cb75-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb75-7"><a href="association-analysis.html#cb75-7" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">show_cor</span>(mtcars, <span class="at">vis_method =</span> <span class="st">&quot;circle&quot;</span>, <span class="at">p_adj =</span> <span class="st">&quot;fdr&quot;</span>)</span>
+<span id="cb75-8"><a href="association-analysis.html#cb75-8" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-90-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="association-analysis.html#cb76-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">$</span>cor</span>
+<span id="cb76-2"><a href="association-analysis.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $cor_mat</span></span>
+<span id="cb76-3"><a href="association-analysis.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb76-4"><a href="association-analysis.html#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mpg   1.00 -0.91 -0.91 -0.89  0.65 -0.89  0.47  0.71  0.56  0.54 -0.66</span></span>
+<span id="cb76-5"><a href="association-analysis.html#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; cyl  -0.91  1.00  0.93  0.90 -0.68  0.86 -0.57 -0.81 -0.52 -0.56  0.58</span></span>
+<span id="cb76-6"><a href="association-analysis.html#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; disp -0.91  0.93  1.00  0.85 -0.68  0.90 -0.46 -0.72 -0.62 -0.59  0.54</span></span>
+<span id="cb76-7"><a href="association-analysis.html#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp   -0.89  0.90  0.85  1.00 -0.52  0.77 -0.67 -0.75 -0.36 -0.33  0.73</span></span>
+<span id="cb76-8"><a href="association-analysis.html#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; drat  0.65 -0.68 -0.68 -0.52  1.00 -0.75  0.09  0.45  0.69  0.74 -0.13</span></span>
+<span id="cb76-9"><a href="association-analysis.html#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt   -0.89  0.86  0.90  0.77 -0.75  1.00 -0.23 -0.59 -0.74 -0.68  0.50</span></span>
+<span id="cb76-10"><a href="association-analysis.html#cb76-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; qsec  0.47 -0.57 -0.46 -0.67  0.09 -0.23  1.00  0.79 -0.20 -0.15 -0.66</span></span>
+<span id="cb76-11"><a href="association-analysis.html#cb76-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vs    0.71 -0.81 -0.72 -0.75  0.45 -0.59  0.79  1.00  0.17  0.28 -0.63</span></span>
+<span id="cb76-12"><a href="association-analysis.html#cb76-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; am    0.56 -0.52 -0.62 -0.36  0.69 -0.74 -0.20  0.17  1.00  0.81 -0.06</span></span>
+<span id="cb76-13"><a href="association-analysis.html#cb76-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; gear  0.54 -0.56 -0.59 -0.33  0.74 -0.68 -0.15  0.28  0.81  1.00  0.11</span></span>
+<span id="cb76-14"><a href="association-analysis.html#cb76-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; carb -0.66  0.58  0.54  0.73 -0.13  0.50 -0.66 -0.63 -0.06  0.11  1.00</span></span>
+<span id="cb76-15"><a href="association-analysis.html#cb76-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb76-16"><a href="association-analysis.html#cb76-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $p_mat</span></span>
+<span id="cb76-17"><a href="association-analysis.html#cb76-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               mpg          cyl         disp           hp         drat           wt</span></span>
+<span id="cb76-18"><a href="association-analysis.html#cb76-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mpg  0.000000e+00 6.112687e-10 9.380327e-10 1.787835e-07 1.776240e-05 1.293959e-10</span></span>
+<span id="cb76-19"><a href="association-analysis.html#cb76-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; cyl  6.112687e-10 0.000000e+00 1.802838e-12 3.477861e-09 8.244636e-06 1.217567e-07</span></span>
+<span id="cb76-20"><a href="association-analysis.html#cb76-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; disp 9.380327e-10 1.802838e-12 0.000000e+00 7.142679e-08 5.282022e-06 1.222320e-11</span></span>
+<span id="cb76-21"><a href="association-analysis.html#cb76-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp   1.787835e-07 3.477861e-09 7.142679e-08 0.000000e+00 9.988772e-03 4.145827e-05</span></span>
+<span id="cb76-22"><a href="association-analysis.html#cb76-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; drat 1.776240e-05 8.244636e-06 5.282022e-06 9.988772e-03 0.000000e+00 4.784260e-06</span></span>
+<span id="cb76-23"><a href="association-analysis.html#cb76-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt   1.293959e-10 1.217567e-07 1.222320e-11 4.145827e-05 4.784260e-06 0.000000e+00</span></span>
+<span id="cb76-24"><a href="association-analysis.html#cb76-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; qsec 1.708199e-02 3.660533e-04 1.314404e-02 5.766253e-06 6.195826e-01 3.388683e-01</span></span>
+<span id="cb76-25"><a href="association-analysis.html#cb76-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vs   3.415937e-05 1.843018e-08 5.235012e-06 2.940896e-06 1.167553e-02 9.798492e-04</span></span>
+<span id="cb76-26"><a href="association-analysis.html#cb76-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; am   2.850207e-04 2.151207e-03 3.662114e-04 1.798309e-01 4.726790e-06 1.125440e-05</span></span>
+<span id="cb76-27"><a href="association-analysis.html#cb76-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; gear 5.400948e-03 4.173297e-03 9.635921e-04 4.930119e-01 8.360110e-06 4.586601e-04</span></span>
+<span id="cb76-28"><a href="association-analysis.html#cb76-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; carb 1.084446e-03 1.942340e-03 2.526789e-02 7.827810e-07 6.211834e-01 1.463861e-02</span></span>
+<span id="cb76-29"><a href="association-analysis.html#cb76-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              qsec           vs           am         gear         carb</span></span>
+<span id="cb76-30"><a href="association-analysis.html#cb76-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mpg  1.708199e-02 3.415937e-05 2.850207e-04 5.400948e-03 1.084446e-03</span></span>
+<span id="cb76-31"><a href="association-analysis.html#cb76-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; cyl  3.660533e-04 1.843018e-08 2.151207e-03 4.173297e-03 1.942340e-03</span></span>
+<span id="cb76-32"><a href="association-analysis.html#cb76-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; disp 1.314404e-02 5.235012e-06 3.662114e-04 9.635921e-04 2.526789e-02</span></span>
+<span id="cb76-33"><a href="association-analysis.html#cb76-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp   5.766253e-06 2.940896e-06 1.798309e-01 4.930119e-01 7.827810e-07</span></span>
+<span id="cb76-34"><a href="association-analysis.html#cb76-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; drat 6.195826e-01 1.167553e-02 4.726790e-06 8.360110e-06 6.211834e-01</span></span>
+<span id="cb76-35"><a href="association-analysis.html#cb76-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt   3.388683e-01 9.798492e-04 1.125440e-05 4.586601e-04 1.463861e-02</span></span>
+<span id="cb76-36"><a href="association-analysis.html#cb76-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; qsec 0.000000e+00 1.029669e-06 2.056621e-01 2.425344e-01 4.536949e-05</span></span>
+<span id="cb76-37"><a href="association-analysis.html#cb76-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; vs   1.029669e-06 0.000000e+00 3.570439e-01 2.579439e-01 6.670496e-04</span></span>
+<span id="cb76-38"><a href="association-analysis.html#cb76-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; am   2.056621e-01 3.570439e-01 0.000000e+00 5.834043e-08 7.544526e-01</span></span>
+<span id="cb76-39"><a href="association-analysis.html#cb76-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; gear 2.425344e-01 2.579439e-01 5.834043e-08 0.000000e+00 1.290291e-01</span></span>
+<span id="cb76-40"><a href="association-analysis.html#cb76-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; carb 4.536949e-05 6.670496e-04 7.544526e-01 1.290291e-01 0.000000e+00</span></span>
+<span id="cb76-41"><a href="association-analysis.html#cb76-41" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-90-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="association-analysis.html#cb77-1" aria-hidden="true" tabindex="-1"></a>p3</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-90-3.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="intro" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Underlying cancer hallmarks are genome instability, which generates the genetic diversity that expedites their acquisition, and inflammation, which fosters multiple hallmark functions <span class="citation">(<a href="references.html#ref-hanahanHallmarksCancerNext2011" role="doc-biblioref">Hanahan 2011</a>)</span>. Cancer genomes typically harbors more than 1,000 mutations in small (e.g., point mutations, short insertions and deletions) and large scale (e.g., copy number variations, rearrangements). Genomic contexts where mutation may accumulate in response to both endogenous processes and exogeneous exposures. In recent years, computational approaches (typically non-negative matrix factorization (NMF)) have been applied to the mutation catalog analysis of human/mouse tumors to detect characteristic mutational patterns, also known as <strong>“mutational signatures”</strong>.</p>
-<div id="biological-significance-of-mutational-signature" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Biological Significance of Mutational Signature</h2>
-<p>To illustrate the biological significance of mutational signatures, we show some
-well organized figures here.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="fig/sbs_signature_overview_nat_review2.png" alt="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729" width="80%" />
-<p class="caption">
-Figure 1.1: The illustration of SBS signature, fig source: <a href="https://www.nature.com/articles/nrg3729" class="uri">https://www.nature.com/articles/nrg3729</a>
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="fig/sbs_signature_overview.png" alt="The illustration of SBS signature (2), fig source: https://www.nature.com/articles/s41467-018-05228-y" width="1010" />
-<p class="caption">
-Figure 1.2: The illustration of SBS signature (2), fig source: <a href="https://www.nature.com/articles/s41467-018-05228-y" class="uri">https://www.nature.com/articles/s41467-018-05228-y</a>
-</p>
-</div>
-<p>SBS (short for single base substitution) signature is a famous type of mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
-Common etiologies contain aging, defective DNA mismatch repair, smoking, ultraviolet light exposure and <a href="https://en.wikipedia.org/wiki/APOBEC">APOBEC</a>.</p>
-<p>Currently, all SBS signatures are summarized in COSMIC database, including two versions: <a href="https://cancer.sanger.ac.uk/cosmic/signatures_v2">v2</a> and <a href="https://cancer.sanger.ac.uk/cosmic/signatures/SBS/">v3</a>.</p>
-<p>Recently, <span class="citation"><a href="references.html#ref-alexandrov2020repertoire" role="doc-biblioref">Alexandrov et al.</a> (<a href="references.html#ref-alexandrov2020repertoire" role="doc-biblioref">2020</a>)</span> extends the concept of mutational signature to three types of alteration: SBS, DBS (short for doublet base substitution) and INDEL (short for short insertion and deletion).
-All reported common signatures are recorded in COSMIC (<a href="https://cancer.sanger.ac.uk/cosmic/signatures/" class="uri">https://cancer.sanger.ac.uk/cosmic/signatures/</a>), so we usually call them <strong>COSMIC signatures</strong>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="fig/cn_signature_overview.png" alt="The illustration of copy number signatures, fig source: https://www.nature.com/articles/s41588-018-0212-y" width="925" />
-<p class="caption">
-Figure 1.3: The illustration of copy number signatures, fig source: <a href="https://www.nature.com/articles/s41588-018-0212-y" class="uri">https://www.nature.com/articles/s41588-018-0212-y</a>
-</p>
-</div>
-<p>Copy number signatures are less studied and many works are still to be done. The introduction is described in Chapter <a href="cnsig.html#cnsig">3</a>.</p>
-<blockquote>
-<p>Genome rearrangement signatures are limited to whole genome sequencing data and also less studied, the implementation is not available in current version of Sigminer. We are happy to accept a PR if you are interested in create an extension function to Sigminer.</p>
-</blockquote>
-<p>More details about mutational signatures you can read the <a href="https://en.wikipedia.org/wiki/Mutational_signatures">wiki page</a>.</p>
-</div>
-<div id="sigminer" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Sigminer</h2>
-<p>Here, we present an easy-to-use and scalable toolkit for mutational signature analysis and visualization in R. We named it <strong>sigminer</strong> (<code>signature</code> + <code>miner</code>).
-This tool can help users to extract, analyze and visualize signatures from genomic alteration records,
-thus providing new insight into cancer study.</p>
-</div>
-<div id="installation" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Installation</h2>
-<p>The stable release version of <strong>sigminer</strong> package can be installed from the CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sigminer&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;sigminer&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<blockquote>
-<p>Set <code>dependencies = TRUE</code> is recommended because many packages are required for full features in <strong>sigminer</strong>.</p>
-</blockquote>
-<p>The development version of <strong>sigminer</strong> package can be installed from Github:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;remotes&quot;)</span></span>
-<span id="cb2-2"><a href="index.html#cb2-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ShixiangWang/sigminer&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-</div>
-<div id="issues-or-suggestions" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Issues or Suggestions</h2>
-<p>Any issue or suggestion can be posted on <a href="https://github.com/ShixiangWang/sigminer/issues">GitHub issue</a>, we will reply ASAP.</p>
-<p>Any pull requrest is welcome.</p>
-</div>
-<div id="preparation" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Preparation</h2>
-<p>To reproduce the examples shown in this manual, users should load the following packages firstly.
-<strong>sigminer</strong> is requred to have version &gt;= 1.0.0.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sigminer)</span>
-<span id="cb3-2"><a href="index.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sigminer version 2.0.0</span></span>
-<span id="cb3-3"><a href="index.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; - Star me at https://github.com/ShixiangWang/sigminer</span></span>
-<span id="cb3-4"><a href="index.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; - Run hello() to see usage and citation.</span></span>
-<span id="cb3-5"><a href="index.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NMF)</span>
-<span id="cb3-6"><a href="index.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: pkgmaker</span></span>
-<span id="cb3-7"><a href="index.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: registry</span></span>
-<span id="cb3-8"><a href="index.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: rngtools</span></span>
-<span id="cb3-9"><a href="index.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: cluster</span></span>
-<span id="cb3-10"><a href="index.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NMF - BioConductor layer [OK] | Shared memory capabilities [NO: bigmemory] | Cores 7/8</span></span>
-<span id="cb3-11"><a href="index.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   To enable shared memory capabilities, try: install.extras(&#39;</span></span>
-<span id="cb3-12"><a href="index.html#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NMF</span></span>
-<span id="cb3-13"><a href="index.html#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;)</span></span></code></pre></div>
-<p>Current manual uses <strong>sigminer</strong> 2.0.0. More info about <strong>sigminer</strong> can be given as:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>()</span>
-<span id="cb4-2"><a href="index.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Thanks for using &#39;sigminer&#39; package!</span></span>
-<span id="cb4-3"><a href="index.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; =========================================================================</span></span>
-<span id="cb4-4"><a href="index.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Version: 2.0.0</span></span>
-<span id="cb4-5"><a href="index.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Run citation(&#39;sigminer&#39;) to see how to cite sigminer in publications.</span></span>
-<span id="cb4-6"><a href="index.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb4-7"><a href="index.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Project home : https://github.com/ShixiangWang/sigminer</span></span>
-<span id="cb4-8"><a href="index.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Bug report   : https://github.com/ShixiangWang/sigminer/issues</span></span>
-<span id="cb4-9"><a href="index.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Documentation: https://shixiangwang.github.io/sigminer-doc/</span></span>
-<span id="cb4-10"><a href="index.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; =========================================================================</span></span>
-<span id="cb4-11"><a href="index.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
-</div>
-<div id="overview-of-contents" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Overview of Contents</h2>
-<p>The contents of this manual have been divided into 4 sections:</p>
+<div id="comprehensive-association" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Comprehensive association</h2>
+<p>For comprehensive association analysis including both continuous and categorical variables,
+there are several functions available in <strong>sigminer</strong>:</p>
 <ul>
-<li>Common workflow.
-<ul>
-<li><em>de novo</em> signature discovery.</li>
-<li>single sample exposure quantification.</li>
-<li>subtype prediction.</li>
-</ul></li>
-<li>Target visualization.
-<ul>
-<li>copy number profile.</li>
-<li>copy number distribution.</li>
-<li>catalogue profile.</li>
-<li>signature profile.</li>
-<li>exposure profile.</li>
-<li>…</li>
-</ul></li>
-<li>Universal analysis.
-<ul>
-<li>association analysis.</li>
-<li>group analysis.</li>
-</ul></li>
-<li>Other utilities.</li>
+<li><code>get_sig_feature_association()</code>.</li>
+<li><code>get_tidy_association()</code>.</li>
+<li><code>show_sig_feature_corrplot()</code>.</li>
 </ul>
-<p><strong>All functions are well organized and documented at <a href="https://shixiangwang.github.io/sigminer/reference/index.html" class="uri">https://shixiangwang.github.io/sigminer/reference/index.html</a> (For Chinese users, you can also read it at <a href="https://shixiangwang.gitee.io/sigminer/reference/index.html" class="uri">https://shixiangwang.gitee.io/sigminer/reference/index.html</a>). For usage of a specific function fun, run <code>?fun</code> in your R console to see its documentation.</strong></p>
-</div>
-<div id="citation-and-license" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> Citation and LICENSE</h2>
-<p>If you use <strong>sigminer</strong> in academic field, please cite one of the
-following papers.</p>
-<hr />
-<ul>
-<li><p><strong><em>Wang S, Li H, Song M, Tao Z, Wu T, He Z, et al. (2021) Copy
-number signature analysis tool and its application in prostate
-cancer reveals distinct mutational processes and clinical outcomes.
-PLoS Genet 17(5): e1009557.</em></strong>
-<a href="https://doi.org/10.1371/journal.pgen.1009557" class="uri">https://doi.org/10.1371/journal.pgen.1009557</a></p></li>
-<li><p><strong><em>Shixiang Wang, Ziyu Tao, Tao Wu, Xue-Song Liu, Sigflow: An
-Automated And Comprehensive Pipeline For Cancer Genome Mutational
-Signature Analysis, Bioinformatics, btaa895</em></strong>.
-<a href="https://doi.org/10.1093/bioinformatics/btaa895" class="uri">https://doi.org/10.1093/bioinformatics/btaa895</a></p></li>
-</ul>
-<hr />
-<p>The software is made available for non commercial research purposes only
-under the <a href="https://github.com/ShixiangWang/sigminer/blob/master/LICENSE.md">MIT</a>. However, notwithstanding any provision of
-the MIT License, the software currently may not be used for commercial
-purposes without explicit written permission after contacting Shixiang
-Wang <a href="mailto:wangshx@shanghaitech.edu.cn" class="email">wangshx@shanghaitech.edu.cn</a> or Xue-Song Liu
-<a href="mailto:liuxs@shanghaitech.edu.cn" class="email">liuxs@shanghaitech.edu.cn</a>.</p>
-<p>MIT © 2019-2020 Shixiang Wang, Xue-Song Liu</p>
-<p>MIT © 2018 Anand Mayakonda</p>
-<hr />
-<p><strong><a href="https://github.com/XSLiuLab">Cancer Biology Group</a> @ShanghaiTech</strong></p>
-<p><strong>Research group led by Xue-Song Liu in ShanghaiTech University</strong></p>
-
+<p>Currently, I haven’t provided a proper example dataset for showing usage of all functions above (please read their documentation), here only the tidy dataset from our study <span class="citation">(<a href="references.html#ref-WangSX2020" role="doc-biblioref">Wang et al. 2020</a>)</span> is given to show the plot function.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="association-analysis.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The data is generated from Wang, Shixiang et al.</span></span>
+<span id="cb78-2"><a href="association-analysis.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;asso_data.RData&quot;</span>,</span>
+<span id="cb78-3"><a href="association-analysis.html#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">package =</span> <span class="st">&quot;sigminer&quot;</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span></span>
+<span id="cb78-4"><a href="association-analysis.html#cb78-4" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb78-5"><a href="association-analysis.html#cb78-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-6"><a href="association-analysis.html#cb78-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">show_sig_feature_corrplot</span>(tidy_data.seqz.feature, <span class="at">p_val =</span> <span class="fl">0.05</span>)</span>
+<span id="cb78-7"><a href="association-analysis.html#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Using size for a discrete variable is not advised.</span></span>
+<span id="cb78-8"><a href="association-analysis.html#cb78-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-9"><a href="association-analysis.html#cb78-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Using size for a discrete variable is not advised.</span></span>
+<span id="cb78-10"><a href="association-analysis.html#cb78-10" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-91-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="sbssig.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sigobject.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="group-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -445,7 +369,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ShixiangWang/sigminer-doc/edit/master/index.Rmd",
+"link": "https://github.com/ShixiangWang/sigminer-doc/edit/master/05-analysis-and-visualization.Rmd",
 "text": "Edit"
 },
 "history": {

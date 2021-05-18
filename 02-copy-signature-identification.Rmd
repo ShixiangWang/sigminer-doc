@@ -69,7 +69,7 @@ cn
 
 ## Tally Components 
 
-Currently, there are two methods for generating sample-by-component matrix, i.e. "W" or "M".
+Currently, there are two methods for generating sample-by-component matrix.
 
 Option `sigminer.copynumber.max` is used to control the processing of max copy number values. Run `?sig_tally` to see more.
 
@@ -89,15 +89,13 @@ load(system.file("extdata", "toy_copynumber.RData",
 
 # Use method designed by Wang, Shixiang et al.
 cn_tally_W <- sig_tally(cn, method = "W")
-# Use method designed by Macintyre et al.
-cn_tally_M <- sig_tally(cn, method = "M")
 ```
 
 > You can set `options(sigminer.sex = "male", sigminer.copynumber.max = 20)` at the top of your code
 > to avoid setting them in two places.
 >
-> **Of note**, the `sigminer.copynumber.max` option only has effect on `sig_tally()` with method "W" or "M",
-> the `sigminer.sex` option has effects on `read_copynumber()` and `sig_tally()` with method "W" or "M".
+> **Of note**, the `sigminer.copynumber.max` option only has effect on `sig_tally()` with method "W",
+> the `sigminer.sex` option has effects on `read_copynumber()` and `sig_tally()` with method "W".
 
 ```{r, include=FALSE}
 load(system.file("extdata", "toy_copynumber_tally_W.RData",
@@ -128,6 +126,5 @@ sig_w = sig_extract(cn_tally_W$nmf_matrix, n_sig = 2, pConstant = 1e-13)
 
 ```{r, include=FALSE}
 load("data/sig_w.RData")
-load("data/sig_m.RData")
 ```
 

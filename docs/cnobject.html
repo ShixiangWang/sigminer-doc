@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</title>
+  <title>Chapter 7 CopyNumber Object | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</title>
   <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
+  <meta property="og:title" content="Chapter 7 CopyNumber Object | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ShixiangWang/sigminer-doc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
+  <meta name="twitter:title" content="Chapter 7 CopyNumber Object | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
   
   <meta name="twitter:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="sbssig.html"/>
+<link rel="prev" href="sigflow.html"/>
+<link rel="next" href="sigobject.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -250,171 +250,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</h1>
-<p class="author"><em>Shixiang Wang, ShanghaiTech University</em></p>
-<p class="author"><em>Xue-Song Liu, ShanghaiTech University</em></p>
-<p class="date"><em>last revised on 2021-05-18</em></p>
+<div id="cnobject" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> CopyNumber Object</h1>
+<div id="profile" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Profile</h2>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="cnobject.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_cn_profile</span>(cn, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-69-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="cnobject.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_cn_circos</span>(cn, <span class="at">samples =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-70-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="intro" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Underlying cancer hallmarks are genome instability, which generates the genetic diversity that expedites their acquisition, and inflammation, which fosters multiple hallmark functions <span class="citation">(<a href="references.html#ref-hanahanHallmarksCancerNext2011" role="doc-biblioref">Hanahan 2011</a>)</span>. Cancer genomes typically harbors more than 1,000 mutations in small (e.g., point mutations, short insertions and deletions) and large scale (e.g., copy number variations, rearrangements). Genomic contexts where mutation may accumulate in response to both endogenous processes and exogeneous exposures. In recent years, computational approaches (typically non-negative matrix factorization (NMF)) have been applied to the mutation catalog analysis of human/mouse tumors to detect characteristic mutational patterns, also known as <strong>“mutational signatures”</strong>.</p>
-<div id="biological-significance-of-mutational-signature" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Biological Significance of Mutational Signature</h2>
-<p>To illustrate the biological significance of mutational signatures, we show some
-well organized figures here.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="fig/sbs_signature_overview_nat_review2.png" alt="The illustration of SBS signature, fig source: https://www.nature.com/articles/nrg3729" width="80%" />
-<p class="caption">
-Figure 1.1: The illustration of SBS signature, fig source: <a href="https://www.nature.com/articles/nrg3729" class="uri">https://www.nature.com/articles/nrg3729</a>
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="fig/sbs_signature_overview.png" alt="The illustration of SBS signature (2), fig source: https://www.nature.com/articles/s41467-018-05228-y" width="1010" />
-<p class="caption">
-Figure 1.2: The illustration of SBS signature (2), fig source: <a href="https://www.nature.com/articles/s41467-018-05228-y" class="uri">https://www.nature.com/articles/s41467-018-05228-y</a>
-</p>
-</div>
-<p>SBS (short for single base substitution) signature is a famous type of mutational signature. SBS signatures are well studied and related to single-strand changes, typically caused by defective DNA repair.
-Common etiologies contain aging, defective DNA mismatch repair, smoking, ultraviolet light exposure and <a href="https://en.wikipedia.org/wiki/APOBEC">APOBEC</a>.</p>
-<p>Currently, all SBS signatures are summarized in COSMIC database, including two versions: <a href="https://cancer.sanger.ac.uk/cosmic/signatures_v2">v2</a> and <a href="https://cancer.sanger.ac.uk/cosmic/signatures/SBS/">v3</a>.</p>
-<p>Recently, <span class="citation"><a href="references.html#ref-alexandrov2020repertoire" role="doc-biblioref">Alexandrov et al.</a> (<a href="references.html#ref-alexandrov2020repertoire" role="doc-biblioref">2020</a>)</span> extends the concept of mutational signature to three types of alteration: SBS, DBS (short for doublet base substitution) and INDEL (short for short insertion and deletion).
-All reported common signatures are recorded in COSMIC (<a href="https://cancer.sanger.ac.uk/cosmic/signatures/" class="uri">https://cancer.sanger.ac.uk/cosmic/signatures/</a>), so we usually call them <strong>COSMIC signatures</strong>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="fig/cn_signature_overview.png" alt="The illustration of copy number signatures, fig source: https://www.nature.com/articles/s41588-018-0212-y" width="925" />
-<p class="caption">
-Figure 1.3: The illustration of copy number signatures, fig source: <a href="https://www.nature.com/articles/s41588-018-0212-y" class="uri">https://www.nature.com/articles/s41588-018-0212-y</a>
-</p>
-</div>
-<p>Copy number signatures are less studied and many works are still to be done. The introduction is described in Chapter <a href="cnsig.html#cnsig">3</a>.</p>
-<blockquote>
-<p>Genome rearrangement signatures are limited to whole genome sequencing data and also less studied, the implementation is not available in current version of Sigminer. We are happy to accept a PR if you are interested in create an extension function to Sigminer.</p>
-</blockquote>
-<p>More details about mutational signatures you can read the <a href="https://en.wikipedia.org/wiki/Mutational_signatures">wiki page</a>.</p>
-</div>
-<div id="sigminer" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Sigminer</h2>
-<p>Here, we present an easy-to-use and scalable toolkit for mutational signature analysis and visualization in R. We named it <strong>sigminer</strong> (<code>signature</code> + <code>miner</code>).
-This tool can help users to extract, analyze and visualize signatures from genomic alteration records,
-thus providing new insight into cancer study.</p>
-</div>
-<div id="installation" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Installation</h2>
-<p>The stable release version of <strong>sigminer</strong> package can be installed from the CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sigminer&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;sigminer&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<blockquote>
-<p>Set <code>dependencies = TRUE</code> is recommended because many packages are required for full features in <strong>sigminer</strong>.</p>
-</blockquote>
-<p>The development version of <strong>sigminer</strong> package can be installed from Github:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;remotes&quot;)</span></span>
-<span id="cb2-2"><a href="index.html#cb2-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ShixiangWang/sigminer&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-</div>
-<div id="issues-or-suggestions" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Issues or Suggestions</h2>
-<p>Any issue or suggestion can be posted on <a href="https://github.com/ShixiangWang/sigminer/issues">GitHub issue</a>, we will reply ASAP.</p>
-<p>Any pull requrest is welcome.</p>
-</div>
-<div id="preparation" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Preparation</h2>
-<p>To reproduce the examples shown in this manual, users should load the following packages firstly.
-<strong>sigminer</strong> is requred to have version &gt;= 1.0.0.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sigminer)</span>
-<span id="cb3-2"><a href="index.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sigminer version 2.0.0</span></span>
-<span id="cb3-3"><a href="index.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; - Star me at https://github.com/ShixiangWang/sigminer</span></span>
-<span id="cb3-4"><a href="index.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; - Run hello() to see usage and citation.</span></span>
-<span id="cb3-5"><a href="index.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NMF)</span>
-<span id="cb3-6"><a href="index.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: pkgmaker</span></span>
-<span id="cb3-7"><a href="index.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: registry</span></span>
-<span id="cb3-8"><a href="index.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: rngtools</span></span>
-<span id="cb3-9"><a href="index.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: cluster</span></span>
-<span id="cb3-10"><a href="index.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NMF - BioConductor layer [OK] | Shared memory capabilities [NO: bigmemory] | Cores 7/8</span></span>
-<span id="cb3-11"><a href="index.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   To enable shared memory capabilities, try: install.extras(&#39;</span></span>
-<span id="cb3-12"><a href="index.html#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NMF</span></span>
-<span id="cb3-13"><a href="index.html#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;)</span></span></code></pre></div>
-<p>Current manual uses <strong>sigminer</strong> 2.0.0. More info about <strong>sigminer</strong> can be given as:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>()</span>
-<span id="cb4-2"><a href="index.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Thanks for using &#39;sigminer&#39; package!</span></span>
-<span id="cb4-3"><a href="index.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; =========================================================================</span></span>
-<span id="cb4-4"><a href="index.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Version: 2.0.0</span></span>
-<span id="cb4-5"><a href="index.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Run citation(&#39;sigminer&#39;) to see how to cite sigminer in publications.</span></span>
-<span id="cb4-6"><a href="index.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb4-7"><a href="index.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Project home : https://github.com/ShixiangWang/sigminer</span></span>
-<span id="cb4-8"><a href="index.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Bug report   : https://github.com/ShixiangWang/sigminer/issues</span></span>
-<span id="cb4-9"><a href="index.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Documentation: https://shixiangwang.github.io/sigminer-doc/</span></span>
-<span id="cb4-10"><a href="index.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; =========================================================================</span></span>
-<span id="cb4-11"><a href="index.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
-</div>
-<div id="overview-of-contents" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Overview of Contents</h2>
-<p>The contents of this manual have been divided into 4 sections:</p>
-<ul>
-<li>Common workflow.
-<ul>
-<li><em>de novo</em> signature discovery.</li>
-<li>single sample exposure quantification.</li>
-<li>subtype prediction.</li>
-</ul></li>
-<li>Target visualization.
-<ul>
-<li>copy number profile.</li>
-<li>copy number distribution.</li>
-<li>catalogue profile.</li>
-<li>signature profile.</li>
-<li>exposure profile.</li>
-<li>…</li>
-</ul></li>
-<li>Universal analysis.
-<ul>
-<li>association analysis.</li>
-<li>group analysis.</li>
-</ul></li>
-<li>Other utilities.</li>
-</ul>
-<p><strong>All functions are well organized and documented at <a href="https://shixiangwang.github.io/sigminer/reference/index.html" class="uri">https://shixiangwang.github.io/sigminer/reference/index.html</a> (For Chinese users, you can also read it at <a href="https://shixiangwang.gitee.io/sigminer/reference/index.html" class="uri">https://shixiangwang.gitee.io/sigminer/reference/index.html</a>). For usage of a specific function fun, run <code>?fun</code> in your R console to see its documentation.</strong></p>
-</div>
-<div id="citation-and-license" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> Citation and LICENSE</h2>
-<p>If you use <strong>sigminer</strong> in academic field, please cite one of the
-following papers.</p>
-<hr />
-<ul>
-<li><p><strong><em>Wang S, Li H, Song M, Tao Z, Wu T, He Z, et al. (2021) Copy
-number signature analysis tool and its application in prostate
-cancer reveals distinct mutational processes and clinical outcomes.
-PLoS Genet 17(5): e1009557.</em></strong>
-<a href="https://doi.org/10.1371/journal.pgen.1009557" class="uri">https://doi.org/10.1371/journal.pgen.1009557</a></p></li>
-<li><p><strong><em>Shixiang Wang, Ziyu Tao, Tao Wu, Xue-Song Liu, Sigflow: An
-Automated And Comprehensive Pipeline For Cancer Genome Mutational
-Signature Analysis, Bioinformatics, btaa895</em></strong>.
-<a href="https://doi.org/10.1093/bioinformatics/btaa895" class="uri">https://doi.org/10.1093/bioinformatics/btaa895</a></p></li>
-</ul>
-<hr />
-<p>The software is made available for non commercial research purposes only
-under the <a href="https://github.com/ShixiangWang/sigminer/blob/master/LICENSE.md">MIT</a>. However, notwithstanding any provision of
-the MIT License, the software currently may not be used for commercial
-purposes without explicit written permission after contacting Shixiang
-Wang <a href="mailto:wangshx@shanghaitech.edu.cn" class="email">wangshx@shanghaitech.edu.cn</a> or Xue-Song Liu
-<a href="mailto:liuxs@shanghaitech.edu.cn" class="email">liuxs@shanghaitech.edu.cn</a>.</p>
-<p>MIT © 2019-2020 Shixiang Wang, Xue-Song Liu</p>
-<p>MIT © 2018 Anand Mayakonda</p>
-<hr />
-<p><strong><a href="https://github.com/XSLiuLab">Cancer Biology Group</a> @ShanghaiTech</strong></p>
-<p><strong>Research group led by Xue-Song Liu in ShanghaiTech University</strong></p>
-
+<div id="distribution" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Distribution</h2>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="cnobject.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_cn_distribution</span>(cn, <span class="at">mode =</span> <span class="st">&quot;ld&quot;</span>)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-71-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="cnobject.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_cn_distribution</span>(cn, <span class="at">mode =</span> <span class="st">&quot;cd&quot;</span>)</span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-72-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="sbssig.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sigflow.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sigobject.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -445,7 +304,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ShixiangWang/sigminer-doc/edit/master/index.Rmd",
+"link": "https://github.com/ShixiangWang/sigminer-doc/edit/master/04-object-visualization.Rmd",
 "text": "Edit"
 },
 "history": {

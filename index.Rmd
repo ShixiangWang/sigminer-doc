@@ -73,16 +73,6 @@ Here, we present an easy-to-use and scalable toolkit for mutational signature an
 This tool can help users to extract, analyze and visualize signatures from genomic alteration records,
 thus providing new insight into cancer study.
 
-Currently, **sigminer** supports the following types of signature:
-
-- SBS signature in the form of 96 (6, 24, 384, 1536 and 6144) components.
-- DBS signature in the form of 78 (186) components.
-- ID (INDEL) signature in the form of 83 (28) components.
-- Copy number signature by the method either from @macintyre2018copy or from our group work [@WangSX2020].
-- Genome rearrangement.
-
-> Component here refer to a classification for a record (e.g. a mutation), in some papers mutation type or just type means the same thing. We use 'component' to represent a more broad concept.
-
 ## Installation 
 
 The stable release version of **sigminer** package can be installed from the CRAN:
@@ -101,7 +91,6 @@ The development version of **sigminer** package can be installed from Github:
 # install.packages("remotes")
 remotes::install_github("ShixiangWang/sigminer", dependencies = TRUE)
 ```
-
 
 ## Issues or Suggestions  
 

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Signature Fit: Sample Signature Exposure Quantification and Analysis | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</title>
+  <meta name="description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Signature Fit: Sample Signature Exposure Quantification and Analysis | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
+  <meta name="github-repo" content="ShixiangWang/sigminer-doc" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Signature Fit: Sample Signature Exposure Quantification and Analysis | Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures" />
+  
+  <meta name="twitter:description" content="This package helps users to extract, analyze and visualize signatures from genomic variation records, thus providing new insight into cancer study." />
+  
+
+<meta name="author" content="Shixiang Wang, ShanghaiTech University" />
+<meta name="author" content="Xue-Song Liu, ShanghaiTech University" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cnsig.html"/>
+<link rel="next" href="subtyping.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">sigminer: Signature Miner</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#biological-significance-of-mutational-signature"><i class="fa fa-check"></i><b>1.1</b> Biological Significance of Mutational Signature</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sigminer"><i class="fa fa-check"></i><b>1.2</b> Sigminer</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.3</b> Installation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#issues-or-suggestions"><i class="fa fa-check"></i><b>1.4</b> Issues or Suggestions</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#preparation"><i class="fa fa-check"></i><b>1.5</b> Preparation</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#overview-of-contents"><i class="fa fa-check"></i><b>1.6</b> Overview of Contents</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#citation-and-license"><i class="fa fa-check"></i><b>1.7</b> Citation and LICENSE</a></li>
+</ul></li>
+<li class="part"><span><b>I Common Workflow</b></span></li>
+<li class="chapter" data-level="2" data-path="sbssig.html"><a href="sbssig.html"><i class="fa fa-check"></i><b>2</b> COSMIC Signature Identification</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="sbssig.html"><a href="sbssig.html#read-data"><i class="fa fa-check"></i><b>2.1</b> Read Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="sbssig.html"><a href="sbssig.html#vcf-as-input"><i class="fa fa-check"></i><b>2.1.1</b> VCF as input</a></li>
+<li class="chapter" data-level="2.1.2" data-path="sbssig.html"><a href="sbssig.html#maf-as-input"><i class="fa fa-check"></i><b>2.1.2</b> MAF as input</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="sbssig.html"><a href="sbssig.html#tally-components"><i class="fa fa-check"></i><b>2.2</b> Tally Components</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="sbssig.html"><a href="sbssig.html#the-most-common-96-components"><i class="fa fa-check"></i><b>2.2.1</b> The most common 96 components</a></li>
+<li class="chapter" data-level="2.2.2" data-path="sbssig.html"><a href="sbssig.html#other-situations"><i class="fa fa-check"></i><b>2.2.2</b> Other Situations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="sbssig.html"><a href="sbssig.html#extract-signatures"><i class="fa fa-check"></i><b>2.3</b> Extract Signatures</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="sbssig.html"><a href="sbssig.html#method-1-estimate-signature-number"><i class="fa fa-check"></i><b>2.3.1</b> Method 1: Estimate Signature Number</a></li>
+<li class="chapter" data-level="2.3.2" data-path="sbssig.html"><a href="sbssig.html#method-1-extract-signatures"><i class="fa fa-check"></i><b>2.3.2</b> Method 1: Extract Signatures</a></li>
+<li class="chapter" data-level="2.3.3" data-path="sbssig.html"><a href="sbssig.html#method-2-auto-extraction"><i class="fa fa-check"></i><b>2.3.3</b> Method 2: Auto-extraction</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="sbssig.html"><a href="sbssig.html#match-signatures"><i class="fa fa-check"></i><b>2.4</b> Match Signatures</a></li>
+<li class="chapter" data-level="2.5" data-path="sbssig.html"><a href="sbssig.html#operate-signature"><i class="fa fa-check"></i><b>2.5</b> Operate <code>Signature</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cnsig.html"><a href="cnsig.html"><i class="fa fa-check"></i><b>3</b> Copy Number Signature Identification</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cnsig.html"><a href="cnsig.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="cnsig.html"><a href="cnsig.html#read-data-1"><i class="fa fa-check"></i><b>3.2</b> Read Data</a></li>
+<li class="chapter" data-level="3.3" data-path="cnsig.html"><a href="cnsig.html#tally-components-1"><i class="fa fa-check"></i><b>3.3</b> Tally Components</a></li>
+<li class="chapter" data-level="3.4" data-path="cnsig.html"><a href="cnsig.html#extract-signatures-1"><i class="fa fa-check"></i><b>3.4</b> Extract Signatures</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sigfit.html"><a href="sigfit.html"><i class="fa fa-check"></i><b>4</b> Signature Fit: Sample Signature Exposure Quantification and Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="sigfit.html"><a href="sigfit.html#fit-signatures-from-reference-databases"><i class="fa fa-check"></i><b>4.1</b> Fit Signatures from reference databases</a></li>
+<li class="chapter" data-level="4.2" data-path="sigfit.html"><a href="sigfit.html#fit-custom-signatures"><i class="fa fa-check"></i><b>4.2</b> Fit Custom Signatures</a></li>
+<li class="chapter" data-level="4.3" data-path="sigfit.html"><a href="sigfit.html#performance-comparison"><i class="fa fa-check"></i><b>4.3</b> Performance Comparison</a></li>
+<li class="chapter" data-level="4.4" data-path="sigfit.html"><a href="sigfit.html#estimate-exposure-stability-by-bootstrap"><i class="fa fa-check"></i><b>4.4</b> Estimate Exposure Stability by Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="subtyping.html"><a href="subtyping.html"><i class="fa fa-check"></i><b>5</b> Subtype Prediction</a></li>
+<li class="chapter" data-level="6" data-path="sigflow.html"><a href="sigflow.html"><i class="fa fa-check"></i><b>6</b> Sigflow Pipeline</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="sigflow.html"><a href="sigflow.html#cancer-type-specific-signature-index-database"><i class="fa fa-check"></i><b>6.1</b> Cancer type specific signature index database</a></li>
+</ul></li>
+<li class="part"><span><b>II Target Visualization</b></span></li>
+<li class="chapter" data-level="7" data-path="cnobject.html"><a href="cnobject.html"><i class="fa fa-check"></i><b>7</b> CopyNumber Object</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="cnobject.html"><a href="cnobject.html#profile"><i class="fa fa-check"></i><b>7.1</b> Profile</a></li>
+<li class="chapter" data-level="7.2" data-path="cnobject.html"><a href="cnobject.html#distribution"><i class="fa fa-check"></i><b>7.2</b> Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sigobject.html"><a href="sigobject.html"><i class="fa fa-check"></i><b>8</b> Signature Object</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sigobject.html"><a href="sigobject.html#signature-profile"><i class="fa fa-check"></i><b>8.1</b> Signature Profile</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="sigobject.html"><a href="sigobject.html#sbs-signature-profile"><i class="fa fa-check"></i><b>8.1.1</b> SBS Signature profile</a></li>
+<li class="chapter" data-level="8.1.2" data-path="sigobject.html"><a href="sigobject.html#copy-number-signature-porfile"><i class="fa fa-check"></i><b>8.1.2</b> Copy Number Signature Porfile</a></li>
+<li class="chapter" data-level="8.1.3" data-path="sigobject.html"><a href="sigobject.html#cosmic-signature-profile"><i class="fa fa-check"></i><b>8.1.3</b> COSMIC Signature Profile</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="sigobject.html"><a href="sigobject.html#exposure-profile"><i class="fa fa-check"></i><b>8.2</b> Exposure Profile</a></li>
+<li class="chapter" data-level="8.3" data-path="sigobject.html"><a href="sigobject.html#consensus-map"><i class="fa fa-check"></i><b>8.3</b> Consensus Map</a></li>
+<li class="chapter" data-level="8.4" data-path="sigobject.html"><a href="sigobject.html#catalogue-profile"><i class="fa fa-check"></i><b>8.4</b> Catalogue Profile</a></li>
+</ul></li>
+<li class="part"><span><b>III Universal Analysis</b></span></li>
+<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis and Visualization</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="association-analysis.html"><a href="association-analysis.html#general-numeric-association"><i class="fa fa-check"></i><b>9.1</b> General numeric association</a></li>
+<li class="chapter" data-level="9.2" data-path="association-analysis.html"><a href="association-analysis.html#comprehensive-association"><i class="fa fa-check"></i><b>9.2</b> Comprehensive association</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="group-analysis.html"><a href="group-analysis.html"><i class="fa fa-check"></i><b>10</b> Group Analysis and Visualization</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="group-analysis.html"><a href="group-analysis.html#group-generation"><i class="fa fa-check"></i><b>10.1</b> Group Generation</a></li>
+<li class="chapter" data-level="10.2" data-path="group-analysis.html"><a href="group-analysis.html#group-comparison-analysis"><i class="fa fa-check"></i><b>10.2</b> Group Comparison Analysis</a></li>
+<li class="chapter" data-level="10.3" data-path="group-analysis.html"><a href="group-analysis.html#group-visualization"><i class="fa fa-check"></i><b>10.3</b> Group Visualization</a></li>
+</ul></li>
+<li class="part"><span><b>IV Useful Utilities</b></span></li>
+<li class="chapter" data-level="11" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>11</b> Datasets</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="datasets.html"><a href="datasets.html#reference-annotation"><i class="fa fa-check"></i><b>11.1</b> Reference Annotation</a></li>
+<li class="chapter" data-level="11.2" data-path="datasets.html"><a href="datasets.html#copy-number-components-setting"><i class="fa fa-check"></i><b>11.2</b> Copy Number components setting</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="convert.html"><a href="convert.html"><i class="fa fa-check"></i><b>12</b> SBS Signature Conversion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Sigminer: A Scalable Toolkit to Extract, Analyze and Visualize Mutational Signatures</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sigfit" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Signature Fit: Sample Signature Exposure Quantification and Analysis</h1>
+<p>Besides <em>de novo</em> signature discovery shown in previous chapters, another common task is that
+you have gotten some reference signatures (either from known database like COSMIC or <em>de novo</em> discovery step), you want to know how these signatures contribute (fit) in a sample. That’s the target of <code>sig_fit()</code>.</p>
+<p><code>sig_fit()</code> uses multiple methods to compute exposure of pre-defined signatures from the spectrum of a (can be more) sample. Use <code>?sig_fit</code> see more detail.</p>
+<p>To show how this function works, we use a sample with maximum mutation counts as example data.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="sigfit.html#cb38-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">which.max</span>(<span class="fu">apply</span>(mt_tally<span class="sc">$</span>nmf_matrix, <span class="dv">1</span>, sum))</span>
+<span id="cb38-2"><a href="sigfit.html#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="sigfit.html#cb38-3" aria-hidden="true" tabindex="-1"></a>example_mat <span class="ot">&lt;-</span> mt_tally<span class="sc">$</span>nmf_matrix[i, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">%&gt;%</span> <span class="fu">t</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="sigfit.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(example_mat)</span>
+<span id="cb39-2"><a href="sigfit.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         TCGA-A8-A09G-01A-21W-A019-09</span></span>
+<span id="cb39-3"><a href="sigfit.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; A[T&gt;C]A                            1</span></span>
+<span id="cb39-4"><a href="sigfit.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C[T&gt;C]A                            0</span></span>
+<span id="cb39-5"><a href="sigfit.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; G[T&gt;C]A                            1</span></span>
+<span id="cb39-6"><a href="sigfit.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; T[T&gt;C]A                            1</span></span>
+<span id="cb39-7"><a href="sigfit.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; A[C&gt;T]A                            5</span></span>
+<span id="cb39-8"><a href="sigfit.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C[C&gt;T]A                            3</span></span></code></pre></div>
+<div id="fit-signatures-from-reference-databases" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Fit Signatures from reference databases</h2>
+<p>For SBS signatures, users may want to directly use reference signatures from COSMIC database.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="sigfit.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sig_fit</span>(example_mat, <span class="at">sig_index =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>)</span>
+<span id="cb40-2"><a href="sigfit.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Started.</span></span>
+<span id="cb40-3"><a href="sigfit.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Signature index detected.</span></span>
+<span id="cb40-4"><a href="sigfit.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking signature database in package.</span></span>
+<span id="cb40-5"><a href="sigfit.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking signature index.</span></span>
+<span id="cb40-6"><a href="sigfit.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Valid index for db &#39;legacy&#39;:</span></span>
+<span id="cb40-7"><a href="sigfit.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></span>
+<span id="cb40-8"><a href="sigfit.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Database and index checked.</span></span>
+<span id="cb40-9"><a href="sigfit.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Signature normalized.</span></span>
+<span id="cb40-10"><a href="sigfit.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb40-11"><a href="sigfit.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Checked.</span></span>
+<span id="cb40-12"><a href="sigfit.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb40-13"><a href="sigfit.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Matrix V and W don&#39;t have same orders. Try reordering...</span></span>
+<span id="cb40-14"><a href="sigfit.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Checked.</span></span>
+<span id="cb40-15"><a href="sigfit.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb40-16"><a href="sigfit.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Corresponding function generated.</span></span>
+<span id="cb40-17"><a href="sigfit.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Calling function.</span></span>
+<span id="cb40-18"><a href="sigfit.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Fitting sample: TCGA-A8-A09G-01A-21W-A019-09</span></span>
+<span id="cb40-19"><a href="sigfit.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Done.</span></span>
+<span id="cb40-20"><a href="sigfit.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Generating output signature exposures.</span></span>
+<span id="cb40-21"><a href="sigfit.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Done.</span></span>
+<span id="cb40-22"><a href="sigfit.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: 0.053 secs elapsed.</span></span>
+<span id="cb40-23"><a href="sigfit.html#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           TCGA-A8-A09G-01A-21W-A019-09</span></span>
+<span id="cb40-24"><a href="sigfit.html#cb40-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_1                     24.215933</span></span>
+<span id="cb40-25"><a href="sigfit.html#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_2                    127.164108</span></span>
+<span id="cb40-26"><a href="sigfit.html#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_3                      0.000000</span></span>
+<span id="cb40-27"><a href="sigfit.html#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_4                      0.000000</span></span>
+<span id="cb40-28"><a href="sigfit.html#cb40-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_5                      0.000000</span></span>
+<span id="cb40-29"><a href="sigfit.html#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_6                      0.000000</span></span>
+<span id="cb40-30"><a href="sigfit.html#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_7                      4.907674</span></span>
+<span id="cb40-31"><a href="sigfit.html#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_8                      0.000000</span></span>
+<span id="cb40-32"><a href="sigfit.html#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_9                      0.000000</span></span>
+<span id="cb40-33"><a href="sigfit.html#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_10                     3.584276</span></span>
+<span id="cb40-34"><a href="sigfit.html#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_11                     0.000000</span></span>
+<span id="cb40-35"><a href="sigfit.html#cb40-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_12                    11.062526</span></span>
+<span id="cb40-36"><a href="sigfit.html#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_13                   168.298139</span></span>
+<span id="cb40-37"><a href="sigfit.html#cb40-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_14                     0.000000</span></span>
+<span id="cb40-38"><a href="sigfit.html#cb40-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_15                     0.000000</span></span>
+<span id="cb40-39"><a href="sigfit.html#cb40-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_16                     0.000000</span></span>
+<span id="cb40-40"><a href="sigfit.html#cb40-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_17                     5.578495</span></span>
+<span id="cb40-41"><a href="sigfit.html#cb40-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_18                     0.000000</span></span>
+<span id="cb40-42"><a href="sigfit.html#cb40-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_19                     0.000000</span></span>
+<span id="cb40-43"><a href="sigfit.html#cb40-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_20                     0.000000</span></span>
+<span id="cb40-44"><a href="sigfit.html#cb40-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_21                     0.000000</span></span>
+<span id="cb40-45"><a href="sigfit.html#cb40-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_22                     0.000000</span></span>
+<span id="cb40-46"><a href="sigfit.html#cb40-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_23                     0.000000</span></span>
+<span id="cb40-47"><a href="sigfit.html#cb40-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_24                    12.084656</span></span>
+<span id="cb40-48"><a href="sigfit.html#cb40-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_25                     0.000000</span></span>
+<span id="cb40-49"><a href="sigfit.html#cb40-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_26                     0.000000</span></span>
+<span id="cb40-50"><a href="sigfit.html#cb40-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_27                     0.000000</span></span>
+<span id="cb40-51"><a href="sigfit.html#cb40-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_28                     0.000000</span></span>
+<span id="cb40-52"><a href="sigfit.html#cb40-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_29                     0.000000</span></span>
+<span id="cb40-53"><a href="sigfit.html#cb40-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_30                     0.104192</span></span></code></pre></div>
+<blockquote>
+<p>At default, COSMIC v2 signature database with 30 reference signatures is used (i.e. <code>sig_db = "legacy"</code>). Set <code>sig_db = "SBS"</code> for COSMIC v3 signature database.</p>
+</blockquote>
+<p>That’s it!</p>
+<p>You can set <code>type = "relative"</code> for getting relative exposure.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="sigfit.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sig_fit</span>(example_mat, <span class="at">sig_index =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">type =</span> <span class="st">&quot;relative&quot;</span>)</span>
+<span id="cb41-2"><a href="sigfit.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Started.</span></span>
+<span id="cb41-3"><a href="sigfit.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Signature index detected.</span></span>
+<span id="cb41-4"><a href="sigfit.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking signature database in package.</span></span>
+<span id="cb41-5"><a href="sigfit.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking signature index.</span></span>
+<span id="cb41-6"><a href="sigfit.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Valid index for db &#39;legacy&#39;:</span></span>
+<span id="cb41-7"><a href="sigfit.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></span>
+<span id="cb41-8"><a href="sigfit.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Database and index checked.</span></span>
+<span id="cb41-9"><a href="sigfit.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Signature normalized.</span></span>
+<span id="cb41-10"><a href="sigfit.html#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb41-11"><a href="sigfit.html#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Checked.</span></span>
+<span id="cb41-12"><a href="sigfit.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb41-13"><a href="sigfit.html#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Matrix V and W don&#39;t have same orders. Try reordering...</span></span>
+<span id="cb41-14"><a href="sigfit.html#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Checked.</span></span>
+<span id="cb41-15"><a href="sigfit.html#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb41-16"><a href="sigfit.html#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Corresponding function generated.</span></span>
+<span id="cb41-17"><a href="sigfit.html#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Calling function.</span></span>
+<span id="cb41-18"><a href="sigfit.html#cb41-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Fitting sample: TCGA-A8-A09G-01A-21W-A019-09</span></span>
+<span id="cb41-19"><a href="sigfit.html#cb41-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Done.</span></span>
+<span id="cb41-20"><a href="sigfit.html#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Generating output signature exposures.</span></span>
+<span id="cb41-21"><a href="sigfit.html#cb41-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Done.</span></span>
+<span id="cb41-22"><a href="sigfit.html#cb41-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: 0.04 secs elapsed.</span></span>
+<span id="cb41-23"><a href="sigfit.html#cb41-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           TCGA-A8-A09G-01A-21W-A019-09</span></span>
+<span id="cb41-24"><a href="sigfit.html#cb41-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_1                      0.067832</span></span>
+<span id="cb41-25"><a href="sigfit.html#cb41-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_2                      0.356202</span></span>
+<span id="cb41-26"><a href="sigfit.html#cb41-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_3                      0.000000</span></span>
+<span id="cb41-27"><a href="sigfit.html#cb41-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_4                      0.000000</span></span>
+<span id="cb41-28"><a href="sigfit.html#cb41-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_5                      0.000000</span></span>
+<span id="cb41-29"><a href="sigfit.html#cb41-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_6                      0.000000</span></span>
+<span id="cb41-30"><a href="sigfit.html#cb41-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_7                      0.013747</span></span>
+<span id="cb41-31"><a href="sigfit.html#cb41-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_8                      0.000000</span></span>
+<span id="cb41-32"><a href="sigfit.html#cb41-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_9                      0.000000</span></span>
+<span id="cb41-33"><a href="sigfit.html#cb41-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_10                     0.010040</span></span>
+<span id="cb41-34"><a href="sigfit.html#cb41-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_11                     0.000000</span></span>
+<span id="cb41-35"><a href="sigfit.html#cb41-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_12                     0.030987</span></span>
+<span id="cb41-36"><a href="sigfit.html#cb41-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_13                     0.471423</span></span>
+<span id="cb41-37"><a href="sigfit.html#cb41-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_14                     0.000000</span></span>
+<span id="cb41-38"><a href="sigfit.html#cb41-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_15                     0.000000</span></span>
+<span id="cb41-39"><a href="sigfit.html#cb41-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_16                     0.000000</span></span>
+<span id="cb41-40"><a href="sigfit.html#cb41-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_17                     0.015626</span></span>
+<span id="cb41-41"><a href="sigfit.html#cb41-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_18                     0.000000</span></span>
+<span id="cb41-42"><a href="sigfit.html#cb41-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_19                     0.000000</span></span>
+<span id="cb41-43"><a href="sigfit.html#cb41-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_20                     0.000000</span></span>
+<span id="cb41-44"><a href="sigfit.html#cb41-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_21                     0.000000</span></span>
+<span id="cb41-45"><a href="sigfit.html#cb41-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_22                     0.000000</span></span>
+<span id="cb41-46"><a href="sigfit.html#cb41-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_23                     0.000000</span></span>
+<span id="cb41-47"><a href="sigfit.html#cb41-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_24                     0.033851</span></span>
+<span id="cb41-48"><a href="sigfit.html#cb41-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_25                     0.000000</span></span>
+<span id="cb41-49"><a href="sigfit.html#cb41-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_26                     0.000000</span></span>
+<span id="cb41-50"><a href="sigfit.html#cb41-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_27                     0.000000</span></span>
+<span id="cb41-51"><a href="sigfit.html#cb41-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_28                     0.000000</span></span>
+<span id="cb41-52"><a href="sigfit.html#cb41-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_29                     0.000000</span></span>
+<span id="cb41-53"><a href="sigfit.html#cb41-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; COSMIC_30                     0.000292</span></span></code></pre></div>
+<p>For multiple samples, you can return a <code>data.table</code>, it can be easier to integrate with other information in R.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="sigfit.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sig_fit</span>(<span class="fu">t</span>(mt_tally<span class="sc">$</span>nmf_matrix[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ]), <span class="at">sig_index =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">return_class =</span> <span class="st">&quot;data.table&quot;</span>, <span class="at">rel_threshold =</span> <span class="fl">0.05</span>)</span>
+<span id="cb42-2"><a href="sigfit.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Started.</span></span>
+<span id="cb42-3"><a href="sigfit.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Signature index detected.</span></span>
+<span id="cb42-4"><a href="sigfit.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking signature database in package.</span></span>
+<span id="cb42-5"><a href="sigfit.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking signature index.</span></span>
+<span id="cb42-6"><a href="sigfit.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Valid index for db &#39;legacy&#39;:</span></span>
+<span id="cb42-7"><a href="sigfit.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</span></span>
+<span id="cb42-8"><a href="sigfit.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Database and index checked.</span></span>
+<span id="cb42-9"><a href="sigfit.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Signature normalized.</span></span>
+<span id="cb42-10"><a href="sigfit.html#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb42-11"><a href="sigfit.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Checked.</span></span>
+<span id="cb42-12"><a href="sigfit.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb42-13"><a href="sigfit.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Matrix V and W don&#39;t have same orders. Try reordering...</span></span>
+<span id="cb42-14"><a href="sigfit.html#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Checked.</span></span>
+<span id="cb42-15"><a href="sigfit.html#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb42-16"><a href="sigfit.html#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:55]: Corresponding function generated.</span></span>
+<span id="cb42-17"><a href="sigfit.html#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Calling function.</span></span>
+<span id="cb42-18"><a href="sigfit.html#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Fitting sample: TCGA-A1-A0SH-01A-11D-A099-09</span></span>
+<span id="cb42-19"><a href="sigfit.html#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:55]: Fitting sample: TCGA-A2-A04N-01A-11D-A10Y-09</span></span>
+<span id="cb42-20"><a href="sigfit.html#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A0CP-01A-11W-A050-09</span></span>
+<span id="cb42-21"><a href="sigfit.html#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A0EP-01A-52D-A22X-09</span></span>
+<span id="cb42-22"><a href="sigfit.html#cb42-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A0EV-01A-11W-A050-09</span></span>
+<span id="cb42-23"><a href="sigfit.html#cb42-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Done.</span></span>
+<span id="cb42-24"><a href="sigfit.html#cb42-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Generating output signature exposures.</span></span>
+<span id="cb42-25"><a href="sigfit.html#cb42-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Done.</span></span>
+<span id="cb42-26"><a href="sigfit.html#cb42-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: 0.061 secs elapsed.</span></span>
+<span id="cb42-27"><a href="sigfit.html#cb42-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          sample  COSMIC_1  COSMIC_2 COSMIC_3 COSMIC_4 COSMIC_5 COSMIC_6</span></span>
+<span id="cb42-28"><a href="sigfit.html#cb42-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: TCGA-A1-A0SH-01A-11D-A099-09  0.000000 37.420603 13.78689 0.000000        0 12.93472</span></span>
+<span id="cb42-29"><a href="sigfit.html#cb42-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: TCGA-A2-A04N-01A-11D-A10Y-09 20.039543  2.888675  0.00000 0.000000        0  0.00000</span></span>
+<span id="cb42-30"><a href="sigfit.html#cb42-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: TCGA-A2-A0CP-01A-11W-A050-09  3.648658  0.000000  0.00000 7.083113        0  0.00000</span></span>
+<span id="cb42-31"><a href="sigfit.html#cb42-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: TCGA-A2-A0EP-01A-52D-A22X-09  0.000000  0.000000  0.00000 2.492218        0  0.00000</span></span>
+<span id="cb42-32"><a href="sigfit.html#cb42-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: TCGA-A2-A0EV-01A-11W-A050-09  6.458422  0.000000 14.83102 0.000000        0 14.78142</span></span>
+<span id="cb42-33"><a href="sigfit.html#cb42-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     COSMIC_7 COSMIC_8 COSMIC_9 COSMIC_10 COSMIC_11 COSMIC_12 COSMIC_13 COSMIC_14 COSMIC_15</span></span>
+<span id="cb42-34"><a href="sigfit.html#cb42-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 21.332013  0.00000        0  0.000000         0  0.000000 31.306430  0.000000   0.00000</span></span>
+<span id="cb42-35"><a href="sigfit.html#cb42-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:  6.865345 12.11501        0  0.000000         0  0.000000  0.000000  0.000000   0.00000</span></span>
+<span id="cb42-36"><a href="sigfit.html#cb42-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 10.348536  0.00000        0  0.000000         0  0.000000  0.000000  0.000000  18.37734</span></span>
+<span id="cb42-37"><a href="sigfit.html#cb42-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:  2.156319  0.00000        0  0.000000         0  1.334731  4.654227  6.728415   0.00000</span></span>
+<span id="cb42-38"><a href="sigfit.html#cb42-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 21.963952  0.00000        0  7.978962         0  0.000000  5.713563  0.000000   0.00000</span></span>
+<span id="cb42-39"><a href="sigfit.html#cb42-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    COSMIC_16 COSMIC_17 COSMIC_18 COSMIC_19 COSMIC_20 COSMIC_21 COSMIC_22 COSMIC_23 COSMIC_24</span></span>
+<span id="cb42-40"><a href="sigfit.html#cb42-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         0         0 12.007682         0  0.000000  0.000000         0   0.00000         0</span></span>
+<span id="cb42-41"><a href="sigfit.html#cb42-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         0         0  0.000000         0  7.516444  0.000000         0   0.00000         0</span></span>
+<span id="cb42-42"><a href="sigfit.html#cb42-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         0         0  4.384106         0  0.000000  0.000000         0   0.00000         0</span></span>
+<span id="cb42-43"><a href="sigfit.html#cb42-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:         0         0  0.000000         0  0.000000  0.000000         0   1.26778         0</span></span>
+<span id="cb42-44"><a href="sigfit.html#cb42-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:         0         0  0.000000         0  0.000000  4.311951         0   0.00000         0</span></span>
+<span id="cb42-45"><a href="sigfit.html#cb42-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    COSMIC_25 COSMIC_26 COSMIC_27 COSMIC_28 COSMIC_29 COSMIC_30</span></span>
+<span id="cb42-46"><a href="sigfit.html#cb42-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         0         0         0         0  0.000000         0</span></span>
+<span id="cb42-47"><a href="sigfit.html#cb42-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         0         0         0         0  0.000000         0</span></span>
+<span id="cb42-48"><a href="sigfit.html#cb42-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         0         0         0         0  4.776321         0</span></span>
+<span id="cb42-49"><a href="sigfit.html#cb42-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:         0         0         0         0  0.000000         0</span></span>
+<span id="cb42-50"><a href="sigfit.html#cb42-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:         0         0         0         0  0.000000         0</span></span></code></pre></div>
+<p>When you set multiple signatures, we recommend setting <code>rel_threshold</code> option, which will set exposure of a signature to <code>0</code> if its relative exposure in a sample less than the <code>rel_threshold</code>.</p>
+</div>
+<div id="fit-custom-signatures" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Fit Custom Signatures</h2>
+<p>We have already determined the SBS signatures before. Here we can set them to <code>sig</code> option.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="sigfit.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sig_fit</span>(example_mat, <span class="at">sig =</span> mt_sig2)</span>
+<span id="cb43-2"><a href="sigfit.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Started.</span></span>
+<span id="cb43-3"><a href="sigfit.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Signature index not detected.</span></span>
+<span id="cb43-4"><a href="sigfit.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Signature object detected.</span></span>
+<span id="cb43-5"><a href="sigfit.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Database and index checked.</span></span>
+<span id="cb43-6"><a href="sigfit.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Signature normalized.</span></span>
+<span id="cb43-7"><a href="sigfit.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb43-8"><a href="sigfit.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Checked.</span></span>
+<span id="cb43-9"><a href="sigfit.html#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb43-10"><a href="sigfit.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Checked.</span></span>
+<span id="cb43-11"><a href="sigfit.html#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb43-12"><a href="sigfit.html#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Corresponding function generated.</span></span>
+<span id="cb43-13"><a href="sigfit.html#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Calling function.</span></span>
+<span id="cb43-14"><a href="sigfit.html#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A09G-01A-21W-A019-09</span></span>
+<span id="cb43-15"><a href="sigfit.html#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Done.</span></span>
+<span id="cb43-16"><a href="sigfit.html#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Generating output signature exposures.</span></span>
+<span id="cb43-17"><a href="sigfit.html#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Done.</span></span>
+<span id="cb43-18"><a href="sigfit.html#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: 0.032 secs elapsed.</span></span>
+<span id="cb43-19"><a href="sigfit.html#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      TCGA-A8-A09G-01A-21W-A019-09</span></span>
+<span id="cb43-20"><a href="sigfit.html#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sig1                            0</span></span>
+<span id="cb43-21"><a href="sigfit.html#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sig2                            0</span></span>
+<span id="cb43-22"><a href="sigfit.html#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sig3                          357</span></span></code></pre></div>
+</div>
+<div id="performance-comparison" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Performance Comparison</h2>
+<p>Now that we can use <code>sig_fit</code> for getting optimal exposures, we can compare the RSS between <strong>raw matrix</strong> and the <strong>reconstructed matrix</strong> either by NMF and <code>sig_fit()</code>.</p>
+<p>i.e. </p>
+<p><span class="math display">\[
+RSS = \sum(\hat H - H)^2
+\]</span></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="sigfit.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Exposure got from NMF</span></span>
+<span id="cb44-2"><a href="sigfit.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((<span class="fu">apply</span>(mt_sig2<span class="sc">$</span>Signature, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="sc">/</span> <span class="fu">sum</span>(x)) <span class="sc">%*%</span> mt_sig2<span class="sc">$</span>Exposure <span class="sc">-</span> <span class="fu">t</span>(mt_tally<span class="sc">$</span>nmf_matrix))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb44-3"><a href="sigfit.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 8891.978</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="sigfit.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Exposure optimized by sig_fit</span></span>
+<span id="cb45-2"><a href="sigfit.html#cb45-2" aria-hidden="true" tabindex="-1"></a>H_estimate <span class="ot">&lt;-</span> <span class="fu">apply</span>(mt_sig2<span class="sc">$</span>Signature, <span class="dv">2</span>, <span class="cf">function</span>(x) x <span class="sc">/</span> <span class="fu">sum</span>(x)) <span class="sc">%*%</span> <span class="fu">sig_fit</span>(<span class="fu">t</span>(mt_tally<span class="sc">$</span>nmf_matrix), <span class="at">sig =</span> mt_sig2)</span>
+<span id="cb45-3"><a href="sigfit.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Started.</span></span>
+<span id="cb45-4"><a href="sigfit.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Signature index not detected.</span></span>
+<span id="cb45-5"><a href="sigfit.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Signature object detected.</span></span>
+<span id="cb45-6"><a href="sigfit.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Database and index checked.</span></span>
+<span id="cb45-7"><a href="sigfit.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Signature normalized.</span></span>
+<span id="cb45-8"><a href="sigfit.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb45-9"><a href="sigfit.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Checked.</span></span>
+<span id="cb45-10"><a href="sigfit.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb45-11"><a href="sigfit.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Checked.</span></span>
+<span id="cb45-12"><a href="sigfit.html#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb45-13"><a href="sigfit.html#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Corresponding function generated.</span></span>
+<span id="cb45-14"><a href="sigfit.html#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Calling function.</span></span>
+<span id="cb45-15"><a href="sigfit.html#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A1-A0SH-01A-11D-A099-09</span></span>
+<span id="cb45-16"><a href="sigfit.html#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A04N-01A-11D-A10Y-09</span></span>
+<span id="cb45-17"><a href="sigfit.html#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A0CP-01A-11W-A050-09</span></span>
+<span id="cb45-18"><a href="sigfit.html#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A0EP-01A-52D-A22X-09</span></span>
+<span id="cb45-19"><a href="sigfit.html#cb45-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A0EV-01A-11W-A050-09</span></span>
+<span id="cb45-20"><a href="sigfit.html#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A0SX-01A-12D-A099-09</span></span>
+<span id="cb45-21"><a href="sigfit.html#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A0T7-01A-21D-A099-09</span></span>
+<span id="cb45-22"><a href="sigfit.html#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A0YF-01A-21D-A10G-09</span></span>
+<span id="cb45-23"><a href="sigfit.html#cb45-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A25F-01A-11D-A167-09</span></span>
+<span id="cb45-24"><a href="sigfit.html#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A3XW-01A-11D-A23C-09</span></span>
+<span id="cb45-25"><a href="sigfit.html#cb45-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A2-A4S1-01A-21D-A25Q-09</span></span>
+<span id="cb45-26"><a href="sigfit.html#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A7-A0D9-01A-31W-A071-09</span></span>
+<span id="cb45-27"><a href="sigfit.html#cb45-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A7-A13F-01A-11D-A12Q-09</span></span>
+<span id="cb45-28"><a href="sigfit.html#cb45-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A7-A5ZV-01A-11D-A28B-09</span></span>
+<span id="cb45-29"><a href="sigfit.html#cb45-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A06P-01A-11W-A019-09</span></span>
+<span id="cb45-30"><a href="sigfit.html#cb45-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A076-01A-21W-A019-09</span></span>
+<span id="cb45-31"><a href="sigfit.html#cb45-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A07W-01A-11W-A019-09</span></span>
+<span id="cb45-32"><a href="sigfit.html#cb45-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A084-01A-21W-A019-09</span></span>
+<span id="cb45-33"><a href="sigfit.html#cb45-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A08S-01A-11W-A050-09</span></span>
+<span id="cb45-34"><a href="sigfit.html#cb45-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A09G-01A-21W-A019-09</span></span>
+<span id="cb45-35"><a href="sigfit.html#cb45-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A0A4-01A-11W-A019-09</span></span>
+<span id="cb45-36"><a href="sigfit.html#cb45-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A0AB-01A-11W-A050-09</span></span>
+<span id="cb45-37"><a href="sigfit.html#cb45-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AC-A2B8-01A-11D-A17D-09</span></span>
+<span id="cb45-38"><a href="sigfit.html#cb45-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AC-A2FO-01A-11D-A17W-09</span></span>
+<span id="cb45-39"><a href="sigfit.html#cb45-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AC-A3YI-01A-21D-A23C-09</span></span>
+<span id="cb45-40"><a href="sigfit.html#cb45-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AC-A8OS-01A-12D-A41F-09</span></span>
+<span id="cb45-41"><a href="sigfit.html#cb45-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AN-A0FK-01A-11W-A050-09</span></span>
+<span id="cb45-42"><a href="sigfit.html#cb45-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AN-A0FT-01A-11W-A050-09</span></span>
+<span id="cb45-43"><a href="sigfit.html#cb45-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AN-A0XO-01A-11D-A10G-09</span></span>
+<span id="cb45-44"><a href="sigfit.html#cb45-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AO-A1KS-01A-11D-A13L-09</span></span>
+<span id="cb45-45"><a href="sigfit.html#cb45-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AQ-A54O-01A-11D-A25Q-09</span></span>
+<span id="cb45-46"><a href="sigfit.html#cb45-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AQ-A7U7-01A-22D-A351-09</span></span>
+<span id="cb45-47"><a href="sigfit.html#cb45-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AR-A0TP-01A-11D-A099-09</span></span>
+<span id="cb45-48"><a href="sigfit.html#cb45-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AR-A0U3-01A-11D-A10G-09</span></span>
+<span id="cb45-49"><a href="sigfit.html#cb45-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AR-A1AH-01A-11D-A12B-09</span></span>
+<span id="cb45-50"><a href="sigfit.html#cb45-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AR-A1AJ-01A-21D-A12Q-09</span></span>
+<span id="cb45-51"><a href="sigfit.html#cb45-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AR-A1AN-01A-11D-A12Q-09</span></span>
+<span id="cb45-52"><a href="sigfit.html#cb45-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AR-A24N-01A-11D-A167-09</span></span>
+<span id="cb45-53"><a href="sigfit.html#cb45-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AR-A252-01A-11D-A167-09</span></span>
+<span id="cb45-54"><a href="sigfit.html#cb45-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AR-A2LL-01A-11D-A17W-09</span></span>
+<span id="cb45-55"><a href="sigfit.html#cb45-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-AR-A2LO-01A-31D-A18P-09</span></span>
+<span id="cb45-56"><a href="sigfit.html#cb45-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-B6-A0IE-01A-11W-A050-09</span></span>
+<span id="cb45-57"><a href="sigfit.html#cb45-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-B6-A0IM-01A-11W-A050-09</span></span>
+<span id="cb45-58"><a href="sigfit.html#cb45-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-B6-A0IP-01A-11D-A045-09</span></span>
+<span id="cb45-59"><a href="sigfit.html#cb45-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-B6-A0RV-01A-11D-A099-09</span></span>
+<span id="cb45-60"><a href="sigfit.html#cb45-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-B6-A0WZ-01A-11D-A10G-09</span></span>
+<span id="cb45-61"><a href="sigfit.html#cb45-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-B6-A0X1-01A-11D-A10G-09</span></span>
+<span id="cb45-62"><a href="sigfit.html#cb45-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-B6-A1KC-01B-11D-A159-09</span></span>
+<span id="cb45-63"><a href="sigfit.html#cb45-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-B6-A401-01A-11D-A23C-09</span></span>
+<span id="cb45-64"><a href="sigfit.html#cb45-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-B6-A40C-01A-11D-A23C-09</span></span>
+<span id="cb45-65"><a href="sigfit.html#cb45-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A0AV-01A-31D-A10Y-09</span></span>
+<span id="cb45-66"><a href="sigfit.html#cb45-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A0BT-01A-11D-A12Q-09</span></span>
+<span id="cb45-67"><a href="sigfit.html#cb45-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A0DL-01A-11D-A10Y-09</span></span>
+<span id="cb45-68"><a href="sigfit.html#cb45-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A0DO-01B-11D-A12B-09</span></span>
+<span id="cb45-69"><a href="sigfit.html#cb45-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A0DT-01A-21D-A12B-09</span></span>
+<span id="cb45-70"><a href="sigfit.html#cb45-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A0GY-01A-11W-A071-09</span></span>
+<span id="cb45-71"><a href="sigfit.html#cb45-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A0H6-01A-21W-A071-09</span></span>
+<span id="cb45-72"><a href="sigfit.html#cb45-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A18K-01A-11D-A12B-09</span></span>
+<span id="cb45-73"><a href="sigfit.html#cb45-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A1FU-01A-11D-A14G-09</span></span>
+<span id="cb45-74"><a href="sigfit.html#cb45-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A202-01A-11D-A14K-09</span></span>
+<span id="cb45-75"><a href="sigfit.html#cb45-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A5IZ-01A-11D-A27P-09</span></span>
+<span id="cb45-76"><a href="sigfit.html#cb45-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A6R8-01A-21D-A33E-09</span></span>
+<span id="cb45-77"><a href="sigfit.html#cb45-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-BH-A8G0-01A-11D-A351-09</span></span>
+<span id="cb45-78"><a href="sigfit.html#cb45-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-C8-A131-01A-11D-A10Y-09</span></span>
+<span id="cb45-79"><a href="sigfit.html#cb45-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A147-01A-11D-A10Y-09</span></span>
+<span id="cb45-80"><a href="sigfit.html#cb45-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A1JG-01B-11D-A13L-09</span></span>
+<span id="cb45-81"><a href="sigfit.html#cb45-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A1JH-01A-11D-A188-09</span></span>
+<span id="cb45-82"><a href="sigfit.html#cb45-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A1JJ-01A-31D-A14K-09</span></span>
+<span id="cb45-83"><a href="sigfit.html#cb45-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A1JT-01A-31D-A13L-09</span></span>
+<span id="cb45-84"><a href="sigfit.html#cb45-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A1JU-01A-11D-A13L-09</span></span>
+<span id="cb45-85"><a href="sigfit.html#cb45-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A1X7-01A-11D-A14K-09</span></span>
+<span id="cb45-86"><a href="sigfit.html#cb45-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A1X8-01A-11D-A14K-09</span></span>
+<span id="cb45-87"><a href="sigfit.html#cb45-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A1XL-01A-11D-A14K-09</span></span>
+<span id="cb45-88"><a href="sigfit.html#cb45-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-D8-A27V-01A-12D-A17D-09</span></span>
+<span id="cb45-89"><a href="sigfit.html#cb45-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A108-01A-13D-A10M-09</span></span>
+<span id="cb45-90"><a href="sigfit.html#cb45-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A10F-01A-11D-A10M-09</span></span>
+<span id="cb45-91"><a href="sigfit.html#cb45-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A14T-01A-11D-A10Y-09</span></span>
+<span id="cb45-92"><a href="sigfit.html#cb45-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A152-01A-11D-A12B-09</span></span>
+<span id="cb45-93"><a href="sigfit.html#cb45-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A15D-01A-11D-A10Y-09</span></span>
+<span id="cb45-94"><a href="sigfit.html#cb45-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A15L-01A-11D-A12B-09</span></span>
+<span id="cb45-95"><a href="sigfit.html#cb45-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A1BD-01A-11D-A12Q-09</span></span>
+<span id="cb45-96"><a href="sigfit.html#cb45-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A1IH-01A-11D-A188-09</span></span>
+<span id="cb45-97"><a href="sigfit.html#cb45-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A1II-01A-11D-A142-09</span></span>
+<span id="cb45-98"><a href="sigfit.html#cb45-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A1IJ-01A-11D-A142-09</span></span>
+<span id="cb45-99"><a href="sigfit.html#cb45-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A1L6-01A-11D-A13L-09</span></span>
+<span id="cb45-100"><a href="sigfit.html#cb45-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E2-A9RU-01A-11D-A41F-09</span></span>
+<span id="cb45-101"><a href="sigfit.html#cb45-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E9-A1NE-01A-21D-A14K-09</span></span>
+<span id="cb45-102"><a href="sigfit.html#cb45-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E9-A22A-01A-11D-A159-09</span></span>
+<span id="cb45-103"><a href="sigfit.html#cb45-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E9-A22E-01A-11D-A159-09</span></span>
+<span id="cb45-104"><a href="sigfit.html#cb45-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E9-A3QA-01A-61D-A228-09</span></span>
+<span id="cb45-105"><a href="sigfit.html#cb45-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-E9-A5FL-01A-11D-A27P-09</span></span>
+<span id="cb45-106"><a href="sigfit.html#cb45-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-EW-A1PA-01A-11D-A142-09</span></span>
+<span id="cb45-107"><a href="sigfit.html#cb45-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-EW-A1PH-01A-11D-A14K-09</span></span>
+<span id="cb45-108"><a href="sigfit.html#cb45-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-GM-A2DB-01A-31D-A19Y-09</span></span>
+<span id="cb45-109"><a href="sigfit.html#cb45-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-LD-A9QF-01A-32D-A41F-09</span></span>
+<span id="cb45-110"><a href="sigfit.html#cb45-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-LL-A5YP-01A-21D-A28B-09</span></span>
+<span id="cb45-111"><a href="sigfit.html#cb45-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-LL-A73Z-01A-11D-A32I-09</span></span>
+<span id="cb45-112"><a href="sigfit.html#cb45-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-OL-A5RY-01A-21D-A28B-09</span></span>
+<span id="cb45-113"><a href="sigfit.html#cb45-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-PE-A5DD-01A-12D-A27P-09</span></span>
+<span id="cb45-114"><a href="sigfit.html#cb45-114" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-S3-AA17-01A-11D-A41F-09</span></span>
+<span id="cb45-115"><a href="sigfit.html#cb45-115" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Done.</span></span>
+<span id="cb45-116"><a href="sigfit.html#cb45-116" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Generating output signature exposures.</span></span>
+<span id="cb45-117"><a href="sigfit.html#cb45-117" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Done.</span></span>
+<span id="cb45-118"><a href="sigfit.html#cb45-118" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: 0.243 secs elapsed.</span></span>
+<span id="cb45-119"><a href="sigfit.html#cb45-119" aria-hidden="true" tabindex="-1"></a>H_estimate <span class="ot">&lt;-</span> <span class="fu">apply</span>(H_estimate, <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">is.nan</span>(x), <span class="dv">0</span>, x))</span>
+<span id="cb45-120"><a href="sigfit.html#cb45-120" aria-hidden="true" tabindex="-1"></a>H_real <span class="ot">&lt;-</span> <span class="fu">t</span>(mt_tally<span class="sc">$</span>nmf_matrix)</span>
+<span id="cb45-121"><a href="sigfit.html#cb45-121" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((H_estimate <span class="sc">-</span> H_real)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb45-122"><a href="sigfit.html#cb45-122" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 8242.63</span></span></code></pre></div>
+</div>
+<div id="estimate-exposure-stability-by-bootstrap" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Estimate Exposure Stability by Bootstrap</h2>
+<p>This feature is based on <code>sig_fit()</code>, it uses the resampling data of original input and runs <code>sig_fit()</code> multiple times to estimate the exposure. Bootstrap replicates &gt;= 100 is recommended, here I just use 10 times for illustration.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="sigfit.html#cb46-1" aria-hidden="true" tabindex="-1"></a>bt_result <span class="ot">&lt;-</span> <span class="fu">sig_fit_bootstrap_batch</span>(example_mat, <span class="at">sig =</span> mt_sig2, <span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb46-2"><a href="sigfit.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Batch Bootstrap Signature Exposure Analysis Started.</span></span>
+<span id="cb46-3"><a href="sigfit.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Samples to be filtered out:</span></span>
+<span id="cb46-4"><a href="sigfit.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Finding optimal exposures (&amp;errors) for different methods.</span></span>
+<span id="cb46-5"><a href="sigfit.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Calling method `QP`.</span></span>
+<span id="cb46-6"><a href="sigfit.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Started.</span></span>
+<span id="cb46-7"><a href="sigfit.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Signature index not detected.</span></span>
+<span id="cb46-8"><a href="sigfit.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Signature object detected.</span></span>
+<span id="cb46-9"><a href="sigfit.html#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Database and index checked.</span></span>
+<span id="cb46-10"><a href="sigfit.html#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Signature normalized.</span></span>
+<span id="cb46-11"><a href="sigfit.html#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Checking row number for catalog matrix and signature matrix.</span></span>
+<span id="cb46-12"><a href="sigfit.html#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Checked.</span></span>
+<span id="cb46-13"><a href="sigfit.html#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Checking rownames for catalog matrix and signature matrix.</span></span>
+<span id="cb46-14"><a href="sigfit.html#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Checked.</span></span>
+<span id="cb46-15"><a href="sigfit.html#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Method &#39;QP&#39; detected.</span></span>
+<span id="cb46-16"><a href="sigfit.html#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Corresponding function generated.</span></span>
+<span id="cb46-17"><a href="sigfit.html#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Calling function.</span></span>
+<span id="cb46-18"><a href="sigfit.html#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Fitting sample: TCGA-A8-A09G-01A-21W-A019-09</span></span>
+<span id="cb46-19"><a href="sigfit.html#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Done.</span></span>
+<span id="cb46-20"><a href="sigfit.html#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:56]: Generating output signature exposures.</span></span>
+<span id="cb46-21"><a href="sigfit.html#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:56]: Done.</span></span>
+<span id="cb46-22"><a href="sigfit.html#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:57]: Calculating errors (Frobenius Norm).</span></span>
+<span id="cb46-23"><a href="sigfit.html#cb46-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:57]: Done.</span></span>
+<span id="cb46-24"><a href="sigfit.html#cb46-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:57]: 0.072 secs elapsed.</span></span>
+<span id="cb46-25"><a href="sigfit.html#cb46-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:57]: Getting bootstrap exposures (&amp;errors/similarity) for different methods.</span></span>
+<span id="cb46-26"><a href="sigfit.html#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:57]: This step is time consuming, please be patient.</span></span>
+<span id="cb46-27"><a href="sigfit.html#cb46-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:57]: Processing sample `TCGA-A8-A09G-01A-21W-A019-09`.</span></span>
+<span id="cb46-28"><a href="sigfit.html#cb46-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:57]: Started.</span></span>
+<span id="cb46-29"><a href="sigfit.html#cb46-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:57]: Checking catalog.</span></span>
+<span id="cb46-30"><a href="sigfit.html#cb46-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:57]: Done.</span></span>
+<span id="cb46-31"><a href="sigfit.html#cb46-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:57]: About to start bootstrap.</span></span>
+<span id="cb46-32"><a href="sigfit.html#cb46-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb46-33"><a href="sigfit.html#cb46-33" aria-hidden="true" tabindex="-1"></a>→ Bootstrapping <span class="dv">10</span> times.</span>
+<span id="cb46-34"><a href="sigfit.html#cb46-34" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">1.</span></span>
+<span id="cb46-35"><a href="sigfit.html#cb46-35" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">2.</span></span>
+<span id="cb46-36"><a href="sigfit.html#cb46-36" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">3.</span></span>
+<span id="cb46-37"><a href="sigfit.html#cb46-37" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">4.</span></span>
+<span id="cb46-38"><a href="sigfit.html#cb46-38" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">5.</span></span>
+<span id="cb46-39"><a href="sigfit.html#cb46-39" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">6.</span></span>
+<span id="cb46-40"><a href="sigfit.html#cb46-40" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">7.</span></span>
+<span id="cb46-41"><a href="sigfit.html#cb46-41" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">8.</span></span>
+<span id="cb46-42"><a href="sigfit.html#cb46-42" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">9.</span></span>
+<span id="cb46-43"><a href="sigfit.html#cb46-43" aria-hidden="true" tabindex="-1"></a>→ Total <span class="dv">10</span> times, starting no.<span class="fl">10.</span></span>
+<span id="cb46-44"><a href="sigfit.html#cb46-44" aria-hidden="true" tabindex="-1"></a>Bootstrap done.                  </span>
+<span id="cb46-45"><a href="sigfit.html#cb46-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:57]: Signature exposures collected.</span></span>
+<span id="cb46-46"><a href="sigfit.html#cb46-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:57]: Errors and similarity collected.</span></span>
+<span id="cb46-47"><a href="sigfit.html#cb46-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:57]: Done.</span></span>
+<span id="cb46-48"><a href="sigfit.html#cb46-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:57]: 0.69 secs elapsed.</span></span>
+<span id="cb46-49"><a href="sigfit.html#cb46-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:58]: Gotten.</span></span>
+<span id="cb46-50"><a href="sigfit.html#cb46-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:58]: Reporting p values...</span></span>
+<span id="cb46-51"><a href="sigfit.html#cb46-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:58]: Started.</span></span>
+<span id="cb46-52"><a href="sigfit.html#cb46-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:58]: Batch mode enabled.</span></span>
+<span id="cb46-53"><a href="sigfit.html#cb46-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:58]: Done.</span></span>
+<span id="cb46-54"><a href="sigfit.html#cb46-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:58]: 0.013 secs elapsed.</span></span>
+<span id="cb46-55"><a href="sigfit.html#cb46-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:58]: Done.</span></span>
+<span id="cb46-56"><a href="sigfit.html#cb46-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:58]: Cleaning results...</span></span>
+<span id="cb46-57"><a href="sigfit.html#cb46-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ [2021-05-18 23:16:58]: Outputing.</span></span>
+<span id="cb46-58"><a href="sigfit.html#cb46-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:58]: Total 1.454 secs elapsed.</span></span>
+<span id="cb46-59"><a href="sigfit.html#cb46-59" aria-hidden="true" tabindex="-1"></a>bt_result</span>
+<span id="cb46-60"><a href="sigfit.html#cb46-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $expo</span></span>
+<span id="cb46-61"><a href="sigfit.html#cb46-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     method                       sample  sig   exposure    type</span></span>
+<span id="cb46-62"><a href="sigfit.html#cb46-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   0.000000 optimal</span></span>
+<span id="cb46-63"><a href="sigfit.html#cb46-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2   0.000000 optimal</span></span>
+<span id="cb46-64"><a href="sigfit.html#cb46-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 357.000000 optimal</span></span>
+<span id="cb46-65"><a href="sigfit.html#cb46-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   1.998810   Rep_1</span></span>
+<span id="cb46-66"><a href="sigfit.html#cb46-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2   0.000000   Rep_1</span></span>
+<span id="cb46-67"><a href="sigfit.html#cb46-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 355.001190   Rep_1</span></span>
+<span id="cb46-68"><a href="sigfit.html#cb46-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   0.000000   Rep_2</span></span>
+<span id="cb46-69"><a href="sigfit.html#cb46-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2   0.324300   Rep_2</span></span>
+<span id="cb46-70"><a href="sigfit.html#cb46-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 356.675700   Rep_2</span></span>
+<span id="cb46-71"><a href="sigfit.html#cb46-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   0.000000   Rep_3</span></span>
+<span id="cb46-72"><a href="sigfit.html#cb46-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2   3.656600   Rep_3</span></span>
+<span id="cb46-73"><a href="sigfit.html#cb46-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 353.343400   Rep_3</span></span>
+<span id="cb46-74"><a href="sigfit.html#cb46-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   0.000000   Rep_4</span></span>
+<span id="cb46-75"><a href="sigfit.html#cb46-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2  20.198785   Rep_4</span></span>
+<span id="cb46-76"><a href="sigfit.html#cb46-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 336.801215   Rep_4</span></span>
+<span id="cb46-77"><a href="sigfit.html#cb46-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   0.000000   Rep_5</span></span>
+<span id="cb46-78"><a href="sigfit.html#cb46-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2   0.000000   Rep_5</span></span>
+<span id="cb46-79"><a href="sigfit.html#cb46-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 357.000000   Rep_5</span></span>
+<span id="cb46-80"><a href="sigfit.html#cb46-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   0.000000   Rep_6</span></span>
+<span id="cb46-81"><a href="sigfit.html#cb46-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2  19.971588   Rep_6</span></span>
+<span id="cb46-82"><a href="sigfit.html#cb46-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 337.028412   Rep_6</span></span>
+<span id="cb46-83"><a href="sigfit.html#cb46-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   0.000000   Rep_7</span></span>
+<span id="cb46-84"><a href="sigfit.html#cb46-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2   0.111127   Rep_7</span></span>
+<span id="cb46-85"><a href="sigfit.html#cb46-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 356.888873   Rep_7</span></span>
+<span id="cb46-86"><a href="sigfit.html#cb46-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   0.000000   Rep_8</span></span>
+<span id="cb46-87"><a href="sigfit.html#cb46-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2   1.656231   Rep_8</span></span>
+<span id="cb46-88"><a href="sigfit.html#cb46-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 355.343769   Rep_8</span></span>
+<span id="cb46-89"><a href="sigfit.html#cb46-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   0.000000   Rep_9</span></span>
+<span id="cb46-90"><a href="sigfit.html#cb46-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2   0.000000   Rep_9</span></span>
+<span id="cb46-91"><a href="sigfit.html#cb46-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 357.000000   Rep_9</span></span>
+<span id="cb46-92"><a href="sigfit.html#cb46-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig1   9.636951  Rep_10</span></span>
+<span id="cb46-93"><a href="sigfit.html#cb46-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig2   3.898671  Rep_10</span></span>
+<span id="cb46-94"><a href="sigfit.html#cb46-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33:     QP TCGA-A8-A09G-01A-21W-A019-09 Sig3 343.464378  Rep_10</span></span>
+<span id="cb46-95"><a href="sigfit.html#cb46-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     method                       sample  sig   exposure    type</span></span>
+<span id="cb46-96"><a href="sigfit.html#cb46-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb46-97"><a href="sigfit.html#cb46-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $error</span></span>
+<span id="cb46-98"><a href="sigfit.html#cb46-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     method                       sample errors    type</span></span>
+<span id="cb46-99"><a href="sigfit.html#cb46-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:     QP TCGA-A8-A09G-01A-21W-A019-09 18.549 optimal</span></span>
+<span id="cb46-100"><a href="sigfit.html#cb46-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:     QP TCGA-A8-A09G-01A-21W-A019-09 18.597   Rep_1</span></span>
+<span id="cb46-101"><a href="sigfit.html#cb46-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:     QP TCGA-A8-A09G-01A-21W-A019-09 18.555   Rep_2</span></span>
+<span id="cb46-102"><a href="sigfit.html#cb46-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:     QP TCGA-A8-A09G-01A-21W-A019-09 18.656   Rep_3</span></span>
+<span id="cb46-103"><a href="sigfit.html#cb46-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:     QP TCGA-A8-A09G-01A-21W-A019-09 20.243   Rep_4</span></span>
+<span id="cb46-104"><a href="sigfit.html#cb46-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:     QP TCGA-A8-A09G-01A-21W-A019-09 18.549   Rep_5</span></span>
+<span id="cb46-105"><a href="sigfit.html#cb46-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:     QP TCGA-A8-A09G-01A-21W-A019-09 20.210   Rep_6</span></span>
+<span id="cb46-106"><a href="sigfit.html#cb46-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:     QP TCGA-A8-A09G-01A-21W-A019-09 18.551   Rep_7</span></span>
+<span id="cb46-107"><a href="sigfit.html#cb46-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:     QP TCGA-A8-A09G-01A-21W-A019-09 18.586   Rep_8</span></span>
+<span id="cb46-108"><a href="sigfit.html#cb46-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:     QP TCGA-A8-A09G-01A-21W-A019-09 18.549   Rep_9</span></span>
+<span id="cb46-109"><a href="sigfit.html#cb46-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:     QP TCGA-A8-A09G-01A-21W-A019-09 19.305  Rep_10</span></span>
+<span id="cb46-110"><a href="sigfit.html#cb46-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb46-111"><a href="sigfit.html#cb46-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $cosine</span></span>
+<span id="cb46-112"><a href="sigfit.html#cb46-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     method                       sample   cosine    type</span></span>
+<span id="cb46-113"><a href="sigfit.html#cb46-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:     QP TCGA-A8-A09G-01A-21W-A019-09 0.988326 optimal</span></span>
+<span id="cb46-114"><a href="sigfit.html#cb46-114" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:     QP TCGA-A8-A09G-01A-21W-A019-09 0.985484   Rep_1</span></span>
+<span id="cb46-115"><a href="sigfit.html#cb46-115" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:     QP TCGA-A8-A09G-01A-21W-A019-09 0.971921   Rep_2</span></span>
+<span id="cb46-116"><a href="sigfit.html#cb46-116" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:     QP TCGA-A8-A09G-01A-21W-A019-09 0.980851   Rep_3</span></span>
+<span id="cb46-117"><a href="sigfit.html#cb46-117" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:     QP TCGA-A8-A09G-01A-21W-A019-09 0.986036   Rep_4</span></span>
+<span id="cb46-118"><a href="sigfit.html#cb46-118" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:     QP TCGA-A8-A09G-01A-21W-A019-09 0.977990   Rep_5</span></span>
+<span id="cb46-119"><a href="sigfit.html#cb46-119" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:     QP TCGA-A8-A09G-01A-21W-A019-09 0.979053   Rep_6</span></span>
+<span id="cb46-120"><a href="sigfit.html#cb46-120" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:     QP TCGA-A8-A09G-01A-21W-A019-09 0.975565   Rep_7</span></span>
+<span id="cb46-121"><a href="sigfit.html#cb46-121" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:     QP TCGA-A8-A09G-01A-21W-A019-09 0.983459   Rep_8</span></span>
+<span id="cb46-122"><a href="sigfit.html#cb46-122" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:     QP TCGA-A8-A09G-01A-21W-A019-09 0.982522   Rep_9</span></span>
+<span id="cb46-123"><a href="sigfit.html#cb46-123" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:     QP TCGA-A8-A09G-01A-21W-A019-09 0.978299  Rep_10</span></span>
+<span id="cb46-124"><a href="sigfit.html#cb46-124" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb46-125"><a href="sigfit.html#cb46-125" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $p_val</span></span>
+<span id="cb46-126"><a href="sigfit.html#cb46-126" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          sample method threshold  sig      p_value</span></span>
+<span id="cb46-127"><a href="sigfit.html#cb46-127" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: TCGA-A8-A09G-01A-21W-A019-09     QP      0.05 Sig1 1.000000e+00</span></span>
+<span id="cb46-128"><a href="sigfit.html#cb46-128" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: TCGA-A8-A09G-01A-21W-A019-09     QP      0.05 Sig2 9.996431e-01</span></span>
+<span id="cb46-129"><a href="sigfit.html#cb46-129" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: TCGA-A8-A09G-01A-21W-A019-09     QP      0.05 Sig3 3.265198e-16</span></span></code></pre></div>
+<p>You can plot the result very easily with functions provided by <strong>sigminer</strong>.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="sigfit.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_sig_bootstrap_exposure</span>(bt_result, <span class="at">sample =</span> <span class="st">&quot;TCGA-A8-A09G-01A-21W-A019-09&quot;</span>)</span>
+<span id="cb47-2"><a href="sigfit.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:58]: Started.</span></span>
+<span id="cb47-3"><a href="sigfit.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:58]: Plotting.</span></span>
+<span id="cb47-4"><a href="sigfit.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:58]: 0.056 secs elapsed.</span></span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-62-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="sigfit.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_sig_bootstrap_error</span>(bt_result, <span class="at">sample =</span> <span class="st">&quot;TCGA-A8-A09G-01A-21W-A019-09&quot;</span>)</span>
+<span id="cb48-2"><a href="sigfit.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:59]: Started.</span></span>
+<span id="cb48-3"><a href="sigfit.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:59]: Plotting.</span></span>
+<span id="cb48-4"><a href="sigfit.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:59]: 0.032 secs elapsed.</span></span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-62-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="sigfit.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_sig_bootstrap_stability</span>(bt_result)</span>
+<span id="cb49-2"><a href="sigfit.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:59]: Started.</span></span>
+<span id="cb49-3"><a href="sigfit.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:59]: Plotting.</span></span>
+<span id="cb49-4"><a href="sigfit.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ [2021-05-18 23:16:59]: 0.079 secs elapsed.</span></span></code></pre></div>
+<p><img src="sigminer-doc_files/figure-html/unnamed-chunk-62-3.png" width="672" style="display: block; margin: auto;" />
+P values have been calculated under specified relative exposure cutoff (0.05 at default).</p>
+<p>The result indicates <code>Sig3</code> is very stable.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cnsig.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="subtyping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ShixiangWang/sigminer-doc/edit/master/03-quantify-sample-exposure.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["sigminer-doc.pdf", "sigminer-doc.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
