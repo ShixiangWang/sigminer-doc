@@ -73,12 +73,13 @@ Here, we present an easy-to-use and scalable toolkit for mutational signature an
 This tool can help users to extract, analyze and visualize signatures from genomic alteration records,
 thus providing new insight into cancer study.
 
-Currently, **sigminer** supports four types of signature:
+Currently, **sigminer** supports the following types of signature:
 
 - SBS signature in the form of 96 (6, 24, 384, 1536 and 6144) components.
 - DBS signature in the form of 78 (186) components.
 - ID (INDEL) signature in the form of 83 (28) components.
 - Copy number signature by the method either from @macintyre2018copy or from our group work [@WangSX2020].
+- Genome rearrangement.
 
 > Component here refer to a classification for a record (e.g. a mutation), in some papers mutation type or just type means the same thing. We use 'component' to represent a more broad concept.
 
@@ -149,12 +150,23 @@ The contents of this manual have been divided into 4 sections:
 
 ## Citation and LICENSE  
 
-```{r}
-citation("sigminer")
-```
+If you use **sigminer** in academic field, please cite one of the
+following papers.
 
+------------------------------------------------------------------------
 
-***
+-   ***Wang S, Li H, Song M, Tao Z, Wu T, He Z, et al. (2021) Copy
+    number signature analysis tool and its application in prostate
+    cancer reveals distinct mutational processes and clinical outcomes.
+    PLoS Genet 17(5): e1009557.***
+    <https://doi.org/10.1371/journal.pgen.1009557>
+
+-   ***Shixiang Wang, Ziyu Tao, Tao Wu, Xue-Song Liu, Sigflow: An
+    Automated And Comprehensive Pipeline For Cancer Genome Mutational
+    Signature Analysis, Bioinformatics, btaa895***.
+    <https://doi.org/10.1093/bioinformatics/btaa895>
+
+------------------------------------------------------------------------
 
 The software is made available for non commercial research purposes only
 under the [MIT](https://github.com/ShixiangWang/sigminer/blob/master/LICENSE.md). However, notwithstanding any provision of
@@ -164,8 +176,6 @@ Wang <wangshx@shanghaitech.edu.cn> or Xue-Song Liu
 <liuxs@shanghaitech.edu.cn>.
 
 MIT © 2019-2020 Shixiang Wang, Xue-Song Liu
-
-MIT © 2018 Geoffrey Macintyre
 
 MIT © 2018 Anand Mayakonda
 
